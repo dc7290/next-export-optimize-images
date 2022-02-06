@@ -1,0 +1,17 @@
+{
+  "extends": ["config:base", ":timezone(Asia/Tokyo)"],
+  "schedule": ["every weekend"],
+  "dependencyDashboard": true,
+  "pin": {
+    "automerge": true
+  },
+  "npm": {
+    "rangeStrategy": "bump"
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}

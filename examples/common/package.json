@@ -1,0 +1,23 @@
+{
+  "name": "example-typescript",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "fix": "prettier --write './**/*.{js,jsx,ts,tsx}'",
+    "lint": "next lint . --cache",
+    "lint:fix": "next lint . --cache --fix",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/react": "^17.0.38",
+    "@types/sharp": "^0.29.5",
+    "typescript": "^4.5.4"
+  }
+}

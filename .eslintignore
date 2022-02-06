@@ -1,0 +1,12 @@
+# config
+.eslintrc.js
+jest.config.js
+
+# git
+.gitkeep
+
+#bin
+/bin
+
+# examples
+/examples
