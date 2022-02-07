@@ -6,8 +6,7 @@ node_modules
 .pnp.js
 
 # production
-lib
-esm
+dist
 
 # testing
 /coverage
