@@ -3,14 +3,14 @@ import path from 'path'
 
 import sharp, { OutputInfo } from 'sharp'
 
-import { GetOptimizeResult, ManifestJsonMock } from './types'
+import { GetOptimizeResult, ManifestJson } from './types'
 import formatValidate from './utils/formatValidate'
 import lib from './utils/lib'
 
 //
 ;(process.env.NODE_ENV as 'development' | 'production' | 'test') = 'production'
 
-const manifestJsonMock: ManifestJsonMock = [
+const manifestJsonMock: ManifestJson = [
   {
     src: 'img.8a5ad2fe.png',
     quality: 100,

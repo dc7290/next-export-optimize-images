@@ -1,22 +1,17 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "declaration": true,
-    "sourceMap": true,
+    "module": "commonjs",
+    "lib": ["dom", "esnext"],
+    "outDir": "dist",
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "downlevelIteration": true,
-    "jsx": "preserve",
     "esModuleInterop": true,
-    "target": "es5",
-    "allowJs": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "target": "es6",
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true
   },
-  "include": ["./src/**/*.ts", "./__tests__/**/*.test.ts"],
-  "exclude": ["dist"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./__tests__/**/*.test.ts"]
 }

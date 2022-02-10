@@ -2,7 +2,7 @@ import { FormatEnum, OutputInfo, Sharp } from 'sharp'
 
 export type LayoutValue = 'fill' | 'fixed' | 'intrinsic' | 'responsive'
 
-export type ManifestJsonMock = {
+export type ManifestJson = {
   src: string
   sizes?: string
   quality?: number
