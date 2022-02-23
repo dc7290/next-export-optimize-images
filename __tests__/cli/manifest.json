@@ -1,0 +1,57 @@
+[
+  {
+    "src": "/fixtures/default.png"
+  },
+  {
+    "src": "/fixtures/default.webp"
+  },
+  {
+    "src": "/fixtures/default.jpg"
+  },
+  {
+    "src": "/fixtures/default.jpeg"
+  },
+  {
+    "src": "/fixtures/default.avif"
+  },
+  {
+    "src": "/fixtures/sizes-default.png",
+    "sizes": "100vw"
+  },
+  {
+    "src": "/fixtures/sizes-small.png",
+    "sizes": "(min-width: 768px) 20vw, 100vw"
+  },
+  {
+    "src": "/fixtures/quality.png",
+    "quality": 30
+  },
+  {
+    "src": "/fixtures/layout-intrinsic.png",
+    "layout": "intrinsic"
+  },
+  {
+    "src": "/fixtures/layout-fixed.png",
+    "layout": "fixed"
+  },
+  {
+    "src": "/fixtures/layout-responsive.png",
+    "layout": "responsive"
+  },
+  {
+    "src": "/fixtures/layout-fill.png",
+    "layout": "fill"
+  },
+  {
+    "src": "/fixtures/placeholder-empty.png",
+    "placeholder": "empty"
+  },
+  {
+    "src": "/fixtures/placeholder-blur.png",
+    "placeholder": "blur"
+  },
+  {
+    "src": "/fixtures/unoptimized.png",
+    "unoptimized": true
+  }
+]

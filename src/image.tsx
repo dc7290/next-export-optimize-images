@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
 import React from 'react'
 
@@ -5,17 +7,20 @@ const loader: ImageLoader = ({ src, width }) => {
   const name = src.split('.').slice(0, -1).join('.')
   const extension = src.split('.').pop()
 
-  return `${name}.${width}.${extension}`
+  return `${name}-${width}.${extension}`
 }
 
 const CustomImage = (props: ImageProps) => {
   const src = typeof props.src === 'string' ? props.src : props.src.src
 
   if (typeof window === 'undefined') {
-    const { sizes, layout, placeholder, unoptimized } = props
-    const quality = typeof props.quality !== undefined ? Number(props.quality) : undefined
-    import('./createManifest').then((func) => {
-      func.default({ src, sizes, quality, layout, placeholder, unoptimized })
+    require('./createManifest')({
+      src,
+      sizes: props.sizes,
+      quality: typeof props.quality !== undefined ? Number(props.quality) : undefined,
+      layout: props.layout,
+      placeholder: props.placeholder,
+      unoptimized: props.unoptimized,
     })
   }
 

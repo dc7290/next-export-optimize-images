@@ -14,6 +14,10 @@ const withExportImages = (nextConfig: NextConfig): NextConfig => {
         config.resolve.alias['next/image'] = 'next-export-optimize-images/dist/image'
         delete config.resolve.alias['next']
       }
+
+      if (!option.isServer) {
+        config.plugins.push(new option.webpack.IgnorePlugin({ resourceRegExp: /^\.\/createManifest$/ }))
+      }
       // }
 
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config

@@ -2,7 +2,7 @@ import { FormatEnum, OutputInfo, Sharp } from 'sharp'
 
 export type LayoutValue = 'fill' | 'fixed' | 'intrinsic' | 'responsive'
 
-export type ManifestJson = {
+export type Manifest = {
   src: string
   sizes?: string
   quality?: number
@@ -12,7 +12,7 @@ export type ManifestJson = {
 }[]
 
 export type GetOptimizeResultProps = {
-  image: () => Sharp
+  image: Sharp
   name: string
   format?: keyof FormatEnum
   width: number

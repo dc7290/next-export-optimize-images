@@ -4,16 +4,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "fix": "prettier --write './**/*.{js,jsx,ts,tsx}'",
-    "lint": "next lint . --cache",
-    "lint:fix": "next lint . --cache --fix",
-    "tsc": "tsc"
+    "lint": "next lint . --cache"
   },
   "dependencies": {
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "next-export-optimize-images": "0.1.0"
+    "next-export-optimize-images": "latest"
   },
   "devDependencies": {}
 }
