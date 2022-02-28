@@ -1,8 +1,8 @@
-import { ManifestJson } from './cli/types'
+import { Manifest } from './cli/types'
 
-const manifest: ManifestJson = []
+const manifest: Manifest = []
 
-const createManifest = async (params: ManifestJson[number]) => {
+const createManifest = async (params: Manifest[number]) => {
   manifest.push(params)
 
   return manifest

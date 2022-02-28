@@ -10,7 +10,7 @@ dist
 
 # testing
 /coverage
-/__tests__/results
+/__tests__/cli/results
 
 # next.js
 .next

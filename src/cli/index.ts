@@ -27,21 +27,23 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   const promises: Promise<OutputInfo>[] = []
 
-  const getOptimizeResult: GetOptimizeResult = ({ image, name, format, width, quality }) => {
+  const getOptimizeResult: GetOptimizeResult = ({ image, name, format, originalWidth = 1280, width, quality }) => {
     if (formatValidate(format)) {
       const filePath = path.join(outputDir ?? srcDir, `${name}-${width}.${format}`)
 
+      const resizeWidth = Math.min(originalWidth, width)
+
       switch (format) {
         case 'jpeg':
-          return image.resize({ width }).jpeg({ quality }).toFile(filePath)
+          return image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
         case 'jpg':
-          return image.resize({ width }).jpeg({ quality }).toFile(filePath)
+          return image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
         case 'png':
-          return image.resize({ width }).png({ quality }).toFile(filePath)
+          return image.resize({ width: resizeWidth }).png({ quality }).toFile(filePath)
         case 'webp':
-          return image.resize({ width }).webp({ quality }).toFile(filePath)
+          return image.resize({ width: resizeWidth }).webp({ quality }).toFile(filePath)
         case 'avif':
-          return image.resize({ width }).avif({ quality }).toFile(filePath)
+          return image.resize({ width: resizeWidth }).avif({ quality }).toFile(filePath)
       }
     } else {
       throw Error(
@@ -52,6 +54,7 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   for (const {
     src,
+    width: originalWidth,
     sizes,
     quality = 75,
     layout = sizes ? 'responsive' : 'intrinsic',
@@ -63,19 +66,28 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
     }
 
     const originalFilePath = path.join(srcDir, src)
-    const image = sharp(originalFilePath, { sequentialRead: true })
+    const image = () => sharp(originalFilePath, { sequentialRead: true })
 
     const name = src.split('/').slice(-1).toString().split('.').slice(0, -1).join('.')
+    const format = src.split('.').pop()
 
-    const { width, ...rest } = await image.metadata()
-    const format = rest.format === 'heif' ? 'avif' : rest.format
-
-    const { widths } = getWidths(width, layout, sizes)
-    widths.forEach((width) => promises.push(getOptimizeResult({ image, name, format, width, quality })))
+    const { widths } = getWidths(originalWidth, layout, sizes)
+    widths.forEach((width) =>
+      promises.push(
+        getOptimizeResult({
+          image: image(),
+          name,
+          format,
+          originalWidth,
+          width,
+          quality,
+        })
+      )
+    )
 
     if (placeholder === 'blur') {
       promises.push(
-        image
+        image()
           .resize({ width: 10 })
           .toFormat('png')
           .toFile(path.join(outputDir ?? srcDir, `${name}-10.${format}`))

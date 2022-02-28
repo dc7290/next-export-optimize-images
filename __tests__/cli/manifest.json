@@ -1,53 +1,67 @@
 [
   {
-    "src": "/fixtures/default.png"
+    "src": "/fixtures/default.png",
+    "width": 1920
   },
   {
-    "src": "/fixtures/default.webp"
+    "src": "/fixtures/default.webp",
+    "width": 1920
   },
   {
-    "src": "/fixtures/default.jpg"
+    "src": "/fixtures/default.jpg",
+    "width": 1920
   },
   {
-    "src": "/fixtures/default.jpeg"
+    "src": "/fixtures/default.jpeg",
+    "width": 1920
   },
   {
-    "src": "/fixtures/default.avif"
+    "src": "/fixtures/default.avif",
+    "width": 1920
   },
   {
     "src": "/fixtures/sizes-default.png",
+    "width": 1920,
     "sizes": "100vw"
   },
   {
     "src": "/fixtures/sizes-small.png",
+    "width": 1920,
     "sizes": "(min-width: 768px) 20vw, 100vw"
   },
   {
     "src": "/fixtures/quality.png",
+    "width": 1920,
     "quality": 30
   },
   {
     "src": "/fixtures/layout-intrinsic.png",
+    "width": 1920,
     "layout": "intrinsic"
   },
   {
     "src": "/fixtures/layout-fixed.png",
+    "width": 1920,
     "layout": "fixed"
   },
   {
     "src": "/fixtures/layout-responsive.png",
+    "width": 1920,
     "layout": "responsive"
   },
   {
     "src": "/fixtures/layout-fill.png",
+    "width": 1920,
     "layout": "fill"
   },
   {
     "src": "/fixtures/placeholder-empty.png",
+    "width": 1920,
     "placeholder": "empty"
   },
   {
     "src": "/fixtures/placeholder-blur.png",
+    "width": 1920,
     "placeholder": "blur"
   },
   {
