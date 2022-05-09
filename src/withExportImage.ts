@@ -4,7 +4,7 @@ const withExportImages = (nextConfig: NextConfig): NextConfig => {
   const customConfig: NextConfig = {
     env: {
       ...nextConfig.env,
-      DIRNAME: __dirname,
+      DIRNAME: process.cwd(),
     },
     images: {
       ...nextConfig.images,
