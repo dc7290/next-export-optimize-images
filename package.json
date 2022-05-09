@@ -1,7 +1,7 @@
 {
   "name": "next-export-optimize-images",
   "license": "MIT",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "bin": "bin/index.js",
   "main": "dist/index.js",
   "files": [
