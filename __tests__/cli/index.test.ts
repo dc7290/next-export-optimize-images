@@ -16,7 +16,7 @@ beforeAll(async () => {
   })
 }, 60 * 3 * 1000)
 
-const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'results', filename))
+const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'results/_optimized', filename))
 
 describe("It's a cli test.", () => {
   test('png images optimized', () => {

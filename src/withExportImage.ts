@@ -2,6 +2,14 @@ import type { NextConfig } from 'next'
 
 const withExportImages = (nextConfig: NextConfig): NextConfig => {
   const customConfig: NextConfig = {
+    env: {
+      ...nextConfig.env,
+      DIRNAME: __dirname,
+    },
+    images: {
+      ...nextConfig.images,
+      loader: 'custom',
+    },
     webpack(config, option) {
       if (option.webpack.version[0] === 5) {
         const nextAlias = config.resolve.alias['next']

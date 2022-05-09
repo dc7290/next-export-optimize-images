@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-// import imgSrc from '../images/img.png'
+import imgSrc from '../images/img.png'
 
 const IndexPage = () => {
   return (

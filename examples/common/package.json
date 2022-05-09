@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "generate": "yarn build && next export",
+    "generate": "yarn build && next export && next-export-optimize-images",
     "lint": "next lint . --cache"
   },
   "dependencies": {
