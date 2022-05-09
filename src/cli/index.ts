@@ -36,7 +36,7 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
       const fileDir = filePath.split('/').slice(0, -1).join('/')
       if (!fs.existsSync(fileDir)) {
-        fs.mkdirSync(fileDir)
+        fs.mkdirSync(fileDir, { recursive: true })
       }
 
       const resizeWidth = Math.min(originalWidth, width)
