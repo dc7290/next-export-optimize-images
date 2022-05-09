@@ -3,9 +3,8 @@ import path from 'path'
 
 import sharp, { OutputInfo } from 'sharp'
 
-import { GetOptimizeResult, Manifest } from './types'
+import type { GetOptimizeResult, Manifest } from './types'
 import formatValidate from './utils/formatValidate'
-import lib from './utils/lib'
 
 const cwd = process.cwd()
 
@@ -16,24 +15,28 @@ type OptimizeImagesProps = {
 }
 
 export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: OptimizeImagesProps) => {
-  const { getWidths } = await lib()
+  const destDir = outputDir ?? srcDir
 
   let manifest: Manifest
   try {
-    manifest = JSON.parse(fs.readFileSync(manifestJsonPath, 'utf-8')) as Manifest
+    manifest = fs
+      .readFileSync(manifestJsonPath, 'utf-8')
+      .trim()
+      .split(/\n/g)
+      .map((line) => JSON.parse(line))
   } catch (error) {
-    throw Error(typeof error === 'string' ? error : 'Cannot find manifest json')
+    throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
 
   const promises: Promise<OutputInfo>[] = []
 
-  const getOptimizeResult: GetOptimizeResult = ({ image, name, format, originalWidth = 1280, width, quality }) => {
-    if (formatValidate(format)) {
-      const filePath = path.join(outputDir ?? srcDir, `${name}-${width}.${format}`)
+  const getOptimizeResult: GetOptimizeResult = ({ image, originalWidth, output, width, quality, extension }) => {
+    if (formatValidate(extension)) {
+      const filePath = path.join(destDir, output)
 
       const resizeWidth = Math.min(originalWidth, width)
 
-      switch (format) {
+      switch (extension) {
         case 'jpeg':
           return image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
         case 'jpg':
@@ -47,52 +50,24 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
       }
     } else {
       throw Error(
-        `Not an allowed format.\`${format}\`\nGive \`unoptimize\`prop to /next/image to disable optimization.`
+        `Not an allowed format.\`${extension}\`\nGive \`unoptimize\`prop to /next/image to disable optimization.`
       )
     }
   }
 
-  for (const {
-    src,
-    width: originalWidth,
-    sizes,
-    quality = 75,
-    layout = sizes ? 'responsive' : 'intrinsic',
-    placeholder = 'empty',
-    unoptimized = false,
-  } of manifest) {
-    if (unoptimized) {
-      continue
-    }
-
-    const originalFilePath = path.join(srcDir, src)
+  for (const item of manifest) {
+    const originalFilePath = path.join(srcDir, item.src)
     const image = () => sharp(originalFilePath, { sequentialRead: true })
 
-    const name = src.split('/').slice(-1).toString().split('.').slice(0, -1).join('.')
-    const format = src.split('.').pop()
+    const originalWidth = (await image().metadata()).width ?? 1280
 
-    const { widths } = getWidths(originalWidth, layout, sizes)
-    widths.forEach((width) =>
-      promises.push(
-        getOptimizeResult({
-          image: image(),
-          name,
-          format,
-          originalWidth,
-          width,
-          quality,
-        })
-      )
+    promises.push(
+      getOptimizeResult({
+        image: image(),
+        originalWidth,
+        ...item,
+      })
     )
-
-    if (placeholder === 'blur') {
-      promises.push(
-        image()
-          .resize({ width: 10 })
-          .toFormat('png')
-          .toFile(path.join(outputDir ?? srcDir, `${name}-10.${format}`))
-      )
-    }
   }
 
   try {
@@ -104,7 +79,7 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
 export const run = () => {
   const srcDir = path.resolve(cwd, 'out')
-  const manifestJsonPath = path.resolve(cwd, '.next', 'export-images-manifest.json')
+  const manifestJsonPath = path.resolve(cwd, '.next/custom-optimized-images.nd.json')
 
   optimizeImages({ srcDir, manifestJsonPath })
 }

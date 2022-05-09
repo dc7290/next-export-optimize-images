@@ -10,7 +10,7 @@ beforeEach(async () => {
   fs.mkdirSync(resultsDir)
 
   await optimizeImages({
-    srcDir: path.resolve(__dirname),
+    srcDir: path.resolve(__dirname, 'fixtures'),
     manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
     outputDir: path.resolve(__dirname, 'results'),
   })
@@ -19,8 +19,33 @@ beforeEach(async () => {
 const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'results', filename))
 
 describe("It's a cli test.", () => {
-  test('no props', () => {
-    expect(exist('default-1920.png')).toBeTruthy()
-    expect(exist('default-3840.png')).toBeTruthy()
+  test('png images optimized', () => {
+    expect(exist('default_10_75.png')).toBeTruthy()
+    expect(exist('default_1920_75.png')).toBeTruthy()
+    expect(exist('default_3840_75.png')).toBeTruthy()
+  })
+
+  test('jpeg images optimized', () => {
+    expect(exist('default_10_75.jpeg')).toBeTruthy()
+    expect(exist('default_1920_75.jpeg')).toBeTruthy()
+    expect(exist('default_3840_75.jpeg')).toBeTruthy()
+  })
+
+  test('jpg images optimized', () => {
+    expect(exist('default_10_75.jpg')).toBeTruthy()
+    expect(exist('default_1920_75.jpg')).toBeTruthy()
+    expect(exist('default_3840_75.jpg')).toBeTruthy()
+  })
+
+  test('webp images optimized', () => {
+    expect(exist('default_10_75.webp')).toBeTruthy()
+    expect(exist('default_1920_75.webp')).toBeTruthy()
+    expect(exist('default_3840_75.webp')).toBeTruthy()
+  })
+
+  test('avif images optimized', () => {
+    expect(exist('default_10_75.avif')).toBeTruthy()
+    expect(exist('default_1920_75.avif')).toBeTruthy()
+    expect(exist('default_3840_75.avif')).toBeTruthy()
   })
 })

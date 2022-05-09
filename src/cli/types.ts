@@ -1,23 +1,17 @@
-import { OutputInfo, Sharp } from 'sharp'
+import type { OutputInfo, Sharp } from 'sharp'
 
 export type LayoutValue = 'fill' | 'fixed' | 'intrinsic' | 'responsive'
 
 export type Manifest = {
+  output: string
   src: string
-  width?: number
-  sizes?: string
-  quality?: number
-  layout?: LayoutValue
-  placeholder?: 'blur' | 'empty'
-  unoptimized?: boolean
+  width: number
+  quality: number
+  extension: string
 }[]
 
 export type GetOptimizeResultProps = {
   image: Sharp
-  name: string
-  format?: string
-  originalWidth?: number
-  width: number
-  quality: number
-}
+  originalWidth: number
+} & Omit<Manifest[number], 'src'>
 export type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<OutputInfo>

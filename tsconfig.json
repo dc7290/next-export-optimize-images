@@ -1,16 +1,8 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["dom", "esnext"],
-    "outDir": "dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
     "jsx": "react",
-    "target": "es6",
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
     "incremental": true
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "./__tests__/**/*.test.ts"]
