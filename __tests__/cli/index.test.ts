@@ -3,7 +3,7 @@ import path from 'path'
 
 import { optimizeImages } from '../../src/cli'
 
-beforeEach(async () => {
+beforeAll(async () => {
   const resultsDir = path.resolve(__dirname, 'results')
 
   fs.rmSync(resultsDir, { recursive: true, force: true })

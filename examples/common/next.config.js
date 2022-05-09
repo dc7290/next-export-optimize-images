@@ -1,10 +1,10 @@
 const { withExportImages } = require('next-export-optimize-images')
 
 /**
- * @type {import('next/dist/server/config-shared').NextConfig}
+ * @type {import('next').NextConfig}
  */
 const config = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   trailingSlash: true,
   eslint: {
     ignoreDuringBuilds: true,

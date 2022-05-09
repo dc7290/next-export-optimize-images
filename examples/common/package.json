@@ -3,13 +3,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
+    "generate": "yarn build && next export",
     "lint": "next lint . --cache"
   },
   "dependencies": {
     "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "latest",
+    "react-dom": "latest",
     "next-export-optimize-images": "latest"
   },
   "devDependencies": {}

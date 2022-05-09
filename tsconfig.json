@@ -5,5 +5,5 @@
     "outDir": "dist",
     "incremental": true
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./__tests__/**/*.test.ts"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./__tests__/**/*.test.ts", "./__tests__/**/*.test.tsx"]
 }
