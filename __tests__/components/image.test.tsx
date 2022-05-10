@@ -10,7 +10,9 @@ import React from 'react'
 import CustomImage from '../../src/image'
 
 beforeAll(() => {
-  fs.rmSync(path.resolve(__dirname, 'result.json'))
+  if (fs.existsSync(path.resolve(__dirname, 'result.json'))) {
+    fs.rmSync(path.resolve(__dirname, 'result.json'))
+  }
 })
 
 const blurDataURL =
@@ -36,16 +38,16 @@ describe('CustomImage', () => {
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src="/img.png" width={1920} height={1280} priority />)
 
-      expect(screen.getByRole('img').getAttribute('src')).toBe('/_optimized/img_3840_75.png')
+      expect(screen.getByRole('img').getAttribute('src')).toBe('/_next/static/chunks/images/img_3840_75.png')
       expect(screen.getByRole('img').getAttribute('srcSet')).toBe(
-        '/_optimized/img_1920_75.png 1x, /_optimized/img_3840_75.png 2x'
+        '/_next/static/chunks/images/img_1920_75.png 1x, /_next/static/chunks/images/img_3840_75.png 2x'
       )
     })
 
     test('BlurDataURL is set correctly', () => {
       render(<CustomImage src="/img.png" width={1920} height={1280} placeholder="blur" />)
 
-      expect(screen.getByRole('img').style.backgroundImage).toBe('url(/_optimized/img_8_10.png)')
+      expect(screen.getByRole('img').style.backgroundImage).toBe('url(/_next/static/chunks/images/img_8_10.png)')
     })
   })
 
@@ -58,10 +60,10 @@ describe('CustomImage', () => {
       render(<CustomImage src={staticRequireSrc} priority />)
 
       expect(screen.getByRole('img').getAttribute('src')).toBe(
-        '/_optimized/_next/static/media/image.819f8209_3840_75.png'
+        '/_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png'
       )
       expect(screen.getByRole('img').getAttribute('srcset')).toBe(
-        '/_optimized/_next/static/media/image.819f8209_1920_75.png 1x, /_optimized/_next/static/media/image.819f8209_3840_75.png 2x'
+        '/_next/static/chunks/images/_next/static/media/image.819f8209_1920_75.png 1x, /_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png 2x'
       )
     })
 
@@ -81,10 +83,10 @@ describe('CustomImage', () => {
       render(<CustomImage src={staticImageData} priority />)
 
       expect(screen.getByRole('img').getAttribute('src')).toBe(
-        '/_optimized/_next/static/media/image.819f8209_3840_75.png'
+        '/_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png'
       )
       expect(screen.getByRole('img').getAttribute('srcset')).toBe(
-        '/_optimized/_next/static/media/image.819f8209_1920_75.png 1x, /_optimized/_next/static/media/image.819f8209_3840_75.png 2x'
+        '/_next/static/chunks/images/_next/static/media/image.819f8209_1920_75.png 1x, /_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png 2x'
       )
     })
 
@@ -120,7 +122,7 @@ describe('CustomImage', () => {
   })
 
   test('Create JSON', () => {
-    process.env['DIRNAME'] = __dirname
+    process.env['EXPORT_IMAGES_DIRNAME'] = __dirname
     process.env['TEST_JSON_PATH'] = 'result.json'
 
     render(

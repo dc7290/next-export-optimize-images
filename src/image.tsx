@@ -17,14 +17,20 @@ const exportableLoader: ImageLoader = ({ src, width, quality }) => {
     throw new Error(`Invalid path or no file extension: ${src}`)
   }
 
-  const output = `/_optimized${path}_${width}_${quality || 75}.${extension}`
+  const outputDir = `/${
+    process.env['EXPORT_IMAGES_OUTPUTDIR']?.replace(/^\//, '').replace(/\/$/, '') ?? '_next/static/chunks/images'
+  }`
+  const output = `${outputDir}${path}_${width}_${quality || 75}.${extension}`
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
     const fs = require('fs')
     const path = require('path')
     fs.appendFileSync(
-      path.join(process.env['DIRNAME'], process.env['TEST_JSON_PATH'] || '.next/custom-optimized-images.nd.json'),
+      path.join(
+        process.env['EXPORT_IMAGES_DIRNAME'],
+        process.env['TEST_JSON_PATH'] || '.next/custom-optimized-images.nd.json'
+      ),
       JSON.stringify(json) + '\n'
     )
   }
