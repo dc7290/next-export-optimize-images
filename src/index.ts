@@ -1,1 +1,2 @@
-export { default as withExportImages } from './withExportImage'
+import withExportImage from './withExportImage'
+module.exports = withExportImage
