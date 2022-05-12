@@ -26,4 +26,4 @@ yarn add -D next-export-optimize-images
 
 ## Document Site
 
-https://next-export-optimize-images.docs.vercel.app
+https://next-export-optimize-images.vercel.app
