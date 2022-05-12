@@ -1,4 +1,4 @@
-import type { OutputInfo, Sharp } from 'sharp'
+import type { Sharp } from 'sharp'
 
 export type LayoutValue = 'fill' | 'fixed' | 'intrinsic' | 'responsive'
 
@@ -14,4 +14,4 @@ export type GetOptimizeResultProps = {
   image: Sharp
   originalWidth: number
 } & Omit<Manifest[number], 'src'>
-export type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<OutputInfo>
+export type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
