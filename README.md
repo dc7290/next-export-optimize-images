@@ -15,6 +15,7 @@ This makes it possible to build a high performance website with this solution, w
 
 - Use `next/image` to optimize images at build time.
 - All options for `next/image` available
+- Using `sharp`, so it's fast.
 - Support TypeScript
 
 ## Installation
@@ -23,52 +24,6 @@ This makes it possible to build a high performance website with this solution, w
 yarn add -D next-export-optimize-images
 ```
 
-## Usage
+## Document Site
 
-1. Write withExportImages in `next.config.js.`
-
-```js
-// next.config.js
-const withExportImages = require('next-export-optimize-images')
-
-module.exports = withExportImages(
-  {
-    // write your next.js configuration values.
-  },
-  {
-    // write your withExportImages configuration values.
-  }
-)
-```
-
-If you are using `next-compose-plugins`
-
-```js
-// next.config.js
-const withPlugins = require('next-compose-plugins')
-const withExportImages = require('next-export-optimize-images')
-
-module.exports = withPlugins(
-  [
-    [
-      withExportImages,
-      {
-        // write your withExportImages configuration values.
-      },
-    ],
-    // your other plugins here
-  ],
-  {
-    // write your next.js configuration values.
-  }
-)
-```
-
-2. Change the description of the `scripts` that do the `next export` in `package.json`
-
-```
-{
--  "export": "next build && next export",
-+  "export": "next build && next export && next-export-optimize-images",
-}
-```
+https://next-export-optimize-images.docs.vercel.app
