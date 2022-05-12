@@ -104,4 +104,6 @@ export const run = () => {
   const manifestJsonPath = path.resolve(cwd, '.next/custom-optimized-images.nd.json')
 
   optimizeImages({ srcDir, manifestJsonPath })
+  // eslint-disable-next-line no-console
+  console.log('\x1b[35m', 'Optimization complete!', '\x1b[39m')
 }
