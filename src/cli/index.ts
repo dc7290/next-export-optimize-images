@@ -1,10 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 
-import sharp, { OutputInfo } from 'sharp'
+import sharp from 'sharp'
 
 import type { GetOptimizeResult, Manifest } from './types'
+import { cliProgressBarIncrement, cliProgressBarStart, cliProgressBarStop } from './utils/cliProgressBar'
 import formatValidate from './utils/formatValidate'
+import uniqueItems from './utils/uniqueItems'
 
 const cwd = process.cwd()
 
@@ -19,18 +21,22 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   let manifest: Manifest
   try {
-    manifest = fs
-      .readFileSync(manifestJsonPath, 'utf-8')
-      .trim()
-      .split(/\n/g)
-      .map((line) => JSON.parse(line))
+    manifest = uniqueItems(
+      fs
+        .readFileSync(manifestJsonPath, 'utf-8')
+        .trim()
+        .split(/\n/g)
+        .map((line) => JSON.parse(line))
+    )
   } catch (error) {
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
 
-  const promises: Promise<OutputInfo>[] = []
+  cliProgressBarStart(manifest.length)
 
-  const getOptimizeResult: GetOptimizeResult = ({ image, originalWidth, output, width, quality, extension }) => {
+  const promises: Promise<void>[] = []
+
+  const getOptimizeResult: GetOptimizeResult = async ({ image, originalWidth, output, width, quality, extension }) => {
     if (formatValidate(extension)) {
       const filePath = path.join(destDir, output)
 
@@ -43,16 +49,23 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
       switch (extension) {
         case 'jpeg':
-          return image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
+          await image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
+          break
         case 'jpg':
-          return image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
+          await image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
+          break
         case 'png':
-          return image.resize({ width: resizeWidth }).png({ quality }).toFile(filePath)
+          await image.resize({ width: resizeWidth }).png({ quality }).toFile(filePath)
+          break
         case 'webp':
-          return image.resize({ width: resizeWidth }).webp({ quality }).toFile(filePath)
+          await image.resize({ width: resizeWidth }).webp({ quality }).toFile(filePath)
+          break
         case 'avif':
-          return image.resize({ width: resizeWidth }).avif({ quality }).toFile(filePath)
+          await image.resize({ width: resizeWidth }).avif({ quality }).toFile(filePath)
+          break
       }
+
+      cliProgressBarIncrement()
     } else {
       throw Error(
         `Not an allowed format.\`${extension}\`\nGive \`unoptimize\`prop to /next/image to disable optimization.`
@@ -77,12 +90,16 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   try {
     await Promise.all(promises)
+    cliProgressBarStop()
   } catch (error) {
     console.error('Error processing files', error)
   }
 }
 
 export const run = () => {
+  // eslint-disable-next-line no-console
+  console.log('\x1b[35m', 'next-export-optimize-images: Optimize images.', '\x1b[39m')
+
   const srcDir = path.resolve(cwd, 'out')
   const manifestJsonPath = path.resolve(cwd, '.next/custom-optimized-images.nd.json')
 

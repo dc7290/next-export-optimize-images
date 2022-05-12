@@ -10,7 +10,7 @@ dist
 
 # testing
 /coverage
-/__tests__/cli/results
+/__tests__/cli/image-optimize/results
 /__tests__/components/result.json
 
 # next.js

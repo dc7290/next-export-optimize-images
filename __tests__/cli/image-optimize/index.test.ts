@@ -1,13 +1,13 @@
 import fs from 'fs'
 import path from 'path'
 
-import { optimizeImages } from '../../src/cli'
+import { optimizeImages } from '../../../src/cli'
 
 beforeAll(async () => {
   const resultsDir = path.resolve(__dirname, 'results')
 
   fs.rmSync(resultsDir, { recursive: true, force: true })
-  fs.mkdirSync(resultsDir)
+  fs.mkdirSync(path.join(resultsDir, '_next/static/chunks/images'), { recursive: true })
 
   await optimizeImages({
     srcDir: path.resolve(__dirname, 'fixtures'),
@@ -16,9 +16,10 @@ beforeAll(async () => {
   })
 }, 60 * 3 * 1000)
 
-const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'results/_optimized', filename))
+const exist = (filename: string) =>
+  fs.existsSync(path.resolve(__dirname, 'results/_next/static/chunks/images', filename))
 
-describe("It's a cli test.", () => {
+describe('Image optimization.', () => {
   test('png images optimized', () => {
     expect(exist('default_10_75.png')).toBeTruthy()
     expect(exist('default_1920_75.png')).toBeTruthy()
