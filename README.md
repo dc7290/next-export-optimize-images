@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/next-export-optimize-images) ![NPM](https://img.shields.io/npm/l/next-export-optimize-images?label=License) [![Node.js CI](https://github.com/dc7290/next-export-optimize-images/actions/workflows/node.js.yml/badge.svg)](https://github.com/dc7290/next-export-optimize-images/actions/workflows/node.js.yml)
+
 # :warning: Attention
 
 This repository is under development.
