@@ -1,4 +1,4 @@
-const { withExportImages } = require('next-export-optimize-images')
+const withExportImages = require('next-export-optimize-images')
 
 /**
  * @type {import('next').NextConfig}
