@@ -4,7 +4,7 @@ import path from 'path'
 import sharp from 'sharp'
 
 import type { GetOptimizeResult, Manifest } from './types'
-import { cliProgressBarIncrement, cliProgressBarStart, cliProgressBarStop } from './utils/cliProgressBar'
+import { cliProgressBarIncrement, cliProgressBarStart } from './utils/cliProgressBar'
 import formatValidate from './utils/formatValidate'
 import uniqueItems from './utils/uniqueItems'
 
@@ -92,7 +92,6 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   try {
     await Promise.all(promises)
-    cliProgressBarStop()
   } catch (error) {
     console.error('Error processing files', error)
   }

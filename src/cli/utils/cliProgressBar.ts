@@ -6,6 +6,7 @@ const bar = new cliProgress.SingleBar({
   barCompleteChar: '\u2588',
   barIncompleteChar: '\u2591',
   hideCursor: true,
+  stopOnComplete: true,
 })
 
 export const cliProgressBarStart = (total: number) => {
@@ -14,8 +15,4 @@ export const cliProgressBarStart = (total: number) => {
 
 export const cliProgressBarIncrement = (addNumber?: number) => {
   bar.increment(addNumber)
-}
-
-export const cliProgressBarStop = () => {
-  bar.stop()
 }
