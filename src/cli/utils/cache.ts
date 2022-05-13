@@ -16,16 +16,16 @@ export type CacheImages = {
 
 export const readCacheManifest = (
   filePath = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images/cached-images.json')
-) => {
+): CacheImages | null => {
   if (fs.existsSync(filePath)) {
-    return fs.readFileSync(filePath)
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
   } else {
     return null
   }
 }
 
 export const writeCacheManifest = (
-  filePath = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images/cached-images.json'),
+  filePath = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images/cached-images.json', 'utf-8'),
   cacheImages: CacheImages
 ) => {
   fs.writeFileSync(filePath, JSON.stringify(cacheImages))

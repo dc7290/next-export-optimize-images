@@ -1,5 +1,3 @@
-import type { Sharp } from 'sharp'
-
 export type LayoutValue = 'fill' | 'fixed' | 'intrinsic' | 'responsive'
 
 export type Manifest = {
@@ -11,7 +9,7 @@ export type Manifest = {
 }[]
 
 export type GetOptimizeResultProps = {
-  image: Sharp
+  originalFilePath: string
   originalWidth: number
 } & Omit<Manifest[number], 'src'>
 export type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>

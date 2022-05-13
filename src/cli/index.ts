@@ -1,9 +1,11 @@
+import { createHash } from 'crypto'
 import fs from 'fs'
 import path from 'path'
 
 import sharp from 'sharp'
 
 import type { GetOptimizeResult, Manifest } from './types'
+import { readCacheManifest } from './utils/cache'
 import { cliProgressBarIncrement, cliProgressBarStart } from './utils/cliProgressBar'
 import formatValidate from './utils/formatValidate'
 import uniqueItems from './utils/uniqueItems'
@@ -34,12 +36,37 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   cliProgressBarStart(manifest.length)
 
+  const cacheImages = readCacheManifest()
   const promises: Promise<void>[] = []
 
-  const getOptimizeResult: GetOptimizeResult = async ({ image, originalWidth, output, width, quality, extension }) => {
+  const getOptimizeResult: GetOptimizeResult = async ({
+    originalFilePath,
+    originalWidth,
+    output,
+    width,
+    quality,
+    extension,
+  }) => {
     if (formatValidate(extension)) {
-      const filePath = path.join(destDir, output)
+      if (cacheImages !== null) {
+        const cacheImagesFindIndex = cacheImages.findIndex((cacheImage) => cacheImage.output === output)
+        const hash = createHash('sha256').update(fs.readFileSync(originalFilePath)).digest('hex')
+        if (cacheImagesFindIndex === -1) {
+          cacheImages.push({ output, hash })
+        } else {
+          const currentCacheImage = cacheImages[cacheImagesFindIndex]
+          if (currentCacheImage?.hash === hash) {
+            return
+          } else {
+            if (currentCacheImage !== undefined) currentCacheImage.hash = hash
+          }
+        }
+      }
 
+      const imageBuffer = fs.readFileSync(originalFilePath)
+      const image = sharp(imageBuffer, { sequentialRead: true })
+
+      const filePath = path.join(destDir, output)
       const fileDir = filePath.split('/').slice(0, -1).join('/')
       if (!fs.existsSync(fileDir)) {
         fs.mkdirSync(fileDir, { recursive: true })
@@ -77,13 +104,11 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
   for (const item of manifest) {
     const originalFilePath = path.join(srcDir, item.src)
-    const image = () => sharp(originalFilePath, { sequentialRead: true })
-
-    const originalWidth = (await image().metadata()).width ?? 1280
+    const originalWidth = (await sharp(originalFilePath).metadata()).width ?? 1280
 
     promises.push(
       getOptimizeResult({
-        image: image(),
+        originalFilePath,
         originalWidth,
         ...item,
       })

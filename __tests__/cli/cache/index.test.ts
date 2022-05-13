@@ -1,3 +1,4 @@
+import { createHash } from 'crypto'
 import fs from 'fs'
 import path from 'path'
 
@@ -16,7 +17,9 @@ describe('Cache', () => {
 
   test('Create and load a cache manifest', () => {
     const filePath = path.resolve(__dirname, '.cache/cached-images.json')
-    const cacheImages: CacheImages = [{ output: '/_next/static/chunks/images/default.png', hash: '01234' }]
+    const cacheImages: CacheImages = [
+      { output: '/_next/static/chunks/images/default.png', hash: createHash('sha256').update('01234').digest('hex') },
+    ]
 
     writeCacheManifest(filePath, cacheImages)
 
