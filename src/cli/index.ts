@@ -47,6 +47,8 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir }: Op
 
       const resizeWidth = Math.min(originalWidth, width)
 
+      image.rotate()
+
       switch (extension) {
         case 'jpeg':
           await image.resize({ width: resizeWidth }).jpeg({ quality }).toFile(filePath)
