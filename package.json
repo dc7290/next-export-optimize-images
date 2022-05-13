@@ -29,7 +29,7 @@
     "ansi-colors": "^4.1.1",
     "cli-progress": "^3.11.0",
     "lodash.uniqwith": "^4.5.0",
-    "sharp": "^0.30.1"
+    "sharp": "^0.30.4"
   },
   "devDependencies": {
     "@testing-library/react": "13.2.0",
