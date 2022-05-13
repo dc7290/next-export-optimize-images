@@ -7,7 +7,7 @@ Breaking changes may be made without notice.
 
 ---
 
-# :rocket: next-export-optimize-images
+# next-export-optimize-images
 
 Using this repository, you can get the full benefits of `next/image` even when using `next export` by doing image optimization at build time.
 
