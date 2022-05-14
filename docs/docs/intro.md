@@ -33,14 +33,9 @@ yarn add -D next-export-optimize-images
 // next.config.js
 const withExportImages = require('next-export-optimize-images')
 
-module.exports = withExportImages(
-  {
-    // write your next.js configuration values.
-  },
-  {
-    // write your withExportImages configuration values.
-  }
-)
+module.exports = withExportImages({
+  // write your next.js configuration values.
+})
 ```
 
 If you are using `next-compose-plugins`
@@ -52,12 +47,7 @@ const withExportImages = require('next-export-optimize-images')
 
 module.exports = withPlugins(
   [
-    [
-      withExportImages,
-      {
-        // write your withExportImages configuration values.
-      },
-    ],
+    withExportImages,
     // your other plugins here
   ],
   {
