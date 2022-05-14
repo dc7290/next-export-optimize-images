@@ -7,9 +7,3 @@ export type Manifest = {
   quality: number
   extension: string
 }[]
-
-export type GetOptimizeResultProps = {
-  originalFilePath: string
-  originalWidth: number
-} & Omit<Manifest[number], 'src'>
-export type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>

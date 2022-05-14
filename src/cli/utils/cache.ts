@@ -1,9 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 
-export const createCacheDir = (
-  cacheDir = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images')
-) => {
+export const defaultCacheDir = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images')
+export const defaultCacheFilePath = path.join(defaultCacheDir, 'cached-images.json')
+
+export const createCacheDir = (cacheDir = defaultCacheDir) => {
   if (!fs.existsSync(cacheDir)) {
     fs.mkdirSync(cacheDir, { recursive: true })
   }
@@ -14,19 +15,14 @@ export type CacheImages = {
   hash: string
 }[]
 
-export const readCacheManifest = (
-  filePath = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images/cached-images.json')
-): CacheImages | null => {
+export const readCacheManifest = (filePath = defaultCacheFilePath): CacheImages => {
   if (fs.existsSync(filePath)) {
     return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
   } else {
-    return null
+    return []
   }
 }
 
-export const writeCacheManifest = (
-  filePath = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images/cached-images.json', 'utf-8'),
-  cacheImages: CacheImages
-) => {
-  fs.writeFileSync(filePath, JSON.stringify(cacheImages))
+export const writeCacheManifest = (cacheImages: CacheImages, filePath = defaultCacheFilePath) => {
+  fs.writeFileSync(filePath, JSON.stringify(cacheImages), 'utf-8')
 }

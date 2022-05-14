@@ -13,6 +13,7 @@ beforeAll(async () => {
     srcDir: path.resolve(__dirname, 'fixtures'),
     manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
     outputDir: path.resolve(__dirname, 'results'),
+    noCache: true,
   })
 }, 60 * 3 * 1000)
 
