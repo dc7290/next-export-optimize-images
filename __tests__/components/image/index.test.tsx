@@ -1,19 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-import fs from 'fs'
-import path from 'path'
-
 import { render, screen, cleanup } from '@testing-library/react'
 import React from 'react'
 
-import CustomImage from '../../src/image'
-
-beforeAll(() => {
-  if (fs.existsSync(path.resolve(__dirname, 'result.json'))) {
-    fs.rmSync(path.resolve(__dirname, 'result.json'))
-  }
-})
+import CustomImage from '../../../src/image'
 
 const blurDataURL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAIAAAD38zoCAAAAc0lEQVR42mNQkJSxtrAzNLfVNbSTVTPg4RfkFxIDIgYJCVkzKzdFZTUlJR1xGRVeAWGohLiEjL6ls5ahhYKchqCwBL+wGJ+gKEhCWkpeU89Ux9hKWVVHVkFLQFQSKiEvo25t66uqb8bNK8DNLwQR5RMUBQDM5g6Wk9WE3AAAAABJRU5ErkJggg=='
@@ -119,17 +110,5 @@ describe('CustomImage', () => {
 
       expect(screen.getByRole('img').style.backgroundImage).toBe('url(customBlurDataURL)')
     })
-  })
-
-  test('Create JSON', () => {
-    process.env['EXPORT_IMAGES_DIRNAME'] = __dirname
-    process.env['TEST_JSON_PATH'] = 'result.json'
-
-    render(
-      <>
-        <CustomImage src={staticRequireSrc} priority />
-        <CustomImage src={staticRequireSrc} layout="responsive" priority />
-      </>
-    )
   })
 })

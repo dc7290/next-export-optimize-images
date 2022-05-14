@@ -4,6 +4,7 @@
   "version": "0.6.0",
   "bin": "bin/index.js",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -16,8 +17,8 @@
     "test:watch": "jest --watch",
     "test:cli": "jest __tests__/cli/**/*.test.ts",
     "test:cli:watch": "jest --watch __tests__/cli/**/*.test.ts",
-    "test:components": "jest __tests__/components/**/*.test.{ts,tsx}",
-    "test:components:watch": "jest --watch __tests__/components/**/*.test.{ts,tsx}"
+    "test:components": "jest __tests__/components/**/*.test.tsx",
+    "test:components:watch": "jest --watch __tests__/components/**/*.test.tsx"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

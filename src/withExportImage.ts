@@ -1,16 +1,7 @@
 import type { NextConfig } from 'next'
 
-type WithExportImagesConfig = {
-  outputDir?: string
-}
-
-const withExportImages = (nextConfig: NextConfig, withExportImagesConfig: WithExportImagesConfig = {}): NextConfig => {
+const withExportImages = (nextConfig: NextConfig): NextConfig => {
   const customConfig: NextConfig = {
-    env: {
-      ...nextConfig.env,
-      EXPORT_IMAGES_DIRNAME: process.cwd(),
-      EXPORT_IMAGES_OUTPUTDIR: withExportImagesConfig.outputDir ?? '_next/static/chunks/images',
-    },
     images: {
       ...nextConfig.images,
       loader: 'custom',

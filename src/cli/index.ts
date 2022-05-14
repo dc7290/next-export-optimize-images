@@ -4,6 +4,9 @@ import path from 'path'
 
 import sharp from 'sharp'
 
+import { Config, getConfig } from '../utils/config'
+import processManifest from '../utils/processManifest'
+
 import type { Manifest } from './types'
 import { CacheImages, createCacheDir, defaultCacheDir, readCacheManifest, writeCacheManifest } from './utils/cache'
 import { cliProgressBarIncrement, cliProgressBarStart } from './utils/cliProgressBar'
@@ -20,6 +23,7 @@ type GetOptimizeResultProps = {
   cliProgressBarIncrement: () => void
   originalFilePath: string
   originalWidth: number
+  sharpOptions?: Config['sharpOptions']
 } & Omit<Manifest[number], 'src'>
 type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
 
@@ -37,6 +41,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   width,
   quality,
   extension,
+  sharpOptions,
 }) => {
   if (formatValidate(extension)) {
     const filePath = path.join(destDir, output)
@@ -76,19 +81,19 @@ export const getOptimizeResult: GetOptimizeResult = async ({
 
     switch (extension) {
       case 'jpeg':
-        await image.jpeg({ quality }).toFile(outputPath)
+        await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
         break
       case 'jpg':
-        await image.jpeg({ quality }).toFile(outputPath)
+        await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
         break
       case 'png':
-        await image.png({ quality }).toFile(outputPath)
+        await image.png({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
         break
       case 'webp':
-        await image.webp({ quality }).toFile(outputPath)
+        await image.webp({ quality, ...sharpOptions?.webp }).toFile(outputPath)
         break
       case 'avif':
-        await image.avif({ quality }).toFile(outputPath)
+        await image.avif({ quality, ...sharpOptions?.avif }).toFile(outputPath)
         break
     }
 
@@ -106,24 +111,18 @@ export const getOptimizeResult: GetOptimizeResult = async ({
 const cwd = process.cwd()
 
 type OptimizeImagesProps = {
-  srcDir: string
   manifestJsonPath: string
-  outputDir?: string
   noCache: boolean
+  config: Config
 }
 
-export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir, noCache }: OptimizeImagesProps) => {
-  const destDir = outputDir ?? srcDir
+export const optimizeImages = async ({ manifestJsonPath, noCache, config }: OptimizeImagesProps) => {
+  const srcDir = path.resolve(cwd, config.outDir ?? 'out')
+  const destDir = config.imageDir !== undefined ? path.resolve(cwd, config.imageDir) : srcDir
 
   let manifest: Manifest
   try {
-    manifest = uniqueItems(
-      fs
-        .readFileSync(manifestJsonPath, 'utf-8')
-        .trim()
-        .split(/\n/g)
-        .map((line) => JSON.parse(line))
-    )
+    manifest = uniqueItems(processManifest(fs.readFileSync(manifestJsonPath, 'utf-8')))
   } catch (error) {
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
@@ -152,6 +151,7 @@ export const optimizeImages = async ({ srcDir, manifestJsonPath, outputDir, noCa
         cliProgressBarIncrement,
         originalFilePath,
         originalWidth,
+        sharpOptions: config.sharpOptions ?? {},
         ...item,
       })
     )
@@ -175,8 +175,8 @@ export const run = () => {
   // eslint-disable-next-line no-console
   console.log('\x1b[35m\nnext-export-optimize-images: Optimize images.', '\x1b[39m')
 
-  const srcDir = path.resolve(cwd, 'out')
+  const config = getConfig()
   const manifestJsonPath = path.resolve(cwd, '.next/custom-optimized-images.nd.json')
 
-  optimizeImages({ srcDir, manifestJsonPath, noCache: false })
+  optimizeImages({ manifestJsonPath, noCache: false, config })
 }

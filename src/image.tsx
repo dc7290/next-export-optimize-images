@@ -3,6 +3,9 @@ import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
 import React from 'react'
 
 import type { Manifest } from './cli/types'
+import { getConfig } from './utils/config'
+
+const config = getConfig()
 
 const exportableLoader: ImageLoader = ({ src, width, quality }) => {
   if (process.env.NODE_ENV === 'development') {
@@ -17,20 +20,22 @@ const exportableLoader: ImageLoader = ({ src, width, quality }) => {
     throw new Error(`Invalid path or no file extension: ${src}`)
   }
 
-  const outputDir = `/${
-    process.env['EXPORT_IMAGES_OUTPUTDIR']?.replace(/^\//, '').replace(/\/$/, '') ?? '_next/static/chunks/images'
-  }`
-  const output = `${outputDir}${path}_${width}_${quality || 75}.${extension}`
+  const pathWithoutName = path.split('/').slice(0, -1).join('/')
+  const name = path.split('/').slice(-1).toString()
+
+  const outputDir = `/${config.imageDir?.replace(/^\//, '').replace(/\/$/, '') ?? '_next/static/chunks/images'}`
+  const filename =
+    config.filenameGenerator !== undefined
+      ? config.filenameGenerator({ path: pathWithoutName, name, width, quality: quality || 75, extension })
+      : `${pathWithoutName}/${name}_${width}_${quality || 75}.${extension}`
+  const output = `${outputDir}${filename}`
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
     const fs = require('fs')
     const path = require('path')
     fs.appendFileSync(
-      path.join(
-        process.env['EXPORT_IMAGES_DIRNAME'],
-        process.env['TEST_JSON_PATH'] || '.next/custom-optimized-images.nd.json'
-      ),
+      path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
       JSON.stringify(json) + '\n'
     )
   }

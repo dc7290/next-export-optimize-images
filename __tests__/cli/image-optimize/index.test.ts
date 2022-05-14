@@ -10,10 +10,12 @@ beforeAll(async () => {
   fs.mkdirSync(path.join(resultsDir, '_next/static/chunks/images'), { recursive: true })
 
   await optimizeImages({
-    srcDir: path.resolve(__dirname, 'fixtures'),
     manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
-    outputDir: path.resolve(__dirname, 'results'),
     noCache: true,
+    config: {
+      outDir: '__tests__/cli/image-optimize/fixtures',
+      imageDir: '__tests__/cli/image-optimize/results',
+    },
   })
 }, 60 * 3 * 1000)
 
