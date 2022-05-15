@@ -18,19 +18,20 @@ export type Config = {
   }
 }
 
-let runtimeConfig: Config
-
 const getConfig = (): Config => {
-  return runtimeConfig
-  // try {
-  //   return require(`${appRoot}/export-images.config.js`)
-  // } catch (error) {
-  //   return {}
-  // }
+  try {
+    return require('next-export-optimize-images/export-images.config.js')
+  } catch (_) {
+    return {}
+  }
 }
 
-export const setConfig = (configValue: Config) => {
-  runtimeConfig = configValue
+export const copyConfig = (filePath: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const fs = require('fs')
+  if (fs.existsSync(filePath)) {
+    fs.copyFileSync(filePath, `${require.resolve('next-export-optimize-images')}/export-images.config.js`)
+  }
 }
 
 export default getConfig

@@ -23,7 +23,9 @@ const exportableLoader: ImageLoader = ({ src, width, quality }) => {
   const pathWithoutName = path.split('/').slice(0, -1).join('/')
   const name = path.split('/').slice(-1).toString()
 
-  const outputDir = `/${config.imageDir?.replace(/^\//, '').replace(/\/$/, '') ?? '_next/static/chunks/images'}`
+  const outputDir = `/${
+    config.imageDir ? config.imageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/chunks/images'
+  }`
   const filename =
     config.filenameGenerator !== undefined
       ? config.filenameGenerator({ path: pathWithoutName, name, width, quality: quality || 75, extension })

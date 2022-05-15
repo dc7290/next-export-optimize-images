@@ -1,8 +1,6 @@
 {
   "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
     "jsx": "react",
     "outDir": "dist",
     "incremental": true
