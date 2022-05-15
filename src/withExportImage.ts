@@ -1,10 +1,11 @@
-import { resolve as appRootResolve } from 'app-root-path'
+import path from 'path'
+
 import type { NextConfig } from 'next'
 
 import { copyConfig } from './utils/config'
 
 const withExportImages = (nextConfig: NextConfig): NextConfig => {
-  copyConfig(appRootResolve('./export-images.config.js'))
+  copyConfig(path.resolve(process.cwd(), 'export-images.config.js'))
 
   const customConfig: NextConfig = {
     images: {

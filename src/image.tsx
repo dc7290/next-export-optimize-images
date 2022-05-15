@@ -7,11 +7,17 @@ import getConfig from './utils/config'
 
 const config = getConfig()
 
-const exportableLoader: ImageLoader = ({ src, width, quality }) => {
+const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   if (process.env.NODE_ENV === 'development') {
     // This doesn't bother optimizing in the dev environment. Next complains if the
     // returned URL doesn't have a width in it, so adding it as a throwaway
-    return `${src}?width=${width}`
+    return `${_src}?width=${width}`
+  }
+
+  let src = _src
+
+  if (config.basePath !== undefined) {
+    src = _src.replace(config.basePath, '')
   }
 
   // Generate a reasonably unique base folder. Doesn't have to be perfectly unique

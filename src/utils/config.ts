@@ -3,6 +3,7 @@ import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
 export type Config = {
   outDir?: string
   imageDir?: string
+  basePath?: string
   filenameGenerator?: (generatorProps: {
     path: string
     name: string
@@ -29,8 +30,12 @@ const getConfig = (): Config => {
 export const copyConfig = (filePath: string) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const fs = require('fs')
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const path = require('path')
+
   if (fs.existsSync(filePath)) {
-    fs.copyFileSync(filePath, `${require.resolve('next-export-optimize-images')}/export-images.config.js`)
+    const destDir = path.resolve(process.cwd(), 'node_modules/next-export-optimize-images')
+    fs.copyFileSync(filePath, `${destDir}/export-images.config.js`)
   }
 }
 

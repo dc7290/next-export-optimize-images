@@ -27,8 +27,7 @@
     ]
   },
   "dependencies": {
-    "ansi-colors": "^4.1.1",
-    "app-root-path": "^3.0.0",
+    "ansi-colors": "^4.1.2",
     "cli-progress": "^3.11.0",
     "lodash.uniqwith": "^4.5.0",
     "sharp": "^0.30.4"
@@ -36,7 +35,6 @@
   "devDependencies": {
     "@testing-library/react": "13.2.0",
     "@tsconfig/strictest": "1.0.1",
-    "@types/app-root-path": "1.2.4",
     "@types/cli-progress": "3.11.0",
     "@types/jest": "27.5.1",
     "@types/lodash.uniqwith": "4.5.7",
