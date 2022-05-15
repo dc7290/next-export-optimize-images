@@ -3,7 +3,7 @@ import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
 import React from 'react'
 
 import type { Manifest } from './cli/types'
-import { getConfig } from './utils/config'
+import getConfig from './utils/config'
 
 const config = getConfig()
 

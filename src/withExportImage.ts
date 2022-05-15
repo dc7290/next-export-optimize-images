@@ -1,6 +1,16 @@
+import { require as appRootRequire } from 'app-root-path'
 import type { NextConfig } from 'next'
 
+import { setConfig } from './utils/config'
+
 const withExportImages = (nextConfig: NextConfig): NextConfig => {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    setConfig(appRootRequire('./export-images.config.js'))
+  } catch (_) {
+    setConfig({})
+  }
+
   const customConfig: NextConfig = {
     images: {
       ...nextConfig.images,

@@ -1,5 +1,3 @@
-import path from 'path'
-
 import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
 
 export type Config = {
@@ -20,12 +18,19 @@ export type Config = {
   }
 }
 
-export const getConfig = (): Config => {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const config = require(path.resolve(process.cwd(), process.env['TEST_CONFIG_PATH'] ?? 'export-images.config.js'))
-    return config
-  } catch (error) {
-    return {}
-  }
+let runtimeConfig: Config
+
+const getConfig = (): Config => {
+  return runtimeConfig
+  // try {
+  //   return require(`${appRoot}/export-images.config.js`)
+  // } catch (error) {
+  //   return {}
+  // }
 }
+
+export const setConfig = (configValue: Config) => {
+  runtimeConfig = configValue
+}
+
+export default getConfig
