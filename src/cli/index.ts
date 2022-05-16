@@ -117,8 +117,7 @@ type OptimizeImagesProps = {
 }
 
 export const optimizeImages = async ({ manifestJsonPath, noCache, config }: OptimizeImagesProps) => {
-  const srcDir = path.resolve(cwd, config.outDir ?? 'out')
-  const destDir = config.imageDir !== undefined ? path.resolve(cwd, config.imageDir) : srcDir
+  const destDir = path.resolve(cwd, config.outDir ?? 'out')
 
   let manifest: Manifest
   try {
@@ -137,7 +136,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config }: Opti
   let measuredNonCache = 0
 
   for (const item of manifest) {
-    const originalFilePath = path.join(srcDir, item.src)
+    const originalFilePath = path.join(destDir, item.src)
     const originalWidth = (await sharp(originalFilePath).metadata()).width ?? 1280
 
     promises.push(
