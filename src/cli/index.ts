@@ -87,7 +87,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
         await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
         break
       case 'png':
-        await image.png({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
+        await image.png({ quality, ...sharpOptions?.png }).toFile(outputPath)
         break
       case 'webp':
         await image.webp({ quality, ...sharpOptions?.webp }).toFile(outputPath)
