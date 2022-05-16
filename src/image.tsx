@@ -3,7 +3,7 @@ import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
 import React from 'react'
 
 import type { Manifest } from './cli/types'
-import getConfig from './utils/config'
+import getConfig from './utils/getConfig'
 
 const config = getConfig()
 
@@ -36,7 +36,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     config.filenameGenerator !== undefined
       ? config.filenameGenerator({ path: pathWithoutName, name, width, quality: quality || 75, extension })
       : `${pathWithoutName}/${name}_${width}_${quality || 75}.${extension}`
-  const output = `${outputDir}${filename}`
+  const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }

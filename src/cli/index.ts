@@ -4,7 +4,7 @@ import path from 'path'
 
 import sharp from 'sharp'
 
-import getConfig, { Config } from '../utils/config'
+import getConfig, { Config } from '../utils/getConfig'
 import processManifest from '../utils/processManifest'
 
 import type { Manifest } from './types'

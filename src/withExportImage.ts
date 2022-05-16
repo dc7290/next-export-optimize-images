@@ -2,7 +2,7 @@ import path from 'path'
 
 import type { NextConfig } from 'next'
 
-import { copyConfig } from './utils/config'
+import copyConfig from './utils/copyConfig'
 
 const withExportImages = (nextConfig: NextConfig): NextConfig => {
   copyConfig(path.resolve(process.cwd(), 'export-images.config.js'))

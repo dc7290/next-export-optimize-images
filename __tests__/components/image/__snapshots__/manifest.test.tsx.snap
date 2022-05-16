@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create JSON 1`] = `
+exports[`Create JSON Common 1`] = `
 Array [
   Object {
     "extension": "png",

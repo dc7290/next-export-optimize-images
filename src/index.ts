@@ -1,5 +1,5 @@
 import withExportImage from './withExportImage'
 
-export type { Config } from './utils/config'
+export type { Config } from './utils/getConfig'
 
 module.exports = withExportImage

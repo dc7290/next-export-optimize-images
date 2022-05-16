@@ -3,6 +3,8 @@
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "compilerOptions": {
     "declaration": true,
-    "noEmit": false
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "outDir": "dist"
   }
 }

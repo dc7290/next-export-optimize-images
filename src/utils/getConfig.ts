@@ -21,21 +21,13 @@ export type Config = {
 
 const getConfig = (): Config => {
   try {
+    if (process.env.NODE_ENV === 'test') {
+      return require(`../../${process.env['TEST_CONFIG_PATH']}`)
+    }
+
     return require('next-export-optimize-images/export-images.config.js')
   } catch (_) {
     return {}
-  }
-}
-
-export const copyConfig = (filePath: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const fs = require('fs')
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const path = require('path')
-
-  if (fs.existsSync(filePath)) {
-    const destDir = path.resolve(process.cwd(), 'node_modules/next-export-optimize-images')
-    fs.copyFileSync(filePath, `${destDir}/export-images.config.js`)
   }
 }
 
