@@ -2,6 +2,7 @@
 .eslintrc.js
 jest.config.js
 __tests__/components/image/config.js
+commitlint.config.js
 
 # git
 .gitkeep
