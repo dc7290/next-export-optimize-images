@@ -10,7 +10,7 @@ dist
 
 # testing
 /coverage
-/__tests__/cli/image-optimize/results
+/__tests__/cli/image-optimize/fixtures/results
 /__tests__/cli/cache/.cache
 /__tests__/cli/cache/results
 /__tests__/components/image/manifest.json

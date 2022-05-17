@@ -4,23 +4,16 @@ import path from 'path'
 import { optimizeImages } from '../../../src/cli'
 
 beforeAll(async () => {
-  const resultsDir = path.resolve(__dirname, 'results')
-
-  fs.rmSync(resultsDir, { recursive: true, force: true })
-  fs.mkdirSync(path.join(resultsDir, '_next/static/chunks/images'), { recursive: true })
-
   await optimizeImages({
     manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
     noCache: true,
     config: {
       outDir: '__tests__/cli/image-optimize/fixtures',
-      imageDir: '__tests__/cli/image-optimize/results',
     },
   })
 }, 60 * 3 * 1000)
 
-const exist = (filename: string) =>
-  fs.existsSync(path.resolve(__dirname, 'results/_next/static/chunks/images', filename))
+const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'fixtures/results/images', filename))
 
 describe('Image optimization.', () => {
   test('png images optimized', () => {
