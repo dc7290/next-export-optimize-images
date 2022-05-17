@@ -25,10 +25,7 @@ module.exports = {
    * @see https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration
    */
   branches: [
-    '+([0-9])?(.{+([0-9]),x}).x', // メンテナンスリリース用
     defaultBranch,
-    { name: 'beta', prerelease: true },
-    { name: 'alpha', prerelease: true },
   ],
   /**
    * Gitタグのフォーマット。Lodashのテンプレートが使えます。
@@ -89,7 +86,7 @@ module.exports = {
       '@semantic-release/npm',
       {
         // npmに公開するかどうか
-        npmPublish: true,
+        npmPublish: false,
       },
     ],
     /**
