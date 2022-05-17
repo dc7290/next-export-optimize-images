@@ -30,7 +30,8 @@
     "test:cli": "jest __tests__/cli/**/*.test.ts",
     "test:cli:watch": "jest --watch __tests__/cli/**/*.test.ts",
     "test:components": "jest __tests__/components/**/*.test.tsx",
-    "test:components:watch": "jest --watch __tests__/components/**/*.test.tsx"
+    "test:components:watch": "jest --watch __tests__/components/**/*.test.tsx",
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -47,6 +48,9 @@
   "devDependencies": {
     "@commitlint/cli": "17.0.0",
     "@commitlint/config-conventional": "17.0.0",
+    "@semantic-release/changelog": "6.0.1",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
     "@swc/cli": "0.1.57",
     "@swc/core": "1.2.185",
     "@testing-library/react": "13.2.0",
@@ -60,6 +64,7 @@
     "@typescript-eslint/eslint-plugin": "5.23.0",
     "@typescript-eslint/parser": "5.23.0",
     "chokidar": "3.5.3",
+    "conventional-changelog-conventionalcommits": "4.6.3",
     "eslint": "8.15.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -75,6 +80,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "rimraf": "3.0.2",
+    "semantic-release": "19.0.2",
     "ts-jest": "28.0.2",
     "typescript": "4.6.4"
   },
