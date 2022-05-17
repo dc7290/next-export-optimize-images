@@ -1,20 +1,30 @@
 {
   "name": "next-export-optimize-images",
+  "version": "0.8.4",
+  "description": "Optimize images at build time with Next.js.",
+  "homepage": "https://github.com/dc7290/next-export-optimize-images#readme",
+  "bugs": {
+    "url": "https://github.com/dc7290/next-export-optimize-images/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dc7290/next-export-optimize-images.git"
+  },
   "license": "MIT",
-  "version": "0.8.3",
-  "bin": "bin/index.js",
+  "author": "dc7290 <dhkh.cba0927@gmail.com>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": "bin/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "swc src -d dist -w",
+    "prebuild": "rimraf dist",
     "build": "swc src -d dist && tsc --project ./tsconfig.build.json",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "prebuild": "rimraf dist",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cli": "jest __tests__/cli/**/*.test.ts",
