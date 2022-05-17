@@ -33,16 +33,11 @@ module.exports = {
    */
   questions: [
     "type", // 型
-    "scope", // スコープ
     "subject", // コミットの題名
     "body", // コミットの本文
     "breaking", // breaking changeの内容
     "issues", // クローズするGitHub issues
   ],
-  /**
-   * スコープの選択肢。
-   */
-  scopes: ['components', 'plugin', 'cli', 'other'],
   /**
    * 各型の設定
    */
