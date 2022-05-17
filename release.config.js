@@ -11,7 +11,7 @@ const types = require('./commit-types.config')
 /**
  * GitHubのデフォルトブランチ
  */
-const defaultBranch = 'main'
+const defaultBranch = 'release'
 
 /**
  * changelogを書き出すファイル名
@@ -24,9 +24,7 @@ module.exports = {
    *
    * @see https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration
    */
-  branches: [
-    defaultBranch,
-  ],
+  branches: [defaultBranch],
   /**
    * Gitタグのフォーマット。Lodashのテンプレートが使えます。
    * multi-semantic-releaseを使った場合は、この設定は無視されます。
