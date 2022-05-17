@@ -25,7 +25,7 @@ Install the package in the project that uses Next.js.
 yarn add -D next-export-optimize-images
 ```
 
-### Configuration
+### Usage
 
 1. Write withExportImages in `next.config.js.`
 
