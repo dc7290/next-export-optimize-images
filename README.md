@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/next-export-optimize-images) ![NPM](https://img.shields.io/npm/l/next-export-optimize-images?label=License) [![Node.js CI](https://github.com/dc7290/next-export-optimize-images/actions/workflows/node.js.yml/badge.svg)](https://github.com/dc7290/next-export-optimize-images/actions/workflows/node.js.yml)
+![npm](https://img.shields.io/npm/v/next-export-optimize-images) ![npm](https://img.shields.io/npm/dt/next-export-optimize-images) ![NPM](https://img.shields.io/npm/l/next-export-optimize-images?label=License) [![Node.js CI](https://github.com/dc7290/next-export-optimize-images/actions/workflows/node.js.yml/badge.svg)](https://github.com/dc7290/next-export-optimize-images/actions/workflows/node.js.yml) ![GitHub Repo stars](https://img.shields.io/github/stars/dc7290/next-export-optimize-images?style=social)
 
 # :warning: Attention
 
