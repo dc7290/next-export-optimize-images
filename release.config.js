@@ -117,5 +117,15 @@ module.exports = {
           "🎉 This ${issue.pull_request ? 'pull request' : 'issue'} is included in version ${nextRelease.gitTag}.",
       },
     ],
+    /**
+     * リリースプロセスの各所でシェルコマンドを実行します。
+     * @see https://github.com/semantic-release/exec
+     */
+    [
+      '@semantic-release/exec',
+      {
+        // prepare: "npx typedoc",
+      },
+    ],
   ],
 }
