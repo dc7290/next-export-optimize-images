@@ -11,7 +11,7 @@ const types = require('./commit-types.config')
 /**
  * GitHubのデフォルトブランチ
  */
-const defaultBranch = 'main'
+const defaultBranch = 'release'
 
 /**
  * changelogを書き出すファイル名
@@ -24,9 +24,7 @@ module.exports = {
    *
    * @see https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration
    */
-  branches: [
-    defaultBranch,
-  ],
+  branches: [defaultBranch],
   /**
    * Gitタグのフォーマット。Lodashのテンプレートが使えます。
    * multi-semantic-releaseを使った場合は、この設定は無視されます。
@@ -117,6 +115,16 @@ module.exports = {
         // 関連するissueやPRに残すコメント
         successComment:
           "🎉 This ${issue.pull_request ? 'pull request' : 'issue'} is included in version ${nextRelease.gitTag}.",
+      },
+    ],
+    /**
+     * リリースプロセスの各所でシェルコマンドを実行します。
+     * @see https://github.com/semantic-release/exec
+     */
+    [
+      '@semantic-release/exec',
+      {
+        // prepare: "npx typedoc",
       },
     ],
   ],
