@@ -8,9 +8,10 @@ This makes it possible to build a high performance website with this solution, w
 
 ## Feature
 
-- Use `next/image` to optimize images at build time.
+- Optimize images at build time.
 - All options for `next/image` available
 - Using `sharp`, so it's fast.
+- Cache prevents repeating the same optimization
 - Support TypeScript
 
 ## Installation
@@ -25,4 +26,4 @@ https://next-export-optimize-images.vercel.app
 
 ## License
 
- next-export-optimize-images is available under the MIT License.
+next-export-optimize-images is available under the MIT License.
