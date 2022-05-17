@@ -49,7 +49,7 @@ const config = {
           {
             type: 'doc',
             docId: 'intro',
-            position: 'right',
+            position: 'left',
             label: 'Docs',
           },
           {
