@@ -3,6 +3,8 @@
 jest.config.js
 __tests__/components/image/config.js
 commitlint.config.js
+commit-types.config.js
+changelog.config.js
 
 # git
 .gitkeep
