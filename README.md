@@ -8,7 +8,7 @@
 
 <div style="margin-top: 40px"><img src="https://next-export-optimize-images.vercel.app/og.png" /></div>
 
-# next-export-optimize-images
+# Next Export Optimize Images
 
 Using this repository, you can get the full benefits of `next/image` even when using `next export` by doing image optimization at build time.
 
