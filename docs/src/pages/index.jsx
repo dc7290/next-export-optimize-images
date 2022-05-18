@@ -1,13 +1,20 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import React from 'react'
 
-export default function Home() {
-  const { siteConfig } = useDocusaurusContext()
+import Hero from '../components/Hero'
+import GettingStarted from '../components/GettingStarted'
+import Features from '../components/Features'
 
+const Home = () => {
   return (
-    <Layout title={siteConfig.title} description="Documentation site for next-export-optimize-images.">
-      <main></main>
+    <Layout description="Documentation site for next-export-optimize-images.">
+      <main>
+        <Hero />
+        <Features />
+        <GettingStarted />
+      </main>
     </Layout>
   )
 }
+
+export default Home

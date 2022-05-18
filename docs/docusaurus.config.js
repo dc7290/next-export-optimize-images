@@ -3,8 +3,8 @@ const lightCodeTheme = require('prism-react-renderer/themes/github')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'next-export-optimize-images',
-  url: 'https://next-export-optimize-images.docs.vercel.app',
+  title: 'Next Export Optimize Images',
+  url: 'https://next-export-optimize-images.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -44,7 +44,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'next-export-optimize-images',
+        title: 'Next Export Optimize Images',
         items: [
           {
             type: 'doc',
@@ -83,11 +83,29 @@ const config = {
         ],
         copyright: `Copyright © 2022 dc7290. Built with Docusaurus.`,
       },
+      image: '/og.png',
+      colorMode: {
+        disableSwitch: true,
+        respectPrefersColorScheme: true,
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
+  plugins: [
+    async function myPlugin() {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require('tailwindcss'))
+          postcssOptions.plugins.push(require('autoprefixer'))
+          return postcssOptions
+        },
+      }
+    },
+  ],
 }
 
 module.exports = config
