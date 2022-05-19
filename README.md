@@ -33,4 +33,4 @@ https://next-export-optimize-images.vercel.app
 
 ## License
 
-next-export-optimize-images is available under the MIT License.
+Next Export Optimize Images is available under the MIT License.
