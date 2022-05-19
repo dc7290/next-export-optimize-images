@@ -31,7 +31,7 @@
     "test:cli:watch": "jest --watch __tests__/cli/**/*.test.ts",
     "test:components": "jest __tests__/components/**/*.test.tsx",
     "test:components:watch": "jest --watch __tests__/components/**/*.test.tsx",
-    "semantic-release": "semantic-release"
+    "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
