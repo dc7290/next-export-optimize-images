@@ -74,6 +74,8 @@ module.exports = {
       '@semantic-release/changelog',
       {
         changelogFile,
+        changelogTitle:
+          '# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).\n\n## [Released](https://github.com/dc7290/next-export-optimize-images/releases)',
       },
     ],
     /**
