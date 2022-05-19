@@ -50,7 +50,7 @@ module.exports = [
     description: "A code change that neither fixes a bug or adds a feature",
     emoji: "💡",
     section: "Code Refactoring",
-    hidden: false,
+    hidden: true,
   },
   {
     type: "docs", // ドキュメントのみの変更
@@ -73,7 +73,7 @@ module.exports = [
     description: "Markup, white-space, formatting, missing semi-colons...",
     emoji: "💄",
     section: "Styles",
-    hidden: false,
+    hidden: true,
   },
   {
     type: "test", // テストの追加変更
