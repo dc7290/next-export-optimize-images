@@ -84,7 +84,7 @@ module.exports = {
       '@semantic-release/npm',
       {
         // npmに公開するかどうか
-        npmPublish: false,
+        npmPublish: true,
       },
     ],
     /**
@@ -115,16 +115,6 @@ module.exports = {
         // 関連するissueやPRに残すコメント
         successComment:
           "🎉 This ${issue.pull_request ? 'pull request' : 'issue'} is included in version ${nextRelease.gitTag}.",
-      },
-    ],
-    /**
-     * リリースプロセスの各所でシェルコマンドを実行します。
-     * @see https://github.com/semantic-release/exec
-     */
-    [
-      '@semantic-release/exec',
-      {
-        // prepare: "npx typedoc",
       },
     ],
   ],
