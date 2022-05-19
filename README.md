@@ -1,4 +1,5 @@
-<img src="https://next-export-optimize-images.vercel.app/og.png" />
+<a href="https://next-export-optimize-images.vercel.app" target="__blank"><img src="https://next-export-optimize-images.vercel.app/og.png" /></a>
+
 <div>
 <a href="https://www.npmjs.com/package/next-export-optimize-images" target="__blank"><img alt="npm" src="https://img.shields.io/npm/v/next-export-optimize-images"></a>
 <a href="https://npmcharts.com/compare/next-export-optimize-images?minimal=true" target="__blank"><img alt="downloads" src="https://img.shields.io/npm/dt/next-export-optimize-images"></a>
