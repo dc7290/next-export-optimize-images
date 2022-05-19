@@ -16,6 +16,8 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn test
+      - name: Setup faketty
+        uses: Yuri6037/Action-FakeTTY@v1.1
       - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
