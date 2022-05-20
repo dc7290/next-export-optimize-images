@@ -46,7 +46,7 @@ module.exports = withPlugins(
 
 2. Change the description of the `scripts` that do the `next export` in `package.json`
 
-```
+```diff
 {
 -  "export": "next build && next export",
 +  "export": "next build && next export && next-export-optimize-images",
