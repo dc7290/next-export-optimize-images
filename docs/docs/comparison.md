@@ -1,5 +1,6 @@
 ---
 sidebar_position: 5
+description: This page presents a comparison with other similar libraries.
 ---
 
 # Comparison with similar libraries

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+description: This page introduces how to change the behavior of this library.
 ---
 
 # Configuration
