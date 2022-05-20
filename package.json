@@ -2,7 +2,7 @@
   "name": "next-export-optimize-images",
   "version": "1.0.1",
   "description": "Optimize images at build time with Next.js.",
-  "homepage": "https://github.com/dc7290/next-export-optimize-images#readme",
+  "homepage": "https://next-export-optimize-images.vercel.app",
   "bugs": {
     "url": "https://github.com/dc7290/next-export-optimize-images/issues"
   },
