@@ -5,6 +5,18 @@ description: This page is for Q&A
 
 # Q&A
 
+## Some images are not displayed
+
+This may be a bug in Next.js.  
+Specifically, if you specify a small vw value for the `sizes` attribute.
+
+https://github.com/vercel/next.js/issues/36807
+
+For example, if `50vw` is specified, the `imageSizes` of the configuration is used and an image smaller than the `deviceSizes` is set.  
+However, this is not applied at build time, and the image is not optimized as it should be.
+
+The only way to fix this for now is to avoid specifying small vw in the `sizes` attribute.
+
 ## Can I reduce build time?
 
 First, please check the specifications of your PC.  
