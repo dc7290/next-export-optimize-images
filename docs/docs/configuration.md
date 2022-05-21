@@ -8,7 +8,7 @@ description: This page introduces how to change the behavior of this library.
 Default behavior can be changed as needed.  
 Create `export-images.config.js` in the root.
 
-```js
+```js title="export-images.config.js"
 /**
  * @type {import('next-export-optimize-images').Config}
  */

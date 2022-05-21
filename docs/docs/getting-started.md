@@ -17,8 +17,7 @@ yarn add -D next-export-optimize-images
 
 1. Write withExportImages in `next.config.js.`
 
-```js
-// next.config.js
+```js title="next.config.js"
 const withExportImages = require('next-export-optimize-images')
 
 module.exports = withExportImages({
@@ -28,8 +27,7 @@ module.exports = withExportImages({
 
 If you are using `next-compose-plugins`
 
-```js
-// next.config.js
+```js title="next.config.js"
 const withPlugins = require('next-compose-plugins')
 const withExportImages = require('next-export-optimize-images')
 
@@ -46,7 +44,7 @@ module.exports = withPlugins(
 
 2. Change the description of the `scripts` that do the `next export` in `package.json`
 
-```diff
+```diff title="package.json"
 {
 -  "export": "next build && next export",
 +  "export": "next build && next export && next-export-optimize-images",
