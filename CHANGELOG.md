@@ -6,6 +6,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.0.1...v1.1.0) (2022-05-21)
+
+
+### Features
+
+* 🚀 Export type definitions withExportImages ([dfd1bdf](https://github.com/dc7290/next-export-optimize-images/commit/dfd1bdfa4d0b5afda0344721bde453adb3392ec8))
+
+
+### Performance Improvements
+
+* ⚡️ Use the option to prevent images from being enlarged ([a8209d7](https://github.com/dc7290/next-export-optimize-images/commit/a8209d7386645fc31e267add92dffc01d8884350))
+
+
+### Continuous Integration
+
+* 🎡 Change renovate schedule ([dd80a4d](https://github.com/dc7290/next-export-optimize-images/commit/dd80a4d961bfccff6c5e76914402cd305b2a17ed))
+* 🎡 Corrected settings about releases ([7028fdd](https://github.com/dc7290/next-export-optimize-images/commit/7028fdd3d713e901e2eefcf8b56f8aed724cec21))
+* 🎡 Register the title in @semantic-release/changelog ([9087554](https://github.com/dc7290/next-export-optimize-images/commit/908755407606d2775b0c9dde261cffe8c5088c38))
+
+
+### Documentation
+
+* ✏️ Add Comparison page ([9145d02](https://github.com/dc7290/next-export-optimize-images/commit/9145d02cd522d68ef5d6e61cd9d954af2fd5e4f6))
+* ✏️ Add examples page ([2472113](https://github.com/dc7290/next-export-optimize-images/commit/2472113731b7faeffb26950e466afdc182b88c74))
+* ✏️ Add footer link ([ed00e68](https://github.com/dc7290/next-export-optimize-images/commit/ed00e68d3b2eb0c79ee5926f7faa1b7abe691fc2))
+* ✏️ Add local checks section in Getting Started ([6087661](https://github.com/dc7290/next-export-optimize-images/commit/60876611310d3bf78598a27d9c922d5ec97e95a9))
+* ✏️ Add planned features page ([91b5bea](https://github.com/dc7290/next-export-optimize-images/commit/91b5bea44758b5d140c05524649d2cce7d4d5041))
+* ✏️ Add Q&A page ([c8fbe69](https://github.com/dc7290/next-export-optimize-images/commit/c8fbe699fdac103eaec49071f7e679febeab9b34))
+* ✏️ Add Structure page ([9e1f4a3](https://github.com/dc7290/next-export-optimize-images/commit/9e1f4a32f4a6d124db0b1d6b23048ea2a4a7a649))
+* ✏️ Add text to introduction ([7af96e2](https://github.com/dc7290/next-export-optimize-images/commit/7af96e2191c36f8c97dec090b3b77f9f25dffab6))
+* ✏️ Add title to code block ([45052ce](https://github.com/dc7290/next-export-optimize-images/commit/45052ce6ad719dfa0390eb8bb3f5d3f7606374df))
+* ✏️ Added description ([eeef6a8](https://github.com/dc7290/next-export-optimize-images/commit/eeef6a8979aa9caad415586f5ffc9e7b3b1cb2ec))
+* ✏️ Change link text to Introduction ([cd7b635](https://github.com/dc7290/next-export-optimize-images/commit/cd7b635578d65aa8e220a8879116e43296a79748))
+* ✏️ Create Getting Started as a separate page ([9d37e87](https://github.com/dc7290/next-export-optimize-images/commit/9d37e872f47e09306111bb849216d45e421f34e0))
+* ✏️ Highlight differences ([d2a76bd](https://github.com/dc7290/next-export-optimize-images/commit/d2a76bddd448477fba6d1d244d9863a3db99ce7f))
+* ✏️ README Change home page to document site ([422f8db](https://github.com/dc7290/next-export-optimize-images/commit/422f8db2ae08e396ecd5b3987c264f645f9ca674))
+
 ### [1.0.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.0.0...v1.0.1) (2022-05-19)
 
 ### Bug Fixes
