@@ -4,7 +4,7 @@ import type { NextConfig } from 'next'
 
 import copyConfig from './utils/copyConfig'
 
-const withExportImages = (nextConfig: NextConfig): NextConfig => {
+const withExportImages = (nextConfig: NextConfig = {}): NextConfig => {
   copyConfig(path.resolve(process.cwd(), 'export-images.config.js'))
 
   const customConfig: NextConfig = {
@@ -32,5 +32,7 @@ const withExportImages = (nextConfig: NextConfig): NextConfig => {
 
   return Object.assign({}, nextConfig, customConfig)
 }
+
+export type WithExportImages = typeof withExportImages
 
 export default withExportImages
