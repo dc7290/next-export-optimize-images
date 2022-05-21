@@ -57,7 +57,6 @@ describe('Cache', () => {
           nonCacheMeasurement,
           cliProgressBarIncrement,
           originalFilePath: path.join(srcDir, item.src),
-          originalWidth: 1280,
           ...item,
         })
       )
@@ -74,7 +73,6 @@ describe('Cache', () => {
           nonCacheMeasurement,
           cliProgressBarIncrement,
           originalFilePath: path.join(srcDir, item.src),
-          originalWidth: 1280,
           ...item,
         })
       )
