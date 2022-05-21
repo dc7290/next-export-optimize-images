@@ -1,5 +1,6 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
+description: This page introduces how to change the behavior of this library.
 ---
 
 # Configuration
@@ -7,7 +8,7 @@ sidebar_position: 2
 Default behavior can be changed as needed.  
 Create `export-images.config.js` in the root.
 
-```js
+```js title="export-images.config.js"
 /**
  * @type {import('next-export-optimize-images').Config}
  */

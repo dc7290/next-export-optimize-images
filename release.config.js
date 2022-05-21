@@ -74,6 +74,8 @@ module.exports = {
       '@semantic-release/changelog',
       {
         changelogFile,
+        changelogTitle:
+          '# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).\n\n## [Released](https://github.com/dc7290/next-export-optimize-images/releases)',
       },
     ],
     /**
@@ -84,7 +86,7 @@ module.exports = {
       '@semantic-release/npm',
       {
         // npmに公開するかどうか
-        npmPublish: false,
+        npmPublish: true,
       },
     ],
     /**
@@ -115,16 +117,6 @@ module.exports = {
         // 関連するissueやPRに残すコメント
         successComment:
           "🎉 This ${issue.pull_request ? 'pull request' : 'issue'} is included in version ${nextRelease.gitTag}.",
-      },
-    ],
-    /**
-     * リリースプロセスの各所でシェルコマンドを実行します。
-     * @see https://github.com/semantic-release/exec
-     */
-    [
-      '@semantic-release/exec',
-      {
-        // prepare: "npx typedoc",
       },
     ],
   ],

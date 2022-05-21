@@ -22,7 +22,6 @@ type GetOptimizeResultProps = {
   nonCacheMeasurement: () => void
   cliProgressBarIncrement: () => void
   originalFilePath: string
-  originalWidth: number
   sharpOptions?: Config['sharpOptions']
 } & Omit<Manifest[number], 'src'>
 type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
@@ -36,7 +35,6 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   nonCacheMeasurement,
   cliProgressBarIncrement,
   originalFilePath,
-  originalWidth,
   output,
   width,
   quality,
@@ -75,9 +73,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
     const imageBuffer = fs.readFileSync(originalFilePath)
     const image = sharp(imageBuffer, { sequentialRead: true })
 
-    const resizeWidth = Math.min(originalWidth, width)
-
-    image.rotate().resize({ width: resizeWidth })
+    image.rotate().resize({ width, withoutEnlargement: true })
 
     switch (extension) {
       case 'jpeg':
@@ -137,7 +133,6 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config }: Opti
 
   for (const item of manifest) {
     const originalFilePath = path.join(destDir, item.src)
-    const originalWidth = (await sharp(originalFilePath).metadata()).width ?? 1280
 
     promises.push(
       getOptimizeResult({
@@ -149,7 +144,6 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config }: Opti
         nonCacheMeasurement: () => (measuredNonCache += 1),
         cliProgressBarIncrement,
         originalFilePath,
-        originalWidth,
         sharpOptions: config.sharpOptions ?? {},
         ...item,
       })

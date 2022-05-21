@@ -1,8 +1,16 @@
 ---
 sidebar_position: 1
+description: This page provides background on the creation of the library and its features.
 ---
 
 # Introduction
+
+Next.js is a very good framework and has become indispensable for web development.  
+That is exactly why, once people get used to this developer experience, they may not want to develop without Next.js.
+(I am one of them lol.)
+
+However, Next.js' export functionality also has its limitations, the most discussed of which is **image optimization**.  
+https://github.com/vercel/next.js/discussions/19065
 
 Using this repository, you can get the full benefits of `next/image` even when using `next export` by doing image optimization at build time.
 
@@ -15,61 +23,3 @@ This makes it possible to build a high performance website with this solution, w
 - Using `sharp`, so it's fast.
 - Cache prevents repeating the same optimization
 - Support TypeScript
-
-## Getting Started
-
-Install the package in the project that uses Next.js.
-
-### Installation
-
-```bash
-yarn add -D next-export-optimize-images
-```
-
-### Usage
-
-1. Write withExportImages in `next.config.js.`
-
-```js
-// next.config.js
-const withExportImages = require('next-export-optimize-images')
-
-module.exports = withExportImages({
-  // write your next.js configuration values.
-})
-```
-
-If you are using `next-compose-plugins`
-
-```js
-// next.config.js
-const withPlugins = require('next-compose-plugins')
-const withExportImages = require('next-export-optimize-images')
-
-module.exports = withPlugins(
-  [
-    withExportImages,
-    // your other plugins here
-  ],
-  {
-    // write your next.js configuration values.
-  }
-)
-```
-
-2. Change the description of the `scripts` that do the `next export` in `package.json`
-
-```
-{
--  "export": "next build && next export",
-+  "export": "next build && next export && next-export-optimize-images",
-}
-```
-
-3. Import and use next/image as usual.
-
-```jsx
-<Image src="/images/img.png" width={1920} height={1280} alt="" />
-// Or import as follows
-<Image src={require('./img.png')} alt="" />
-```

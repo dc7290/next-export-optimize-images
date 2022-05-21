@@ -63,10 +63,10 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'General resources',
             items: [
               {
-                label: 'Introduction',
+                label: 'Docs',
                 to: '/docs/intro',
               },
             ],
@@ -77,6 +77,23 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/dc7290/next-export-optimize-images',
+              },
+              {
+                label: 'Releases',
+                href: 'https://github.com/dc7290/next-export-optimize-images/releases',
+              },
+            ],
+          },
+          {
+            title: 'About me',
+            items: [
+              {
+                label: 'Github',
+                href: 'https://github.com/dc7290',
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/d_suke_09',
               },
             ],
           },

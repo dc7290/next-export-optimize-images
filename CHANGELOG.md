@@ -1,5 +1,12 @@
-### [1.0.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.0.0...v1.0.1) (2022-05-19)
+# Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
+
+## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
+
+### [1.0.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.0.0...v1.0.1) (2022-05-19)
 
 ### Bug Fixes
 
@@ -27,15 +34,7 @@
 * 🎡 リリースブランチをreleaseに変更 ([30b02d5](https://github.com/dc7290/next-export-optimize-images/commit/30b02d5e55a5418ee9befebbff2c72ae03f27c07))
 * 🎡 名前の変更 ([f32209a](https://github.com/dc7290/next-export-optimize-images/commit/f32209acf0844e65c9ca11dbd1d7faa6fd7d049a))
 
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
-
-## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
-
-## [1.0.0](https://github.com/dc7290/next-export-optimize-images/releases/tag/v1.0.0) - 2022-05-17
+## [1.0.0](https://github.com/dc7290/next-export-optimize-images/releases/tag/v1.0.0) (2022-05-17)
 
 ### Added
 

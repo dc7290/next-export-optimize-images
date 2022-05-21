@@ -1,6 +1,6 @@
 {
   "extends": ["config:base", ":timezone(Asia/Tokyo)"],
-  "schedule": ["every weekend"],
+  "schedule": ["after 0am on saturday", "before 10am on saturday"],
   "npm": {
     "rangeStrategy": "bump"
   },

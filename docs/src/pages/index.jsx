@@ -2,7 +2,7 @@ import Layout from '@theme/Layout'
 import React from 'react'
 
 import Hero from '../components/Hero'
-import GettingStarted from '../components/GettingStarted'
+import Introduction from '../components/Introduction'
 import Features from '../components/Features'
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
       <main>
         <Hero />
         <Features />
-        <GettingStarted />
+        <Introduction />
       </main>
     </Layout>
   )
