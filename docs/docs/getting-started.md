@@ -60,3 +60,8 @@ module.exports = withPlugins(
 // Or import as follows
 <Image src={require('./img.png')} alt="" />
 ```
+
+## Local checks
+
+1. Run `yarn export`.
+2. Run `npx http-server out`
