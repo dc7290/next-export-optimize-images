@@ -7,8 +7,20 @@ description: This page is to introduce examples of use.
 
 ## Download External Images
 
-In progress 🏗
+We are planning the ability to save external images locally when they are specified.
 
 ## Convert to specified format
 
-In progress 🏗
+We plan to have the ability to convert to a specified format.
+
+For example, to convert to webp, the following configuration is used.
+
+```js title="export-images.config.js"
+module.exports = {
+  convertFormat: 'webp',
+}
+```
+
+:::caution
+This API is in the planning stage and is subject to change in practice.
+:::
