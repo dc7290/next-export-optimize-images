@@ -1,5 +1,5 @@
 /**
- * @type {import('../../../src/utils/config').Config}
+ * @type {import('../../../src/utils/getConfig').Config}
  */
 const config = {
   imageDir: '_custom-optimize',
