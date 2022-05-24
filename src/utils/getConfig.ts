@@ -1,5 +1,7 @@
 import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
 
+import type { AllowedFormat } from '../cli/utils/formatValidate'
+
 export type Config = {
   /**
    * Specify if you are customizing the default output directory, such as next export -o outDir.
@@ -49,6 +51,10 @@ export type Config = {
     webp?: WebpOptions
     avif?: AvifOptions
   }
+  /**
+   * It allows you to convert images from any extension to another extension.
+   */
+  convertFormat?: [beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]
 }
 
 const getConfig = (): Config => {
