@@ -21,7 +21,7 @@ export type Config = {
 
 const getConfig = (): Config => {
   try {
-    if (process.env.NODE_ENV === 'test') {
+    if (process.env['NODE_ENV'] === 'test') {
       return require(`../../${process.env['TEST_CONFIG_PATH']}`)
     }
 
