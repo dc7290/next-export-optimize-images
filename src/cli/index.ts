@@ -20,6 +20,7 @@ type GetOptimizeResultProps = {
   cacheDir: string
   cacheMeasurement: () => void
   nonCacheMeasurement: () => void
+  errorMeasurement: () => void
   cliProgressBarIncrement: () => void
   originalFilePath: string
   sharpOptions?: Config['sharpOptions']
@@ -33,6 +34,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   cacheDir,
   cacheMeasurement,
   nonCacheMeasurement,
+  errorMeasurement,
   cliProgressBarIncrement,
   originalFilePath,
   output,
@@ -42,66 +44,72 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   sharpOptions,
 }) => {
   if (formatValidate(extension)) {
-    const filePath = path.join(destDir, output)
-    const fileDir = filePath.split('/').slice(0, -1).join('/')
-    fs.mkdirSync(fileDir, { recursive: true })
+    try {
+      const filePath = path.join(destDir, output)
+      const fileDir = filePath.split('/').slice(0, -1).join('/')
+      fs.mkdirSync(fileDir, { recursive: true })
 
-    const outputPath = path.join(cacheDir, output)
-    const outputDir = outputPath.split('/').slice(0, -1).join('/')
-    fs.mkdirSync(outputDir, { recursive: true })
+      const outputPath = path.join(cacheDir, output)
+      const outputDir = outputPath.split('/').slice(0, -1).join('/')
+      fs.mkdirSync(outputDir, { recursive: true })
 
-    const imageBuffer = fs.readFileSync(originalFilePath)
+      const imageBuffer = fs.readFileSync(originalFilePath)
 
-    // Cache process
-    if (!noCache) {
-      const cacheImagesFindIndex = cacheImages.findIndex((cacheImage) => cacheImage.output === output)
-      const hash = createHash('sha256').update(imageBuffer).digest('hex')
+      // Cache process
+      if (!noCache) {
+        const cacheImagesFindIndex = cacheImages.findIndex((cacheImage) => cacheImage.output === output)
+        const hash = createHash('sha256').update(imageBuffer).digest('hex')
 
-      if (cacheImagesFindIndex === -1) {
-        cacheImages.push({ output, hash })
-      } else {
-        const currentCacheImage = cacheImages[cacheImagesFindIndex]
-        if (currentCacheImage?.hash === hash) {
-          fs.copyFileSync(outputPath, filePath)
-          cacheMeasurement()
-          cliProgressBarIncrement()
-          return
+        if (cacheImagesFindIndex === -1) {
+          cacheImages.push({ output, hash })
         } else {
-          if (currentCacheImage !== undefined) currentCacheImage.hash = hash
+          const currentCacheImage = cacheImages[cacheImagesFindIndex]
+          if (currentCacheImage?.hash === hash) {
+            fs.copyFileSync(outputPath, filePath)
+            cacheMeasurement()
+            cliProgressBarIncrement()
+            return
+          } else {
+            if (currentCacheImage !== undefined) currentCacheImage.hash = hash
+          }
         }
       }
+
+      const image = sharp(imageBuffer, { sequentialRead: true })
+
+      image.rotate().resize({ width, withoutEnlargement: true })
+
+      switch (extension) {
+        case 'jpeg':
+          await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
+          break
+        case 'jpg':
+          await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
+          break
+        case 'png':
+          await image.png({ quality, ...sharpOptions?.png }).toFile(outputPath)
+          break
+        case 'webp':
+          await image.webp({ quality, ...sharpOptions?.webp }).toFile(outputPath)
+          break
+        case 'avif':
+          await image.avif({ quality, ...sharpOptions?.avif }).toFile(outputPath)
+          break
+      }
+
+      fs.copyFileSync(outputPath, filePath)
+
+      nonCacheMeasurement()
+      cliProgressBarIncrement()
+    } catch (error) {
+      console.warn(error)
+      errorMeasurement()
     }
-
-    const image = sharp(imageBuffer, { sequentialRead: true })
-
-    image.rotate().resize({ width, withoutEnlargement: true })
-
-    switch (extension) {
-      case 'jpeg':
-        await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
-        break
-      case 'jpg':
-        await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
-        break
-      case 'png':
-        await image.png({ quality, ...sharpOptions?.png }).toFile(outputPath)
-        break
-      case 'webp':
-        await image.webp({ quality, ...sharpOptions?.webp }).toFile(outputPath)
-        break
-      case 'avif':
-        await image.avif({ quality, ...sharpOptions?.avif }).toFile(outputPath)
-        break
-    }
-
-    fs.copyFileSync(outputPath, filePath)
-
-    nonCacheMeasurement()
-    cliProgressBarIncrement()
   } else {
-    throw Error(
-      `Not an allowed format.\`${extension}\`\nGive \`unoptimize\`prop to /next/image to disable optimization.`
+    console.warn(
+      `${originalFilePath}: Not an allowed format.\`${extension}\`\nGive \`unoptimize\`prop to /next/image to disable optimization.`
     )
+    errorMeasurement()
   }
 }
 
@@ -139,6 +147,11 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
 
   let measuredCache = 0
   let measuredNonCache = 0
+  let measuredError = 0
+
+  const cacheMeasurement = () => (measuredCache += 1)
+  const nonCacheMeasurement = () => (measuredNonCache += 1)
+  const errorMeasurement = () => (measuredError += 1)
 
   for (const item of manifest) {
     const originalFilePath = path.join(destDir, item.src)
@@ -149,8 +162,9 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
         noCache,
         cacheImages,
         cacheDir: defaultCacheDir,
-        cacheMeasurement: () => (measuredCache += 1),
-        nonCacheMeasurement: () => (measuredNonCache += 1),
+        cacheMeasurement,
+        nonCacheMeasurement,
+        errorMeasurement,
         cliProgressBarIncrement: terse ? () => undefined : cliProgressBarIncrement,
         originalFilePath,
         sharpOptions: config.sharpOptions ?? {},
@@ -159,23 +173,19 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
     )
   }
 
-  try {
-    await Promise.all(promises)
+  await Promise.all(promises)
 
-    if (!noCache) {
-      writeCacheManifest(cacheImages)
-    }
+  if (!noCache) {
+    writeCacheManifest(cacheImages)
+  }
 
-    if (!terse) {
-      // eslint-disable-next-line no-console
-      console.log(
-        `Cache assets: ${measuredCache}, NonCache assets: ${measuredNonCache}\n`,
-        '\x1b[35m\nSuccessful optimization!',
-        '\x1b[39m'
-      )
-    }
-  } catch (error) {
-    console.error('Error processing files', error)
+  if (!terse) {
+    // eslint-disable-next-line no-console
+    console.log(
+      `Cache assets: ${measuredCache}, NonCache assets: ${measuredNonCache}, Error assets: ${measuredError}\n`,
+      '\x1b[35m\nSuccessful optimization!',
+      '\x1b[39m'
+    )
   }
 }
 
