@@ -37,10 +37,12 @@ describe('Cache', () => {
 
     let measuredCache = 0
     let measuredNonCache = 0
+    let measuredError = 0
 
     const destDir = path.resolve(__dirname, 'results')
     const cacheMeasurement = () => (measuredCache += 1)
     const nonCacheMeasurement = () => (measuredNonCache += 1)
+    const errorMeasurement = () => (measuredError += 1)
     const cliProgressBarIncrement = () => undefined
     const srcDir = path.resolve(__dirname, 'fixtures')
 
@@ -55,6 +57,7 @@ describe('Cache', () => {
           cacheDir,
           cacheMeasurement,
           nonCacheMeasurement,
+          errorMeasurement,
           cliProgressBarIncrement,
           originalFilePath: path.join(srcDir, item.src),
           ...item,
@@ -71,6 +74,7 @@ describe('Cache', () => {
           cacheDir,
           cacheMeasurement,
           nonCacheMeasurement,
+          errorMeasurement,
           cliProgressBarIncrement,
           originalFilePath: path.join(srcDir, item.src),
           ...item,
@@ -80,5 +84,6 @@ describe('Cache', () => {
 
     expect(measuredCache).toBe(2)
     expect(measuredNonCache).toBe(2)
+    expect(measuredError).toBe(0)
   })
 })
