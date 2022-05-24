@@ -15,6 +15,9 @@ dist
 /__tests__/cli/cache/results
 /__tests__/components/image/manifest.json
 
+# benchmark
+/bench/fixtures/results
+
 # next.js
 .next
 out

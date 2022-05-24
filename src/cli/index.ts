@@ -50,10 +50,12 @@ export const getOptimizeResult: GetOptimizeResult = async ({
     const outputDir = outputPath.split('/').slice(0, -1).join('/')
     fs.mkdirSync(outputDir, { recursive: true })
 
+    const imageBuffer = fs.readFileSync(originalFilePath)
+
     // Cache process
     if (!noCache) {
       const cacheImagesFindIndex = cacheImages.findIndex((cacheImage) => cacheImage.output === output)
-      const hash = createHash('sha256').update(fs.readFileSync(originalFilePath)).digest('hex')
+      const hash = createHash('sha256').update(imageBuffer).digest('hex')
 
       if (cacheImagesFindIndex === -1) {
         cacheImages.push({ output, hash })
@@ -70,7 +72,6 @@ export const getOptimizeResult: GetOptimizeResult = async ({
       }
     }
 
-    const imageBuffer = fs.readFileSync(originalFilePath)
     const image = sharp(imageBuffer, { sequentialRead: true })
 
     image.rotate().resize({ width, withoutEnlargement: true })
@@ -110,9 +111,10 @@ type OptimizeImagesProps = {
   manifestJsonPath: string
   noCache: boolean
   config: Config
+  terse?: boolean
 }
 
-export const optimizeImages = async ({ manifestJsonPath, noCache, config }: OptimizeImagesProps) => {
+export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse = false }: OptimizeImagesProps) => {
   const destDir = path.resolve(cwd, config.outDir ?? 'out')
 
   let manifest: Manifest
@@ -122,10 +124,17 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config }: Opti
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
 
-  cliProgressBarStart(manifest.length)
+  if (!terse) {
+    cliProgressBarStart(manifest.length)
+  }
 
-  createCacheDir()
-  const cacheImages = readCacheManifest()
+  let cacheImages: CacheImages = []
+
+  if (!noCache) {
+    createCacheDir()
+    cacheImages = readCacheManifest()
+  }
+
   const promises: Promise<void>[] = []
 
   let measuredCache = 0
@@ -142,7 +151,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config }: Opti
         cacheDir: defaultCacheDir,
         cacheMeasurement: () => (measuredCache += 1),
         nonCacheMeasurement: () => (measuredNonCache += 1),
-        cliProgressBarIncrement,
+        cliProgressBarIncrement: terse ? () => undefined : cliProgressBarIncrement,
         originalFilePath,
         sharpOptions: config.sharpOptions ?? {},
         ...item,
@@ -152,13 +161,19 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config }: Opti
 
   try {
     await Promise.all(promises)
-    writeCacheManifest(cacheImages)
-    // eslint-disable-next-line no-console
-    console.log(
-      `Cache assets: ${measuredCache}, NonCache assets: ${measuredNonCache}\n`,
-      '\x1b[35m\nSuccessful optimization!',
-      '\x1b[39m'
-    )
+
+    if (!noCache) {
+      writeCacheManifest(cacheImages)
+    }
+
+    if (!terse) {
+      // eslint-disable-next-line no-console
+      console.log(
+        `Cache assets: ${measuredCache}, NonCache assets: ${measuredNonCache}\n`,
+        '\x1b[35m\nSuccessful optimization!',
+        '\x1b[39m'
+      )
+    }
   } catch (error) {
     console.error('Error processing files', error)
   }
