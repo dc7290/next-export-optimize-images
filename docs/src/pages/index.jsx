@@ -11,6 +11,7 @@ const Home = () => {
     <Layout description="Documentation site for next-export-optimize-images.">
       <Head>
         <meta name="og:title" content="Next Export Optimize Images" />
+        <meta name="google-site-verification" content="6zpOOdl3po1SI7GMwXCq7HDv8afNyOgYh2Th6WelI4Y" />
       </Head>
       <main>
         <Hero />
