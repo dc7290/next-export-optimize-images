@@ -43,7 +43,7 @@ export type Config = {
    * You can set optimization options for each extension.
    * Please refer to the official sharp documentation for more information.
    *
-   * @type {{ png?: import('sharp').PngOptions, jpg?: import('sharp').JpegOptions, webp?: import('sharp').WebpOptions, avif?: import('sharp').AvifOptions } }}
+   * @type {{ png?: PngOptions, jpg?: JpegOptions, webp?: WebpOptions, avif?: AvifOptions } }}
    */
   sharpOptions?: {
     png?: PngOptions
@@ -53,6 +53,8 @@ export type Config = {
   }
   /**
    * It allows you to convert images from any extension to another extension.
+   *
+   * @type {[beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]}
    */
   convertFormat?: [beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]
 }
