@@ -6,6 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.1.0...v1.2.0) (2022-05-25)
+
+
+### Features
+
+* 🚀 Add `convertFormat` ([457c453](https://github.com/dc7290/next-export-optimize-images/commit/457c4530190c9bb3bc1001c3048a9b085ea65bc9))
+* 🚀 Measure the ASSETS in which errors occurred ([d936772](https://github.com/dc7290/next-export-optimize-images/commit/d9367721507b31168000294c90027c4888ad0c7b))
+
+
+### Bug Fixes
+
+* **deps:** update dependency cli-progress to ^3.11.1 ([7f74945](https://github.com/dc7290/next-export-optimize-images/commit/7f7494563818cdcb9b90b1556039f04dab6f02c4))
+* **deps:** update dependency prism-react-renderer to v1.3.3 ([7f8e3b2](https://github.com/dc7290/next-export-optimize-images/commit/7f8e3b21fd696340f1426015f6ae9dc84bef41db))
+
+
+### Continuous Integration
+
+* 🎡 Run `CI` in PR as well ([58f3077](https://github.com/dc7290/next-export-optimize-images/commit/58f307796819658dd6a7c6aa7c8d76a36cca84aa))
+
+
+### Tests
+
+* 💍 Fixed config path ([9ec7ae8](https://github.com/dc7290/next-export-optimize-images/commit/9ec7ae8e2d50745e6e149923edba48d0cc8db6e6))
+
+
+### Documentation
+
+* ✏️ Add `convertFormat` to the configuration page ([40f9b5a](https://github.com/dc7290/next-export-optimize-images/commit/40f9b5a11916840ce2ef0454e6be74f17fa675db))
+* ✏️ Add description to Config ([4684cfc](https://github.com/dc7290/next-export-optimize-images/commit/4684cfc438b73f593cc18bebdac339cde48cfbe0))
+* ✏️ Added `Some images are not displayed` to Q&A ([32e059a](https://github.com/dc7290/next-export-optimize-images/commit/32e059af0ed98f6f9ceeeca70242ac98b6949d59))
+* ✏️ Set og:title ([50a92ab](https://github.com/dc7290/next-export-optimize-images/commit/50a92ab73952647256979a63e6ab903a973dd67c))
+
 ## [1.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.0.1...v1.1.0) (2022-05-21)
 
 
