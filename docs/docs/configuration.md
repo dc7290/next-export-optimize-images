@@ -99,3 +99,30 @@ Specifically, include the name, width, quality, and extension in the return valu
 
 You can set optimization options for each extension.  
 Please refer to the official sharp documentation for more information.
+
+### `convertFormat`
+
+**Available from ver. 1.2.0.**
+
+- Type: Array<Array<Format, Format>>  
+  Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
+
+It allows you to convert images from any extension to another extension.
+
+e.g.
+
+```js
+const config = {
+  convertFormat: [
+    ['png', 'webp'],
+    ['jpg', 'avif'],
+  ],
+}
+```
+
+```jsx
+<Image src="/img.png" width={1280} height={640} alt="" />
+<Image src="/img.jpg" width={1280} height={640} alt="" />
+```
+
+The original image will be kept, `img.png` will be converted to webp format and `img.jpg` will be converted to avif format and output to the directory.

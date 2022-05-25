@@ -3,6 +3,7 @@ import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
 import React from 'react'
 
 import type { Manifest } from './cli/types'
+import formatValidate from './cli/utils/formatValidate'
 import getConfig from './utils/getConfig'
 
 const config = getConfig()
@@ -21,9 +22,22 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   }
 
   // Generate a reasonably unique base folder. Doesn't have to be perfectly unique
-  const [path, extension] = src.split(/\.([^.]*$)/)
+  const path = src.split(/\.([^.]*$)/)[0]
+  let extension = src.split(/\.([^.]*$)/)[1]
   if (!path || !extension) {
     throw new Error(`Invalid path or no file extension: ${src}`)
+  }
+
+  if (config.convertFormat !== undefined) {
+    const convertArray = config.convertFormat.find(([beforeConvert]) => beforeConvert === extension)
+    if (convertArray !== undefined) {
+      if (!formatValidate(convertArray[0]))
+        throw Error(`Unauthorized format specified in \`configFormat\`. beforeConvert: ${convertArray[0]}`)
+      if (!formatValidate(convertArray[1]))
+        throw Error(`Unauthorized format specified in \`configFormat\`. afterConvert: ${convertArray[1]}`)
+
+      extension = convertArray[1]
+    }
   }
 
   const pathWithoutName = path.split('/').slice(0, -1).join('/')

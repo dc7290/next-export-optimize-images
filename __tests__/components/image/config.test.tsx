@@ -9,9 +9,9 @@ import React from 'react'
 import CustomImage from '../../../src/image'
 
 describe('Apply config', () => {
-  test('Set `imageDir` and `filenameGenerator`', () => {
+  test('Set `imageDir` and `filenameGenerator` and `convetFormat`', () => {
     render(<CustomImage src="/images/img.png" width={1920} height={1280} priority />)
 
-    expect(screen.getByRole('img').getAttribute('src')).toBe('/_custom-optimize/images-img.3840.75.png')
+    expect(screen.getByRole('img').getAttribute('src')).toBe('/_custom-optimize/images-img.3840.75.webp')
   })
 })
