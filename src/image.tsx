@@ -62,7 +62,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     )
   }
 
-  return output
+  return `${config.basePath ?? ''}${output}`
 }
 
 const CustomImage = (props: ImageProps) => {
