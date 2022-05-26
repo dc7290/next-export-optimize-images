@@ -6,6 +6,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.2.0...v1.3.0) (2022-05-26)
+
+
+### Features
+
+* 🚀 Add `convertFormat` ([423b819](https://github.com/dc7290/next-export-optimize-images/commit/423b819fef740fbf85757de5ee4bd6980c7754a6))
+* 🚀 Measure the ASSETS in which errors occurred ([4833495](https://github.com/dc7290/next-export-optimize-images/commit/4833495fa91a5e839b1ae12b7464efe55180e08e))
+
+
+### Bug Fixes
+
+* 🐛 Correctly pass `basePath` to src and srcSet ([65916fe](https://github.com/dc7290/next-export-optimize-images/commit/65916fed15d0ea80dce88d775a1b2161717f676d))
+
+
+### Tests
+
+* 💍 Fixed config path ([6b6e986](https://github.com/dc7290/next-export-optimize-images/commit/6b6e986dac234eff9d48afaa1ff74ca3521e916a))
+
+
+### Continuous Integration
+
+* 🎡 Run `CI` in PR as well ([490bfd3](https://github.com/dc7290/next-export-optimize-images/commit/490bfd353d976068c28f4af765e2374dd32cae31))
+
+
+### Documentation
+
+* ✏️ Add `convertFormat` to the configuration page ([234a93f](https://github.com/dc7290/next-export-optimize-images/commit/234a93f9917145bf7cb038b936adf3cd08cf8e3f))
+* ✏️ Add convertFormat to features ([a64c2cd](https://github.com/dc7290/next-export-optimize-images/commit/a64c2cd784bb6190d61b8ebc7f49d48be7674ab4))
+* ✏️ Add description to Config ([5f21a62](https://github.com/dc7290/next-export-optimize-images/commit/5f21a62fa424857075e5b95203a28490978aceb6))
+
 ## [1.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.1.0...v1.2.0) (2022-05-25)
 
 
