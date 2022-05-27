@@ -38,14 +38,17 @@ Since this library is very similar to ours, it would be very good for you to try
 A brief comparison with our library reveals the following characteristics for your reference.
 
 - Import and use your own components.
-- Use only strings for the `src` attribute.
 - Specify a directory, such as `public/images`, and the images in it will be processed.
 
-Given these characteristics and the benefits of our library, we believe that our library is recommended for the following users
+Let me list some of the disadvantages.
 
-- **I want to use all options of `next/image`.**
-- **I want to specify an imported image in the src attribute.(https://nextjs.org/docs/basic-features/image-optimization#local-images)**
-- **I want to optimize it with the minimum necessary to match the props specified in `next/image`.** (Do you need only 1x or 2x, or do you need as much as the `deviceSizes`, etc.)
+- All options for `next/image` are not available.
+- Only strings can be specified in the src attribute.
+- Images that are not used will also be optimized. (Increased build time)
+
+Because of the above characteristics, the library is recommended for users other than those listed below.
+
+- I want to use `<ExportedImage />` instead of `<Image />`.
 
 ## Please let me know if there are others!
 
