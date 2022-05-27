@@ -24,7 +24,7 @@ module.exports = withExportImages({
 ## Use next/image separately from image components to be optimized at build time
 
 ```tsx title="CMSImage.tsx"
-import { ImageLoaderProps, ImageProps } from 'next/image'
+import Image, { ImageLoaderProps, ImageProps } from 'next/image'
 import { FC } from 'react'
 
 type Props = ImageProps
