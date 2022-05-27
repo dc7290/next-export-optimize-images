@@ -1,12 +1,12 @@
 /**
  * @jest-environment jsdom
  */
-process.env['TEST_CONFIG_PATH'] = '__tests__/components/image/config.js'
+process.env['TEST_CONFIG_PATH'] = '__tests__/components/image/config/config.js'
 
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 
-import CustomImage from '../../../src/image'
+import CustomImage from '../../../../src/image'
 
 describe('Apply config', () => {
   test('Set `imageDir` and `filenameGenerator` and `convetFormat`', () => {
