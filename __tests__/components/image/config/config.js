@@ -1,5 +1,5 @@
 /**
- * @type {import('../../../src/utils/getConfig').Config}
+ * @type {import('../../../../../src/utils/getConfig').Config}
  */
 const config = {
   basePath: '/base-path',

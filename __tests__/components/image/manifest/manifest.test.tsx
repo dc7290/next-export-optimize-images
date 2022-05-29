@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-process.env['TEST_JSON_PATH'] = '__tests__/components/image/manifest.json'
+process.env['TEST_JSON_PATH'] = '__tests__/components/image/manifest/manifest.json'
 
 import fs from 'fs'
 import path from 'path'
@@ -9,9 +9,9 @@ import path from 'path'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import uniqueItems from '../../../src/cli/utils/uniqueItems'
-import CustomImage from '../../../src/image'
-import processManifest from '../../../src/utils/processManifest'
+import uniqueItems from '../../../../src/cli/utils/uniqueItems'
+import CustomImage from '../../../../src/image'
+import processManifest from '../../../../src/utils/processManifest'
 
 const manifestPath = path.resolve(__dirname, 'manifest.json')
 

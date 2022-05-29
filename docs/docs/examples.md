@@ -24,14 +24,13 @@ module.exports = withExportImages({
 ## Use next/image separately from image components to be optimized at build time
 
 ```tsx title="CMSImage.tsx"
-import { ImageLoaderProps, ImageProps } from 'next/image'
+import Image, { ImageLoaderProps, ImageProps } from 'next/image'
 import { FC } from 'react'
 
 type Props = ImageProps
 
 const CMSLoader = ({ src, width, quality }: ImageLoaderProps) => {
-  // Demo: https://static.imgix.net/daisy.png?auto=format&fit=max&w=300
-  const url = new URL(`${config.path}${normalizeSrc(src)}`)
+  const url = new URL(normalizeSrc(src))
   const params = url.searchParams
 
   params.set('auto', params.get('auto') || 'format')
