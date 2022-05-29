@@ -65,7 +65,7 @@
     "@typescript-eslint/parser": "5.26.0",
     "benchmark": "2.1.4",
     "chokidar": "3.5.3",
-    "conventional-changelog-conventionalcommits": "4.6.3",
+    "conventional-changelog-conventionalcommits": "5.0.0",
     "eslint": "8.16.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
