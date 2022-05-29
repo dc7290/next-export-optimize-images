@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.3.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.3.0...v1.3.1) (2022-05-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to ^0.30.5 ([8e25077](https://github.com/dc7290/next-export-optimize-images/commit/8e250777cabea5e1022e7bbf6bcfc56c587144d6))
+* **deps:** update docusaurus monorepo to v2.0.0-beta.21 ([74f635c](https://github.com/dc7290/next-export-optimize-images/commit/74f635c6dbbbac3ed5e6b471cca8571aea9fc598))
+* **deps:** update react monorepo to v18 ([ea241dd](https://github.com/dc7290/next-export-optimize-images/commit/ea241dd293aa286892693a62ddb6b94970eae1aa))
+
+
+### Documentation
+
+* ✏️ Revise comparisons for clarity ([eb94a0e](https://github.com/dc7290/next-export-optimize-images/commit/eb94a0e9fe45915ae28a4116fdd2a8d8d54b658f))
+
 ## [1.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.2.0...v1.3.0) (2022-05-26)
 
 ### Features
