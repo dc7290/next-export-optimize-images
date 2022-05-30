@@ -21,7 +21,10 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     src = _src.replace(config.basePath, '')
   }
 
-  // Generate a reasonably unique base folder. Doesn't have to be perfectly unique
+  if (_src.startsWith('http')) {
+    src = _src.split('/').slice(-1).toString()
+  }
+
   const path = src.split(/\.([^.]*$)/)[0]
   let extension = src.split(/\.([^.]*$)/)[1]
   if (!path || !extension) {
@@ -53,6 +56,10 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
+    if (_src.startsWith('http')) {
+      fetch(_src)
+    }
+
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
     const fs = require('fs')
     const path = require('path')
