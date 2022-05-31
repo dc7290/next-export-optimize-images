@@ -14,6 +14,7 @@ dist
 /__tests__/cli/cache/.cache
 /__tests__/cli/cache/results
 /__tests__/components/image/manifest/manifest.json
+/__tests__/e2e/out
 
 # benchmark
 /bench/fixtures/results

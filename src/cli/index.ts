@@ -189,12 +189,14 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
   }
 }
 
-export const run = () => {
+type Run = (args: { customManifestJsonPath?: string; noCache?: boolean }) => void
+
+export const run: Run = ({ customManifestJsonPath, noCache = false }) => {
   // eslint-disable-next-line no-console
   console.log('\x1b[35m\nnext-export-optimize-images: Optimize images.', '\x1b[39m')
 
   const config = getConfig()
-  const manifestJsonPath = path.resolve(cwd, '.next/custom-optimized-images.nd.json')
+  const manifestJsonPath = path.resolve(cwd, customManifestJsonPath ?? '.next/custom-optimized-images.nd.json')
 
-  optimizeImages({ manifestJsonPath, noCache: false, config })
+  optimizeImages({ manifestJsonPath, noCache, config })
 }
