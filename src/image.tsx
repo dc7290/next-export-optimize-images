@@ -79,7 +79,9 @@ const CustomImage = (props: ImageProps) => {
       loader={props.loader || exportableLoader}
       blurDataURL={
         props.blurDataURL ||
-        (typeof props.src === 'string' ? exportableLoader({ src: props.src, width: 8, quality: 10 }) : '')
+        (typeof props.src === 'string' && props.placeholder === 'blur'
+          ? exportableLoader({ src: props.src, width: 8, quality: 10 })
+          : '')
       }
     />
   )

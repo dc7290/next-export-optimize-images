@@ -6,7 +6,7 @@ import type { CacheImages } from '../../../src/cli/utils/cache'
 
 const cacheDir = path.resolve(__dirname, '.cache')
 
-jest.setTimeout(10000)
+jest.setTimeout(60 * 3 * 1000)
 
 beforeAll(async () => {
   const resultsDir = path.resolve(__dirname, 'results')

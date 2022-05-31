@@ -16,3 +16,6 @@ changelog.config.js
 
 # examples
 /examples
+
+# testing
+__tests__/e2e

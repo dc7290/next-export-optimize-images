@@ -4,8 +4,12 @@ import type { NextConfig } from 'next'
 
 import copyConfig from './utils/copyConfig'
 
-const withExportImages = (nextConfig: NextConfig = {}): NextConfig => {
-  copyConfig(path.resolve(process.cwd(), 'export-images.config.js'))
+type Options = {
+  configPath?: string
+}
+
+const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextConfig => {
+  copyConfig(path.resolve(process.cwd(), options?.configPath ?? 'export-images.config.js'))
 
   const customConfig: NextConfig = {
     images: {

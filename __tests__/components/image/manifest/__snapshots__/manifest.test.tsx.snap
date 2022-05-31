@@ -4,13 +4,6 @@ exports[`Create JSON Common 1`] = `
 Array [
   Object {
     "extension": "png",
-    "output": "/_next/static/chunks/images/img_8_10.png",
-    "quality": 10,
-    "src": "/img.png",
-    "width": 8,
-  },
-  Object {
-    "extension": "png",
     "output": "/_next/static/chunks/images/img_1920_75.png",
     "quality": 75,
     "src": "/img.png",

@@ -29,9 +29,9 @@ Run `yarn` to install dependencies.
 
 You can run the test as follows.
 
-| common      | watch             | cli             | cli watch             | components             | components watch             |
-| ----------- | ----------------- | --------------- | --------------------- | ---------------------- | ---------------------------- |
-| `yarn test` | `yarn test:watch` | `yarn test:cli` | `yarn test:cli:watch` | `yarn test:components` | `yarn test:components:watch` |
+| common      | watch             | cli             | cli watch             | components             | components watch             | e2e             |
+| ----------- | ----------------- | --------------- | --------------------- | ---------------------- | ---------------------------- | --------------- |
+| `yarn test` | `yarn test:watch` | `yarn test:cli` | `yarn test:cli:watch` | `yarn test:components` | `yarn test:components:watch` | `yarn test:e2e` |
 
 ### Commit
 
