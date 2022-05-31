@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: This page introduces how to get started with this library.
 ---
 

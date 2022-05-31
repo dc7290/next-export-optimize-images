@@ -1,5 +1,4 @@
 ---
-sidebar_position: 8
 description: This page is to introduce examples of use.
 ---
 

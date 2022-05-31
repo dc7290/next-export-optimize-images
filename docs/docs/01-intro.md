@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 description: This page provides background on the creation of the library and its features.
 ---
 

@@ -1,9 +1,8 @@
 ---
-sidebar_position: 3
 description: This page introduces how to change the behavior of this library.
 ---
 
-# Configuration
+# Basic Configuration
 
 Default behavior can be changed as needed.  
 Create `export-images.config.js` in the root.
@@ -101,8 +100,6 @@ You can set optimization options for each extension.
 Please refer to the official sharp documentation for more information.
 
 ### `convertFormat`
-
-**Available from ver. 1.2.0.**
 
 - Type: Array<Array<Format, Format>>  
   Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
