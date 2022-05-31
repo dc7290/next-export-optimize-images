@@ -4,6 +4,7 @@ import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
+import promises from './external-images/promises'
 import getConfig from './utils/getConfig'
 
 const config = getConfig()
@@ -56,17 +57,40 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
-    if (_src.startsWith('http')) {
-      fetch(_src)
-    }
-
+    const fs = require('fs') as typeof import('fs')
+    const path = require('path') as typeof import('path')
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
-    const fs = require('fs')
-    const path = require('path')
     fs.appendFileSync(
       path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
       JSON.stringify(json) + '\n'
     )
+
+    if (_src.startsWith('http')) {
+      const downloadsDir = path.join(
+        process.cwd(),
+        config.outDir ?? 'out',
+        process.env.NODE_ENV === 'test' ? '' : '_next/static/media/downloads'
+      )
+
+      if (!fs.existsSync(downloadsDir)) {
+        fs.mkdirSync(downloadsDir, { recursive: true })
+      }
+
+      const writeStream = fs.createWriteStream(path.join(downloadsDir, `${name}.${extension}`))
+
+      promises.push(
+        (async () => {
+          const blob = await fetch(_src).then((res) => res.blob())
+          blob.stream().pipe(writeStream)
+
+          return new Promise<void>((resolve) => {
+            writeStream.on('finish', () => {
+              resolve()
+            })
+          })
+        })()
+      )
+    }
   }
 
   return `${config.basePath ?? ''}${output}`

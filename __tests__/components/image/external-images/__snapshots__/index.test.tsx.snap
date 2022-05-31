@@ -4,13 +4,6 @@ exports[`External images Manifest.json is output correctly 1`] = `
 Array [
   Object {
     "extension": "png",
-    "output": "/_next/static/chunks/images/og_8_10.png",
-    "quality": 10,
-    "src": "og.png",
-    "width": 8,
-  },
-  Object {
-    "extension": "png",
     "output": "/_next/static/chunks/images/og_1920_75.png",
     "quality": 75,
     "src": "og.png",

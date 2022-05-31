@@ -8,6 +8,7 @@ import fs from 'fs'
 import path from 'path'
 
 import { cleanup, render, screen } from '@testing-library/react'
+import fetch from 'node-fetch'
 import React from 'react'
 
 import uniqueItems from '../../../../src/cli/utils/uniqueItems'
@@ -16,6 +17,8 @@ import processManifest from '../../../../src/utils/processManifest'
 
 const manifestPath = path.resolve(__dirname, 'manifest.json')
 const imagePath = path.resolve(__dirname, 'og.png')
+
+;(global.fetch as unknown) = fetch
 
 describe('External images', () => {
   beforeAll(() => {
@@ -33,10 +36,6 @@ describe('External images', () => {
     render(
       <CustomImage src="https://next-export-optimize-images.vercel.app/og.png" width={1920} height={1280} priority />
     )
-  })
-
-  test.skip('Images are downloaded.', () => {
-    expect(fs.existsSync(imagePath)).toBeTruthy()
   })
 
   test('Manifest.json is output correctly', () => {
