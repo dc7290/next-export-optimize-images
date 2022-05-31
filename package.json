@@ -25,12 +25,15 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
+    "pretest": "rimraf {__tests__/e2e/.next,__tests__/e2e/out} && swc src -d dist && TEST_JSON_PATH=__tests__/e2e/.next/custom-optimized-images.nd.json next build __tests__/e2e && next export __tests__/e2e && node __tests__/e2e/cli.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cli": "jest __tests__/cli/**/*.test.ts",
     "test:cli:watch": "jest --watch __tests__/cli/**/*.test.ts",
     "test:components": "jest __tests__/components/**/*.test.tsx",
     "test:components:watch": "jest --watch __tests__/components/**/*.test.tsx",
+    "pretest:e2e": "yarn pretest",
+    "test:e2e": "jest __tests__/e2e/index.test.ts",
     "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release"
   },
   "lint-staged": {
