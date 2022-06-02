@@ -1,7 +1,7 @@
 import { createHash } from 'crypto'
-import fs from 'fs'
 import path from 'path'
 
+import fs from 'fs-extra'
 import sharp from 'sharp'
 
 import getConfig, { Config } from '../utils/getConfig'
@@ -47,13 +47,13 @@ export const getOptimizeResult: GetOptimizeResult = async ({
     try {
       const filePath = path.join(destDir, output)
       const fileDir = filePath.split('/').slice(0, -1).join('/')
-      fs.mkdirSync(fileDir, { recursive: true })
+      await fs.mkdirp(fileDir)
 
       const outputPath = path.join(cacheDir, output)
       const outputDir = outputPath.split('/').slice(0, -1).join('/')
-      fs.mkdirSync(outputDir, { recursive: true })
+      await fs.mkdirp(outputDir)
 
-      const imageBuffer = fs.readFileSync(originalFilePath)
+      const imageBuffer = await fs.readFile(originalFilePath)
 
       // Cache process
       if (!noCache) {
@@ -65,7 +65,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
         } else {
           const currentCacheImage = cacheImages[cacheImagesFindIndex]
           if (currentCacheImage?.hash === hash) {
-            fs.copyFileSync(outputPath, filePath)
+            await fs.copy(outputPath, filePath)
             cacheMeasurement()
             cliProgressBarIncrement()
             return
@@ -97,7 +97,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
           break
       }
 
-      fs.copyFileSync(outputPath, filePath)
+      await fs.copy(outputPath, filePath)
 
       nonCacheMeasurement()
       cliProgressBarIncrement()
@@ -127,7 +127,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
 
   let manifest: Manifest
   try {
-    manifest = uniqueItems(processManifest(fs.readFileSync(manifestJsonPath, 'utf-8')))
+    manifest = uniqueItems(processManifest(await fs.readFile(manifestJsonPath, 'utf-8')))
   } catch (error) {
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
@@ -139,7 +139,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
   let cacheImages: CacheImages = []
 
   if (!noCache) {
-    createCacheDir()
+    await createCacheDir()
     cacheImages = readCacheManifest()
   }
 
