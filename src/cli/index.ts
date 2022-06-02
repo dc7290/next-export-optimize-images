@@ -46,11 +46,11 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   if (formatValidate(extension)) {
     try {
       const filePath = path.join(destDir, output)
-      const fileDir = filePath.split('/').slice(0, -1).join('/')
+      const fileDir = filePath.split(path.sep).slice(0, -1).join(path.sep)
       await fs.mkdirp(fileDir)
 
       const outputPath = path.join(cacheDir, output)
-      const outputDir = outputPath.split('/').slice(0, -1).join('/')
+      const outputDir = outputPath.split(path.sep).slice(0, -1).join(path.sep)
       await fs.mkdirp(outputDir)
 
       const imageBuffer = await fs.readFile(originalFilePath)
