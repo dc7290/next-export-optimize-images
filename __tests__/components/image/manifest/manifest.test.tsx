@@ -3,10 +3,10 @@
  */
 process.env['TEST_JSON_PATH'] = '__tests__/components/image/manifest/manifest.json'
 
-import fs from 'fs'
 import path from 'path'
 
 import { render } from '@testing-library/react'
+import fs from 'fs-extra'
 import React from 'react'
 
 import uniqueItems from '../../../../src/cli/utils/uniqueItems'
@@ -15,10 +15,8 @@ import processManifest from '../../../../src/utils/processManifest'
 
 const manifestPath = path.resolve(__dirname, 'manifest.json')
 
-beforeAll(() => {
-  if (fs.existsSync(manifestPath)) {
-    fs.rmSync(manifestPath)
-  }
+beforeAll(async () => {
+  await fs.remove(manifestPath)
 })
 
 describe('Create JSON', () => {

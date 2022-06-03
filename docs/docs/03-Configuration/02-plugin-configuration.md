@@ -1,5 +1,6 @@
 ---
 description: This page introduces how to change the behavior of the plugins.
+draft: true
 ---
 
 # Plugin Configuration

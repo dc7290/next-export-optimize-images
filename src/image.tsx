@@ -57,9 +57,10 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
-    const fs = require('fs') as typeof import('fs')
-    const path = require('path') as typeof import('path')
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
+    const fs = require('fs-extra') as typeof import('fs-extra')
+    const path = require('path') as typeof import('path')
+
     fs.appendFileSync(
       path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
       JSON.stringify(json) + '\n'

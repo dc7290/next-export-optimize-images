@@ -1,12 +1,6 @@
 # config
 .eslintrc.js
-jest.config.js
-__tests__/components/image/config/config.js
-__tests__/components/image/external-images/config.js
-commitlint.config.js
-commit-types.config.js
-release.config.js
-changelog.config.js
+*.config.js
 
 # git
 .gitkeep
@@ -18,4 +12,4 @@ changelog.config.js
 /examples
 
 # testing
-__tests__/e2e
+__tests__/e2e/cli.js
