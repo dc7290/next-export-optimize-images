@@ -24,7 +24,7 @@ type GetOptimizeResultProps = {
   cliProgressBarIncrement: () => void
   originalFilePath: string
   sharpOptions?: Config['sharpOptions']
-} & Omit<Manifest[number], 'src'>
+} & Manifest[number]
 type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
 
 export const getOptimizeResult: GetOptimizeResult = async ({
@@ -37,6 +37,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   errorMeasurement,
   cliProgressBarIncrement,
   originalFilePath,
+  src,
   output,
   width,
   quality,
@@ -45,6 +46,10 @@ export const getOptimizeResult: GetOptimizeResult = async ({
 }) => {
   if (formatValidate(extension)) {
     try {
+      // eslint-disable-next-line no-empty
+      if (src.startsWith('http')) {
+      }
+
       const filePath = path.join(destDir, output)
       const fileDir = filePath.split(path.sep).slice(0, -1).join(path.sep)
       await fs.mkdirp(fileDir)
