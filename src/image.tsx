@@ -4,7 +4,6 @@ import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
-import promises from './external-images/promises'
 import getConfig from './utils/getConfig'
 
 const config = getConfig()
@@ -20,10 +19,6 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
 
   if (config.basePath !== undefined) {
     src = _src.replace(config.basePath, '')
-  }
-
-  if (_src.startsWith('http')) {
-    src = _src.split('/').slice(-1).toString()
   }
 
   const path = src.split(/\.([^.]*$)/)[0]
@@ -44,8 +39,16 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     }
   }
 
-  const pathWithoutName = path.split('/').slice(0, -1).join('/')
+  let pathWithoutName = path.split('/').slice(0, -1).join('/')
   const name = path.split('/').slice(-1).toString()
+
+  if (src.startsWith('http')) {
+    pathWithoutName = pathWithoutName
+      .replace(/^https?:\/\//, '')
+      .split('/')
+      .slice(1)
+      .join('/')
+  }
 
   const outputDir = `/${
     config.imageDir ? config.imageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/chunks/images'
@@ -65,33 +68,6 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
       path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
       JSON.stringify(json) + '\n'
     )
-
-    if (_src.startsWith('http')) {
-      const downloadsDir = path.join(
-        process.cwd(),
-        config.outDir ?? 'out',
-        process.env.NODE_ENV === 'test' ? '' : '_next/static/media/downloads'
-      )
-
-      if (!fs.existsSync(downloadsDir)) {
-        fs.mkdirSync(downloadsDir, { recursive: true })
-      }
-
-      const writeStream = fs.createWriteStream(path.join(downloadsDir, `${name}.${extension}`))
-
-      promises.push(
-        (async () => {
-          const blob = await fetch(_src).then((res) => res.blob())
-          blob.stream().pipe(writeStream)
-
-          return new Promise<void>((resolve) => {
-            writeStream.on('finish', () => {
-              resolve()
-            })
-          })
-        })()
-      )
-    }
   }
 
   return `${config.basePath ?? ''}${output}`
@@ -104,7 +80,7 @@ const CustomImage = (props: ImageProps) => {
       loader={props.loader || exportableLoader}
       blurDataURL={
         props.blurDataURL ||
-        (typeof props.src === 'string' && props.placeholder === 'blur'
+        (typeof props.src === 'string' && props.placeholder === 'blur' && props.loader === undefined
           ? exportableLoader({ src: props.src, width: 8, quality: 10 })
           : '')
       }
