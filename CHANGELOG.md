@@ -6,6 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.4.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.3.1...v1.4.0) (2022-06-07)
+
+
+### Features
+
+* 🚀 Allow plugin to accept `configPath` ([864d02a](https://github.com/dc7290/next-export-optimize-images/commit/864d02ab6abe7fb6436b3cc871d6337a2d3ea6b3))
+
+
+### Bug Fixes
+
+* 🐛 Correctly parse path segment separators ([5b87790](https://github.com/dc7290/next-export-optimize-images/commit/5b87790d48438040ac307235ff7044b7b6f197eb))
+* 🐛 Do not generate unnecessary placeholder images ([b8634da](https://github.com/dc7290/next-export-optimize-images/commit/b8634da4ce7f54bb49bab22f8614fa6115387f15))
+* 🐛 Running mkdir in a windows environment ([37e5adf](https://github.com/dc7290/next-export-optimize-images/commit/37e5adfa19cb33c9c1402855d1b35b1d37b5e5ae))
+* **deps:** update dependency sharp to ^0.30.6 ([1d97979](https://github.com/dc7290/next-export-optimize-images/commit/1d97979288aafb1949b6cfa04f9bfa71fd0eabe6))
+
+
+### Tests
+
+* 💍 Add e2e testing ([f601390](https://github.com/dc7290/next-export-optimize-images/commit/f6013903c6a22817de34f62c000e1f435db7f709))
+* 💍 Fixed test in uniqueItems ([63390c4](https://github.com/dc7290/next-export-optimize-images/commit/63390c4c5737f51916b964896892b20612bf5a82))
+
+
+### Continuous Integration
+
+* 🎡 Allow windows to set env ([36c8788](https://github.com/dc7290/next-export-optimize-images/commit/36c87883b843984615103baf6ffe599b5327e82c))
+* 🎡 Test different types of environments with matrix ([a598229](https://github.com/dc7290/next-export-optimize-images/commit/a5982298de26f1b049555c5d57c6d59a5ad9f845))
+
+
+### Documentation
+
+* ✏️ Add plugin-configuration page ([7548550](https://github.com/dc7290/next-export-optimize-images/commit/75485509e76f043c6a09be915259e451e5d96e88))
+
 ## [1.3.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.3.0...v1.3.1) (2022-05-29)
 
 
