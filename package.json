@@ -1,8 +1,15 @@
 {
   "name": "next-export-optimize-images",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Optimize images at build time with Next.js.",
   "homepage": "https://next-export-optimize-images.vercel.app",
+  "keywords": [
+    "next.js",
+    "static",
+    "export",
+    "image",
+    "optimization"
+  ],
   "bugs": {
     "url": "https://github.com/dc7290/next-export-optimize-images/issues"
   },
@@ -48,24 +55,24 @@
     "fs-extra": "^10.1.0",
     "got": "^12.1.0",
     "lodash.uniqwith": "^4.5.0",
-    "sharp": "^0.30.5"
+    "sharp": "^0.30.6"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.0.1",
-    "@commitlint/config-conventional": "17.0.0",
+    "@commitlint/cli": "17.0.2",
+    "@commitlint/config-conventional": "17.0.2",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@swc/cli": "0.1.57",
-    "@swc/core": "1.2.194",
+    "@swc/core": "1.2.196",
     "@testing-library/react": "13.3.0",
     "@tsconfig/strictest": "1.0.1",
     "@types/benchmark": "2.1.1",
     "@types/cli-progress": "3.11.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "27.5.1",
+    "@types/jest": "27.5.2",
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "16.11.38",
-    "@types/react": "18.0.9",
+    "@types/react": "18.0.11",
     "@types/sharp": "0.30.2",
     "@typescript-eslint/eslint-plugin": "5.26.0",
     "@typescript-eslint/parser": "5.26.0",
@@ -73,15 +80,15 @@
     "chokidar": "3.5.3",
     "conventional-changelog-conventionalcommits": "5.0.0",
     "cross-env": "7.0.3",
-    "eslint": "8.16.0",
+    "eslint": "8.17.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jest": "26.4.2",
+    "eslint-plugin-jest": "26.4.6",
     "git-cz": "4.9.0",
     "husky": "8.0.1",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
-    "lint-staged": "12.4.2",
+    "lint-staged": "12.5.0",
     "next": "12.1.6",
     "npm-run-all": "4.1.5",
     "prettier": "2.6.2",
@@ -89,8 +96,8 @@
     "react-dom": "18.1.0",
     "rimraf": "3.0.2",
     "semantic-release": "19.0.2",
-    "ts-jest": "28.0.3",
-    "typescript": "4.7.2"
+    "ts-jest": "28.0.4",
+    "typescript": "4.7.3"
   },
   "peerDependencies": {
     "next": ">=12.0.0",
