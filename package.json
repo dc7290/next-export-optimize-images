@@ -3,6 +3,13 @@
   "version": "1.4.0",
   "description": "Optimize images at build time with Next.js.",
   "homepage": "https://next-export-optimize-images.vercel.app",
+  "keywords": [
+    "next.js",
+    "static",
+    "export",
+    "image",
+    "optimization"
+  ],
   "bugs": {
     "url": "https://github.com/dc7290/next-export-optimize-images/issues"
   },
