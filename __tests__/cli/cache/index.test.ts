@@ -1,19 +1,19 @@
-import fs from 'fs'
 import path from 'path'
+
+import fs from 'fs-extra'
 
 import { getOptimizeResult } from '../../../src/cli'
 import type { CacheImages } from '../../../src/cli/utils/cache'
 
 const cacheDir = path.resolve(__dirname, '.cache')
 
-jest.setTimeout(10000)
+jest.setTimeout(60 * 3 * 1000)
 
 beforeAll(async () => {
   const resultsDir = path.resolve(__dirname, 'results')
 
-  fs.rmSync(resultsDir, { recursive: true, force: true })
-  fs.rmSync(cacheDir, { recursive: true, force: true })
-  fs.mkdirSync(path.join(resultsDir, '_next/static/chunks/images'), { recursive: true })
+  await Promise.all([fs.remove(resultsDir), fs.remove(cacheDir)])
+  await fs.mkdirp(path.join(resultsDir, '_next/static/chunks/images'))
 }, 60 * 3 * 1000)
 
 describe('Cache', () => {

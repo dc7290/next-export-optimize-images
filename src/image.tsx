@@ -54,7 +54,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
-    const fs = require('fs')
+    const fs = require('fs-extra')
     const path = require('path')
     fs.appendFileSync(
       path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
@@ -72,7 +72,9 @@ const CustomImage = (props: ImageProps) => {
       loader={props.loader || exportableLoader}
       blurDataURL={
         props.blurDataURL ||
-        (typeof props.src === 'string' ? exportableLoader({ src: props.src, width: 8, quality: 10 }) : '')
+        (typeof props.src === 'string' && props.placeholder === 'blur'
+          ? exportableLoader({ src: props.src, width: 8, quality: 10 })
+          : '')
       }
     />
   )

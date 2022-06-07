@@ -1,13 +1,12 @@
-import fs from 'fs'
 import path from 'path'
+
+import fs from 'fs-extra'
 
 export const defaultCacheDir = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images')
 export const defaultCacheFilePath = path.join(defaultCacheDir, 'cached-images.json')
 
-export const createCacheDir = (cacheDir = defaultCacheDir) => {
-  if (!fs.existsSync(cacheDir)) {
-    fs.mkdirSync(cacheDir, { recursive: true })
-  }
+export const createCacheDir = async (cacheDir = defaultCacheDir) => {
+  await fs.mkdirp(cacheDir)
 }
 
 export type CacheImages = {
@@ -16,9 +15,9 @@ export type CacheImages = {
 }[]
 
 export const readCacheManifest = (filePath = defaultCacheFilePath): CacheImages => {
-  if (fs.existsSync(filePath)) {
+  try {
     return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
-  } else {
+  } catch (_) {
     return []
   }
 }
