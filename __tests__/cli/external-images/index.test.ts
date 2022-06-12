@@ -11,13 +11,14 @@ beforeAll(async () => {
   await optimizeImages({
     manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
     noCache: true,
+    terse: true,
     config: {
       outDir: '__tests__/cli/external-images/fixtures',
     },
   })
 }, 60 * 3 * 1000)
 
-const exist = (filename: string) => fs.existsSync(path.join(fixturesDir, filename))
+const exist = (filename: string) => fs.existsSync(path.join(fixturesDir, '_next/static/media', filename))
 
 describe('External Image Optimization.', () => {
   test('Downloadable', () => {

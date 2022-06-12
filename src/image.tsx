@@ -64,6 +64,15 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     const fs = require('fs-extra') as typeof import('fs-extra')
     const path = require('path') as typeof import('path')
 
+    if (src.startsWith('http')) {
+      json.src = `/_next/static/media/${src
+        .replace(/^https?:\/\//, '')
+        .split('/')
+        .slice(1)
+        .join('/')}`
+      json.externalUrl = src
+    }
+
     fs.appendFileSync(
       path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
       JSON.stringify(json) + '\n'
