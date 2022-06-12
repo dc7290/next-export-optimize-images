@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.5.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.4.0...v1.5.0) (2022-06-12)
+
+
+### Features
+
+* 🚀 Download external images locally ([e917f74](https://github.com/dc7290/next-export-optimize-images/commit/e917f74b25f2add27debf98e1caf6c1e4a9f3640))
+
+
+### Tests
+
+* 💍 Added test in external images ([f543b72](https://github.com/dc7290/next-export-optimize-images/commit/f543b72030f8d178ef2beb576f210b03a9efab40))
+
 ## [1.4.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.3.1...v1.4.0) (2022-06-07)
 
 
