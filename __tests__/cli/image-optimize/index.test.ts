@@ -8,6 +8,7 @@ beforeAll(async () => {
   await optimizeImages({
     manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
     noCache: true,
+    terse: true,
     config: {
       outDir: '__tests__/cli/image-optimize/fixtures',
     },

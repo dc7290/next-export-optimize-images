@@ -21,7 +21,6 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     src = _src.replace(config.basePath, '')
   }
 
-  // Generate a reasonably unique base folder. Doesn't have to be perfectly unique
   const path = src.split(/\.([^.]*$)/)[0]
   let extension = src.split(/\.([^.]*$)/)[1]
   if (!path || !extension) {
@@ -40,8 +39,16 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     }
   }
 
-  const pathWithoutName = path.split('/').slice(0, -1).join('/')
+  let pathWithoutName = path.split('/').slice(0, -1).join('/')
   const name = path.split('/').slice(-1).toString()
+
+  if (src.startsWith('http')) {
+    pathWithoutName = pathWithoutName
+      .replace(/^https?:\/\//, '')
+      .split('/')
+      .slice(1)
+      .join('/')
+  }
 
   const outputDir = `/${
     config.imageDir ? config.imageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/chunks/images'
@@ -54,8 +61,18 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
 
   if (typeof window === 'undefined' || process.env['TEST_JSON_PATH'] !== undefined) {
     const json: Manifest[number] = { output, src, width, quality: quality || 75, extension }
-    const fs = require('fs-extra')
-    const path = require('path')
+    const fs = require('fs-extra') as typeof import('fs-extra')
+    const path = require('path') as typeof import('path')
+
+    if (src.startsWith('http')) {
+      json.src = `/_next/static/media/${src
+        .replace(/^https?:\/\//, '')
+        .split('/')
+        .slice(1)
+        .join('/')}`
+      json.externalUrl = src
+    }
+
     fs.appendFileSync(
       path.join(process.cwd(), process.env['TEST_JSON_PATH'] ?? '.next/custom-optimized-images.nd.json'),
       JSON.stringify(json) + '\n'
@@ -72,7 +89,7 @@ const CustomImage = (props: ImageProps) => {
       loader={props.loader || exportableLoader}
       blurDataURL={
         props.blurDataURL ||
-        (typeof props.src === 'string' && props.placeholder === 'blur'
+        (typeof props.src === 'string' && props.placeholder === 'blur' && props.loader === undefined
           ? exportableLoader({ src: props.src, width: 8, quality: 10 })
           : '')
       }

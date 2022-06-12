@@ -7,6 +7,7 @@ import sharp from 'sharp'
 import getConfig, { Config } from '../utils/getConfig'
 import processManifest from '../utils/processManifest'
 
+import externalImagesDownloader from './external-images'
 import type { Manifest } from './types'
 import { CacheImages, createCacheDir, defaultCacheDir, readCacheManifest, writeCacheManifest } from './utils/cache'
 import { cliProgressBarIncrement, cliProgressBarStart } from './utils/cliProgressBar'
@@ -24,7 +25,7 @@ type GetOptimizeResultProps = {
   cliProgressBarIncrement: () => void
   originalFilePath: string
   sharpOptions?: Config['sharpOptions']
-} & Omit<Manifest[number], 'src'>
+} & Manifest[number]
 type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
 
 export const getOptimizeResult: GetOptimizeResult = async ({
@@ -46,12 +47,10 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   if (formatValidate(extension)) {
     try {
       const filePath = path.join(destDir, output)
-      const fileDir = filePath.split(path.sep).slice(0, -1).join(path.sep)
-      await fs.mkdirp(fileDir)
+      await fs.ensureFile(filePath)
 
       const outputPath = path.join(cacheDir, output)
-      const outputDir = outputPath.split(path.sep).slice(0, -1).join(path.sep)
-      await fs.mkdirp(outputDir)
+      await fs.ensureFile(outputPath)
 
       const imageBuffer = await fs.readFile(originalFilePath)
 
@@ -130,6 +129,11 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
     manifest = uniqueItems(processManifest(await fs.readFile(manifestJsonPath, 'utf-8')))
   } catch (error) {
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
+  }
+
+  // External image if present
+  if (manifest.some(({ externalUrl }) => externalUrl !== undefined)) {
+    await externalImagesDownloader({ terse, manifest, destDir })
   }
 
   if (!terse) {

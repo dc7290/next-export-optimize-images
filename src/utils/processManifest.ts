@@ -1,4 +1,6 @@
-const processManifest = (manifestJson: string) =>
+import type { Manifest } from '../cli/types'
+
+const processManifest = (manifestJson: string): Manifest =>
   manifestJson
     .trim()
     .split(/\n/g)
