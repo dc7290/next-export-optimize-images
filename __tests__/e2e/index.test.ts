@@ -15,6 +15,8 @@ const files = [
   'images/img_1920_75.webp',
   'images/img_2048_75.webp',
   'images/img_3840_75.webp',
+  'images/img_1920_75.svg',
+  'images/img_3840_75.svg',
   'og_1920_75.webp',
   'og_3840_75.webp',
 ]

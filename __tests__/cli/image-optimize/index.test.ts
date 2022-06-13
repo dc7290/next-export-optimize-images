@@ -47,4 +47,10 @@ describe('Image optimization.', () => {
     expect(exist('default_1920_75.avif')).toBeTruthy()
     expect(exist('default_3840_75.avif')).toBeTruthy()
   })
+
+  test('svg images copied', () => {
+    expect(exist('default_10_75.svg')).toBeTruthy()
+    expect(exist('default_1920_75.svg')).toBeTruthy()
+    expect(exist('default_3840_75.svg')).toBeTruthy()
+  })
 })
