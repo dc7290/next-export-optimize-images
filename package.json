@@ -2,7 +2,6 @@
   "name": "next-export-optimize-images",
   "version": "1.5.0",
   "description": "Optimize images at build time with Next.js.",
-  "homepage": "https://next-export-optimize-images.vercel.app",
   "keywords": [
     "next.js",
     "static",
@@ -10,6 +9,7 @@
     "image",
     "optimization"
   ],
+  "homepage": "https://next-export-optimize-images.vercel.app",
   "bugs": {
     "url": "https://github.com/dc7290/next-export-optimize-images/issues"
   },
@@ -41,7 +41,8 @@
     "test:components:watch": "jest --watch __tests__/components",
     "pretest:e2e": "yarn pretest",
     "test:e2e": "jest __tests__/e2e",
-    "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release"
+    "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release",
+    "typecheck": "yarn tsc --noEmit"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

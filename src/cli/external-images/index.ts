@@ -14,7 +14,7 @@ type ExternalImagesDownloaderArgs = {
 const externalImagesDownloader = async ({ terse = false, manifest, destDir }: ExternalImagesDownloaderArgs) => {
   if (!terse) {
     // eslint-disable-next-line no-console
-    console.log('Download external images.')
+    console.log('\n- Download external images -')
   }
 
   const promises: Promise<void>[] = []

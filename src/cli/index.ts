@@ -22,6 +22,7 @@ type GetOptimizeResultProps = {
   cacheMeasurement: () => void
   nonCacheMeasurement: () => void
   errorMeasurement: () => void
+  pushInvalidFormatAssets: (asset: string) => void
   cliProgressBarIncrement: () => void
   originalFilePath: string
   sharpOptions?: Config['sharpOptions']
@@ -36,6 +37,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   cacheMeasurement,
   nonCacheMeasurement,
   errorMeasurement,
+  pushInvalidFormatAssets,
   cliProgressBarIncrement,
   originalFilePath,
   output,
@@ -102,13 +104,23 @@ export const getOptimizeResult: GetOptimizeResult = async ({
       cliProgressBarIncrement()
     } catch (error) {
       console.warn(error)
+      cliProgressBarIncrement()
       errorMeasurement()
     }
   } else {
-    console.warn(
-      `${originalFilePath}: Not an allowed format.\`${extension}\`\nGive \`unoptimize\`prop to /next/image to disable optimization.`
-    )
-    errorMeasurement()
+    try {
+      const filePath = path.join(destDir, output)
+      await fs.ensureFile(filePath)
+
+      await fs.copy(originalFilePath, filePath)
+
+      pushInvalidFormatAssets(originalFilePath)
+      cliProgressBarIncrement()
+    } catch (error) {
+      console.warn(error)
+      cliProgressBarIncrement()
+      errorMeasurement()
+    }
   }
 }
 
@@ -137,6 +149,8 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
   }
 
   if (!terse) {
+    // eslint-disable-next-line no-console
+    console.log(`\n- Image Optimization -`)
     cliProgressBarStart(manifest.length)
   }
 
@@ -152,10 +166,12 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
   let measuredCache = 0
   let measuredNonCache = 0
   let measuredError = 0
+  const invalidFormatAssets = new Set<string>([])
 
   const cacheMeasurement = () => (measuredCache += 1)
   const nonCacheMeasurement = () => (measuredNonCache += 1)
   const errorMeasurement = () => (measuredError += 1)
+  const pushInvalidFormatAssets = (asset: string) => invalidFormatAssets.add(asset)
 
   for (const item of manifest) {
     const originalFilePath = path.join(destDir, item.src)
@@ -169,6 +185,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
         cacheMeasurement,
         nonCacheMeasurement,
         errorMeasurement,
+        pushInvalidFormatAssets,
         cliProgressBarIncrement: terse ? () => undefined : cliProgressBarIncrement,
         originalFilePath,
         sharpOptions: config.sharpOptions ?? {},
@@ -185,11 +202,18 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
 
   if (!terse) {
     // eslint-disable-next-line no-console
-    console.log(
-      `Cache assets: ${measuredCache}, NonCache assets: ${measuredNonCache}, Error assets: ${measuredError}\n`,
-      '\x1b[35m\nSuccessful optimization!',
-      '\x1b[39m'
-    )
+    console.log(`Cache assets: ${measuredCache}, NonCache assets: ${measuredNonCache}, Error assets: ${measuredError}`)
+
+    if (invalidFormatAssets.size !== 0) {
+      // eslint-disable-next-line no-console
+      console.log(
+        `\nThe following images is in a non-optimized format and a simple copy was applied.\n`,
+        Array.from(invalidFormatAssets).join('\n')
+      )
+    }
+
+    // eslint-disable-next-line no-console
+    console.log('\x1b[35m\nSuccessful optimization!', '\x1b[39m')
   }
 }
 
