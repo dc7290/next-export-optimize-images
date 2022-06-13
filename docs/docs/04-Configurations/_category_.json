@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Configuration",
+    "description": "How to change the default behavior."
+  }
+}

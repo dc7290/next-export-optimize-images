@@ -13,3 +13,6 @@
 {"output":"/results/images/default_10_75.avif","src":"/default.avif","width":10,"quality":75,"extension":"avif"}
 {"output":"/results/images/default_1920_75.avif","src":"/default.avif","width":1920,"quality":75,"extension":"avif"}
 {"output":"/results/images/default_3840_75.avif","src":"/default.avif","width":3840,"quality":75,"extension":"avif"}
+{"output":"/results/images/default_10_75.svg","src":"/default.svg","width":10,"quality":75,"extension":"svg"}
+{"output":"/results/images/default_1920_75.svg","src":"/default.svg","width":1920,"quality":75,"extension":"svg"}
+{"output":"/results/images/default_3840_75.svg","src":"/default.svg","width":3840,"quality":75,"extension":"svg"}
