@@ -70,7 +70,7 @@
     "@types/benchmark": "2.1.1",
     "@types/cli-progress": "3.11.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "27.5.2",
+    "@types/jest": "28.1.2",
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "16.11.41",
     "@types/react": "18.0.14",
