@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 process.env['TEST_CONFIG_PATH'] = '__tests__/components/image/config/config.js'
 
 import { render, screen } from '@testing-library/react'

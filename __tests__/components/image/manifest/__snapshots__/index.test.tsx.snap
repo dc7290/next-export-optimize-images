@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`Create JSON > Common 1`] = `
+[
+  {
+    "extension": "png",
+    "output": "/_next/static/chunks/images/img_1920_75.png",
+    "quality": 75,
+    "src": "/img.png",
+    "width": 1920,
+  },
+  {
+    "extension": "png",
+    "output": "/_next/static/chunks/images/img_3840_75.png",
+    "quality": 75,
+    "src": "/img.png",
+    "width": 3840,
+  },
+]
+`;

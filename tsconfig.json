@@ -1,7 +1,15 @@
 {
   "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react",
+    "types": ["vitest/globals"]
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./__tests__/**/*.test.ts", "./__tests__/**/*.test.tsx", "bench/index.ts"]
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./__tests__/**/*.test.ts",
+    "./__tests__/**/*.test.tsx",
+    "bench/index.ts",
+    "vitest.config.ts"
+  ]
 }

@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 process.env['TEST_JSON_PATH'] = '__tests__/components/image/manifest/manifest.json'
 
 import path from 'path'
@@ -21,11 +18,7 @@ beforeAll(async () => {
 
 describe('Create JSON', () => {
   test('Common', () => {
-    render(
-      <>
-        <CustomImage src="/img.png" width={1920} height={1280} priority />
-      </>
-    )
+    render(<CustomImage src="/img.png" width={1920} height={1280} priority />)
 
     const manifest = uniqueItems(processManifest(fs.readFileSync(manifestPath, 'utf-8')))
     expect(manifest).toMatchSnapshot()

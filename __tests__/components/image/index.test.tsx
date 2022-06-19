@@ -1,7 +1,4 @@
-/**
- * @jest-environment jsdom
- */
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import React from 'react'
 
 import CustomImage from '../../../src/image'
@@ -22,10 +19,6 @@ const staticRequireSrc = {
 
 describe('CustomImage', () => {
   describe('String src', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src="/img.png" width={1920} height={1280} priority />)
 
@@ -43,10 +36,6 @@ describe('CustomImage', () => {
   })
 
   describe('StaticRequire src', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src={staticRequireSrc} priority />)
 
@@ -66,10 +55,6 @@ describe('CustomImage', () => {
   })
 
   describe('StaticImageData src', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src={staticImageData} priority />)
 
@@ -89,10 +74,6 @@ describe('CustomImage', () => {
   })
 
   describe('Override props.', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Loader is set correctly', () => {
       render(
         <CustomImage

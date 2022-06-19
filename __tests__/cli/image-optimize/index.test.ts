@@ -17,7 +17,7 @@ beforeAll(async () => {
 
 const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'fixtures/results/images', filename))
 
-describe('Image optimization.', () => {
+describe.concurrent('Image optimization.', () => {
   test('png images optimized', () => {
     expect(exist('default_10_75.png')).toBeTruthy()
     expect(exist('default_1920_75.png')).toBeTruthy()
