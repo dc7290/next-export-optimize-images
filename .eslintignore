@@ -13,4 +13,3 @@
 
 # testing
 __tests__/e2e/cli.js
-__tests__/e2e/script.mjs

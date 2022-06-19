@@ -33,7 +33,7 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "pretest": "zx __tests__/e2e/script.mjs",
+    "pretest": "rimraf {__tests__/e2e/.next,__tests__/e2e/out} && swc src -d dist && cross-env TEST_JSON_PATH=__tests__/e2e/.next/custom-optimized-images.nd.json next build __tests__/e2e && next export __tests__/e2e && node __tests__/e2e/cli.js",
     "test": "vitest",
     "test:cli": "vitest __tests__/cli",
     "test:components": "vitest __tests__/components",
@@ -71,7 +71,6 @@
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "16.11.41",
     "@types/react": "18.0.14",
-    "@types/rimraf": "^3.0.2",
     "@types/sharp": "0.30.4",
     "@typescript-eslint/eslint-plugin": "5.27.1",
     "@typescript-eslint/parser": "5.27.1",
@@ -95,8 +94,7 @@
     "rimraf": "3.0.2",
     "semantic-release": "19.0.3",
     "typescript": "4.7.3",
-    "vitest": "0.15.1",
-    "zx": "7.0.0"
+    "vitest": "0.15.1"
   },
   "peerDependencies": {
     "next": ">=12.0.0",
