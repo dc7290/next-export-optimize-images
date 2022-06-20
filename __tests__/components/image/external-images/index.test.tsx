@@ -1,9 +1,12 @@
+/**
+ * @jest-environment jsdom
+ */
 process.env['TEST_CONFIG_PATH'] = '__tests__/components/image/external-images/config.js'
 process.env['TEST_JSON_PATH'] = '__tests__/components/image/external-images/manifest.json'
 
 import path from 'path'
 
-import { render, screen } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 import fs from 'fs-extra'
 import React from 'react'
 
@@ -13,12 +16,13 @@ import processManifest from '../../../../src/utils/processManifest'
 
 const manifestPath = path.resolve(__dirname, 'manifest.json')
 
-describe.concurrent('External images', () => {
+describe('External images', () => {
   beforeAll(async () => {
     await fs.remove(manifestPath)
   })
 
   beforeEach(() => {
+    cleanup()
     render(
       <CustomImage
         src="https://next-export-optimize-images.vercel.app/sub-path/og.png"
