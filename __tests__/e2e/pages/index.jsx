@@ -1,8 +1,8 @@
-import Image from '../../../dist/image'
+import React, { useEffect, useState } from 'react'
 
-import imgSrc from '../images/img.png'
+import Image from '../../../dist/image'
 import clientOnlySrc from '../images/client-only.png'
-import { useEffect, useState } from 'react'
+import imgSrc from '../images/img.png'
 
 const IndexPage = () => {
   const [isClient, setIsClient] = useState(false)

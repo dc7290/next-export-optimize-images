@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import React from 'react'
 
 import CustomImage from '../../../src/image'
@@ -22,15 +22,12 @@ const staticRequireSrc = {
 
 describe('CustomImage', () => {
   describe('String src', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src="/img.png" width={1920} height={1280} priority />)
 
-      expect(screen.getByRole('img').getAttribute('src')).toBe('/_next/static/chunks/images/img_3840_75.png')
-      expect(screen.getByRole('img').getAttribute('srcSet')).toBe(
+      expect(screen.getByRole('img')).toHaveAttribute('src', '/_next/static/chunks/images/img_3840_75.png')
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'srcset',
         '/_next/static/chunks/images/img_1920_75.png 1x, /_next/static/chunks/images/img_3840_75.png 2x'
       )
     })
@@ -38,22 +35,20 @@ describe('CustomImage', () => {
     test('BlurDataURL is set correctly', () => {
       render(<CustomImage src="/img.png" width={1920} height={1280} placeholder="blur" />)
 
-      expect(screen.getByRole('img').style.backgroundImage).toBe('url(/_next/static/chunks/images/img_8_10.png)')
+      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: 'url(/_next/static/chunks/images/img_8_10.png)' })
     })
   })
 
   describe('StaticRequire src', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src={staticRequireSrc} priority />)
 
-      expect(screen.getByRole('img').getAttribute('src')).toBe(
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'src',
         '/_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png'
       )
-      expect(screen.getByRole('img').getAttribute('srcset')).toBe(
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'srcset',
         '/_next/static/chunks/images/_next/static/media/image.819f8209_1920_75.png 1x, /_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png 2x'
       )
     })
@@ -61,22 +56,20 @@ describe('CustomImage', () => {
     test('BlurDataURL is set correctly', () => {
       render(<CustomImage src={staticRequireSrc} placeholder="blur" />)
 
-      expect(screen.getByRole('img').style.backgroundImage).toBe(`url(${blurDataURL})`)
+      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: `url(${blurDataURL})` })
     })
   })
 
   describe('StaticImageData src', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Src and srcset are set correctly', () => {
       render(<CustomImage src={staticImageData} priority />)
 
-      expect(screen.getByRole('img').getAttribute('src')).toBe(
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'src',
         '/_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png'
       )
-      expect(screen.getByRole('img').getAttribute('srcset')).toBe(
+      expect(screen.getByRole('img')).toHaveAttribute(
+        'srcset',
         '/_next/static/chunks/images/_next/static/media/image.819f8209_1920_75.png 1x, /_next/static/chunks/images/_next/static/media/image.819f8209_3840_75.png 2x'
       )
     })
@@ -84,15 +77,11 @@ describe('CustomImage', () => {
     test('BlurDataURL is set correctly', () => {
       render(<CustomImage src={staticImageData} placeholder="blur" />)
 
-      expect(screen.getByRole('img').style.backgroundImage).toBe(`url(${blurDataURL})`)
+      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: `url(${blurDataURL})` })
     })
   })
 
   describe('Override props.', () => {
-    beforeEach(() => {
-      cleanup()
-    })
-
     test('Loader is set correctly', () => {
       render(
         <CustomImage
@@ -102,13 +91,13 @@ describe('CustomImage', () => {
         />
       )
 
-      expect(screen.getByRole('img').getAttribute('src')).toBe('/_next/static/media/image.819f8209.png?w=3840&q=75')
+      expect(screen.getByRole('img')).toHaveAttribute('src', '/_next/static/media/image.819f8209.png?w=3840&q=75')
     })
 
     test('BlurDataURL is set correctly', () => {
       render(<CustomImage src={staticRequireSrc} blurDataURL="customBlurDataURL" placeholder="blur" />)
 
-      expect(screen.getByRole('img').style.backgroundImage).toBe('url(customBlurDataURL)')
+      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: 'url(customBlurDataURL)' })
     })
   })
 })

@@ -23,11 +23,11 @@ module.exports = {
   /**
    * コミットメッセージ最大文字数
    */
-  // maxMessageLength: 64,
+  maxMessageLength: 64,
   /**
    * コミットメッセージ最小文字数
    */
-  // minMessageLength: 3,
+  minMessageLength: 3,
   /**
    * コミット時に入力する項目
    */

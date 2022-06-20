@@ -6,7 +6,7 @@ process.env['TEST_JSON_PATH'] = '__tests__/components/image/external-images/mani
 
 import path from 'path'
 
-import { cleanup, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import fs from 'fs-extra'
 import React from 'react'
 
@@ -16,13 +16,11 @@ import processManifest from '../../../../src/utils/processManifest'
 
 const manifestPath = path.resolve(__dirname, 'manifest.json')
 
+beforeAll(async () => {
+  await fs.remove(manifestPath)
+})
 describe('External images', () => {
-  beforeAll(async () => {
-    await fs.remove(manifestPath)
-  })
-
-  beforeEach(() => {
-    cleanup()
+  test('Manifest.json is output correctly', () => {
     render(
       <CustomImage
         src="https://next-export-optimize-images.vercel.app/sub-path/og.png"
@@ -31,9 +29,7 @@ describe('External images', () => {
         priority
       />
     )
-  })
 
-  test('Manifest.json is output correctly', () => {
     const manifest = uniqueItems(processManifest(fs.readFileSync(manifestPath, 'utf-8')))
     expect(manifest).toEqual([
       {
@@ -56,10 +52,21 @@ describe('External images', () => {
   })
 
   test('URLs of external images are set correctly', () => {
-    expect(screen.getByRole('img').getAttribute('src')).toBe(
+    render(
+      <CustomImage
+        src="https://next-export-optimize-images.vercel.app/sub-path/og.png"
+        width={1920}
+        height={1280}
+        priority
+      />
+    )
+
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'src',
       '/base-path/_next/static/chunks/images/sub-path/og_3840_75.webp'
     )
-    expect(screen.getByRole('img').getAttribute('srcset')).toBe(
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'srcset',
       '/base-path/_next/static/chunks/images/sub-path/og_1920_75.webp 1x, /base-path/_next/static/chunks/images/sub-path/og_3840_75.webp 2x'
     )
   })

@@ -4,7 +4,7 @@ module.exports = {
     node: true,
     'jest/globals': true,
   },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:jest-dom/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021,
@@ -45,4 +45,10 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
   },
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react', 'plugin:jest-dom/recommended'],
+    },
+  ],
 }
