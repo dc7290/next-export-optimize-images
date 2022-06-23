@@ -99,6 +99,7 @@ module.exports = {
         // コミット対象のファイル
         assets: [
           'package.json', // versionフィールドの変更をコミットするため
+          'yarn.lock', // versionフィールドの変更をコミットするため
           changelogFile, // changelogFileの変更をコミットするため
         ],
         // コミットメッセージ
