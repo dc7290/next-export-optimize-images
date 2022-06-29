@@ -1,6 +1,7 @@
 import { createHash } from 'crypto'
 import path from 'path'
 
+import colors from 'ansi-colors'
 import fs from 'fs-extra'
 import sharp from 'sharp'
 
@@ -213,7 +214,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
     }
 
     // eslint-disable-next-line no-console
-    console.log('\x1b[35m\nSuccessful optimization!', '\x1b[39m')
+    console.log(colors.bold.magenta('\nSuccessful optimization!'))
   }
 }
 
@@ -221,7 +222,7 @@ type Run = (args: { customManifestJsonPath?: string; noCache?: boolean }) => voi
 
 export const run: Run = ({ customManifestJsonPath, noCache = false }) => {
   // eslint-disable-next-line no-console
-  console.log('\x1b[35m\nnext-export-optimize-images: Optimize images.', '\x1b[39m')
+  console.log(colors.bold.magenta('\nnext-export-optimize-images: Optimize images.'))
 
   const config = getConfig()
   const manifestJsonPath = path.resolve(cwd, customManifestJsonPath ?? '.next/custom-optimized-images.nd.json')

@@ -110,9 +110,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        appId: 'YOUR_APP_ID',
-        apiKey: 'YOUR_SEARCH_API_KEY',
-        indexName: 'YOUR_INDEX_NAME',
+        appId: 'FK0H7QU600',
+        apiKey: '022584b659d9a91bb9bb8f06fe859d6d',
+        indexName: 'next-export-optimize-images',
         searchPagePath: 'search',
       },
     }),

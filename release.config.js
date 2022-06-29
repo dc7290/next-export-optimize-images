@@ -24,7 +24,7 @@ module.exports = {
    *
    * @see https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration
    */
-  branches: [defaultBranch],
+  branches: [defaultBranch, { name: "beta", prerelease: true }],
   /**
    * Gitタグのフォーマット。Lodashのテンプレートが使えます。
    * multi-semantic-releaseを使った場合は、この設定は無視されます。
@@ -99,6 +99,7 @@ module.exports = {
         // コミット対象のファイル
         assets: [
           'package.json', // versionフィールドの変更をコミットするため
+          'yarn.lock', // versionフィールドの変更をコミットするため
           changelogFile, // changelogFileの変更をコミットするため
         ],
         // コミットメッセージ

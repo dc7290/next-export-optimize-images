@@ -1,5 +1,5 @@
 /**
- * @type {import('../../../../src/utils/getConfig').Config}
+ * @type {import('../../../../src').Config}
  */
 const config = {
   outDir: '__tests__/components/image/external-images',
