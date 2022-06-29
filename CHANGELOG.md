@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.5.2](https://github.com/dc7290/next-export-optimize-images/compare/v1.5.1...v1.5.2) (2022-06-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to ^0.30.7 ([5dcb964](https://github.com/dc7290/next-export-optimize-images/commit/5dcb964a4d3ebc93052dce8619903e59860de256))
+
+
+### Documentation
+
+* ✏️ Applied the DocSearch ([01da0f9](https://github.com/dc7290/next-export-optimize-images/commit/01da0f97215449026511229d231a17640854a561))
+
+
+### Tests
+
+* 💍 Linting test files with recommended rules ([36d5343](https://github.com/dc7290/next-export-optimize-images/commit/36d53432a711cb18339152cb7600fb0e70fcac42))
+
 ## [1.5.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.5.0...v1.5.1) (2022-06-13)
 
 
