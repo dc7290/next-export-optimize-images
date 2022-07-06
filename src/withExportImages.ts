@@ -9,6 +9,12 @@ type Options = {
 }
 
 const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextConfig => {
+  if (nextConfig.experimental?.images?.unoptimized) {
+    throw Error(
+      'The `experimental.images.unoptimized` is not supported. If you use this option, consider not using `next-export-optimize-images`.'
+    )
+  }
+
   copyConfig(path.resolve(process.cwd(), options?.configPath ?? 'export-images.config.js'))
 
   const customConfig: NextConfig = {
