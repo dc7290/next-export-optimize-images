@@ -65,7 +65,7 @@
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@swc/cli": "0.1.57",
-    "@swc/core": "1.2.210",
+    "@swc/core": "1.2.211",
     "@testing-library/react": "13.3.0",
     "@testing-library/jest-dom": "5.16.4",
     "@tsconfig/strictest": "1.0.1",
