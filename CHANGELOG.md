@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.6.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.5.3...v1.6.0) (2022-07-30)
+
+
+### Features
+
+* 🚀 Supprted monorepo ([13d5aff](https://github.com/dc7290/next-export-optimize-images/commit/13d5aff9d0130b859fb093fafd8545f2c0e4f4ec)), closes [#142](https://github.com/dc7290/next-export-optimize-images/issues/142)
+
+
+### Bug Fixes
+
+* 🐛 Fix peer-dependence `next` version ([e71586c](https://github.com/dc7290/next-export-optimize-images/commit/e71586c89557061fb8a058ef4edcf86c11526e64))
+
 ## [1.5.3](https://github.com/dc7290/next-export-optimize-images/compare/v1.5.2...v1.5.3) (2022-07-06)
 
 
