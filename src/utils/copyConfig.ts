@@ -1,11 +1,12 @@
 import path from 'path'
 
+import appRoot from 'app-root-path'
 import fs from 'fs-extra'
 
 const defaultConfigFile = `module.exports = {}`
 
 const copyConfig = (filePath: string) => {
-  const libDir = path.resolve(process.cwd(), 'node_modules/next-export-optimize-images')
+  const libDir = path.join(appRoot.toString(), 'node_modules/next-export-optimize-images')
 
   fs.mkdirpSync(libDir)
 

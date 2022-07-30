@@ -1,9 +1,10 @@
 import path from 'path'
 
+import colors from 'ansi-colors'
+import fs from 'fs-extra'
 import type { NextConfig } from 'next'
 
 import copyConfig from './utils/copyConfig'
-
 type Options = {
   configPath?: string
 }
@@ -15,7 +16,18 @@ const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextC
     )
   }
 
-  copyConfig(path.resolve(process.cwd(), options?.configPath ?? 'export-images.config.js'))
+  const resolvedConfigPath = path.join(process.cwd(), options?.configPath ?? 'export-images.config.js')
+  copyConfig(resolvedConfigPath)
+  // eslint-disable-next-line no-console
+  console.log(
+    colors.magenta(
+      `info - [next-export-optimize-images]: ${
+        fs.existsSync(resolvedConfigPath)
+          ? `Configuration loaded from \`${resolvedConfigPath}\`.`
+          : `Configuration was not loaded. (This is optional.)`
+      }`
+    )
+  )
 
   const customConfig: NextConfig = {
     images: {
