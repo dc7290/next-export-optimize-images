@@ -78,7 +78,7 @@
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "16.11.48",
     "@types/react": "18.0.17",
-    "@types/sharp": "0.30.4",
+    "@types/sharp": "0.30.5",
     "@typescript-eslint/eslint-plugin": "5.32.0",
     "@typescript-eslint/parser": "5.32.0",
     "benchmark": "2.1.4",
