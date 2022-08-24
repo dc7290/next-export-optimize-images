@@ -208,7 +208,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
     if (invalidFormatAssets.size !== 0) {
       // eslint-disable-next-line no-console
       console.log(
-        `\nThe following images is in a non-optimized format and a simple copy was applied.\n`,
+        `\nThe following images are in a non-optimized format and a simple copy was applied.\n`,
         Array.from(invalidFormatAssets).join('\n')
       )
     }
