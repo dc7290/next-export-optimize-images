@@ -22,6 +22,13 @@ export type Config = {
    *
    * @type {string}
    */
+  externalImageDir?: string
+  /**
+   * You can customize the directory to output downloaded external images.
+   * The default is '_next/static/media'
+   *
+   * @type {string}
+   */
   basePath?: string
   /**
    * You can customize the generation of file names.

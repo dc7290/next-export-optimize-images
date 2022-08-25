@@ -53,6 +53,9 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   const outputDir = `/${
     config.imageDir ? config.imageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/chunks/images'
   }`
+  const externalOutputDir = `/${
+    config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
+  }`
   const filename =
     config.filenameGenerator !== undefined
       ? config.filenameGenerator({ path: pathWithoutName, name, width, quality: quality || 75, extension })
@@ -65,7 +68,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     const path = require('path') as typeof import('path')
 
     if (src.startsWith('http')) {
-      json.src = `/_next/static/media/${src
+      json.src = `/${externalOutputDir}/${src
         .replace(/^https?:\/\//, '')
         .split('/')
         .slice(1)
