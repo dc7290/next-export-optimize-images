@@ -227,5 +227,13 @@ export const run: Run = ({ customManifestJsonPath, noCache = false }) => {
   const config = getConfig()
   const manifestJsonPath = path.resolve(cwd, customManifestJsonPath ?? '.next/custom-optimized-images.nd.json')
 
-  optimizeImages({ manifestJsonPath, noCache, config })
+  if (fs.existsSync(manifestJsonPath)) {
+    optimizeImages({ manifestJsonPath, noCache, config })
+  } else {
+    // eslint-disable-next-line no-console
+    console.log(
+      colors.bold.magenta(`\nNo images were found to optimize.
+(Maybe you never used the image component.)`)
+    )
+  }
 }
