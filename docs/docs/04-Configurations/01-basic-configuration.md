@@ -80,6 +80,52 @@ const config = {
 + 'images-sample.1920.75.png'
 ```
 
+### `sourceImageParser`
+
+- Type: function
+- Argument: Object
+- Return value: string
+
+The argument for this function will be an object of type
+
+```typescript
+{
+  src: string // The source images 'src' attribute
+  defaultParser: (src: string) => ParsedImageInfo // A function which evaluates the image name, path name (without image name appended and starting w/ '/'), and extension
+}
+```
+
+This might be useful if any of your images have URLs that do not follow the standard `https://somehost.com/imagename.extension` pattern.
+
+For example: Maybe your source image's src attribute is more like `https://somedigitalassetmangementhost.com?fileId=1234-xyze&extension=jpg`, so you might add the following to your config:
+
+**NOTE**
+This gets run before filenameGenerator, so the arguments passed into filenameGenerator would be affected by sourceImageParser configuration. (path, name, and extension)
+
+```typescript
+// export-images.config.js
+/**
+ * @type {import('../../src').Config}
+ */
+const config = {
+  sourceImageParser: ({ src, defaultParser }) => {
+    const regExpMatches = src.match(/^.*\?fileId=(.*)&extension=(\w*).*$/);
+    if (!regExpMatches) {
+      return defaultParser(src);
+    }
+
+    // if the src has fileId and extension in its route then it 
+    // must be a non-standard image, so parse it differently for all intents
+    // and purposes
+    return {
+      pathWithoutName: "", // maybe there is no path, or you can supply an arbitrary one for filename processing
+      name: regExpMatches[1] || "",
+      extension: regExpMatches[2] || "",
+    };
+  },
+}
+```
+
 #### ❗️Attention
 
 When making this setting, make sure that the file names (including the path part) of different images do not cover each other.  
