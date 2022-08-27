@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.6.2](https://github.com/dc7290/next-export-optimize-images/compare/v1.6.1...v1.6.2) (2022-08-27)
+
+
+### Bug Fixes
+
+* 🐛 Processing when the image component is not used ([a3dd7b3](https://github.com/dc7290/next-export-optimize-images/commit/a3dd7b3cdae36620ccbbfea2a4c0f63261005720)), closes [#195](https://github.com/dc7290/next-export-optimize-images/issues/195)
+
 ## [1.6.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.6.0...v1.6.1) (2022-08-24)
 
 
