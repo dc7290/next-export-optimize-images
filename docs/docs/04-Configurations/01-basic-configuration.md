@@ -80,6 +80,11 @@ const config = {
 + 'images-sample.1920.75.png'
 ```
 
+#### ❗️Attention
+
+When making this setting, make sure that the file names (including the path part) of different images do not cover each other.  
+Specifically, include the name, width, quality, and extension in the return value. If path is not included, all src's should be specified with `import` or `require` so that they can be distinguished by their hash value even if they have the same filename.
+
 ### `sourceImageParser`
 
 - Type: function
@@ -125,11 +130,6 @@ const config = {
   },
 }
 ```
-
-#### ❗️Attention
-
-When making this setting, make sure that the file names (including the path part) of different images do not cover each other.  
-Specifically, include the name, width, quality, and extension in the return value. If path is not included, all src's should be specified with `import` or `require` so that they can be distinguished by their hash value even if they have the same filename.
 
 ### `sharpOptions`
 
