@@ -4,9 +4,35 @@ import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
-import getConfig from './utils/getConfig'
+import getConfig, { ParsedImageInfo } from './utils/getConfig'
 
 const config = getConfig()
+
+const defaultImageParser: (src: string) => ParsedImageInfo = (src: string) => {
+  const path = src.split(/\.([^.]*$)/)[0]
+  const extension = src.split(/\.([^.]*$)/)[1]
+
+  if (!path || !extension) {
+    throw new Error(`Invalid path or no file extension: ${src}`)
+  }
+
+  let pathWithoutName = path.split('/').slice(0, -1).join('/')
+  const name = path.split('/').slice(-1).toString()
+
+  if (src.startsWith('http')) {
+    pathWithoutName = pathWithoutName
+      .replace(/^https?:\/\//, '')
+      .split('/')
+      .slice(1)
+      .join('/')
+  }
+
+  return {
+    pathWithoutName,
+    name,
+    extension,
+  }
+}
 
 const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   if (process.env.NODE_ENV === 'development') {
@@ -21,11 +47,12 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     src = _src.replace(config.basePath, '')
   }
 
-  const path = src.split(/\.([^.]*$)/)[0]
-  let extension = src.split(/\.([^.]*$)/)[1]
-  if (!path || !extension) {
-    throw new Error(`Invalid path or no file extension: ${src}`)
-  }
+  const parsedImageInformation = config.sourceImageParser
+    ? config.sourceImageParser({ src, defaultParser: defaultImageParser })
+    : defaultImageParser(src)
+
+  let { extension } = parsedImageInformation
+  const { pathWithoutName, name } = parsedImageInformation
 
   if (config.convertFormat !== undefined) {
     const convertArray = config.convertFormat.find(([beforeConvert]) => beforeConvert === extension)
@@ -37,17 +64,6 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
 
       extension = convertArray[1]
     }
-  }
-
-  let pathWithoutName = path.split('/').slice(0, -1).join('/')
-  const name = path.split('/').slice(-1).toString()
-
-  if (src.startsWith('http')) {
-    pathWithoutName = pathWithoutName
-      .replace(/^https?:\/\//, '')
-      .split('/')
-      .slice(1)
-      .join('/')
   }
 
   const outputDir = `/${

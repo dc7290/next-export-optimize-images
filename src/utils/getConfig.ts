@@ -2,6 +2,12 @@ import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
 
 import type { AllowedFormat } from '../cli/utils/formatValidate'
 
+export type ParsedImageInfo = {
+  pathWithoutName: string
+  name: string
+  extension: string
+}
+
 export type Config = {
   /**
    * Specify if you are customizing the default output directory, such as next export -o outDir.
@@ -57,6 +63,16 @@ export type Config = {
    * @type {[beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]}
    */
   convertFormat?: [beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]
+
+  /**
+   * Allows you to optionally override the parsed image information before optimized images.
+   *
+   * @type {({ src: string, default: (src: string) => object ) }) => object}
+   */
+  sourceImageParser?: (determinerProps: {
+    src: string
+    defaultParser: (src: string) => ParsedImageInfo
+  }) => ParsedImageInfo
 }
 
 const getConfig = (): Config => {
