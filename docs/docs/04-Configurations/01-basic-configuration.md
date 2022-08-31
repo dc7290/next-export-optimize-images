@@ -89,14 +89,24 @@ Specifically, include the name, width, quality, and extension in the return valu
 
 - Type: function
 - Argument: Object
-- Return value: string
+- Return value: ParsedImageInfo
 
-The argument for this function will be an object of type
+The argument for this function will be an object with the following shape:
 
 ```typescript
 {
   src: string // The source images 'src' attribute
   defaultParser: (src: string) => ParsedImageInfo // A function which evaluates the image name, path name (without image name appended and starting w/ '/'), and extension
+}
+```
+
+The return value for this function will be an object with the following shape (ParsedImageInfo type):
+
+```typescript
+{
+  pathWithoutName: string // The image path (not including the image name)
+  name: string // The image name
+  extension: string // The image extension
 }
 ```
 
@@ -110,7 +120,7 @@ This gets run before filenameGenerator, so the arguments passed into filenameGen
 ```typescript
 // export-images.config.js
 /**
- * @type {import('../../src').Config}
+ * @type {import('next-export-optimize-images').Config}
  */
 const config = {
   sourceImageParser: ({ src, defaultParser }) => {

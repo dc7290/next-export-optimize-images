@@ -4,11 +4,11 @@ import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
-import getConfig from './utils/getConfig'
+import getConfig, { ParsedImageInfo } from './utils/getConfig'
 
 const config = getConfig()
 
-const defaultImageParser = (src: string) => {
+const defaultImageParser: (src: string) => ParsedImageInfo = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
   const extension = src.split(/\.([^.]*$)/)[1]
 
