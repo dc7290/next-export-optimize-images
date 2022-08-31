@@ -6,23 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
-## [1.7.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.6.2...v1.7.0) (2022-08-31)
-
-
-### Features
-
-* 🚀 Add sourceImageParser config option ([9b1fbd9](https://github.com/dc7290/next-export-optimize-images/commit/9b1fbd9ea698b927c2675cc3c6c99bb88135da9c))
-
-
-### Bug Fixes
-
-* 🐛 Documentation update ([21e1b8c](https://github.com/dc7290/next-export-optimize-images/commit/21e1b8c8e46ba768e70a7a89de0662c431660d81))
-
-
-### Continuous Integration
-
-* 🎡 Install `ts-node` ([2f3ef3b](https://github.com/dc7290/next-export-optimize-images/commit/2f3ef3ba68f72070badb7cc1c66980a97a23a7cf))
-
 ## [1.6.2](https://github.com/dc7290/next-export-optimize-images/compare/v1.6.1...v1.6.2) (2022-08-27)
 
 
