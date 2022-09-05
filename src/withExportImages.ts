@@ -48,6 +48,25 @@ const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextC
 
       config.resolve.fallback = { ...config.resolve.fallback, fs: false }
 
+      const nextImageLoader = config.module.rules.find(
+        ({ loader }: { loader?: string }) => loader === 'next-image-loader'
+      )
+
+      config.module.rules = [
+        ...config.module.rules.filter(({ loader }: { loader?: string }) => loader !== 'next-image-loader'),
+        {
+          ...nextImageLoader,
+          loader: undefined,
+          options: undefined,
+          use: [
+            { loader: nextImageLoader.loader, options: nextImageLoader.options },
+            { loader: 'next-export-optimize-images-loader' },
+          ],
+        },
+      ]
+
+      config.resolveLoader.alias['next-export-optimize-images-loader'] = path.join(__dirname, 'loader')
+
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config
     },
   }
