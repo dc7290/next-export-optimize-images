@@ -58,7 +58,7 @@
     "fs-extra": "^10.1.0",
     "got": "^11.8.5",
     "lodash.uniqwith": "^4.5.0",
-    "sharp": "^0.30.7"
+    "sharp": "^0.31.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
