@@ -53,7 +53,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   const outputDir = `/${
     config.imageDir ? config.imageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/chunks/images'
   }`
-  const externalOutputDir = `/${
+  const externalOutputDir = `${
     config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
   }`
   const filename =
