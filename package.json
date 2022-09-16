@@ -76,7 +76,7 @@
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.5.2",
     "@types/lodash.uniqwith": "4.5.7",
-    "@types/node": "16.11.58",
+    "@types/node": "16.11.59",
     "@types/react": "18.0.19",
     "@types/sharp": "0.30.5",
     "@typescript-eslint/eslint-plugin": "5.36.2",
