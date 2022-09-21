@@ -42,6 +42,15 @@ e.g. If `'_optimized'` is set.
 + out/_optimized/filename.png
 ```
 
+### `externalImageDir`
+
+- Type: string
+- Default: '\_next/static/media'
+
+You can customize the directory to output downloaded external images.
+The default is `'_next/static/media'`.
+
+
 ### `basePath`
 
 - Type: string
