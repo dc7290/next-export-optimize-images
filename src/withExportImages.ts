@@ -10,9 +10,9 @@ type Options = {
 }
 
 const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextConfig => {
-  if (nextConfig.experimental?.images?.unoptimized) {
+  if (nextConfig.images?.unoptimized) {
     throw Error(
-      'The `experimental.images.unoptimized` is not supported. If you use this option, consider not using `next-export-optimize-images`.'
+      'The `images.unoptimized` is not supported. If you use this option, consider not using `next-export-optimize-images`.'
     )
   }
 
