@@ -43,6 +43,7 @@ const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextC
         ]
       } else {
         config.resolve.alias['next/image'] = 'next-export-optimize-images/dist/image'
+        config.resolve.alias['next/future/image'] = 'next-export-optimize-images/dist/future-image'
         delete config.resolve.alias['next']
       }
 
