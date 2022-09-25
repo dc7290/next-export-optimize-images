@@ -58,6 +58,13 @@ module.exports = withPlugins(
 <Image src={require('./img.png')} alt="" />
 ```
 
+Alternatively, you can use `next/future/image`.
+
+```jsx
+import Image from 'next/future/image'
+;<Image src="/images/img.png" width={1920} height={1280} alt="" />
+```
+
 ## Local checks
 
 1. Run `yarn export`.
