@@ -10,9 +10,9 @@ type Options = {
 }
 
 const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextConfig => {
-  if (nextConfig.experimental?.images?.unoptimized) {
+  if (nextConfig.images?.unoptimized) {
     throw Error(
-      'The `experimental.images.unoptimized` is not supported. If you use this option, consider not using `next-export-optimize-images`.'
+      'The `images.unoptimized` is not supported. If you use this option, consider not using `next-export-optimize-images`.'
     )
   }
 
@@ -43,6 +43,7 @@ const withExportImages = (nextConfig: NextConfig = {}, options?: Options): NextC
         ]
       } else {
         config.resolve.alias['next/image'] = 'next-export-optimize-images/dist/image'
+        config.resolve.alias['next/future/image'] = 'next-export-optimize-images/dist/future-image'
         delete config.resolve.alias['next']
       }
 

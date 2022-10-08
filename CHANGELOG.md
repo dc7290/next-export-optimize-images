@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.9.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.8.0...v1.9.0) (2022-09-25)
+
+
+### Features
+
+* 🚀 Support `next/future/image` ([7efc251](https://github.com/dc7290/next-export-optimize-images/commit/7efc251e0000493e4c5539983b79ed1eb0d840e6)), closes [#255](https://github.com/dc7290/next-export-optimize-images/issues/255)
+
+## [1.8.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.7.0...v1.8.0) (2022-09-23)
+
+
+### Features
+
+* 🚀 Introduced new 'externalOutputDir' config flag ([e585af9](https://github.com/dc7290/next-export-optimize-images/commit/e585af9d115d5591bf3cdce1257f6be709dd9bb5))
+
+
+### Bug Fixes
+
+* 🐛 delete experimental ([b38cd9e](https://github.com/dc7290/next-export-optimize-images/commit/b38cd9e4cd3bf926ec1ebfacdc2e6cf808021276))
+* 🐛 Remov unneeded leading slash from externalOutputDir flag ([e9de680](https://github.com/dc7290/next-export-optimize-images/commit/e9de680527156e10c63c9f4976737a3e074cc0f6))
+* **deps:** update dependency sharp to ^0.31.0 ([ef3ed84](https://github.com/dc7290/next-export-optimize-images/commit/ef3ed84bb46925432cb6ed9c5c9c1bd185b841cf))
+
 ## [1.7.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.6.2...v1.7.0) (2022-08-31)
 
 
