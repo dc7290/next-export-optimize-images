@@ -89,7 +89,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "26.9.0",
-    "eslint-plugin-jest-dom": "^4.0.2",
+    "eslint-plugin-jest-dom": "^4.0.3",
     "eslint-plugin-testing-library": "5.9.1",
     "git-cz": "4.9.0",
     "husky": "8.0.1",
