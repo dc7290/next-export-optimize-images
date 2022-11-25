@@ -61,8 +61,8 @@
     "sharp": "^0.31.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.2.0",
-    "@commitlint/config-conventional": "17.2.0",
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@swc/cli": "0.1.57",
