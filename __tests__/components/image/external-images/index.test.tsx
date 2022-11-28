@@ -37,7 +37,7 @@ describe('External images', () => {
         externalUrl: 'https://next-export-optimize-images.vercel.app/sub-path/og.png',
         output: '/_next/static/chunks/images/sub-path/og_1920_75.webp',
         quality: 75,
-        src: '/_next/static/media/sub-path/og.png',
+        src: '/_next/static/media/8fcb025d6e036ec05907f2367ee713067a0c406c.png',
         width: 1920,
       },
       {
@@ -45,7 +45,7 @@ describe('External images', () => {
         externalUrl: 'https://next-export-optimize-images.vercel.app/sub-path/og.png',
         output: '/_next/static/chunks/images/sub-path/og_3840_75.webp',
         quality: 75,
-        src: '/_next/static/media/sub-path/og.png',
+        src: '/_next/static/media/8fcb025d6e036ec05907f2367ee713067a0c406c.png',
         width: 3840,
       },
     ])
