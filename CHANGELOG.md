@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.9.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.0...v1.9.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* 🐛 ENAMETOOLONG when using long filenames ([eae8c74](https://github.com/dc7290/next-export-optimize-images/commit/eae8c74b1d0a29cfa66fdbcf55f5a0bb838bdea1)), closes [#309](https://github.com/dc7290/next-export-optimize-images/issues/309)
+* **deps:** update dependency sharp to ^0.31.1 ([eaa3506](https://github.com/dc7290/next-export-optimize-images/commit/eaa350636edda88022918df661385c80c531c966))
+* **deps:** update dependency sharp to ^0.31.2 ([12f0a80](https://github.com/dc7290/next-export-optimize-images/commit/12f0a80efd85efdccef1866f0b8b554139fd2ebb))
+
 ## [1.9.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.8.0...v1.9.0) (2022-09-25)
 
 
