@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [1.9.2](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.1...v1.9.2) (2022-12-11)
+
+
+### Bug Fixes
+
+* 🐛 Removed crypto dependency from client bundle ([ca4ea71](https://github.com/dc7290/next-export-optimize-images/commit/ca4ea71a28f43942971153c124cdac72799806d8)), closes [#332](https://github.com/dc7290/next-export-optimize-images/issues/332)
+* **deps:** update dependency got to ^11.8.6 ([3af53e8](https://github.com/dc7290/next-export-optimize-images/commit/3af53e8b342829cdc178f50ade120a374d0ad801))
+
 ## [1.9.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.0...v1.9.1) (2022-11-28)
 
 
