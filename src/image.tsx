@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { createHash } from 'crypto'
-
 import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
 import React from 'react'
 
@@ -9,6 +7,16 @@ import formatValidate from './cli/utils/formatValidate'
 import getConfig, { ParsedImageInfo } from './utils/getConfig'
 
 const config = getConfig()
+
+function hashCode(src: string) {
+  let hash = 0
+  for (let i = 0; i < src.length; i += 1) {
+    const chr = src.charCodeAt(i)
+    hash = (hash << 5) - hash + chr
+    hash |= 0 // Convert to 32bit integer
+  }
+  return `${hash}`
+}
 
 const defaultImageParser: (src: string) => ParsedImageInfo = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
@@ -86,15 +94,13 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     const path = require('path') as typeof import('path')
 
     if (src.startsWith('http')) {
-      json.src = `/${externalOutputDir}/${createHash('sha1')
-        .update(
-          src
-            .replace(/^https?:\/\//, '')
-            .split('/')
-            .slice(1)
-            .join('/')
-        )
-        .digest('hex')}.${originalExtension}`
+      json.src = `/${externalOutputDir}/${hashCode(
+        src
+          .replace(/^https?:\/\//, '')
+          .split('/')
+          .slice(1)
+          .join('/')
+      )}.${originalExtension}`
 
       json.externalUrl = src
     }
