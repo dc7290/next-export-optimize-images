@@ -27,6 +27,7 @@ describe('External images', () => {
         width={1920}
         height={1280}
         priority
+        alt=""
       />
     )
 
@@ -58,6 +59,7 @@ describe('External images', () => {
         width={1920}
         height={1280}
         priority
+        alt=""
       />
     )
 
