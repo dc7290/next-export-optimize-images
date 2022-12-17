@@ -1,16 +1,26 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import Image, { ImageLoader, ImageProps } from 'next/dist/client/future/image'
+import Image, { ImageLoader, ImageProps } from 'next/dist/client/legacy/image'
 import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
-import getConfig, { ParsedImageInfo } from './utils/getConfig'
+import getConfig, { DefaultImageParser } from './utils/getConfig'
 
 const config = getConfig()
 
-const defaultImageParser: (src: string) => ParsedImageInfo = (src: string) => {
+function hashCode(src: string) {
+  let hash = 0
+  for (let i = 0; i < src.length; i += 1) {
+    const chr = src.charCodeAt(i)
+    hash = (hash << 5) - hash + chr
+    hash |= 0 // Convert to 32bit integer
+  }
+  return `${hash}`
+}
+
+const defaultImageParser: DefaultImageParser = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
-  const extension = src.split(/\.([^.]*$)/)[1]
+  const extension = (src.split(/\.([^.]*$)/)[1] || '').split('?')[0]
 
   if (!path || !extension) {
     throw new Error(`Invalid path or no file extension: ${src}`)
@@ -52,7 +62,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     : defaultImageParser(src)
 
   let { extension } = parsedImageInformation
-  const { pathWithoutName, name } = parsedImageInformation
+  const { pathWithoutName, name, extension: originalExtension } = parsedImageInformation
 
   if (config.convertFormat !== undefined) {
     const convertArray = config.convertFormat.find(([beforeConvert]) => beforeConvert === extension)
@@ -84,11 +94,14 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
     const path = require('path') as typeof import('path')
 
     if (src.startsWith('http')) {
-      json.src = `/${externalOutputDir}/${src
-        .replace(/^https?:\/\//, '')
-        .split('/')
-        .slice(1)
-        .join('/')}`
+      json.src = `/${externalOutputDir}/${hashCode(
+        src
+          .replace(/^https?:\/\//, '')
+          .split('/')
+          .slice(1)
+          .join('/')
+      )}.${originalExtension}`
+
       json.externalUrl = src
     }
 
@@ -116,5 +129,5 @@ const CustomImage = (props: ImageProps) => {
   )
 }
 
-export * from 'next/dist/client/future/image'
+export * from 'next/dist/client/legacy/image'
 export default CustomImage

@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react'
+import { getImageBlurSvg } from 'next/dist/shared/lib/image-blur-svg'
 import React from 'react'
 
 import CustomImage from '../../../src/image'
@@ -20,10 +21,20 @@ const staticRequireSrc = {
   default: staticImageData,
 }
 
+const getBackgroundImageStyle = (src: string, width: number, height: number) => {
+  return {
+    backgroundImage: `url("data:image/svg+xml;charset=utf-8,${getImageBlurSvg({
+      widthInt: width,
+      heightInt: height,
+      blurDataURL: src,
+    })}")`,
+  }
+}
+
 describe('CustomImage', () => {
   describe('String src', () => {
     test('Src and srcset are set correctly', () => {
-      render(<CustomImage src="/img.png" width={1920} height={1280} priority />)
+      render(<CustomImage src="/img.png" width={1920} height={1280} priority alt="" />)
 
       expect(screen.getByRole('img')).toHaveAttribute('src', '/_next/static/chunks/images/img_3840_75.png')
       expect(screen.getByRole('img')).toHaveAttribute(
@@ -33,15 +44,17 @@ describe('CustomImage', () => {
     })
 
     test('BlurDataURL is set correctly', () => {
-      render(<CustomImage src="/img.png" width={1920} height={1280} placeholder="blur" />)
+      render(<CustomImage src="/img.png" width={1920} height={1280} placeholder="blur" alt="" />)
 
-      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: 'url(/_next/static/chunks/images/img_8_10.png)' })
+      expect(screen.getByRole('img')).toHaveStyle({
+        backgroundImage: getBackgroundImageStyle('/img.png', 1920, 1280),
+      })
     })
   })
 
   describe('StaticRequire src', () => {
     test('Src and srcset are set correctly', () => {
-      render(<CustomImage src={staticRequireSrc} priority />)
+      render(<CustomImage src={staticRequireSrc} priority alt="" />)
 
       expect(screen.getByRole('img')).toHaveAttribute(
         'src',
@@ -54,15 +67,15 @@ describe('CustomImage', () => {
     })
 
     test('BlurDataURL is set correctly', () => {
-      render(<CustomImage src={staticRequireSrc} placeholder="blur" />)
+      render(<CustomImage src={staticRequireSrc} placeholder="blur" alt="" />)
 
-      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: `url(${blurDataURL})` })
+      expect(screen.getByRole('img')).toHaveStyle(getBackgroundImageStyle(blurDataURL, 1920, 1280))
     })
   })
 
   describe('StaticImageData src', () => {
     test('Src and srcset are set correctly', () => {
-      render(<CustomImage src={staticImageData} priority />)
+      render(<CustomImage src={staticImageData} priority alt="" />)
 
       expect(screen.getByRole('img')).toHaveAttribute(
         'src',
@@ -75,9 +88,9 @@ describe('CustomImage', () => {
     })
 
     test('BlurDataURL is set correctly', () => {
-      render(<CustomImage src={staticImageData} placeholder="blur" />)
+      render(<CustomImage src={staticImageData} placeholder="blur" alt="" />)
 
-      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: `url(${blurDataURL})` })
+      expect(screen.getByRole('img')).toHaveStyle(getBackgroundImageStyle(blurDataURL, 1920, 1280))
     })
   })
 
@@ -88,6 +101,7 @@ describe('CustomImage', () => {
           src={staticRequireSrc}
           loader={({ src, width, quality }) => `${src}?w=${width}&q=${quality || 75}`}
           priority
+          alt=""
         />
       )
 
@@ -95,9 +109,9 @@ describe('CustomImage', () => {
     })
 
     test('BlurDataURL is set correctly', () => {
-      render(<CustomImage src={staticRequireSrc} blurDataURL="customBlurDataURL" placeholder="blur" />)
+      render(<CustomImage src={staticRequireSrc} blurDataURL="customBlurDataURL" placeholder="blur" alt="" />)
 
-      expect(screen.getByRole('img')).toHaveStyle({ backgroundImage: 'url(customBlurDataURL)' })
+      expect(screen.getByRole('img')).toHaveStyle(getBackgroundImageStyle('customBlurDataURL', 1920, 1280))
     })
   })
 })

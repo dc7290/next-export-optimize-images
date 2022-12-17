@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import FutureImage from '../../../dist/future-image'
 import Image from '../../../dist/image'
+import LegacyImage from '../../../dist/legacy-image'
 import clientOnlySrc from '../images/client-only.png'
-import futureImgSrc from '../images/future-img.png'
 import imgSrc from '../images/img.png'
+import legacyImgSrc from '../images/legacy-img.png'
 
 const IndexPage = () => {
   const [isClient, setIsClient] = useState(false)
@@ -17,26 +17,32 @@ const IndexPage = () => {
       {/* next/image */}
       <div>
         {/* Imported image */}
-        <Image src={imgSrc} />
+        <Image src={imgSrc} alt="" />
 
         {/* Static image */}
-        <Image src="/images/img.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" />
+        <Image src="/images/img.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" alt="" />
 
         {/* Invalid format image */}
-        <Image src="/images/img.svg" width={1920} height={1280} />
+        <Image src="/images/img.svg" width={1920} height={1280} alt="" />
 
         {/* External image */}
-        <Image src="https://next-export-optimize-images.vercel.app/og.png" width={1920} height={1280} />
+        <Image src="https://next-export-optimize-images.vercel.app/og.png" width={1920} height={1280} alt="" />
 
-        {isClient && <Image src={clientOnlySrc} />}
+        {isClient && <Image src={clientOnlySrc} alt="" />}
       </div>
-      {/* next/future/image */}
+      {/* next/legacy/image */}
       <div>
         {/* Imported image */}
-        <FutureImage src={futureImgSrc} />
+        <LegacyImage src={legacyImgSrc} alt="" />
 
         {/* Static image */}
-        <FutureImage src="/images/future-img.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" />
+        <LegacyImage
+          src="/images/legacy-img.png"
+          width={1920}
+          height={1280}
+          sizes="(min-width: 768px) 720px, 85vw"
+          alt=""
+        />
       </div>
     </>
   )

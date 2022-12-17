@@ -10,7 +10,7 @@ import CustomImage from '../../../../src/image'
 
 describe('Apply config', () => {
   test('Set `imageDir` and `filenameGenerator` and `convertFormat` and `sourceImageParser`', () => {
-    render(<CustomImage src="/images/img&ext=png" width={1920} height={1280} priority />)
+    render(<CustomImage src="/images/img&ext=png" width={1920} height={1280} priority alt="" />)
 
     expect(screen.getByRole('img')).toHaveAttribute('src', '/base-path/_custom-optimize/images-img.3840.75.webp')
   })

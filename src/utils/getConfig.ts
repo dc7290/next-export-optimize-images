@@ -2,11 +2,13 @@ import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
 
 import type { AllowedFormat } from '../cli/utils/formatValidate'
 
-export type ParsedImageInfo = {
+type ParsedImageInfo = {
   pathWithoutName: string
   name: string
   extension: string
 }
+export type DefaultImageParser = (src: string) => ParsedImageInfo
+type SourceImageParser = (determinerProps: { src: string; defaultParser: DefaultImageParser }) => ParsedImageInfo
 
 export type Config = {
   /**
@@ -28,14 +30,14 @@ export type Config = {
    *
    * @type {string}
    */
-  externalImageDir?: string
+  basePath?: string
   /**
    * You can customize the directory to output downloaded external images.
    * The default is '_next/static/media'
    *
    * @type {string}
    */
-  basePath?: string
+  externalImageDir?: string
   /**
    * You can customize the generation of file names.
    *
@@ -74,12 +76,9 @@ export type Config = {
   /**
    * Allows you to optionally override the parsed image information before optimized images.
    *
-   * @type {({ src: string, default: (src: string) => object ) }) => object}
+   * @type {SourceImageParser}
    */
-  sourceImageParser?: (determinerProps: {
-    src: string
-    defaultParser: (src: string) => ParsedImageInfo
-  }) => ParsedImageInfo
+  sourceImageParser?: SourceImageParser
 }
 
 const getConfig = (): Config => {
