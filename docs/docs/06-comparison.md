@@ -42,12 +42,13 @@ A brief comparison with our library reveals the following characteristics for yo
 Let me list some of the disadvantages.
 
 - All options for `next/image` are not available.
-- Only strings can be specified in the src attribute.
-- Images that are not used will also be optimized. (Increased build time)
+- Remote images are not able to be optimized.
 
 Because of the above characteristics, the library is recommended for users other than those listed below.
 
-- I want to use `<ExportedImage />` instead of `<Image />`.
+- I want to develop without being conscious of the fact that it is an export, the same as when using next/image.
+- Remote images need to be optimized.
+- Want to use it as simply as possible.
 
 ## Please let me know if there are others!
 

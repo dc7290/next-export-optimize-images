@@ -52,17 +52,20 @@ module.exports = withPlugins(
 
 3. Import and use next/image as usual.
 
-```jsx
+```tsx
 <Image src="/images/img.png" width={1920} height={1280} alt="" />
 // Or import as follows
+import img from './img.png'
+<Image src={img} alt="" />
+// Or require as follows
 <Image src={require('./img.png')} alt="" />
 ```
 
-Alternatively, you can use `next/future/image`.
+Alternatively, you can use `next/legacy/image`.
 
-```jsx
-import Image from 'next/future/image'
-;<Image src="/images/img.png" width={1920} height={1280} alt="" />
+```tsx
+import Image from 'next/legacy/image'
+<Image src="/images/img.png" width={1920} height={1280} alt="" />
 ```
 
 ## Local checks
