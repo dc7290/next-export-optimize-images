@@ -4,7 +4,7 @@ import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
-import getConfig, { ParsedImageInfo } from './utils/getConfig'
+import getConfig, { DefaultImageParser } from './utils/getConfig'
 
 const config = getConfig()
 
@@ -18,7 +18,7 @@ function hashCode(src: string) {
   return `${hash}`
 }
 
-const defaultImageParser: (src: string) => ParsedImageInfo = (src: string) => {
+const defaultImageParser: DefaultImageParser = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
   const extension = (src.split(/\.([^.]*$)/)[1] || '').split('?')[0]
 
