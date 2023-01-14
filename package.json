@@ -73,7 +73,7 @@
     "@types/app-root-path": "1.2.4",
     "@types/benchmark": "2.1.2",
     "@types/cli-progress": "3.11.0",
-    "@types/fs-extra": "9.0.13",
+    "@types/fs-extra": "11.0.1",
     "@types/jest": "27.5.2",
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "18.11.18",
