@@ -53,6 +53,7 @@ export type Config = {
     width: number
     quality: number
     extension: string
+    page: string
   }) => string
   /**
    * You can set optimization options for each extension.

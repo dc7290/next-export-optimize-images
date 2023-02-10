@@ -1,10 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import Image, { ImageLoader, ImageProps } from 'next/dist/client/legacy/image'
+import Image, {
+  ImageLoaderProps as NextImageLoaderProps,
+  ImageProps as NextImageProps,
+} from 'next/dist/client/legacy/image'
 import React from 'react'
 
 import type { Manifest } from './cli/types'
 import formatValidate from './cli/utils/formatValidate'
 import getConfig, { DefaultImageParser } from './utils/getConfig'
+
+type ImageProps = NextImageProps & { 'data-page'?: string }
+type ImageLoaderProps = NextImageLoaderProps & { page: string }
+type ImageLoader = (p: ImageLoaderProps) => string
 
 const config = getConfig()
 
@@ -44,7 +51,7 @@ const defaultImageParser: DefaultImageParser = (src: string) => {
   }
 }
 
-const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
+const exportableLoader: ImageLoader = ({ src: _src, width, quality, page }) => {
   if (process.env.NODE_ENV === 'development') {
     // This doesn't bother optimizing in the dev environment. Next complains if the
     // returned URL doesn't have a width in it, so adding it as a throwaway
@@ -84,7 +91,7 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
   }`
   const filename =
     config.filenameGenerator !== undefined
-      ? config.filenameGenerator({ path: pathWithoutName, name, width, quality: quality || 75, extension })
+      ? config.filenameGenerator({ path: pathWithoutName, name, width, quality: quality || 75, extension, page })
       : `${pathWithoutName}/${name}_${width}_${quality || 75}.${extension}`
   const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
@@ -115,14 +122,17 @@ const exportableLoader: ImageLoader = ({ src: _src, width, quality }) => {
 }
 
 const CustomImage = (props: ImageProps) => {
+  const loader = props.loader || exportableLoader
+  const page = props?.['data-page'] || ''
+
   return (
     <Image
       {...props}
-      loader={props.loader || exportableLoader}
+      loader={(loaderProps) => loader({ ...loaderProps, page })}
       blurDataURL={
         props.blurDataURL ||
         (typeof props.src === 'string' && props.placeholder === 'blur' && props.loader === undefined
-          ? exportableLoader({ src: props.src, width: 8, quality: 10 })
+          ? exportableLoader({ src: props.src, width: 8, quality: 10, page })
           : '')
       }
     />
