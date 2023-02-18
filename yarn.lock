@@ -3653,10 +3653,10 @@ eslint-plugin-jest@27.2.1:
   dependencies:
     "@typescript-eslint/utils" "^5.10.0"
 
-eslint-plugin-testing-library@5.10.1:
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-5.10.1.tgz#16ef8adb74d59a4dda24db1d5e750a0ee9b79471"
-  integrity sha512-GRy87AqUi2Ij69pe0YnOXm3oGBCgnFwfIv+Hu9q/kT3jL0pX1cXA7aO+oJnvdpbJy2+riOPqGsa3iAkL888NLg==
+eslint-plugin-testing-library@5.10.2:
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-5.10.2.tgz#12f231ad9b52b6aef45c801fd00aa129a932e0c2"
+  integrity sha512-f1DmDWcz5SDM+IpCkEX0lbFqrrTs8HRsEElzDEqN/EBI0hpRj8Cns5+IVANXswE8/LeybIJqPAOQIFu2j5Y5sw==
   dependencies:
     "@typescript-eslint/utils" "^5.43.0"
 
