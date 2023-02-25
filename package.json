@@ -76,7 +76,7 @@
     "@types/fs-extra": "11.0.1",
     "@types/jest": "29.4.0",
     "@types/lodash.uniqwith": "4.5.7",
-    "@types/node": "18.13.0",
+    "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/sharp": "0.31.1",
     "@typescript-eslint/eslint-plugin": "5.51.0",
@@ -116,7 +116,7 @@
     "node": "^16.0.0 || ^18.0.0"
   },
   "volta": {
-    "node": "18.14.0",
+    "node": "18.14.2",
     "yarn": "1.22.19"
   }
 }
