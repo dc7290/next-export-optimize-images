@@ -1,4 +1,4 @@
-import { CheckCircleIcon, CubeIcon, LightningBoltIcon } from '@heroicons/react/outline'
+import { CheckCircleIcon, CubeIcon, BoltIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
 const features = [
@@ -18,7 +18,7 @@ const features = [
     name: "Using `sharp`, so it's fast.",
     description:
       'It is fast because it uses `sharp` for image optimization. This is also the approach used in Next.js, which is much faster than other image processing libraries.',
-    icon: LightningBoltIcon,
+    icon: BoltIcon,
   },
   {
     name: 'Cache prevents repeating the same optimization',
