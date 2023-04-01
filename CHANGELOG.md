@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [2.0.1](https://github.com/dc7290/next-export-optimize-images/compare/v2.0.0...v2.0.1) (2023-04-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cli-progress to ^3.12.0 ([7047e7a](https://github.com/dc7290/next-export-optimize-images/commit/7047e7ae4420981598ba5d123836903f0c951db3))
+* **deps:** update dependency fs-extra to ^11.1.1 ([b16aed9](https://github.com/dc7290/next-export-optimize-images/commit/b16aed9ed27b6725b57f0ecb87a0a626b3a6394d))
+* **deps:** update dependency sharp to ^0.31.3 ([7401a78](https://github.com/dc7290/next-export-optimize-images/commit/7401a78c48e044927e3992b548b10aecb141f6df))
+
+
+### Tests
+
+* 💍 Update snapshot-file for Jest29 ([6b2c8dc](https://github.com/dc7290/next-export-optimize-images/commit/6b2c8dc8b82e4f93a057b6239e341e845e8db0c5))
+
+
+### Documentation
+
+* ✏️ Update @heroicons/react to v2 ([9a78da2](https://github.com/dc7290/next-export-optimize-images/commit/9a78da2ca083ccd9bd2767412aead1ddc428ef6f))
+
 ## [2.0.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.2...v2.0.0) (2022-12-17)
 
 
