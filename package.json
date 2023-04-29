@@ -70,7 +70,7 @@
     "@testing-library/react": "13.4.0",
     "@testing-library/jest-dom": "5.16.5",
     "@tsconfig/strictest": "1.0.2",
-    "@types/app-root-path": "1.2.4",
+    "@types/app-root-path": "1.2.5",
     "@types/benchmark": "2.1.2",
     "@types/cli-progress": "3.11.0",
     "@types/fs-extra": "11.0.1",
