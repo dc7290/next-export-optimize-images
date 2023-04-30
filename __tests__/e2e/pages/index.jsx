@@ -28,6 +28,9 @@ const IndexPage = () => {
         {/* External image */}
         <Image src="https://next-export-optimize-images.vercel.app/og.png" width={1920} height={1280} alt="" />
 
+        {/* Animted image */}
+        <Image src="/images/animated.webp" width={400} height={400} alt="" />
+
         {isClient && <Image src={clientOnlySrc} alt="" />}
       </div>
       {/* next/legacy/image */}
