@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [2.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v2.0.1...v2.1.0) (2023-04-30)
+
+
+### Features
+
+* 🚀 Support for animated images ([09fef4a](https://github.com/dc7290/next-export-optimize-images/commit/09fef4ab003a6c59287ff593915a5973a8772267)), closes [#495](https://github.com/dc7290/next-export-optimize-images/issues/495)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to ^0.32.0 ([ba13935](https://github.com/dc7290/next-export-optimize-images/commit/ba139351d8010317db9ae22d56371cdc8718aa06))
+* **deps:** update dependency sharp to ^0.32.1 ([07cf2a4](https://github.com/dc7290/next-export-optimize-images/commit/07cf2a4ce514ce4ceacd3863f0be8689c54a84c7))
+
 ## [2.0.1](https://github.com/dc7290/next-export-optimize-images/compare/v2.0.0...v2.0.1) (2023-04-01)
 
 
