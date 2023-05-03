@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Create JSON Common 1`] = `
-Array [
-  Object {
+[
+  {
     "extension": "png",
     "output": "/_next/static/chunks/images/img_1920_75.png",
     "quality": 75,
     "src": "/img.png",
     "width": 1920,
   },
-  Object {
+  {
     "extension": "png",
     "output": "/_next/static/chunks/images/img_3840_75.png",
     "quality": 75,

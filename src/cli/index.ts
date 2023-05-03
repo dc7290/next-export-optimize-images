@@ -77,7 +77,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
         }
       }
 
-      const image = sharp(imageBuffer, { sequentialRead: true })
+      const image = sharp(imageBuffer, { sequentialRead: true, animated: true })
 
       image.rotate().resize({ width, withoutEnlargement: true })
 

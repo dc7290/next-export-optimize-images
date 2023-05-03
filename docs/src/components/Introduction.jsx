@@ -1,5 +1,5 @@
 import Link from '@docusaurus/Link'
-import { ChevronRightIcon } from '@heroicons/react/outline'
+import { ChevronRightIcon } from '@heroicons/react/24/outline'
 import React from 'react'
 
 const Introduction = () => {
@@ -15,6 +15,5 @@ const Introduction = () => {
     </div>
   )
 }
-
 
 export default Introduction

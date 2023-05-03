@@ -27,6 +27,7 @@ describe('External images', () => {
         width={1920}
         height={1280}
         priority
+        alt=""
       />
     )
 
@@ -37,7 +38,7 @@ describe('External images', () => {
         externalUrl: 'https://next-export-optimize-images.vercel.app/sub-path/og.png',
         output: '/_next/static/chunks/images/sub-path/og_1920_75.webp',
         quality: 75,
-        src: '/_next/static/media/sub-path/og.png',
+        src: '/_next/static/media/-803215824.png',
         width: 1920,
       },
       {
@@ -45,7 +46,7 @@ describe('External images', () => {
         externalUrl: 'https://next-export-optimize-images.vercel.app/sub-path/og.png',
         output: '/_next/static/chunks/images/sub-path/og_3840_75.webp',
         quality: 75,
-        src: '/_next/static/media/sub-path/og.png',
+        src: '/_next/static/media/-803215824.png',
         width: 3840,
       },
     ])
@@ -58,6 +59,7 @@ describe('External images', () => {
         width={1920}
         height={1280}
         priority
+        alt=""
       />
     )
 

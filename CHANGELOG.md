@@ -6,6 +6,66 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [2.0.1](https://github.com/dc7290/next-export-optimize-images/compare/v2.0.0...v2.0.1) (2023-04-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cli-progress to ^3.12.0 ([7047e7a](https://github.com/dc7290/next-export-optimize-images/commit/7047e7ae4420981598ba5d123836903f0c951db3))
+* **deps:** update dependency fs-extra to ^11.1.1 ([b16aed9](https://github.com/dc7290/next-export-optimize-images/commit/b16aed9ed27b6725b57f0ecb87a0a626b3a6394d))
+* **deps:** update dependency sharp to ^0.31.3 ([7401a78](https://github.com/dc7290/next-export-optimize-images/commit/7401a78c48e044927e3992b548b10aecb141f6df))
+
+
+### Tests
+
+* 💍 Update snapshot-file for Jest29 ([6b2c8dc](https://github.com/dc7290/next-export-optimize-images/commit/6b2c8dc8b82e4f93a057b6239e341e845e8db0c5))
+
+
+### Documentation
+
+* ✏️ Update @heroicons/react to v2 ([9a78da2](https://github.com/dc7290/next-export-optimize-images/commit/9a78da2ca083ccd9bd2767412aead1ddc428ef6f))
+
+## [2.0.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.2...v2.0.0) (2022-12-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* 🧨Next.js v12 and below have been dropped.
+* 🧨Node.js v14 has been dropped
+
+### Features
+
+* 🚀 Node.js minimum version to 16 ([ac0d7f9](https://github.com/dc7290/next-export-optimize-images/commit/ac0d7f982f6250fc86dba88ae91d38ac00b4ce4d))
+* 🚀 Support for Next.js v13 ([ff5a2e2](https://github.com/dc7290/next-export-optimize-images/commit/ff5a2e21fe17932668ca065e04fa3a7eae29c16e))
+
+
+### Bug Fixes
+
+* 🐛 Fix Config type ([7448857](https://github.com/dc7290/next-export-optimize-images/commit/7448857223a4f2b9da35b519b33b64a069ab446c))
+* **deps:** update dependency fs-extra to v11 ([8285c8f](https://github.com/dc7290/next-export-optimize-images/commit/8285c8f9c2c3fbd2754cc773fe37643286a04e57))
+
+
+### Documentation
+
+* ✏️ Support for Next.js v13 ([51a0ac9](https://github.com/dc7290/next-export-optimize-images/commit/51a0ac96cad53f2678902610fd37c2de4ca76911))
+
+## [1.9.2](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.1...v1.9.2) (2022-12-11)
+
+
+### Bug Fixes
+
+* 🐛 Removed crypto dependency from client bundle ([ca4ea71](https://github.com/dc7290/next-export-optimize-images/commit/ca4ea71a28f43942971153c124cdac72799806d8)), closes [#332](https://github.com/dc7290/next-export-optimize-images/issues/332)
+* **deps:** update dependency got to ^11.8.6 ([3af53e8](https://github.com/dc7290/next-export-optimize-images/commit/3af53e8b342829cdc178f50ade120a374d0ad801))
+
+## [1.9.1](https://github.com/dc7290/next-export-optimize-images/compare/v1.9.0...v1.9.1) (2022-11-28)
+
+
+### Bug Fixes
+
+* 🐛 ENAMETOOLONG when using long filenames ([eae8c74](https://github.com/dc7290/next-export-optimize-images/commit/eae8c74b1d0a29cfa66fdbcf55f5a0bb838bdea1)), closes [#309](https://github.com/dc7290/next-export-optimize-images/issues/309)
+* **deps:** update dependency sharp to ^0.31.1 ([eaa3506](https://github.com/dc7290/next-export-optimize-images/commit/eaa350636edda88022918df661385c80c531c966))
+* **deps:** update dependency sharp to ^0.31.2 ([12f0a80](https://github.com/dc7290/next-export-optimize-images/commit/12f0a80efd85efdccef1866f0b8b554139fd2ebb))
+
 ## [1.9.0](https://github.com/dc7290/next-export-optimize-images/compare/v1.8.0...v1.9.0) (2022-09-25)
 
 

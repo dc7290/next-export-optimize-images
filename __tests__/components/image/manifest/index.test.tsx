@@ -23,7 +23,7 @@ describe('Create JSON', () => {
   test('Common', () => {
     render(
       <>
-        <CustomImage src="/img.png" width={1920} height={1280} priority />
+        <CustomImage src="/img.png" width={1920} height={1280} priority alt="" />
       </>
     )
 
