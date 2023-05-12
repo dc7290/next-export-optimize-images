@@ -28,7 +28,7 @@
   "devDependencies": {
     "@docusaurus/core": "2.4.0",
     "@docusaurus/preset-classic": "2.4.0",
-    "@heroicons/react": "2.0.17",
+    "@heroicons/react": "2.0.18",
     "@mdx-js/react": "1.6.22",
     "autoprefixer": "10.4.14",
     "clsx": "1.2.1",
