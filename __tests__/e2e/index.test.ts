@@ -1,40 +1,31 @@
 import path from 'path'
 
 import fs from 'fs-extra'
+import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 
 const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'out/_next/static/chunks/images', filename))
 
 const files = [
   // next/image
-  '_next/static/media/img.8a5ad2fe_1920_75.webp',
-  '_next/static/media/img.8a5ad2fe_3840_75.webp',
-  'images/img_640_75.webp',
-  'images/img_750_75.webp',
-  'images/img_828_75.webp',
-  'images/img_1080_75.webp',
-  'images/img_1200_75.webp',
-  'images/img_1920_75.webp',
-  'images/img_2048_75.webp',
-  'images/img_3840_75.webp',
-  'images/img_1920_75.svg',
-  'images/img_3840_75.svg',
-  'og_1920_75.webp',
-  'og_3840_75.webp',
+  '_next/static/media/img.8a5ad2fe_[width].webp',
+  'images/img_[width].webp',
+  'images/img_[width].svg',
+  'og_[width].webp',
+  'images/animated_[width].webp',
+  '_next/static/media/client-only.8a5ad2fe_[width].webp',
   // next/legacy/image
-  '_next/static/media/legacy-img.8a5ad2fe_1920_75.webp',
-  '_next/static/media/legacy-img.8a5ad2fe_3840_75.webp',
-  'images/legacy-img_640_75.webp',
-  'images/legacy-img_750_75.webp',
-  'images/legacy-img_828_75.webp',
-  'images/legacy-img_1080_75.webp',
-  'images/legacy-img_1200_75.webp',
-  'images/legacy-img_1920_75.webp',
-  'images/legacy-img_2048_75.webp',
-  'images/legacy-img_3840_75.webp',
+  '_next/static/media/legacy-img.8a5ad2fe_[width].webp',
+  'images/legacy-img_[width].webp',
 ]
 
 describe('`next build && next export && next-export-optimize-images` is executed correctly', () => {
-  test('Images are being generated.', () => {
-    expect(files.every((file) => exist(file))).toBeTruthy()
+  test('Images are being generated.', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const customConfig = require('./next.config.js')
+    const configImages = { ...imageConfigDefault, ...customConfig.images }
+    const allSizes = [...configImages.imageSizes, ...configImages.deviceSizes]
+    allSizes.forEach((size) => {
+      expect(files.every((file) => exist(file.replace('[width]', size.toString())))).toBeTruthy()
+    })
   })
 })

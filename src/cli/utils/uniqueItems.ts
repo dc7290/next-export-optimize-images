@@ -1,8 +1,7 @@
 import uniqWith from 'lodash.uniqwith'
 
-import type { Manifest } from '../types'
+import type { Manifest } from '../'
 
-const uniqueItems = (items: Manifest) =>
-  uniqWith(items, (a, b) => a.src === b.src && a.width === b.width && a.quality === b.quality)
+const uniqueItems = (items: Manifest) => uniqWith(items, (a, b) => a.output === b.output)
 
 export default uniqueItems

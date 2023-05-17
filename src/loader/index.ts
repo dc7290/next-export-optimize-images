@@ -1,34 +1,48 @@
-// import appRoot from 'app-root-path'
-// import { PHASE_PRODUCTION_BUILD } from 'next/constants'
-import loaderUtils from 'next/dist/compiled/loader-utils3'
-// import loadConfig from 'next/dist/server/config'
+import path from 'path'
+
+import fs from 'fs-extra'
+import { PHASE_PRODUCTION_BUILD } from 'next/constants'
+import loadConfig from 'next/dist/server/config'
+import type { StaticImageData } from 'next/image'
 import type { LoaderContext } from 'webpack'
 
-import formatValidate from '../cli/utils/formatValidate'
+import type { Manifest } from '../cli'
+import buildOutputInfo from '../utils/buildOutputInfo'
 
-import type { LoaderOptions } from './types'
+type LoaderOptions = {
+  dir: string
+  isServer: boolean
+  isDev: boolean
+}
 
-export default async function loader(this: LoaderContext<LoaderOptions>, content: Buffer) {
+export default async function loader(this: LoaderContext<LoaderOptions>, content: string) {
   this.cacheable && this.cacheable()
   const callback = this.async()
 
-  // const { dir = process.cwd() } = this.getOptions()
+  const { dir, isServer, isDev } = this.getOptions()
 
-  const context = this.rootContext
-  const opts = { context, content }
-
-  const extension = loaderUtils.interpolateName(this, '[ext]', opts) as string
-
-  if (!formatValidate(extension)) {
+  if (isServer || isDev) {
     callback(null, content)
     return
   }
 
-  // const config = await loadConfig(PHASE_PRODUCTION_BUILD, dir)
-  // console.log(config.images)
+  const { src } = JSON.parse(content.replace(/^export default /, '').replace(/;$/, '')) as StaticImageData
 
-  callback(null, context)
+  const config = await loadConfig(PHASE_PRODUCTION_BUILD, dir)
+  const allSizes = [...config.images.deviceSizes, ...config.images.imageSizes]
+
+  await Promise.all(
+    allSizes.map(async (size) => {
+      const { output, extension } = buildOutputInfo({ src, width: size })
+      const json: Manifest[number] = { output, src, width: size, extension }
+
+      fs.appendFile(
+        path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
+        JSON.stringify(json) + '\n'
+      )
+    })
+  )
+
+  callback(null, content)
   return
 }
-
-export const raw = true

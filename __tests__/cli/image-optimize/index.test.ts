@@ -1,6 +1,7 @@
 import path from 'path'
 
 import fs from 'fs-extra'
+import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 
 import { optimizeImages } from '../../../src/cli'
 
@@ -12,6 +13,7 @@ beforeAll(async () => {
     config: {
       outDir: '__tests__/cli/image-optimize/fixtures',
     },
+    nextImageConfig: imageConfigDefault,
   })
 }, 60 * 3 * 1000)
 
