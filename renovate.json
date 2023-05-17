@@ -8,6 +8,10 @@
     {
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
+    },
+    {
+      "depTypeList": ["peerDependencies"],
+      "enabled": false
     }
   ]
 }
