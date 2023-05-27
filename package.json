@@ -56,7 +56,7 @@
     "app-root-path": "^3.1.0",
     "cli-progress": "^3.12.0",
     "fs-extra": "^11.1.1",
-    "got": "^11.8.6",
+    "got": "^12.6.1",
     "lodash.uniqwith": "^4.5.0",
     "sharp": "^0.32.1"
   },
