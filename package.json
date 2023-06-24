@@ -77,7 +77,7 @@
     "@types/jest": "29.5.2",
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "18.16.18",
-    "@types/react": "18.2.12",
+    "@types/react": "18.2.14",
     "@types/sharp": "0.31.1",
     "@typescript-eslint/eslint-plugin": "5.59.11",
     "@typescript-eslint/parser": "5.59.11",
