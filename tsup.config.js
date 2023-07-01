@@ -13,7 +13,7 @@ export default defineConfig([
   {
     ...cfg,
     entry: {
-      index: 'src/withExportImages.ts',
+      index: 'src/index.ts',
       cli: 'src/cli/index.ts',
       loader: 'src/loader/index.ts',
     },

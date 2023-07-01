@@ -23,7 +23,9 @@
   "types": "dist/index.d.ts",
   "bin": "bin/index.js",
   "files": [
-    "dist"
+    "dist",
+    "legacy",
+    "image.js"
   ],
   "scripts": {
     "dev": "tsup --watch",
@@ -51,7 +53,6 @@
     "fs-extra": "^11.1.1",
     "got": "^11.8.6",
     "lodash.uniqwith": "^4.5.0",
-    "plugin-next-export-optimize-images": "^0.1.0",
     "recursive-readdir": "^2.2.3",
     "sharp": "^0.32.1"
   },
@@ -103,7 +104,7 @@
     "ts-node": "10.9.1",
     "tsup": "^7.1.0",
     "typescript": "5.1.6",
-    "webpack": "5.74.0"
+    "webpack": "5.76.0"
   },
   "peerDependencies": {
     "next": ">=13.0.0",
