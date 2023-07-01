@@ -13,5 +13,4 @@ jest-setup.js
 /examples
 
 # testing
-__tests__/e2e/cli.js
-__tests__/e2e/out
+__tests__/e2e

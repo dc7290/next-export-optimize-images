@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import got from 'got'
 
-import type { Manifest } from '../types'
+import type { Manifest } from '../'
 
 type ExternalImagesDownloaderArgs = {
   terse?: boolean

@@ -3,17 +3,29 @@ import path from 'path'
 
 import colors from 'ansi-colors'
 import fs from 'fs-extra'
+import { PHASE_PRODUCTION_BUILD } from 'next/constants'
+import loadConfig from 'next/dist/server/config'
+import { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
+import recursiveReadDir from 'recursive-readdir'
 import sharp from 'sharp'
 
+import buildOutputInfo from '../utils/buildOutputInfo'
+import formatValidate from '../utils/formatValidate'
 import getConfig, { Config } from '../utils/getConfig'
 import processManifest from '../utils/processManifest'
 
 import externalImagesDownloader from './external-images'
-import type { Manifest } from './types'
 import { CacheImages, createCacheDir, defaultCacheDir, readCacheManifest, writeCacheManifest } from './utils/cache'
 import { cliProgressBarIncrement, cliProgressBarStart } from './utils/cliProgressBar'
-import formatValidate from './utils/formatValidate'
 import uniqueItems from './utils/uniqueItems'
+
+export type Manifest = {
+  output: string
+  src: string
+  width: number
+  extension: string
+  externalUrl?: string
+}[]
 
 type GetOptimizeResultProps = {
   destDir: string
@@ -26,6 +38,7 @@ type GetOptimizeResultProps = {
   pushInvalidFormatAssets: (asset: string) => void
   cliProgressBarIncrement: () => void
   originalFilePath: string
+  quality: number
   sharpOptions?: Config['sharpOptions']
 } & Manifest[number]
 type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
@@ -41,11 +54,11 @@ export const getOptimizeResult: GetOptimizeResult = async ({
   pushInvalidFormatAssets,
   cliProgressBarIncrement,
   originalFilePath,
+  quality,
+  sharpOptions,
   output,
   width,
-  quality,
   extension,
-  sharpOptions,
 }) => {
   if (formatValidate(extension)) {
     try {
@@ -131,10 +144,17 @@ type OptimizeImagesProps = {
   manifestJsonPath: string
   noCache: boolean
   config: Config
+  nextImageConfig: ImageConfigComplete
   terse?: boolean
 }
 
-export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse = false }: OptimizeImagesProps) => {
+export const optimizeImages = async ({
+  manifestJsonPath,
+  noCache,
+  config,
+  nextImageConfig,
+  terse = false,
+}: OptimizeImagesProps) => {
   const destDir = path.resolve(cwd, config.outDir ?? 'out')
 
   let manifest: Manifest
@@ -144,9 +164,89 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
 
+  // Next Image allSizes
+  const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]
+
   // External image if present
+  if (config.remoteImages && config.remoteImages.length > 0) {
+    const remoteImageList = new Set<string>()
+
+    config.remoteImages.forEach((url) => {
+      remoteImageList.add(url)
+    })
+
+    manifest = manifest.concat(
+      Array.from(remoteImageList)
+        .map((url) =>
+          allSizes.map((size) => {
+            const { output, extension, originalExtension, externalOutputDir } = buildOutputInfo({
+              src: url,
+              width: size,
+            })
+            const json: Manifest[number] = {
+              output,
+              src: `/${externalOutputDir}/${createHash('sha256')
+                .update(
+                  url
+                    .replace(/^https?:\/\//, '')
+                    .split('/')
+                    .slice(1)
+                    .join('/')
+                )
+                .digest('hex')}.${originalExtension}`,
+              width: size,
+              extension,
+              externalUrl: url,
+            }
+
+            return json
+          })
+        )
+        .flat()
+    )
+  }
   if (manifest.some(({ externalUrl }) => externalUrl !== undefined)) {
     await externalImagesDownloader({ terse, manifest, destDir })
+  }
+
+  const publicDir = path.resolve(cwd, 'public')
+  if (fs.existsSync(publicDir)) {
+    // eslint-disable-next-line no-console
+    console.log(`\n- Collect images in public directory -`)
+    const publicDirFiles = await recursiveReadDir(publicDir)
+    const publicDirImages = publicDirFiles.filter((file) => {
+      const ext = path.extname(file).toLowerCase()
+      return (
+        ext === '.png' ||
+        ext === '.jpg' ||
+        ext === '.jpeg' ||
+        ext === '.webp' ||
+        ext === '.avif' ||
+        ext === '.gif' ||
+        ext === '.svg'
+      )
+    })
+    manifest = manifest.concat(
+      publicDirImages
+        .map((file) =>
+          allSizes.map((size) => {
+            const src = file.replace(publicDir, '')
+            const { output, extension } = buildOutputInfo({
+              src,
+              width: size,
+            })
+            const json: Manifest[number] = {
+              output,
+              src,
+              width: size,
+              extension,
+            }
+
+            return json
+          })
+        )
+        .flat()
+    )
   }
 
   if (!terse) {
@@ -189,6 +289,7 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
         pushInvalidFormatAssets,
         cliProgressBarIncrement: terse ? () => undefined : cliProgressBarIncrement,
         originalFilePath,
+        quality: config.quality ?? 75,
         sharpOptions: config.sharpOptions ?? {},
         ...item,
       })
@@ -218,17 +319,19 @@ export const optimizeImages = async ({ manifestJsonPath, noCache, config, terse 
   }
 }
 
-type Run = (args: { customManifestJsonPath?: string; noCache?: boolean }) => void
+type Run = (args: { noCache?: boolean }) => void
 
-export const run: Run = ({ customManifestJsonPath, noCache = false }) => {
+export const run: Run = async ({ noCache = false }) => {
   // eslint-disable-next-line no-console
   console.log(colors.bold.magenta('\nnext-export-optimize-images: Optimize images.'))
 
   const config = getConfig()
-  const manifestJsonPath = path.resolve(cwd, customManifestJsonPath ?? '.next/custom-optimized-images.nd.json')
+  const manifestJsonPath = path.resolve(cwd, '.next/next-export-optimize-images-list.nd.json')
+
+  const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, cwd)
 
   if (fs.existsSync(manifestJsonPath)) {
-    optimizeImages({ manifestJsonPath, noCache, config })
+    await optimizeImages({ manifestJsonPath, noCache, config, nextImageConfig: nextConfig.images })
   } else {
     // eslint-disable-next-line no-console
     console.log(

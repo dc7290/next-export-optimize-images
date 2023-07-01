@@ -25,14 +25,6 @@ Fork this repository and create a branch from the latest `main` branch.
 
 Run `yarn` to install dependencies.
 
-### Development
-
-You can run the test as follows.
-
-| common      | watch             | cli             | cli watch             | components             | components watch             | e2e             |
-| ----------- | ----------------- | --------------- | --------------------- | ---------------------- | ---------------------------- | --------------- |
-| `yarn test` | `yarn test:watch` | `yarn test:cli` | `yarn test:cli:watch` | `yarn test:components` | `yarn test:components:watch` | `yarn test:e2e` |
-
 ### Commit
 
 When committing, changed files are automatically linted and formatted, and commit messages are created interactively by `git-cz`.

@@ -50,6 +50,12 @@ e.g. If `'_optimized'` is set.
 You can customize the directory to output downloaded external images.
 The default is `'_next/static/media'`.
 
+### `quality`
+
+- Type: number
+- Default: 75
+
+  You can customize the quality of the optimized image.
 
 ### `basePath`
 
@@ -133,19 +139,19 @@ This gets run before filenameGenerator, so the arguments passed into filenameGen
  */
 const config = {
   sourceImageParser: ({ src, defaultParser }) => {
-    const regExpMatches = src.match(/^.*\?fileId=(.*)&extension=(\w*).*$/);
+    const regExpMatches = src.match(/^.*\?fileId=(.*)&extension=(\w*).*$/)
     if (!regExpMatches) {
-      return defaultParser(src);
+      return defaultParser(src)
     }
 
-    // if the src has fileId and extension in its route then it 
+    // if the src has fileId and extension in its route then it
     // must be a non-standard image, so parse it differently for all intents
     // and purposes
     return {
-      pathWithoutName: "", // maybe there is no path, or you can supply an arbitrary one for filename processing
-      name: regExpMatches[1] || "",
-      extension: regExpMatches[2] || "",
-    };
+      pathWithoutName: '', // maybe there is no path, or you can supply an arbitrary one for filename processing
+      name: regExpMatches[1] || '',
+      extension: regExpMatches[2] || '',
+    }
   },
 }
 ```
@@ -188,3 +194,12 @@ const config = {
 ```
 
 The original image will be kept, `img.png` will be converted to webp format and `img.jpg` will be converted to avif format and output to the directory.
+
+### `remoteImages`
+
+- Type: Array<string\>
+
+You can directly specify the URL of an external image.  
+This is useful in cases where it is not known what images will be used for the build using variables, for example.
+
+https://next-export-optimize-images.vercel.app/docs/Features/external-images#when-specifying-an-external-image-url-with-a-variable

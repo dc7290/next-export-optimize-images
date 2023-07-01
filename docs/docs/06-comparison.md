@@ -41,8 +41,8 @@ A brief comparison with our library reveals the following characteristics for yo
 
 Let me list some of the disadvantages.
 
+- Settings are somewhat complicated and cumbersome.
 - All options for `next/image` are not available.
-- Remote images are not able to be optimized.
 
 Because of the above characteristics, the library is recommended for users other than those listed below.
 
