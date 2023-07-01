@@ -20,33 +20,17 @@ yarn add -D next-export-optimize-images
 const withExportImages = require('next-export-optimize-images')
 
 module.exports = withExportImages({
+  output: 'export',
   // write your next.js configuration values.
 })
 ```
 
-If you are using `next-compose-plugins`
-
-```js title="next.config.js"
-const withPlugins = require('next-compose-plugins')
-const withExportImages = require('next-export-optimize-images')
-
-module.exports = withPlugins(
-  [
-    withExportImages,
-    // your other plugins here
-  ],
-  {
-    // write your next.js configuration values.
-  }
-)
-```
-
-2. Change the description of the `scripts` that do the `next export` in `package.json`
+1. Change the description of the `scripts` that do the `next build` in `package.json`
 
 ```diff title="package.json"
 {
--  "export": "next build && next export",
-+  "export": "next build && next export && next-export-optimize-images",
+-  "build": "next build",
++  "build": "next build && next-export-optimize-images",
 }
 ```
 
@@ -65,10 +49,10 @@ Alternatively, you can use `next/legacy/image`.
 
 ```tsx
 import Image from 'next/legacy/image'
-<Image src="/images/img.png" width={1920} height={1280} alt="" />
+;<Image src="/images/img.png" width={1920} height={1280} alt="" />
 ```
 
 ## Local checks
 
-1. Run `yarn export`.
+1. Run `yarn build`.
 2. Run `npx http-server out`

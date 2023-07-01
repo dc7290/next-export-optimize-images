@@ -4,13 +4,21 @@ description: This page introduces the handling of external images.
 
 # External images
 
-This feature automatically downloads images locally if an external image URL is specified in src.  
+This library can also handle external images.
 This, like the other features, works at build time and does not affect development speed.
 
 ## Usage
 
 ```jsx
 <Image src="https://next-export-optimize-images.vercel.app/og.png" width="1280" height="640" alt="" />
+```
+
+Need to add a setting to `export-images.config.js` as follows.
+
+```js title="export-images.config.js"
+module.exports = {
+  remoteImages: ['https://next-export-optimize-images.vercel.app/og.png'],
+}
 ```
 
 When in production, it will be rendered as follows. (Only important parts are shown.)
