@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.0.3](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.2...v3.0.3) (2023-07-01)
+
+
+### Bug Fixes
+
+* 🐛 Delete Warning for quality ([abe1f19](https://github.com/dc7290/next-export-optimize-images/commit/abe1f19f3378c6d2efcd013bdb3ad67780fe5ed5))
+* 🐛 Fixed loader path ([e8bdc63](https://github.com/dc7290/next-export-optimize-images/commit/e8bdc6326889b858df599bde649d74edfebd9e14))
+
 ## [3.0.2](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.1...v3.0.2) (2023-07-01)
 
 
