@@ -53,8 +53,7 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
             {
               loader: 'next-export-optimize-images-loader',
               options: {
-                dir: path.join(process.cwd(), '__tests__/e2e'),
-                isServer: option.isServer,
+                dir: path.join(process.cwd(), options.__test ? '__tests__/e2e' : ''),
                 isDev: option.dev,
               },
             },
