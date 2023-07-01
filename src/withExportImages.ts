@@ -72,4 +72,4 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
   return Object.assign({}, nextConfig, customConfig)
 }
 
-module.exports = withExportImages
+export default withExportImages
