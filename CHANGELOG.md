@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.0.0](https://github.com/dc7290/next-export-optimize-images/compare/v2.1.0...v3.0.0) (2023-07-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* 🧨Next.js version must be at least 13.3.2
+
+### Features
+
+* 🚀 For external images, add them manually ([54a70cb](https://github.com/dc7290/next-export-optimize-images/commit/54a70cb67cb25de03aac39fc8ed8352fc512b989))
+* 🚀 Supported AppRouter ([6e5fd71](https://github.com/dc7290/next-export-optimize-images/commit/6e5fd71d993fa188b29277170a7478920aa18301)), closes [#527](https://github.com/dc7290/next-export-optimize-images/issues/527)
+* 🚀 Supported next/dynamic ([857ae6b](https://github.com/dc7290/next-export-optimize-images/commit/857ae6b71ea948937ba8c85849e5dacc9380412a)), closes [#106](https://github.com/dc7290/next-export-optimize-images/issues/106)
+
+
+### Bug Fixes
+
+* 🐛 Changed version of peerDependencies next to 13.0.0 ([fc6e534](https://github.com/dc7290/next-export-optimize-images/commit/fc6e534cf5c1bd770d13ace52c39e17258fe709e))
+
+
+### Documentation
+
+* ✏️ Fixed Docs ([50847a8](https://github.com/dc7290/next-export-optimize-images/commit/50847a81e6763fd2e4c8d9917f72d760435e2fbc))
+
 ## [2.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v2.0.1...v2.1.0) (2023-04-30)
 
 
