@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.0.5](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.4...v3.0.5) (2023-07-01)
+
+
+### Bug Fixes
+
+* 🐛 Fixed loader caching uselessly ([bc10e30](https://github.com/dc7290/next-export-optimize-images/commit/bc10e3077012869d801c3fff5e34148aeab0971a))
+
+## [3.0.4](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.3...v3.0.4) (2023-07-01)
+
+
+### Bug Fixes
+
+* 🐛 Corrected loader application conditions ([38b1b89](https://github.com/dc7290/next-export-optimize-images/commit/38b1b89fae357c0ccc62f31cd1d0f9272fbbba30))
+
 ## [3.0.3](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.2...v3.0.3) (2023-07-01)
 
 
