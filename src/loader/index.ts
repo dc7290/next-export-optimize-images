@@ -16,7 +16,7 @@ type LoaderOptions = {
 }
 
 export default async function loader(this: LoaderContext<LoaderOptions>, content: string) {
-  this.cacheable && this.cacheable()
+  this.cacheable && this.cacheable(false)
   const callback = this.async()
 
   const { dir, isDev } = this.getOptions()
