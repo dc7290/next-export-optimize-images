@@ -330,13 +330,5 @@ export const run: Run = async ({ noCache = false }) => {
 
   const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, cwd)
 
-  if (fs.existsSync(manifestJsonPath)) {
-    await optimizeImages({ manifestJsonPath, noCache, config, nextImageConfig: nextConfig.images })
-  } else {
-    // eslint-disable-next-line no-console
-    console.log(
-      colors.bold.magenta(`\nNo images were found to optimize.
-(Maybe you never used the image component.)`)
-    )
-  }
+  await optimizeImages({ manifestJsonPath, noCache, config, nextImageConfig: nextConfig.images })
 }

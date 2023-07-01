@@ -19,9 +19,9 @@ export default async function loader(this: LoaderContext<LoaderOptions>, content
   this.cacheable && this.cacheable()
   const callback = this.async()
 
-  const { dir, isServer, isDev } = this.getOptions()
+  const { dir, isDev } = this.getOptions()
 
-  if (isServer || isDev) {
+  if (isDev) {
     callback(null, content)
     return
   }
