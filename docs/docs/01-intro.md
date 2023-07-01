@@ -24,3 +24,4 @@ This makes it possible to build a high performance website with this solution, w
 - Using `sharp`, so it's fast.
 - Cache prevents repeating the same optimization
 - Support TypeScript
+- Support AppRouter

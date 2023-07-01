@@ -31,3 +31,18 @@ Also, no downloading to local is performed.
   src="https://next-export-optimize-images.vercel.app/og.png?width=3840"
 />
 ```
+
+### When specifying an external image URL with a variable
+
+```jsx
+const categories = ['a', 'b', 'c']
+;<Image src={`https://sample.com/${categories[0]}.png`} width="1280" height="640" alt="" />
+```
+
+In this case, the library cannot determine which images to use, so you need to add a setting to `export-images.config.js` as follows.
+
+```js title="export-images.config.js"
+module.exports = {
+  remoteImages: ['https://sample.com/a.png', 'https://sample.com/b.png', 'https://sample.com/c.png'],
+}
+```
