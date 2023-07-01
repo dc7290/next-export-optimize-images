@@ -33,15 +33,9 @@
     "lint": "eslint {src,__tests__} --cache",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "pretest": "rimraf {__tests__/e2e/.next,__tests__/e2e/out} && swc src -d dist && cross-env TEST_JSON_PATH=__tests__/e2e/.next/custom-optimized-images.nd.json next build __tests__/e2e && next export __tests__/e2e && node __tests__/e2e/cli.js",
+    "pretest": "swc src -d dist && cd __tests__/e2e && rimraf {.next,out} && next build && node cli.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cli": "jest __tests__/cli",
-    "test:cli:watch": "jest --watch __tests__/cli",
-    "test:components": "jest __tests__/components",
-    "test:components:watch": "jest --watch __tests__/components",
-    "pretest:e2e": "yarn pretest",
-    "test:e2e": "jest __tests__/e2e",
     "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release",
     "typecheck": "yarn tsc --noEmit"
   },
@@ -58,6 +52,7 @@
     "fs-extra": "^11.1.1",
     "got": "^11.8.6",
     "lodash.uniqwith": "^4.5.0",
+    "recursive-readdir": "^2.2.3",
     "sharp": "^0.32.1"
   },
   "devDependencies": {
@@ -67,8 +62,8 @@
     "@semantic-release/git": "10.0.1",
     "@swc/cli": "0.1.62",
     "@swc/core": "1.3.67",
-    "@testing-library/react": "14.0.0",
     "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "14.0.0",
     "@tsconfig/strictest": "2.0.1",
     "@types/app-root-path": "1.2.5",
     "@types/benchmark": "2.1.2",
@@ -78,6 +73,7 @@
     "@types/lodash.uniqwith": "4.5.7",
     "@types/node": "18.16.18",
     "@types/react": "18.2.14",
+    "@types/recursive-readdir": "^2.2.1",
     "@types/sharp": "0.31.1",
     "@typescript-eslint/eslint-plugin": "5.60.0",
     "@typescript-eslint/parser": "5.60.0",
@@ -105,15 +101,16 @@
     "semantic-release": "19.0.5",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "webpack": "5.74.0"
   },
   "peerDependencies": {
-    "next": "^13.4.2",
+    "next": "^13.3.2",
     "react": "^17.0.2 || ^18.0.0-0",
     "react-dom": "^17.0.2 || ^18.0.0-0"
   },
   "engines": {
-    "node": "^16.0.0 || ^18.0.0 || ^19.0.0"
+    "node": ">=16.8.0"
   },
   "volta": {
     "node": "18.16.1",

@@ -2,15 +2,13 @@
  * @type {import('../../src').Config}
  */
 const config = {
-  outDir: '__tests__/e2e/out',
   sharpOptions: {
     webp: {
       effort: 0,
     },
   },
-  convertFormat: [
-    ['png', 'webp']
-  ]
+  convertFormat: [['png', 'webp']],
+  remoteImages: ['https://next-export-optimize-images.vercel.app/og.png'],
 }
 
 module.exports = config

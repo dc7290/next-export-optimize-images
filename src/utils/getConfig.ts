@@ -1,6 +1,6 @@
 import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
 
-import type { AllowedFormat } from '../cli/utils/formatValidate'
+import type { AllowedFormat } from './formatValidate'
 
 type ParsedImageInfo = {
   pathWithoutName: string
@@ -39,21 +39,20 @@ export type Config = {
    */
   externalImageDir?: string
   /**
+   * You can customize the quality of the optimized image.
+   * The default is 75.
+   */
+  quality?: number
+  /**
    * You can customize the generation of file names.
    *
    * ❗️Attention
    * When making this setting, make sure that the file names (including the path part) of different images do not cover each other.
-   * Specifically, include the name, width, quality, and extension in the return value. If path is not included, all src's should be specified with import or require so that they can be distinguished by their hash value even if they have the same filename.
+   * Specifically, include the name, width, and extension in the return value. If path is not included, all src's should be specified with import or require so that they can be distinguished by their hash value even if they have the same filename.
    *
-   * @type {({ path: string, name: string, width: number, quality: number, extension: string }) => string}
+   * @type {({ path: string, name: string, width: number, extension: string }) => string}
    */
-  filenameGenerator?: (generatorProps: {
-    path: string
-    name: string
-    width: number
-    quality: number
-    extension: string
-  }) => string
+  filenameGenerator?: (generatorProps: { path: string; name: string; width: number; extension: string }) => string
   /**
    * You can set optimization options for each extension.
    * Please refer to the official sharp documentation for more information.
@@ -79,15 +78,19 @@ export type Config = {
    * @type {SourceImageParser}
    */
   sourceImageParser?: SourceImageParser
+
+  /**
+   * You can directly specify the URL of an external image.
+   * This is useful in cases where it is not known what images will be used for the build using variables, for example.
+   *
+   * @type {string[]}
+   */
+  remoteImages?: string[]
 }
 
 const getConfig = (): Config => {
   try {
-    if (process.env['NODE_ENV'] === 'test') {
-      return require(`../../${process.env['TEST_CONFIG_PATH']}`)
-    }
-
-    return require('next-export-optimize-images/export-images.config.js')
+    return require(process.cwd() + '/export-images.config.js')
   } catch (_) {
     return {}
   }

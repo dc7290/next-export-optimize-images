@@ -1,9 +1,7 @@
-import type { Manifest } from '../cli/types'
+import type { Manifest } from '../cli'
 
-const processManifest = (manifestJson: string): Manifest =>
-  manifestJson
-    .trim()
-    .split(/\n/g)
-    .map((line) => JSON.parse(line))
+import parseNdJSON from './parseNdJSON'
+
+const processManifest = (manifestJson: string): Manifest => parseNdJSON(manifestJson)
 
 export default processManifest

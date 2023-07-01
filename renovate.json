@@ -10,7 +10,7 @@
       "automerge": true
     },
     {
-      "depTypeList": ["peerDependencies"],
+      "depTypeList": ["peerDependencies", "engines"],
       "enabled": false
     }
   ]

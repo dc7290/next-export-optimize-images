@@ -1,10 +1,17 @@
-const withExportImages = require('../../dist/index')
+const withExportImages = require('../../dist')
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const config = {
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    deviceSizes: [320, 420, 768, 1024, 1200],
+  },
+  output: 'export',
 }
 
-module.exports = withExportImages(config, { configPath: '__tests__/e2e/export-images.config.js' })
+module.exports = withExportImages(config, { __test: true })

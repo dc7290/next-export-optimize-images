@@ -1,7 +1,7 @@
+import Image from 'next/image'
+import LegacyImage from 'next/legacy/image'
 import React, { useEffect, useState } from 'react'
 
-import Image from '../../../dist/image'
-import LegacyImage from '../../../dist/legacy-image'
 import clientOnlySrc from '../images/client-only.png'
 import imgSrc from '../images/img.png'
 import legacyImgSrc from '../images/legacy-img.png'

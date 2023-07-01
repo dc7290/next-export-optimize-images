@@ -8,5 +8,5 @@
     "baseUrl": "./",
     "noEmit": true
   },
-  "include": ["src/**/*", "__tests__/**/*", "bench/index.ts", "jest-setup.ts"]
+  "include": ["src/**/*", "__tests__/**/*", "bench/index.ts", "jest-setup.ts", "types/**/*"]
 }
