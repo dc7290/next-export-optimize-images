@@ -67,15 +67,6 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
 
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config
     },
-    experimental: {
-      ...nextConfig.experimental,
-      swcPlugins: [
-        ...(nextConfig.experimental?.swcPlugins ?? []),
-        ...(process.env.NODE_ENV === 'development'
-          ? []
-          : [['plugin-next-export-optimize-images', {}] as [string, Record<string, unknown>]]),
-      ],
-    },
   }
 
   return Object.assign({}, nextConfig, customConfig)

@@ -7471,11 +7471,6 @@ platform@^1.3.3:
   resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.6.tgz#48b4ce983164b209c2d45a107adb31f473a6e7a7"
   integrity sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
 
-plugin-next-export-optimize-images@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/plugin-next-export-optimize-images/-/plugin-next-export-optimize-images-0.1.0.tgz#381cffc74c2cc6a9dbcb58550d7c80d5f4854830"
-  integrity sha512-qd/Q3jA3c55+jK2Qfn1DUbdPMfa0FiweHMwAiJ9/pDuQ6cmJyyMZu022usB2R6guK5oAWHMgk5q1LXAYX0HM5g==
-
 postcss@8.4.14:
   version "8.4.14"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.14.tgz#ee9274d5622b4858c1007a74d76e42e56fd21caf"

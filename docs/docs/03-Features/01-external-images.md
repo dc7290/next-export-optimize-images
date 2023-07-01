@@ -4,13 +4,21 @@ description: This page introduces the handling of external images.
 
 # External images
 
-This feature automatically downloads images locally if an external image URL is specified in src.  
+This library can also handle external images.
 This, like the other features, works at build time and does not affect development speed.
 
 ## Usage
 
 ```jsx
 <Image src="https://next-export-optimize-images.vercel.app/og.png" width="1280" height="640" alt="" />
+```
+
+Need to add a setting to `export-images.config.js` as follows.
+
+```js title="export-images.config.js"
+module.exports = {
+  remoteImages: ['https://next-export-optimize-images.vercel.app/og.png'],
+}
 ```
 
 When in production, it will be rendered as follows. (Only important parts are shown.)
@@ -30,19 +38,4 @@ Also, no downloading to local is performed.
   srcset="https://next-export-optimize-images.vercel.app/og.png?width=1920 1x, https://next-export-optimize-images.vercel.app/og.png?width=3840 2x"
   src="https://next-export-optimize-images.vercel.app/og.png?width=3840"
 />
-```
-
-### When specifying an external image URL with a variable
-
-```jsx
-const categories = ['a', 'b', 'c']
-;<Image src={`https://sample.com/${categories[0]}.png`} width="1280" height="640" alt="" />
-```
-
-In this case, the library cannot determine which images to use, so you need to add a setting to `export-images.config.js` as follows.
-
-```js title="export-images.config.js"
-module.exports = {
-  remoteImages: ['https://sample.com/a.png', 'https://sample.com/b.png', 'https://sample.com/c.png'],
-}
 ```

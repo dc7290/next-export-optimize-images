@@ -12,7 +12,6 @@ import sharp from 'sharp'
 import buildOutputInfo from '../utils/buildOutputInfo'
 import formatValidate from '../utils/formatValidate'
 import getConfig, { Config } from '../utils/getConfig'
-import parseNdJSON from '../utils/parseNdJSON'
 import processManifest from '../utils/processManifest'
 
 import externalImagesDownloader from './external-images'
@@ -169,18 +168,12 @@ export const optimizeImages = async ({
   const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]
 
   // External image if present
-  const remoteImageListPath = path.resolve(cwd, 'next-export-optimize-images-remote-list.nd.json')
-  if (fs.existsSync(remoteImageListPath)) {
+  if (config.remoteImages && config.remoteImages.length > 0) {
     const remoteImageList = new Set<string>()
-    parseNdJSON(await fs.readFile(remoteImageListPath, 'utf-8')).forEach(({ url }: { url: string }) => {
+
+    config.remoteImages.forEach((url) => {
       remoteImageList.add(url)
     })
-
-    if (config.remoteImages && config.remoteImages.length > 0) {
-      config.remoteImages.forEach((url) => {
-        remoteImageList.add(url)
-      })
-    }
 
     manifest = manifest.concat(
       Array.from(remoteImageList)
@@ -211,8 +204,6 @@ export const optimizeImages = async ({
         )
         .flat()
     )
-
-    await fs.remove(remoteImageListPath)
   }
   if (manifest.some(({ externalUrl }) => externalUrl !== undefined)) {
     await externalImagesDownloader({ terse, manifest, destDir })

@@ -8,6 +8,7 @@ const config = {
     },
   },
   convertFormat: [['png', 'webp']],
+  remoteImages: ['https://next-export-optimize-images.vercel.app/og.png'],
 }
 
 module.exports = config
