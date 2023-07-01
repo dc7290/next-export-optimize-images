@@ -6,13 +6,8 @@ import getConfig from '../utils/getConfig'
 
 const config = getConfig()
 
-const exportableLoader: ImageLoader = ({ src, width, quality }) => {
+const exportableLoader: ImageLoader = ({ src, width }) => {
   if (process.env['NODE_ENV'] === 'development') {
-    if (typeof quality === 'number') {
-      console.warn(`The quality parameter is disabled for images processed by \`next-export-optimize-images\`.
-If you want to set it, please specify the quality option in \`export-images.config.js\`. src: ${src}`)
-    }
-
     // This doesn't bother optimizing in the dev environment. Next complains if the
     // returned URL doesn't have a width in it, so adding it as a throwaway
     return `${src}?width=${width}`
