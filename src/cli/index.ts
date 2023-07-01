@@ -157,9 +157,11 @@ export const optimizeImages = async ({
 }: OptimizeImagesProps) => {
   const destDir = path.resolve(cwd, config.outDir ?? 'out')
 
-  let manifest: Manifest
+  let manifest: Manifest = []
   try {
-    manifest = uniqueItems(processManifest(await fs.readFile(manifestJsonPath, 'utf-8')))
+    if (fs.existsSync(manifestJsonPath)) {
+      manifest = uniqueItems(processManifest(await fs.readFile(manifestJsonPath, 'utf-8')))
+    }
   } catch (error) {
     throw Error(typeof error === 'string' ? error : 'Unexpected error.')
   }
