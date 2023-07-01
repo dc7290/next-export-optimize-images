@@ -26,14 +26,13 @@
     "dist"
   ],
   "scripts": {
-    "dev": "swc src -d dist -w",
-    "prebuild": "rimraf dist",
-    "build": "swc src -d dist && tsc --project ./tsconfig.build.json",
+    "dev": "tsup --watch",
+    "build": "tsup",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint {src,__tests__} --cache",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "pretest": "swc src -d dist && cd __tests__/e2e && rimraf {.next,out} && next build && node cli.js",
+    "pretest": "yarn build && cd __tests__/e2e && rimraf {.next,out} && next build && node cli.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release",
@@ -52,6 +51,7 @@
     "fs-extra": "^11.1.1",
     "got": "^11.8.6",
     "lodash.uniqwith": "^4.5.0",
+    "plugin-next-export-optimize-images": "^0.1.0",
     "recursive-readdir": "^2.2.3",
     "sharp": "^0.32.1"
   },
@@ -101,6 +101,7 @@
     "semantic-release": "19.0.5",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
+    "tsup": "^7.1.0",
     "typescript": "5.1.6",
     "webpack": "5.74.0"
   },

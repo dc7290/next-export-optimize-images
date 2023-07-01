@@ -1,13 +1,13 @@
-import Image, { ImageLoader, ImageProps } from 'next/dist/client/image'
-import React, { forwardRef } from 'react'
+import Image, { ImageLoader, ImageProps } from 'next/dist/client/legacy/image'
+import React from 'react'
 
-import buildOutputInfo from './utils/buildOutputInfo'
-import getConfig from './utils/getConfig'
+import buildOutputInfo from '../utils/buildOutputInfo'
+import getConfig from '../utils/getConfig'
 
 const config = getConfig()
 
 const exportableLoader: ImageLoader = ({ src, width, quality }) => {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env['NODE_ENV'] === 'development') {
     if (typeof quality === 'number') {
       console.warn(`The quality parameter is disabled for images processed by \`next-export-optimize-images\`.
 If you want to set it, please specify the quality option in \`export-images.config.js\`. src: ${src}`)
@@ -23,23 +23,20 @@ If you want to set it, please specify the quality option in \`export-images.conf
   return `${config.basePath ?? ''}${output}`
 }
 
-const CustomImage = (props: ImageProps, forwardedRef: React.ForwardedRef<HTMLImageElement>) => {
+const CustomImage = (props: ImageProps) => {
   return (
     <Image
       {...props}
-      ref={forwardedRef}
       loader={props.loader || exportableLoader}
       blurDataURL={
         props.blurDataURL ||
         (typeof props.src === 'string' && props.placeholder === 'blur' && props.loader === undefined
           ? exportableLoader({ src: props.src, width: 8, quality: 10 })
-          : undefined)
+          : '')
       }
     />
   )
 }
 
-const _CustomImage = forwardRef(CustomImage)
-
-export * from 'next/dist/client/image'
-export default _CustomImage
+export * from 'next/dist/client/legacy/image'
+export default CustomImage

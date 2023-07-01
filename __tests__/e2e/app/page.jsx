@@ -1,17 +1,13 @@
 import Image from 'next/image'
 import LegacyImage from 'next/legacy/image'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import clientOnlySrc from '../images/client-only.png'
+import ClientComponent from '../components/ClientComponent'
+
 import imgSrc from '../images/img.png'
 import legacyImgSrc from '../images/legacy-img.png'
 
-const IndexPage = () => {
-  const [isClient, setIsClient] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
+export default function IndexPage() {
   return (
     <>
       {/* next/image */}
@@ -31,7 +27,7 @@ const IndexPage = () => {
         {/* Animated image */}
         <Image src="/images/animated.webp" width={400} height={400} alt="" />
 
-        {isClient && <Image src={clientOnlySrc} alt="" />}
+        <ClientComponent />
       </div>
       {/* next/legacy/image */}
       <div>
@@ -50,5 +46,3 @@ const IndexPage = () => {
     </>
   )
 }
-
-export default IndexPage

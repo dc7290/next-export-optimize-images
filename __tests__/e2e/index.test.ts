@@ -7,15 +7,15 @@ const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'out/_
 
 const files = [
   // next/image
-  '_next/static/media/img.8a5ad2fe_[width].webp',
-  'images/img_[width].webp',
+  '_next/static/media/img.8a5ad2fe_[width].png',
+  'images/img_[width].png',
   'images/img_[width].svg',
-  'og_[width].webp',
-  'images/animated_[width].webp',
-  '_next/static/media/client-only.8a5ad2fe_[width].webp',
+  'og_[width].png',
+  'images/animated_[width].png',
+  '_next/static/media/client-only.8a5ad2fe_[width].png',
   // next/legacy/image
-  '_next/static/media/legacy-img.8a5ad2fe_[width].webp',
-  'images/legacy-img_[width].webp',
+  '_next/static/media/legacy-img.8a5ad2fe_[width].png',
+  'images/legacy-img_[width].png',
 ]
 
 describe('`next build && next export && next-export-optimize-images` is executed correctly', () => {
@@ -25,7 +25,9 @@ describe('`next build && next export && next-export-optimize-images` is executed
     const configImages = { ...imageConfigDefault, ...customConfig.images }
     const allSizes = [...configImages.imageSizes, ...configImages.deviceSizes]
     allSizes.forEach((size) => {
-      expect(files.every((file) => exist(file.replace('[width]', size.toString())))).toBeTruthy()
+      files.forEach((file) => {
+        expect(exist(file.replace('[width]', size.toString()))).toBeTruthy
+      })
     })
   })
 })
