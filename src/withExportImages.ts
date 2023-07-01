@@ -30,11 +30,11 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
     },
     webpack(config, option) {
       config.resolve.alias['next/image'] = options.__test
-        ? '../../../dist/image'
-        : 'next-export-optimize-images/dist/image'
+        ? '../../../dist/components/image'
+        : 'next-export-optimize-images/image'
       config.resolve.alias['next/legacy/image'] = options.__test
-        ? '../../../dist/legacy-image'
-        : 'next-export-optimize-images/dist/legacy-image'
+        ? '../../../dist/components/legacy-image'
+        : 'next-export-optimize-images/legacy/image'
       delete config.resolve.alias['next']
 
       config.resolve.fallback = { ...config.resolve.fallback, fs: false }
@@ -81,6 +81,4 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
   return Object.assign({}, nextConfig, customConfig)
 }
 
-export type WithExportImages = typeof withExportImages
-
-export default withExportImages
+module.exports = withExportImages
