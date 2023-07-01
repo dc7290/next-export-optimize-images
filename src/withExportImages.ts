@@ -63,7 +63,9 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
         },
       ]
 
-      config.resolveLoader.alias['next-export-optimize-images-loader'] = path.join(__dirname, 'loader')
+      config.resolveLoader.alias['next-export-optimize-images-loader'] = options.__test
+        ? path.join(__dirname, 'loader')
+        : 'next-export-optimize-images/dist/loader'
 
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config
     },
