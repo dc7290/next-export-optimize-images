@@ -1,4 +1,4 @@
-import Image, { ImageLoader, ImageProps, StaticImageData } from 'next/dist/client/image'
+import Image, { ImageLoader, ImageProps, StaticImageData } from 'next/dist/shared/lib/image-external'
 import React, { forwardRef } from 'react'
 
 import buildOutputInfo from '../utils/buildOutputInfo'
@@ -44,5 +44,5 @@ const CustomImage = (props: CustomImageProps, forwardedRef: React.ForwardedRef<H
 
 const _CustomImage = forwardRef(CustomImage)
 
-export * from 'next/dist/client/image'
+export * from 'next/dist/shared/lib/image-external'
 export default _CustomImage
