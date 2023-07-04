@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.0.6](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.5...v3.0.6) (2023-07-04)
+
+
+### Bug Fixes
+
+* 🐛 Supported Next.js13.4.8 ([5a0e7c6](https://github.com/dc7290/next-export-optimize-images/commit/5a0e7c651509956e35490a6376c2a7c127fd683e))
+
 ## [3.0.5](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.4...v3.0.5) (2023-07-01)
 
 
