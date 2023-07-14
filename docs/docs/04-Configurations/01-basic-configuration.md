@@ -197,7 +197,7 @@ The original image will be kept, `img.png` will be converted to webp format and 
 
 ### `remoteImages`
 
-- Type: Array<string\>
+- Type: Array<string\> | (() => Array<string\> | Promise<Array<string\>\>)
 
 You can directly specify the URL of an external image.  
 This is useful in cases where it is not known what images will be used for the build using variables, for example.

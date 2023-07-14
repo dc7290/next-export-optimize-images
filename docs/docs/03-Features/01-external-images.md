@@ -18,6 +18,10 @@ Need to add a setting to `export-images.config.js` as follows.
 ```js title="export-images.config.js"
 module.exports = {
   remoteImages: ['https://next-export-optimize-images.vercel.app/og.png'],
+  // remoteImages: async () => {
+  //   const imageUrls = await getImageUrls() // get image urls from CMS, etc.
+  //   return imageUrls
+  // }
 }
 ```
 
