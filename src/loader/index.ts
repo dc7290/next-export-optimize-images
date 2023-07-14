@@ -4,6 +4,7 @@ import fs from 'fs-extra'
 import { PHASE_PRODUCTION_BUILD } from 'next/constants'
 import loadConfig from 'next/dist/server/config'
 import type { StaticImageData } from 'next/image'
+import getConfig from 'src/utils/getConfig'
 import type { LoaderContext } from 'webpack'
 
 import type { Manifest } from '../cli'
@@ -28,12 +29,14 @@ export default async function loader(this: LoaderContext<LoaderOptions>, content
 
   const { src } = JSON.parse(content.replace(/^export default /, '').replace(/;$/, '')) as StaticImageData
 
-  const config = await loadConfig(PHASE_PRODUCTION_BUILD, dir)
-  const allSizes = [...config.images.deviceSizes, ...config.images.imageSizes]
+  const config = getConfig({ isBundleProcess: false })
+
+  const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, dir)
+  const allSizes = [...nextConfig.images.deviceSizes, ...nextConfig.images.imageSizes]
 
   await Promise.all(
     allSizes.map(async (size) => {
-      const { output, extension } = buildOutputInfo({ src, width: size })
+      const { output, extension } = buildOutputInfo({ src, width: size, config })
       const json: Manifest[number] = { output, src, width: size, extension }
 
       fs.appendFile(

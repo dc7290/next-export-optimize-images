@@ -1,5 +1,5 @@
 import formatValidate from './formatValidate'
-import getConfig, { DefaultImageParser } from './getConfig'
+import { Config, DefaultImageParser } from './getConfig'
 
 const defaultImageParser: DefaultImageParser = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
@@ -30,11 +30,10 @@ const defaultImageParser: DefaultImageParser = (src: string) => {
 type BuildOutputInfoArgs = {
   src: string
   width: number
+  config: Config
 }
 
-const buildOutputInfo = ({ src: _src, width }: BuildOutputInfoArgs) => {
-  const config = getConfig()
-
+const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
   let src = _src
 
   if (config.basePath !== undefined) {

@@ -170,10 +170,16 @@ export const optimizeImages = async ({
   const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]
 
   // External image if present
-  if (config.remoteImages && config.remoteImages.length > 0) {
+  const remoteImages =
+    config.remoteImages === undefined
+      ? []
+      : typeof config.remoteImages === 'function'
+      ? await config.remoteImages()
+      : config.remoteImages
+  if (remoteImages.length > 0) {
     const remoteImageList = new Set<string>()
 
-    config.remoteImages.forEach((url) => {
+    remoteImages.forEach((url) => {
       remoteImageList.add(url)
     })
 
@@ -184,6 +190,7 @@ export const optimizeImages = async ({
             const { output, extension, originalExtension, externalOutputDir } = buildOutputInfo({
               src: url,
               width: size,
+              config,
             })
             const json: Manifest[number] = {
               output,
@@ -236,6 +243,7 @@ export const optimizeImages = async ({
             const { output, extension } = buildOutputInfo({
               src,
               width: size,
+              config,
             })
             const json: Manifest[number] = {
               output,
@@ -327,7 +335,7 @@ export const run: Run = async ({ noCache = false }) => {
   // eslint-disable-next-line no-console
   console.log(colors.bold.magenta('\nnext-export-optimize-images: Optimize images.'))
 
-  const config = getConfig()
+  const config = getConfig({ isBundleProcess: false })
   const manifestJsonPath = path.resolve(cwd, '.next/next-export-optimize-images-list.nd.json')
 
   const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, cwd)

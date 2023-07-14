@@ -83,16 +83,20 @@ export type Config = {
    * You can directly specify the URL of an external image.
    * This is useful in cases where it is not known what images will be used for the build using variables, for example.
    *
-   * @type {string[]}
+   * @type {string[] | (() => string[] | Promise<string[]>)}
    */
-  remoteImages?: string[]
+  remoteImages?: string[] | (() => string[] | Promise<string[]>)
 }
 
-const getConfig = (): Config => {
-  try {
-    return require(process.cwd() + '/export-images.config.js')
-  } catch (_) {
-    return {}
+const getConfig = ({ isBundleProcess }: { isBundleProcess: boolean }): Config => {
+  if (isBundleProcess) {
+    return require('next-export-optimize-images/dist/config')
+  } else {
+    try {
+      return require(process.cwd() + '/export-images.config.js')
+    } catch (_) {
+      return {}
+    }
   }
 }
 
