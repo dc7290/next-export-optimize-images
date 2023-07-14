@@ -4,7 +4,7 @@ import React from 'react'
 import buildOutputInfo from '../utils/buildOutputInfo'
 import getConfig from '../utils/getConfig'
 
-const config = getConfig()
+const config = getConfig({ isBundleProcess: true })
 
 const exportableLoader: ImageLoader = ({ src, width }) => {
   if (process.env['NODE_ENV'] === 'development') {
@@ -13,7 +13,7 @@ const exportableLoader: ImageLoader = ({ src, width }) => {
     return `${src}?width=${width}`
   }
 
-  const { output } = buildOutputInfo({ src, width })
+  const { output } = buildOutputInfo({ src, width, config })
 
   return `${config.basePath ?? ''}${output}`
 }
