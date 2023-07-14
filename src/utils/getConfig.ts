@@ -83,9 +83,9 @@ export type Config = {
    * You can directly specify the URL of an external image.
    * This is useful in cases where it is not known what images will be used for the build using variables, for example.
    *
-   * @type {string[]}
+   * @type {string[] | (() => string[] | Promise<string[]>)}
    */
-  remoteImages?: string[]
+  remoteImages?: string[] | (() => string[] | Promise<string[]>)
 }
 
 const getConfig = (): Config => {

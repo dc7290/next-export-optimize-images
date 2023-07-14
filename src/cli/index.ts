@@ -170,10 +170,16 @@ export const optimizeImages = async ({
   const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]
 
   // External image if present
-  if (config.remoteImages && config.remoteImages.length > 0) {
+  const remoteImages =
+    config.remoteImages === undefined
+      ? []
+      : typeof config.remoteImages === 'function'
+      ? await config.remoteImages()
+      : config.remoteImages
+  if (remoteImages.length > 0) {
     const remoteImageList = new Set<string>()
 
-    config.remoteImages.forEach((url) => {
+    remoteImages.forEach((url) => {
       remoteImageList.add(url)
     })
 
