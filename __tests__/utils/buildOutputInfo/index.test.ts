@@ -1,29 +1,12 @@
 import buildOutputInfo from '../../../src/utils/buildOutputInfo'
-import getConfig from '../../../src/utils/getConfig'
-
-jest.mock('../../../src/utils/getConfig')
+import { Config } from '../../../src/utils/getConfig'
 
 describe('buildOutputInfo', () => {
-  beforeEach(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      outDir: undefined,
-      imageDir: undefined,
-      basePath: undefined,
-      externalImageDir: undefined,
-      quality: undefined,
-      filenameGenerator: undefined,
-      sharpOptions: undefined,
-      convertFormat: undefined,
-      sourceImageParser: undefined,
-    })
-  })
-
   test('Default image parser functions properly', () => {
     const input = {
       src: '/_next/static/media/test.png',
       width: 300,
+      config: {},
     }
 
     const output = buildOutputInfo(input)
@@ -40,6 +23,7 @@ describe('buildOutputInfo', () => {
     const input = {
       src: 'https://example.com/images/test.png',
       width: 300,
+      config: {},
     }
 
     const output = buildOutputInfo(input)
@@ -56,11 +40,10 @@ describe('buildOutputInfo', () => {
     const input = {
       src: '/_next/static/media/test.png',
       width: 300,
+      config: {
+        basePath: '/base-path',
+      },
     }
-
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      basePath: '/base-path',
-    })
 
     const output = buildOutputInfo(input)
 
@@ -76,11 +59,10 @@ describe('buildOutputInfo', () => {
     const input = {
       src: '/_next/static/media/test.png',
       width: 300,
+      config: {
+        convertFormat: [['png', 'webp']],
+      } as Config,
     }
-
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      convertFormat: [['png', 'webp']],
-    })
 
     const output = buildOutputInfo(input)
 
@@ -96,11 +78,10 @@ describe('buildOutputInfo', () => {
     const input = {
       src: '/_next/static/media/test.png',
       width: 300,
+      config: {
+        filenameGenerator: ({ path, name, width, extension }) => `${path}/${name}-${width}.${extension}`,
+      } as Config,
     }
-
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      filenameGenerator: ({ path, name, width, extension }) => `${path}/${name}-${width}.${extension}`,
-    })
 
     const output = buildOutputInfo(input)
 
@@ -116,12 +97,11 @@ describe('buildOutputInfo', () => {
     const input = {
       src: '/_next/static/media/test.png',
       width: 300,
+      config: {
+        imageDir: '/custom/images',
+        externalImageDir: '/custom/external',
+      } as Config,
     }
-
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      imageDir: '/custom/images',
-      externalImageDir: '/custom/external',
-    })
 
     const output = buildOutputInfo(input)
 
@@ -137,13 +117,10 @@ describe('buildOutputInfo', () => {
     const input = {
       src: '/_next/static/media/test.png',
       width: 300,
+      config: {
+        convertFormat: [['png', 'invalid_format']],
+      } as unknown as Config,
     }
-
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      convertFormat: [['png', 'invalid_format']],
-    })
 
     expect(() => buildOutputInfo(input)).toThrowError(
       new Error(`Unauthorized format specified in \`configFormat\`. afterConvert: invalid_format`)
@@ -151,20 +128,19 @@ describe('buildOutputInfo', () => {
   })
 
   test('Source image parser in config.sourceImageParser is used', () => {
-    const input = {
-      src: '/_next/static/media/test.png',
-      width: 300,
-    }
-
     const customParser = jest.fn(() => ({
       pathWithoutName: 'custom',
       name: 'test',
       extension: 'png',
     }))
 
-    ;(getConfig as jest.MockedFunction<typeof getConfig>).mockReturnValue({
-      sourceImageParser: customParser,
-    })
+    const input = {
+      src: '/_next/static/media/test.png',
+      width: 300,
+      config: {
+        sourceImageParser: customParser,
+      },
+    }
 
     const output = buildOutputInfo(input)
 

@@ -184,6 +184,7 @@ export const optimizeImages = async ({
             const { output, extension, originalExtension, externalOutputDir } = buildOutputInfo({
               src: url,
               width: size,
+              config,
             })
             const json: Manifest[number] = {
               output,
@@ -236,6 +237,7 @@ export const optimizeImages = async ({
             const { output, extension } = buildOutputInfo({
               src,
               width: size,
+              config,
             })
             const json: Manifest[number] = {
               output,
@@ -327,7 +329,7 @@ export const run: Run = async ({ noCache = false }) => {
   // eslint-disable-next-line no-console
   console.log(colors.bold.magenta('\nnext-export-optimize-images: Optimize images.'))
 
-  const config = getConfig()
+  const config = getConfig({ isBundleProcess: false })
   const manifestJsonPath = path.resolve(cwd, '.next/next-export-optimize-images-list.nd.json')
 
   const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, cwd)
