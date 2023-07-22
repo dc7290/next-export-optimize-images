@@ -61,7 +61,7 @@
     "@commitlint/config-conventional": "17.6.7",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
     "@tsconfig/strictest": "2.0.1",
     "@types/app-root-path": "1.2.5",
