@@ -69,7 +69,7 @@ Also, if you have set `deviceSizes` etc. in `next.config.js`, it is a little dif
 
 ## Image optimization
 
-Run `next-export-optimzie-images` to start optimizing the images.  
+Run `next-export-optimize-images` to start optimizing the images.  
 This is basically done after `yarn build && yarn export`.
 
 The image is optimized based on the information in the exported JSON file through the loader described earlier.  
