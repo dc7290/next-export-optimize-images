@@ -34,22 +34,24 @@ export default async function loader(this: LoaderContext<LoaderOptions>, content
   const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, dir)
   const allSizes = [...nextConfig.images.deviceSizes, ...nextConfig.images.imageSizes]
 
-  await Promise.all(
-    allSizes.map(async (size) => {
-      const outputInfo = buildOutputInfo({ src, width: size, config })
-      const json: Manifest[number] = {
-        output: outputInfo.output,
-        src: outputInfo.src,
-        width: size,
-        extension: outputInfo.extension,
-      }
+  if (!src.endsWith('.svg')) {
+    await Promise.all(
+      allSizes.map(async (size) => {
+        const outputInfo = buildOutputInfo({ src, width: size, config })
+        const json: Manifest[number] = {
+          output: outputInfo.output,
+          src: outputInfo.src,
+          width: size,
+          extension: outputInfo.extension,
+        }
 
-      fs.appendFile(
-        path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
-        JSON.stringify(json) + '\n'
-      )
-    })
-  )
+        fs.appendFile(
+          path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
+          JSON.stringify(json) + '\n'
+        )
+      })
+    )
+  }
 
   callback(null, content)
   return
