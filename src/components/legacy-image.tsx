@@ -4,7 +4,7 @@ import React from 'react'
 import buildOutputInfo from '../utils/buildOutputInfo'
 import getConfig from '../utils/getConfig'
 
-const config = getConfig({ isBundleProcess: true })
+const config = getConfig()
 
 const exportableLoader: ImageLoader = ({ src, width }) => {
   if (process.env['NODE_ENV'] === 'development') {
