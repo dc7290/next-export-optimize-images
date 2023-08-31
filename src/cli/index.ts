@@ -128,7 +128,7 @@ export const getOptimizeResult: GetOptimizeResult = async ({
 
       await fs.copy(originalFilePath, filePath)
 
-      pushInvalidFormatAssets(originalFilePath)
+      extension !== 'svg' && pushInvalidFormatAssets(originalFilePath)
       cliProgressBarIncrement()
     } catch (error) {
       console.warn(error)
@@ -225,15 +225,7 @@ export const optimizeImages = async ({
     const publicDirFiles = await recursiveReadDir(publicDir)
     const publicDirImages = publicDirFiles.filter((file) => {
       const ext = path.extname(file).toLowerCase()
-      return (
-        ext === '.png' ||
-        ext === '.jpg' ||
-        ext === '.jpeg' ||
-        ext === '.webp' ||
-        ext === '.avif' ||
-        ext === '.gif' ||
-        ext === '.svg'
-      )
+      return ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.avif' || ext === '.gif'
     })
     manifest = manifest.concat(
       publicDirImages

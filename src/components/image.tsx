@@ -27,6 +27,12 @@ interface CustomImageProps extends ImageProps {
 }
 
 const CustomImage = (props: CustomImageProps, forwardedRef: React.ForwardedRef<HTMLImageElement>) => {
+  const srcStr =
+    typeof props.src === 'string'
+      ? props.src
+      : (props.src as StaticRequire).default !== undefined
+      ? (props.src as StaticRequire).default.src
+      : (props.src as StaticImageData).src
   return (
     <Image
       {...props}
@@ -38,6 +44,7 @@ const CustomImage = (props: CustomImageProps, forwardedRef: React.ForwardedRef<H
           ? exportableLoader({ src: props.src, width: 8, quality: 10 })
           : undefined)
       }
+      unoptimized={props.unoptimized !== undefined ? props.unoptimized : srcStr.endsWith('.svg')}
     />
   )
 }

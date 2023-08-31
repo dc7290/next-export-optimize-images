@@ -9,7 +9,6 @@ const files = [
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].webp',
   'images/img_[width].webp',
-  'images/img_[width].svg',
   'og_[width].webp',
   'images/animated_[width].webp',
   '_next/static/media/client-only.8a5ad2fe_[width].webp',
