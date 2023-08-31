@@ -88,16 +88,8 @@ export type Config = {
   remoteImages?: string[] | (() => string[] | Promise<string[]>)
 }
 
-const getConfig = ({ isBundleProcess }: { isBundleProcess: boolean }): Config => {
-  if (isBundleProcess) {
-    return require('next-export-optimize-images/dist/config')
-  } else {
-    try {
-      return require(process.cwd() + '/export-images.config.js')
-    } catch (_) {
-      return {}
-    }
-  }
+const getConfig = (): Config => {
+  return require('next-export-optimize-images/export-images.config.js')
 }
 
 export default getConfig

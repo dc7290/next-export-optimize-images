@@ -16,7 +16,6 @@ export default defineConfig([
       index: 'src/index.ts',
       cli: 'src/cli/index.ts',
       loader: 'src/loader/index.ts',
-      config: 'src/config.ts',
     },
     external: ['next-export-optimize-images'],
     outDir: 'dist',

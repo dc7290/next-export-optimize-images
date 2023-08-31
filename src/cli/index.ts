@@ -335,7 +335,7 @@ export const run: Run = async ({ noCache = false }) => {
   // eslint-disable-next-line no-console
   console.log(colors.bold.magenta('\nnext-export-optimize-images: Optimize images.'))
 
-  const config = getConfig({ isBundleProcess: false })
+  const config = getConfig()
   const manifestJsonPath = path.resolve(cwd, '.next/next-export-optimize-images-list.nd.json')
 
   const nextConfig = await loadConfig(PHASE_PRODUCTION_BUILD, cwd)

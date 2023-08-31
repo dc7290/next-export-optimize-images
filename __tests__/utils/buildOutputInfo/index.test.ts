@@ -13,6 +13,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+      src: '/_next/static/media/test.png',
       extension: 'png',
       originalExtension: 'png',
       externalOutputDir: '_next/static/media',
@@ -30,6 +31,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/_next/static/chunks/images/images/test_300.png',
+      src: 'https://example.com/images/test.png',
       extension: 'png',
       originalExtension: 'png',
       externalOutputDir: '_next/static/media',
@@ -49,6 +51,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+      src: '/_next/static/media/test.png',
       extension: 'png',
       originalExtension: 'png',
       externalOutputDir: '_next/static/media',
@@ -68,6 +71,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
+      src: '/_next/static/media/test.png',
       extension: 'webp',
       originalExtension: 'png',
       externalOutputDir: '_next/static/media',
@@ -87,6 +91,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/_next/static/chunks/images/_next/static/media/test-300.png',
+      src: '/_next/static/media/test.png',
       extension: 'png',
       originalExtension: 'png',
       externalOutputDir: '_next/static/media',
@@ -107,6 +112,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/custom/images/_next/static/media/test_300.png',
+      src: '/_next/static/media/test.png',
       extension: 'png',
       originalExtension: 'png',
       externalOutputDir: 'custom/external',
@@ -151,6 +157,7 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual({
       output: '/_next/static/chunks/images/custom/test_300.png',
+      src: '/_next/static/media/test.png',
       extension: 'png',
       originalExtension: 'png',
       externalOutputDir: '_next/static/media',

@@ -71,7 +71,7 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
       : `${pathWithoutName}/${name}_${width}.${extension}`
   const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
-  return { output, extension, originalExtension, externalOutputDir }
+  return { output, src, extension, originalExtension, externalOutputDir }
 }
 
 export default buildOutputInfo
