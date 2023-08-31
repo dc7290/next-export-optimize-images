@@ -1,6 +1,7 @@
 import path from 'path'
 
 import colors from 'ansi-colors'
+import appRootPath from 'app-root-path'
 import fs from 'fs-extra'
 import type { NextConfig } from 'next'
 
@@ -12,6 +13,13 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
   }
 
   const resolvedConfigPath = path.join(process.cwd(), 'export-images.config.js')
+  const existConfig = fs.existsSync(resolvedConfigPath)
+  const destConfigPath = appRootPath.resolve('node_modules/next-export-optimize-images/export-images.config.js')
+  if (existConfig) {
+    fs.copySync(resolvedConfigPath, destConfigPath)
+  } else {
+    fs.writeFileSync(destConfigPath, 'module.exports = {}')
+  }
   // eslint-disable-next-line no-console
   console.log(
     colors.magenta(
@@ -65,10 +73,6 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
       config.resolveLoader.alias['next-export-optimize-images-loader'] = options.__test
         ? path.join(__dirname, 'loader')
         : 'next-export-optimize-images/dist/loader'
-
-      if (fs.existsSync(resolvedConfigPath)) {
-        config.resolve.alias['next-export-optimize-images/dist/config'] = resolvedConfigPath
-      }
 
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config
     },
