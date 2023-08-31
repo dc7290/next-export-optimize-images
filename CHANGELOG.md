@@ -6,6 +6,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.1.1](https://github.com/dc7290/next-export-optimize-images/compare/v3.1.0...v3.1.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* 🐛 Align Svg handling with Next.js ([1d30298](https://github.com/dc7290/next-export-optimize-images/commit/1d30298ac6ccd925447bcaafb8605c74a39cd65d))
+* 🐛 Fixed a problem with configurations not working ([92b544c](https://github.com/dc7290/next-export-optimize-images/commit/92b544cd7d251f109ff20f22ebff87417500eb1c)), closes [#612](https://github.com/dc7290/next-export-optimize-images/issues/612)
+* **deps:** update dependency sharp to ^0.32.3 ([b626e7f](https://github.com/dc7290/next-export-optimize-images/commit/b626e7f22181333bcebecf253301f93bfac2062c))
+* **deps:** update dependency sharp to ^0.32.4 ([5217bdd](https://github.com/dc7290/next-export-optimize-images/commit/5217bdd7eb66deb9afc16971a48ef9234ebf80d5))
+
+
+### Documentation
+
+* Fix typo on structure page ([3ec2d6b](https://github.com/dc7290/next-export-optimize-images/commit/3ec2d6b5367896eac2d4e392f73241900cde11b3))
+
+## [3.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.6...v3.1.0) (2023-07-14)
+
+
+### Features
+
+* 🚀 Support functional remote-images ([87d71a8](https://github.com/dc7290/next-export-optimize-images/commit/87d71a868be15e49ddb7fa977302bdf3aca0c3a5))
+
+
+### Bug Fixes
+
+* 🐛 Fixed problem with settings not loading during build ([35c817e](https://github.com/dc7290/next-export-optimize-images/commit/35c817e4829f25c26bc7e4d315b9a2aa1e06b61f)), closes [#612](https://github.com/dc7290/next-export-optimize-images/issues/612)
+
 ## [3.0.6](https://github.com/dc7290/next-export-optimize-images/compare/v3.0.5...v3.0.6) (2023-07-04)
 
 
