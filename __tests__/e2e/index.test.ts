@@ -25,7 +25,7 @@ describe('`next build && next export && next-export-optimize-images` is executed
     const allSizes = [...configImages.imageSizes, ...configImages.deviceSizes]
     allSizes.forEach((size) => {
       files.forEach((file) => {
-        expect(exist(file.replace('[width]', size.toString()))).toBeTruthy
+        expect(exist(file.replace('[width]', size.toString()))).toBeTruthy()
       })
     })
   })
