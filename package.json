@@ -63,7 +63,7 @@
     "@semantic-release/git": "10.0.1",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
-    "@tsconfig/strictest": "2.0.1",
+    "@tsconfig/strictest": "2.0.2",
     "@types/app-root-path": "1.2.5",
     "@types/benchmark": "2.1.2",
     "@types/cli-progress": "3.11.0",
