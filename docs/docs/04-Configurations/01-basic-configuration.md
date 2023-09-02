@@ -195,6 +195,32 @@ const config = {
 
 The original image will be kept, `img.png` will be converted to webp format and `img.jpg` will be converted to avif format and output to the directory.
 
+### `generateFormats`
+
+- Type: Array\<Format>  
+  Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
+
+It allows you to generate extra images in extensions specified.
+
+e.g. 
+
+```js
+const config = {
+  generateFormats: ['jpg'],
+}
+```
+
+```jsx
+<Image src="/img.webp" width={1280} height={640} alt="" />
+<Image src="/img.jpg" width={1280} height={640} alt="" />
+```
+
+
+The original image is `img.webp`. New image `img.jpg` is generated and output to the directory.
+Generated images can be served in two ways:
+- A picture tag
+- A server that rewrites url based on HTTP request Accept header
+
 ### `remoteImages`
 
 - Type: Array<string\> | (() => Array<string\> | Promise<Array<string\>\>)

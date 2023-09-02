@@ -73,6 +73,13 @@ export type Config = {
   convertFormat?: [beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]
 
   /**
+   * You can generate extra images in extensions specified.
+   *
+   * @type {AllowedFormat[]}
+   */
+  generateFormats?: AllowedFormat[]
+
+  /**
    * Allows you to optionally override the parsed image information before optimized images.
    *
    * @type {SourceImageParser}

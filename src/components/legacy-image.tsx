@@ -13,7 +13,7 @@ const exportableLoader: ImageLoader = ({ src, width }) => {
     return `${src}?width=${width}`
   }
 
-  const { output } = buildOutputInfo({ src, width, config })
+  const { output } = buildOutputInfo({ src, width, config })[0] ?? { output: `${src}?width=${width}` }
 
   return `${config.basePath ?? ''}${output}`
 }

@@ -15,6 +15,18 @@ const files = [
   // next/legacy/image
   '_next/static/media/legacy-img.8a5ad2fe_[width].webp',
   'images/legacy-img_[width].webp',
+
+  // generateFormats: ['jpg'],
+
+  // next/image
+  '_next/static/media/img.8a5ad2fe_[width].jpg',
+  'images/img_[width].jpg',
+  'og_[width].jpg',
+  'images/animated_[width].jpg',
+  '_next/static/media/client-only.8a5ad2fe_[width].jpg',
+  // next/legacyjpgge
+  '_next/static/media/legacy-img.8a5ad2fe_[width].jpg',
+  'images/legacy-img_[width].jpg',
 ]
 
 describe('`next build && next export && next-export-optimize-images` is executed correctly', () => {
