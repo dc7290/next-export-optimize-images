@@ -70,7 +70,7 @@
     "@types/fs-extra": "11.0.1",
     "@types/jest": "29.5.4",
     "@types/lodash.uniqwith": "4.5.7",
-    "@types/node": "18.17.3",
+    "@types/node": "18.17.14",
     "@types/react": "18.2.21",
     "@types/recursive-readdir": "^2.2.1",
     "@types/sharp": "0.31.1",
@@ -113,7 +113,7 @@
     "node": ">=16.8.0"
   },
   "volta": {
-    "node": "18.17.0",
+    "node": "18.17.1",
     "yarn": "1.22.19"
   }
 }
