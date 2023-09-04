@@ -197,7 +197,7 @@ The original image will be kept, `img.png` will be converted to webp format and 
 
 ### `generateFormats`
 
-- Type: Array\<Format>  
+- Type: Array<Format\>  
   Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
 
 It allows you to generate extra images in extensions specified.
