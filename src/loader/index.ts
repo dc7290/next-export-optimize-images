@@ -37,18 +37,19 @@ export default async function loader(this: LoaderContext<LoaderOptions>, content
   if (!src.endsWith('.svg')) {
     await Promise.all(
       allSizes.map(async (size) => {
-        const outputInfo = buildOutputInfo({ src, width: size, config })
-        const json: Manifest[number] = {
-          output: outputInfo.output,
-          src: outputInfo.src,
-          width: size,
-          extension: outputInfo.extension,
-        }
+        buildOutputInfo({ src, width: size, config }).forEach((outputInfo) => {
+          const json: Manifest[number] = {
+            output: outputInfo.output,
+            src: outputInfo.src,
+            width: size,
+            extension: outputInfo.extension,
+          }
 
-        fs.appendFile(
-          path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
-          JSON.stringify(json) + '\n'
-        )
+          fs.appendFile(
+            path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
+            JSON.stringify(json) + '\n'
+          )
+        })
       })
     )
   }

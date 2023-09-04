@@ -187,31 +187,32 @@ export const optimizeImages = async ({
       Array.from(remoteImageList)
         .map((url) =>
           allSizes.map((size) => {
-            const { output, extension, originalExtension, externalOutputDir } = buildOutputInfo({
+            return buildOutputInfo({
               src: url,
               width: size,
               config,
-            })
-            const json: Manifest[number] = {
-              output,
-              src: `/${externalOutputDir}/${createHash('sha256')
-                .update(
-                  url
-                    .replace(/^https?:\/\//, '')
-                    .split('/')
-                    .slice(1)
-                    .join('/')
-                )
-                .digest('hex')}.${originalExtension}`,
-              width: size,
-              extension,
-              externalUrl: url,
-            }
+            }).map(({ output, extension, originalExtension, externalOutputDir }) => {
+              const json: Manifest[number] = {
+                output,
+                src: `/${externalOutputDir}/${createHash('sha256')
+                  .update(
+                    url
+                      .replace(/^https?:\/\//, '')
+                      .split('/')
+                      .slice(1)
+                      .join('/')
+                  )
+                  .digest('hex')}.${originalExtension}`,
+                width: size,
+                extension,
+                externalUrl: url,
+              }
 
-            return json
+              return json
+            })
           })
         )
-        .flat()
+        .flat(2)
     )
   }
   if (manifest.some(({ externalUrl }) => externalUrl !== undefined)) {
@@ -232,22 +233,23 @@ export const optimizeImages = async ({
         .map((file) =>
           allSizes.map((size) => {
             const src = file.replace(publicDir, '')
-            const { output, extension } = buildOutputInfo({
+            return buildOutputInfo({
               src,
               width: size,
               config,
-            })
-            const json: Manifest[number] = {
-              output,
-              src,
-              width: size,
-              extension,
-            }
+            }).map(({ output, extension }) => {
+              const json: Manifest[number] = {
+                output,
+                src,
+                width: size,
+                extension,
+              }
 
-            return json
+              return json
+            })
           })
         )
-        .flat()
+        .flat(2)
     )
   }
 

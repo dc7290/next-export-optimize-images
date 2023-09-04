@@ -6,14 +6,14 @@ import getConfig from '../utils/getConfig'
 
 const config = getConfig()
 
-const exportableLoader: ImageLoader = ({ src, width }) => {
+export const exportableLoader: ImageLoader = ({ src, width }) => {
   if (process.env['NODE_ENV'] === 'development') {
     // This doesn't bother optimizing in the dev environment. Next complains if the
     // returned URL doesn't have a width in it, so adding it as a throwaway
     return `${src}?width=${width}`
   }
 
-  const { output } = buildOutputInfo({ src, width, config })
+  const { output } = buildOutputInfo({ src, width, config })[0] ?? { output: `${src}?width=${width}` }
 
   return `${config.basePath ?? ''}${output}`
 }

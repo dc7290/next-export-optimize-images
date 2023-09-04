@@ -8,6 +8,7 @@ const config = {
     },
   },
   convertFormat: [['png', 'webp']],
+  generateFormats: ['jpg'],
   remoteImages: async () => ['https://next-export-optimize-images.vercel.app/og.png'],
   basePath: '/base',
 }

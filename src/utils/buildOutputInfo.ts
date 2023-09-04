@@ -65,13 +65,20 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
   const externalOutputDir = `${
     config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
   }`
-  const filename =
-    config.filenameGenerator !== undefined
-      ? config.filenameGenerator({ path: pathWithoutName, name, width, extension })
-      : `${pathWithoutName}/${name}_${width}.${extension}`
-  const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
-  return { output, src, extension, originalExtension, externalOutputDir }
+  const extensions = config.generateFormats ? [...new Set([extension, ...config.generateFormats])] : [extension]
+  return extensions.map((extension, index) => {
+    if (index > 0 && !formatValidate(extension))
+      throw Error(`Unauthorized extension specified in \`generateFormats\`: ${extension}`)
+
+    const filename =
+      config.filenameGenerator !== undefined
+        ? config.filenameGenerator({ path: pathWithoutName, name, width, extension })
+        : `${pathWithoutName}/${name}_${width}.${extension}`
+    const output = `${outputDir}/${filename.replace(/^\//, '')}`
+
+    return { output, src, extension, originalExtension, externalOutputDir }
+  })
 }
 
 export default buildOutputInfo
