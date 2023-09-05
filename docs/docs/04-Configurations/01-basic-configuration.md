@@ -195,6 +195,19 @@ const config = {
 
 The original image will be kept, `img.png` will be converted to webp format and `img.jpg` will be converted to avif format and output to the directory.
 
+### `generateFormats`
+
+- Type: Array<"webp" | "avif"\>
+- Default: ['webp']
+
+You can generate extra images in extensions specified.
+
+This setting affects the extension displayed in the `Picture` component.  
+The order is also important.  
+For example, if `webp` is first, then `webp` will be displayed first.
+
+See [Picture component](/docs/Features/picture-component) for details.
+
 ### `remoteImages`
 
 - Type: Array<string\> | (() => Array<string\> | Promise<Array<string\>\>)

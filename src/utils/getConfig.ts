@@ -73,6 +73,16 @@ export type Config = {
   convertFormat?: [beforeConvert: AllowedFormat, afterConvert: AllowedFormat][]
 
   /**
+   * You can generate extra images in extensions specified.
+   * The default is ['webp'].
+   * This setting affects the extension displayed in the `Picture` component.
+   * The order is also important. For example, if `webp` is first, then `webp` will be displayed first.
+   *
+   * @type {('webp' | 'avif')[]}
+   */
+  generateFormats?: ('webp' | 'avif')[]
+
+  /**
    * Allows you to optionally override the parsed image information before optimized images.
    *
    * @type {SourceImageParser}

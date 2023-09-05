@@ -1,7 +1,7 @@
 import formatValidate from './formatValidate'
 import { Config, DefaultImageParser } from './getConfig'
 
-const defaultImageParser: DefaultImageParser = (src: string) => {
+export const defaultImageParser: DefaultImageParser = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
   const extension = (src.split(/\.([^.]*$)/)[1] || '').split('?')[0]
 
@@ -65,13 +65,20 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
   const externalOutputDir = `${
     config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
   }`
-  const filename =
-    config.filenameGenerator !== undefined
-      ? config.filenameGenerator({ path: pathWithoutName, name, width, extension })
-      : `${pathWithoutName}/${name}_${width}.${extension}`
-  const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
-  return { output, src, extension, originalExtension, externalOutputDir }
+  const extensions = [...new Set([...(config.generateFormats ?? ['webp']), extension])]
+  return extensions.map((extension, index) => {
+    if (extensions.length !== index + 1 && !formatValidate(extension))
+      throw Error(`Unauthorized extension specified in \`generateFormats\`: ${extension}`)
+
+    const filename =
+      config.filenameGenerator !== undefined
+        ? config.filenameGenerator({ path: pathWithoutName, name, width, extension })
+        : `${pathWithoutName}/${name}_${width}.${extension}`
+    const output = `${outputDir}/${filename.replace(/^\//, '')}`
+
+    return { output, src, extension, originalExtension, externalOutputDir }
+  })
 }
 
 export default buildOutputInfo
