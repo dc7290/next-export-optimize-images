@@ -2,6 +2,7 @@ import Image from 'next/image'
 import LegacyImage from 'next/legacy/image'
 import React from 'react'
 
+import Picture from '../../../dist/components/picture'
 import ClientComponent from '../components/ClientComponent'
 
 import imgSrc from '../images/img.png'
@@ -28,6 +29,14 @@ export default function IndexPage() {
         <Image src="/images/animated.webp" width={400} height={400} alt="" />
 
         <ClientComponent />
+      </div>
+      {/* picture */}
+      <div>
+        {/* Imported image */}
+        <Picture src={imgSrc} alt="" />
+
+        {/* Static image */}
+        <Picture src="/images/img.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" alt="" />
       </div>
       {/* next/legacy/image */}
       <div>

@@ -25,6 +25,7 @@ export default defineConfig([
     entry: {
       image: 'src/components/image.tsx',
       'legacy-image': 'src/components/legacy-image.tsx',
+      picture: 'src/components/picture.tsx',
     },
     external: ['react', 'next', 'next-export-optimize-images'],
     outDir: 'dist/components',

@@ -6,6 +6,20 @@ import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'out/_next/static/chunks/images', filename))
 
 const files = [
+  // avif
+
+  // next/image
+  '_next/static/media/img.8a5ad2fe_[width].avif',
+  'images/img_[width].avif',
+  'og_[width].avif',
+  'images/animated_[width].avif',
+  '_next/static/media/client-only.8a5ad2fe_[width].avif',
+  // next/legacy/image
+  '_next/static/media/legacy-img.8a5ad2fe_[width].avif',
+  'images/legacy-img_[width].avif',
+
+  // webp
+
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].webp',
   'images/img_[width].webp',
@@ -16,17 +30,16 @@ const files = [
   '_next/static/media/legacy-img.8a5ad2fe_[width].webp',
   'images/legacy-img_[width].webp',
 
-  // generateFormats: ['jpg'],
+  // png
 
   // next/image
-  '_next/static/media/img.8a5ad2fe_[width].jpg',
-  'images/img_[width].jpg',
-  'og_[width].jpg',
-  'images/animated_[width].jpg',
-  '_next/static/media/client-only.8a5ad2fe_[width].jpg',
+  '_next/static/media/img.8a5ad2fe_[width].png',
+  'images/img_[width].png',
+  'og_[width].png',
+  '_next/static/media/client-only.8a5ad2fe_[width].png',
   // next/legacyjpgge
-  '_next/static/media/legacy-img.8a5ad2fe_[width].jpg',
-  'images/legacy-img_[width].jpg',
+  '_next/static/media/legacy-img.8a5ad2fe_[width].png',
+  'images/legacy-img_[width].png',
 ]
 
 describe('`next build && next export && next-export-optimize-images` is executed correctly', () => {

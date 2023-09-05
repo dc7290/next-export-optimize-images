@@ -14,3 +14,9 @@ jest-setup.js
 
 # testing
 __tests__/e2e
+
+# dist files
+picture.js
+picture.d.ts
+image.js
+legacy

@@ -25,7 +25,9 @@
   "files": [
     "dist",
     "legacy",
-    "image.js"
+    "image.js",
+    "picture.js",
+    "picture.d.ts"
   ],
   "scripts": {
     "dev": "tsup --watch",

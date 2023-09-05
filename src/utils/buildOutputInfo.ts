@@ -1,7 +1,7 @@
 import formatValidate from './formatValidate'
 import { Config, DefaultImageParser } from './getConfig'
 
-const defaultImageParser: DefaultImageParser = (src: string) => {
+export const defaultImageParser: DefaultImageParser = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]
   const extension = (src.split(/\.([^.]*$)/)[1] || '').split('?')[0]
 
@@ -66,9 +66,9 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
     config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
   }`
 
-  const extensions = config.generateFormats ? [...new Set([extension, ...config.generateFormats])] : [extension]
+  const extensions = [...new Set([...(config.generateFormats ?? ['webp']), extension])]
   return extensions.map((extension, index) => {
-    if (index > 0 && !formatValidate(extension))
+    if (extensions.length !== index + 1 && !formatValidate(extension))
       throw Error(`Unauthorized extension specified in \`generateFormats\`: ${extension}`)
 
     const filename =

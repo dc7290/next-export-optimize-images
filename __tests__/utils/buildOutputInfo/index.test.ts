@@ -13,6 +13,13 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual([
       {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
+      {
         output: '/_next/static/chunks/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
@@ -32,6 +39,13 @@ describe('buildOutputInfo', () => {
     const output = buildOutputInfo(input)
 
     expect(output).toEqual([
+      {
+        output: '/_next/static/chunks/images/images/test_300.webp',
+        src: 'https://example.com/images/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
       {
         output: '/_next/static/chunks/images/images/test_300.png',
         src: 'https://example.com/images/test.png',
@@ -54,6 +68,13 @@ describe('buildOutputInfo', () => {
     const output = buildOutputInfo(input)
 
     expect(output).toEqual([
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
@@ -91,7 +112,7 @@ describe('buildOutputInfo', () => {
       src: '/_next/static/media/test.png',
       width: 300,
       config: {
-        generateFormats: ['jpg'],
+        generateFormats: ['avif', 'webp'],
       } as Config,
     }
 
@@ -99,16 +120,23 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual([
       {
-        output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+        output: '/_next/static/chunks/images/_next/static/media/test_300.avif',
         src: '/_next/static/media/test.png',
-        extension: 'png',
+        extension: 'avif',
         originalExtension: 'png',
         externalOutputDir: '_next/static/media',
       },
       {
-        output: '/_next/static/chunks/images/_next/static/media/test_300.jpg',
+        output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
         src: '/_next/static/media/test.png',
-        extension: 'jpg',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+        src: '/_next/static/media/test.png',
+        extension: 'png',
         originalExtension: 'png',
         externalOutputDir: '_next/static/media',
       },
@@ -120,7 +148,7 @@ describe('buildOutputInfo', () => {
       src: '/_next/static/media/test.png',
       width: 300,
       config: {
-        generateFormats: ['jpg', 'png', 'jpg'],
+        generateFormats: ['avif', 'webp', 'avif'],
       } as Config,
     }
 
@@ -128,16 +156,23 @@ describe('buildOutputInfo', () => {
 
     expect(output).toEqual([
       {
-        output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+        output: '/_next/static/chunks/images/_next/static/media/test_300.avif',
         src: '/_next/static/media/test.png',
-        extension: 'png',
+        extension: 'avif',
         originalExtension: 'png',
         externalOutputDir: '_next/static/media',
       },
       {
-        output: '/_next/static/chunks/images/_next/static/media/test_300.jpg',
+        output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
         src: '/_next/static/media/test.png',
-        extension: 'jpg',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+        src: '/_next/static/media/test.png',
+        extension: 'png',
         originalExtension: 'png',
         externalOutputDir: '_next/static/media',
       },
@@ -156,6 +191,13 @@ describe('buildOutputInfo', () => {
     const output = buildOutputInfo(input)
 
     expect(output).toEqual([
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test-300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
       {
         output: '/_next/static/chunks/images/_next/static/media/test-300.png',
         src: '/_next/static/media/test.png',
@@ -179,6 +221,13 @@ describe('buildOutputInfo', () => {
     const output = buildOutputInfo(input)
 
     expect(output).toEqual([
+      {
+        output: '/custom/images/_next/static/media/test_300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: 'custom/external',
+      },
       {
         output: '/custom/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
@@ -240,6 +289,13 @@ describe('buildOutputInfo', () => {
     })
 
     expect(output).toEqual([
+      {
+        output: '/_next/static/chunks/images/custom/test_300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+        externalOutputDir: '_next/static/media',
+      },
       {
         output: '/_next/static/chunks/images/custom/test_300.png',
         src: '/_next/static/media/test.png',

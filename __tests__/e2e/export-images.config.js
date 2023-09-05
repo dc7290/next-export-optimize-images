@@ -7,10 +7,8 @@ const config = {
       effort: 0,
     },
   },
-  convertFormat: [['png', 'webp']],
-  generateFormats: ['jpg'],
+  generateFormats: ['avif', 'webp'],
   remoteImages: async () => ['https://next-export-optimize-images.vercel.app/og.png'],
-  basePath: '/base',
 }
 
 module.exports = config

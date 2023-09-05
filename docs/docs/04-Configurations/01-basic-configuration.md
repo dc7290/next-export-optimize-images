@@ -197,29 +197,16 @@ The original image will be kept, `img.png` will be converted to webp format and 
 
 ### `generateFormats`
 
-- Type: Array<Format\>  
-  Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
+- Type: Array<"webp" | "avif"\>
+- Default: ['webp']
 
-It allows you to generate extra images in extensions specified.
+You can generate extra images in extensions specified.
 
-e.g. 
+This setting affects the extension displayed in the `Picture` component.  
+The order is also important.  
+For example, if `webp` is first, then `webp` will be displayed first.
 
-```js
-const config = {
-  generateFormats: ['jpg'],
-}
-```
-
-```jsx
-<Image src="/img.webp" width={1280} height={640} alt="" />
-<Image src="/img.jpg" width={1280} height={640} alt="" />
-```
-
-
-The original image is `img.webp`. New image `img.jpg` is generated and output to the directory.
-Generated images can be served in two ways:
-- A picture tag
-- A server that rewrites url based on HTTP request Accept header
+See [Picture component](/docs/Features/picture-component) for details.
 
 ### `remoteImages`
 
