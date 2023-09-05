@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.1.1...v3.2.0) (2023-09-05)
+
+
+### Features
+
+* 🚀 add Picture component ([0bf9352](https://github.com/dc7290/next-export-optimize-images/commit/0bf9352809f1d17aaf96231b33fee508930eea8b)), closes [#653](https://github.com/dc7290/next-export-optimize-images/issues/653) [#544](https://github.com/dc7290/next-export-optimize-images/issues/544)
+* 🚀 config generateFormats option ([fade51c](https://github.com/dc7290/next-export-optimize-images/commit/fade51cc0d22070984ba4cd3e49b933e17fed566))
+
+
+### Bug Fixes
+
+* 🐛 e2e test was not run ([446e208](https://github.com/dc7290/next-export-optimize-images/commit/446e208bc27855fa8b86bb8002d04e518f01824c))
+* **deps:** update dependency sharp to ^0.32.5 ([07c4e9d](https://github.com/dc7290/next-export-optimize-images/commit/07c4e9d2a5b45bbb3846b15fabe1c1880d9c312e))
+
+
+### Documentation
+
+* ✏️ Picture component ([0ad3dc6](https://github.com/dc7290/next-export-optimize-images/commit/0ad3dc6a79e947a340deb061bbcdb31c6128efa8))
+
 ## [3.1.1](https://github.com/dc7290/next-export-optimize-images/compare/v3.1.0...v3.1.1) (2023-08-31)
 
 
