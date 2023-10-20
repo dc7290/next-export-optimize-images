@@ -1719,10 +1719,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/strictest/-/strictest-2.0.2.tgz#97167bf99c03d0a010d9946ae8a702c4f62e2783"
   integrity sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==
 
-"@types/app-root-path@1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@types/app-root-path/-/app-root-path-1.2.6.tgz#ed20225412dceda736b939ee338fb39ab41c43dd"
-  integrity sha512-wLZH6I65+T2fyN9GBLyP5RmXMddHaSjLueEW012D39ZlKTLiagIs3Ng7WSiKj3N6kDEwC04LheqWhCg5dNwnwg==
+"@types/app-root-path@1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@types/app-root-path/-/app-root-path-1.2.7.tgz#0e76a5dc89370ba766336092440d23a4f57010fa"
+  integrity sha512-/NuJ7+xoFO9PlDg+7MXUadZAfgJe1/Sr9ats/b4C7Q+wXx1GkaA8BpD3KQm18Msqd1t2qEwfyFOEhA6cU4+BuQ==
 
 "@types/aria-query@^4.2.0":
   version "4.2.2"
