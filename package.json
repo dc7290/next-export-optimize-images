@@ -71,7 +71,7 @@
     "@types/cli-progress": "3.11.4",
     "@types/fs-extra": "11.0.3",
     "@types/jest": "29.5.4",
-    "@types/lodash.uniqwith": "4.5.7",
+    "@types/lodash.uniqwith": "4.5.8",
     "@types/node": "18.17.15",
     "@types/react": "18.2.21",
     "@types/recursive-readdir": "^2.2.1",
