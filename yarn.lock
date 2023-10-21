@@ -1782,10 +1782,10 @@
     "@types/node" "*"
     "@types/responselike" "*"
 
-"@types/cli-progress@3.11.2":
-  version "3.11.2"
-  resolved "https://registry.yarnpkg.com/@types/cli-progress/-/cli-progress-3.11.2.tgz#c8ff27cf89b46bfbb7faf140432c464d3a62ec4e"
-  integrity sha512-Yt/8rEJalfa9ve2SbfQnwFHrc9QF52JIZYHW3FDaTMpkCvnns26ueKiPHDxyJ0CS//IqjMINTx7R5Xa7k7uFHQ==
+"@types/cli-progress@3.11.4":
+  version "3.11.4"
+  resolved "https://registry.yarnpkg.com/@types/cli-progress/-/cli-progress-3.11.4.tgz#58d9e60bd5fd85a57984890ef9c9d831a0dda896"
+  integrity sha512-yufTxeeNCZuEIxx2uebK8lpSAsJM4lvzakm/VxzYhDtqhXCzwH9jpn7nPCxzrROuEbLATqhFq4MIPoG0tlrsvw==
   dependencies:
     "@types/node" "*"
 
