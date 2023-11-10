@@ -66,7 +66,7 @@
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
     "@tsconfig/strictest": "2.0.2",
-    "@types/app-root-path": "1.2.7",
+    "@types/app-root-path": "1.2.8",
     "@types/benchmark": "2.1.4",
     "@types/cli-progress": "3.11.4",
     "@types/fs-extra": "11.0.3",
