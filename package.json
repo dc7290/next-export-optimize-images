@@ -68,7 +68,7 @@
     "@tsconfig/strictest": "2.0.2",
     "@types/app-root-path": "1.2.8",
     "@types/benchmark": "2.1.5",
-    "@types/cli-progress": "3.11.4",
+    "@types/cli-progress": "3.11.5",
     "@types/fs-extra": "11.0.3",
     "@types/jest": "29.5.4",
     "@types/lodash.uniqwith": "4.5.8",
