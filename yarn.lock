@@ -1913,10 +1913,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/lodash.uniqwith@4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@types/lodash.uniqwith/-/lodash.uniqwith-4.5.8.tgz#4ac1a7e2a0b119957ecd97fca59d9e8090e694bf"
-  integrity sha512-xCe1FCV6QBKvCl+H2rxiGizbzDmYQAjsceD8iweTCHt1tP+G2/Czki0f7Uqi4KR1tAWwdV2Fe5RH/wDN/iqLCQ==
+"@types/lodash.uniqwith@4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.uniqwith/-/lodash.uniqwith-4.5.9.tgz#abeed49ff9cecba4598ac20becc57159385ed91c"
+  integrity sha512-r/L/U1bAHuZF/bKVanxZtPTCr0J47L8Ftpg4BeV1Knv5ZOl9f6bwqVxP5fvvqniHatgcYpp7vwccxbvVGMV8Xw==
   dependencies:
     "@types/lodash" "*"
 
