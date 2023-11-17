@@ -1985,10 +1985,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/recursive-readdir@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@types/recursive-readdir/-/recursive-readdir-2.2.3.tgz#3c09121084302527ce162f2190584da2caab49ff"
-  integrity sha512-fhOVQ23ki+GB0WGmJJF9OwPBjel2Iv02pmEv58T0DZqIAlKnyhAaC2E9/LuKQLIZF88w7ivXSZXJtvEXGXFgeQ==
+"@types/recursive-readdir@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@types/recursive-readdir/-/recursive-readdir-2.2.4.tgz#815786465159dc8250b9b6a2985fd93be0452e73"
+  integrity sha512-84REEGT3lcgopvpkmGApzmU5UEG0valme5rQS/KGiguTkJ70/Au8UYZTyrzoZnY9svuX9351+1uvrRPzWDD/uw==
   dependencies:
     "@types/node" "*"
 
