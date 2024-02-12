@@ -5,13 +5,23 @@ import got from 'got'
 
 import type { Manifest } from '../'
 
+import type { Config } from './../../utils/getConfig'
+
 type ExternalImagesDownloaderArgs = {
   terse?: boolean
   manifest: Manifest
   destDir: string
+  remoteImagesDownloadsDelay?: Config['remoteImagesDownloadsDelay']
 }
 
-const externalImagesDownloader = async ({ terse = false, manifest, destDir }: ExternalImagesDownloaderArgs) => {
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+const externalImagesDownloader = async ({
+  terse = false,
+  manifest,
+  destDir,
+  remoteImagesDownloadsDelay,
+}: ExternalImagesDownloaderArgs) => {
   if (!terse) {
     // eslint-disable-next-line no-console
     console.log('\n- Download external images -')
@@ -24,6 +34,10 @@ const externalImagesDownloader = async ({ terse = false, manifest, destDir }: Ex
     if (externalUrl === undefined) continue
 
     if (downloadedImages.some((image) => image === externalUrl)) continue
+
+    if (remoteImagesDownloadsDelay) {
+      await sleep(remoteImagesDownloadsDelay)
+    }
 
     promises.push(
       (async () => {
