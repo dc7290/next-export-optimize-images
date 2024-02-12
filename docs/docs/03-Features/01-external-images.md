@@ -43,3 +43,11 @@ Also, no downloading to local is performed.
   src="https://next-export-optimize-images.vercel.app/og.png?width=3840"
 />
 ```
+
+### `remoteImagesDownloadsDelay`
+
+- Type: number
+
+In case you need to download a large amount of images from an external CDN with a rate limit, this will add delays between downloading images.
+
+effectively this will add `sleep` function between downloads.
