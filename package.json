@@ -72,7 +72,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/jest": "29.5.12",
     "@types/lodash.uniqwith": "4.5.9",
-    "@types/node": "18.19.18",
+    "@types/node": "18.19.21",
     "@types/react": "18.2.58",
     "@types/recursive-readdir": "^2.2.4",
     "@types/sharp": "0.31.1",
