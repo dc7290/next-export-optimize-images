@@ -174,8 +174,8 @@ export const optimizeImages = async ({
     config.remoteImages === undefined
       ? []
       : typeof config.remoteImages === 'function'
-      ? await config.remoteImages()
-      : config.remoteImages
+        ? await config.remoteImages()
+        : config.remoteImages
   if (remoteImages.length > 0) {
     const remoteImageList = new Set<string>()
 
@@ -216,7 +216,12 @@ export const optimizeImages = async ({
     )
   }
   if (manifest.some(({ externalUrl }) => externalUrl !== undefined)) {
-    await externalImagesDownloader({ terse, manifest, destDir })
+    await externalImagesDownloader({
+      terse,
+      manifest,
+      destDir,
+      remoteImagesDownloadsDelay: config.remoteImagesDownloadsDelay,
+    })
   }
 
   const publicDir = path.resolve(cwd, 'public')

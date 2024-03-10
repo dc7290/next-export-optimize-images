@@ -96,6 +96,11 @@ export type Config = {
    * @type {string[] | (() => string[] | Promise<string[]>)}
    */
   remoteImages?: string[] | (() => string[] | Promise<string[]>)
+
+  /**
+   * In case you need to download a large amount of images from an external CDN with a rate limit, this will add delays between downloading images.
+   */
+  remoteImagesDownloadsDelay?: number
 }
 
 const getConfig = (): Config => {

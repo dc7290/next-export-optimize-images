@@ -216,3 +216,9 @@ You can directly specify the URL of an external image.
 This is useful in cases where it is not known what images will be used for the build using variables, for example.
 
 https://next-export-optimize-images.vercel.app/docs/Features/external-images#when-specifying-an-external-image-url-with-a-variable
+
+### `remoteImagesDownloadsDelay`
+
+- Type: number
+
+In case you need to download a large amount of images from an external CDN with a rate limit, this will add delays between downloading images.
