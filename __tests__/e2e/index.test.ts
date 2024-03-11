@@ -11,7 +11,8 @@ const files = [
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].avif',
   'images/img_[width].avif',
-  'og_[width].avif',
+  'id/237/200/300_[width].avif',
+  'id/238/200/300_[width].avif',
   'images/animated_[width].avif',
   '_next/static/media/client-only.8a5ad2fe_[width].avif',
   // next/legacy/image
@@ -23,21 +24,23 @@ const files = [
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].webp',
   'images/img_[width].webp',
-  'og_[width].webp',
+  'id/237/200/300_[width].webp',
+  'id/238/200/300_[width].webp',
   'images/animated_[width].webp',
   '_next/static/media/client-only.8a5ad2fe_[width].webp',
   // next/legacy/image
   '_next/static/media/legacy-img.8a5ad2fe_[width].webp',
   'images/legacy-img_[width].webp',
 
-  // png
+  // png or jpg
 
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].png',
   'images/img_[width].png',
-  'og_[width].png',
+  'id/237/200/300_[width].jpg',
+  'id/238/200/300_[width].jpg',
   '_next/static/media/client-only.8a5ad2fe_[width].png',
-  // next/legacyjpgge
+  // next/legacy/image
   '_next/static/media/legacy-img.8a5ad2fe_[width].png',
   'images/legacy-img_[width].png',
 ]
@@ -50,7 +53,11 @@ describe('`next build && next export && next-export-optimize-images` is executed
     const allSizes = [...configImages.imageSizes, ...configImages.deviceSizes]
     allSizes.forEach((size) => {
       files.forEach((file) => {
-        expect(exist(file.replace('[width]', size.toString()))).toBeTruthy()
+        const isExist = exist(file.replace('[width]', size.toString()))
+        if (!isExist) {
+          console.log(file.replace('[width]', size.toString()))
+        }
+        expect(isExist).toBeTruthy()
       })
     })
   })
