@@ -8,7 +8,7 @@ const config = {
     },
   },
   generateFormats: ['avif', 'webp'],
-  remoteImages: async () => ['https://next-export-optimize-images.vercel.app/og.png'],
+  remoteImages: async () => ['https://picsum.photos/id/237/200/300.jpg', 'https://picsum.photos/id/238/200/300.jpg'],
 }
 
 module.exports = config
