@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [3.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.2.0...v3.3.0) (2024-03-10)
+
+
+### Features
+
+* 🚀 feat: add config for remote images download delays ([fb05eda](https://github.com/dc7290/next-export-optimize-images/commit/fb05edaeb73b85fb2ac930c30e061c0c0078d6ca))
+
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to ^11.2.0 ([83990ed](https://github.com/dc7290/next-export-optimize-images/commit/83990ed601450ad37ec4a99cfa3d1bb6480022b5))
+* **deps:** update dependency sharp to ^0.32.6 ([ea1b24f](https://github.com/dc7290/next-export-optimize-images/commit/ea1b24f4eb3301f3332e97381ee618590b822887))
+* **deps:** update dependency sharp to v0.32.6 [security] ([fed526e](https://github.com/dc7290/next-export-optimize-images/commit/fed526eb1056f530121900aa9beb4627a2262589))
+
+
+### Documentation
+
+* ✏️ add docs info for remoteImagesDownloadsDelay config ([4978490](https://github.com/dc7290/next-export-optimize-images/commit/4978490d9c464af26cbd0539e5ec64e3f5d269d6))
+
 ## [3.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.1.1...v3.2.0) (2023-09-05)
 
 
