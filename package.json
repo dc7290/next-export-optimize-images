@@ -55,7 +55,7 @@
     "fs-extra": "^11.2.0",
     "lodash.uniqwith": "^4.5.0",
     "recursive-readdir": "^2.2.3",
-    "sharp": "^0.32.6"
+    "sharp": "^0.33.3"
   },
   "devDependencies": {
     "@commitlint/cli": "17.8.1",
@@ -73,7 +73,7 @@
     "@types/node": "20.11.28",
     "@types/react": "18.2.66",
     "@types/recursive-readdir": "^2.2.4",
-    "@types/sharp": "0.31.1",
+    "@types/sharp": "0.32.0",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "conventional-changelog-conventionalcommits": "7.0.2",
