@@ -26,6 +26,7 @@
     "dist",
     "legacy",
     "image.js",
+    "image.d.ts",
     "picture.js",
     "picture.d.ts"
   ],
@@ -70,8 +71,8 @@
     "@types/fs-extra": "11.0.4",
     "@types/jest": "29.5.12",
     "@types/lodash.uniqwith": "4.5.9",
-    "@types/node": "20.11.28",
-    "@types/react": "18.2.66",
+    "@types/node": "20.11.25",
+    "@types/react": "18.2.64",
     "@types/recursive-readdir": "^2.2.4",
     "@types/sharp": "0.31.1",
     "@typescript-eslint/eslint-plugin": "6.21.0",

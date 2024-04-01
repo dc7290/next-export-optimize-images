@@ -1,4 +1,4 @@
-import Image, { ImageProps, unstable_getImgProps as getImgProps } from 'next/dist/shared/lib/image-external'
+import Image, { ImageProps, unstable_getImgProps as getImageProps } from 'next/dist/shared/lib/image-external'
 import React, { forwardRef } from 'react'
 
 import getConfig from '../utils/getConfig'
@@ -8,7 +8,7 @@ import imageLoader from './utils/imageLoader'
 
 const config = getConfig()
 
-const Picture = (props: ImageProps, forwardedRef: React.ForwardedRef<HTMLImageElement>) => {
+const Picture = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRef) => {
   const srcStr = getStringSrc(props.src)
 
   if (srcStr.endsWith('.svg')) {
@@ -17,7 +17,7 @@ const Picture = (props: ImageProps, forwardedRef: React.ForwardedRef<HTMLImageEl
 
   const additionalFormats = [...new Set(config.generateFormats ?? ['webp'])]
   const sources = additionalFormats.map((format, i) => ({
-    srcSet: getImgProps({
+    srcSet: getImageProps({
       ...props,
       loader: imageLoader(i),
     }).props.srcSet,
@@ -42,8 +42,7 @@ const Picture = (props: ImageProps, forwardedRef: React.ForwardedRef<HTMLImageEl
       />
     </picture>
   )
-}
+})
+Picture.displayName = 'Picture'
 
-const _Picture = forwardRef(Picture)
-
-export default _Picture
+export default Picture

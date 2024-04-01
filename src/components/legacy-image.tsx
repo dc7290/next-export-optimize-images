@@ -1,4 +1,4 @@
-import Image, { ImageProps } from 'next/dist/client/legacy/image'
+import Image, { ImageProps } from 'next/image'
 import React from 'react'
 
 import imageLoader from './utils/imageLoader'
@@ -18,5 +18,4 @@ const CustomImage = (props: ImageProps) => {
   )
 }
 
-export * from 'next/dist/client/legacy/image'
 export default CustomImage

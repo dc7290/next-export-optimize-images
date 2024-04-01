@@ -25,7 +25,7 @@ module.exports = withExportImages({
 })
 ```
 
-1. Change the description of the `scripts` that do the `next build` in `package.json`
+2. Change the description of the `scripts` that do the `next build` in `package.json`
 
 ```diff title="package.json"
 {
@@ -34,9 +34,11 @@ module.exports = withExportImages({
 }
 ```
 
-3. Import and use next/image as usual.
+3. Import from `next-export-optimize-images/image` and use it.
 
 ```tsx
+import Image from 'next-export-optimize-images/image'
+
 <Image src="/images/img.png" width={1920} height={1280} alt="" />
 // Or import as follows
 import img from './img.png'
@@ -48,8 +50,9 @@ import img from './img.png'
 Alternatively, you can use `next/legacy/image`.
 
 ```tsx
-import Image from 'next/legacy/image'
-;<Image src="/images/img.png" width={1920} height={1280} alt="" />
+import Image from 'next-export-optimize-images/legacy/image'
+
+<Image src="/images/img.png" width={1920} height={1280} alt="" />
 ```
 
 ## Local checks
