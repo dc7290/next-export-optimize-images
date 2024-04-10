@@ -2,7 +2,11 @@ import path from 'path'
 
 import fs from 'fs-extra'
 
-export const defaultCacheDir = path.resolve(process.cwd(), 'node_modules/.cache/next-export-optimize-images')
+import getConfig from '../../utils/getConfig'
+
+const cacheDir = getConfig().cacheDir || 'node_modules/.cache/next-export-optimize-images'
+
+export const defaultCacheDir = cacheDir.startsWith('/') ? cacheDir : path.join(process.cwd(), cacheDir)
 export const defaultCacheFilePath = path.join(defaultCacheDir, 'cached-images.json')
 
 export const createCacheDir = async (cacheDir = defaultCacheDir) => {
