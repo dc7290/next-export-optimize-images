@@ -1,5 +1,5 @@
-import Image from '../../../dist/components/image'
-import LegacyImage from '../../../dist/components/legacy-image'
+import Image from '../../../image'
+import LegacyImage from '../../../legacy/image'
 import React from 'react'
 
 import Picture from '../../../dist/components/picture'

@@ -1,4 +1,4 @@
-import Image, { ImageProps, unstable_getImgProps as getImageProps } from 'next/dist/shared/lib/image-external'
+import Image, { ImageProps, getImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
 
 import getConfig from '../utils/getConfig'

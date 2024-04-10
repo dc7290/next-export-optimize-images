@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import Image from '../../../dist/components/image'
+import Image from '../../../image'
 
 import clientOnlySrc from '../images/client-only.png'
 
