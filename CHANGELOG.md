@@ -6,6 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.0.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.3.0...v4.0.0) (2024-04-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* 🧨The minimum version of Next.js is 14.1.0
+* 🧨The import destination changes, no longer from next/image, but from
+next-export-optimize-images/image.
+* 🧨Node.js v16 has been dropped
+
+### Features
+
+* 🚀 Change import options ([9027b63](https://github.com/dc7290/next-export-optimize-images/commit/9027b63b31b15b4280b1e3c3a23cfb6060fbf964)), closes [#820](https://github.com/dc7290/next-export-optimize-images/issues/820) [#696](https://github.com/dc7290/next-export-optimize-images/issues/696) [#796](https://github.com/dc7290/next-export-optimize-images/issues/796)
+* 🚀 Node.js minimum version to 18 ([202db6d](https://github.com/dc7290/next-export-optimize-images/commit/202db6d2cd06244254f40a3eabc558548f7304ba))
+* 🚀 Support Next.js v14 ([ae716a6](https://github.com/dc7290/next-export-optimize-images/commit/ae716a6f9a39a74a45de351d6458e90df77901f8)), closes [#802](https://github.com/dc7290/next-export-optimize-images/issues/802)
+
+
+### Bug Fixes
+
+* 🐛 Revive module.exports ([8911e11](https://github.com/dc7290/next-export-optimize-images/commit/8911e11d2c7b54449fe24495ee2c691f841aabb7))
+
+
+### Continuous Integration
+
+* 🎡 Fixed a problem with Release ending in the middle of a re ([9e6c6af](https://github.com/dc7290/next-export-optimize-images/commit/9e6c6af9ce9aff0ca6862a67d4197e771d53dc11))
+
 ## [3.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.2.0...v3.3.0) (2024-03-10)
 
 
