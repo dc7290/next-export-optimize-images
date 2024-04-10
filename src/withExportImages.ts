@@ -37,16 +37,6 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
       loader: 'custom',
     },
     webpack(config, option) {
-      config.resolve.alias['next/image'] = options.__test
-        ? '../../../dist/components/image'
-        : 'next-export-optimize-images/image'
-      config.resolve.alias['next/legacy/image'] = options.__test
-        ? '../../../dist/components/legacy-image'
-        : 'next-export-optimize-images/legacy/image'
-      delete config.resolve.alias['next']
-
-      config.resolve.fallback = { ...config.resolve.fallback, fs: false }
-
       const nextImageLoader = config.module.rules.find(
         ({ loader }: { loader?: string }) => loader === 'next-image-loader'
       )

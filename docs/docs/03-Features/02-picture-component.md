@@ -1,5 +1,5 @@
 ---
-description: This page introduces the Picture componen tfor multiple image formats.
+description: This page introduces the Picture component for multiple image formats.
 ---
 
 # Picture component

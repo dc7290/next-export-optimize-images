@@ -19,4 +19,5 @@ __tests__/e2e
 picture.js
 picture.d.ts
 image.js
+image.d.ts
 legacy

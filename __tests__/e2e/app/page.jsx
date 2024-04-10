@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import LegacyImage from 'next/legacy/image'
+import Image from '../../../image'
+import LegacyImage from '../../../legacy/image'
 import React from 'react'
 
 import Picture from '../../../dist/components/picture'
