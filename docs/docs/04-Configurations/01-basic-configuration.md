@@ -42,6 +42,14 @@ e.g. If `'_optimized'` is set.
 + out/_optimized/filename.png
 ```
 
+### `cacheDir`
+
+- Type: string
+- Default: 'node_modules/.cache'
+
+You can customize the directory to cache the optimized images.  
+The default is `node_modules/.cache`.
+
 ### `externalImageDir`
 
 - Type: string

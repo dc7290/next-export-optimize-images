@@ -25,6 +25,13 @@ export type Config = {
    */
   imageDir?: string
   /**
+   * You can customize the directory to cache images.
+   * The default is 'node_modules/.cache'.
+   *
+   * @type {string}
+   */
+  cacheDir?: string
+  /**
    * Required if you have set basePath in next.config.js.
    * Please set the same value.
    *
