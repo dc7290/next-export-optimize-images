@@ -22,6 +22,9 @@ const Picture = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRef) =
       loader: imageLoader(i),
     }).props.srcSet,
     type: `image/${format}`,
+    width: props.width,
+    height: props.height,
+    sizes: props.sizes,
   }))
 
   return (
