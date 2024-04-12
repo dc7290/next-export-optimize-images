@@ -14,7 +14,8 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
+      - run: yarn add sharp --ignore-engines
       - run: yarn test
       - run: yarn build
       - name: Release

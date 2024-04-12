@@ -32,10 +32,6 @@ const withExportImages = (nextConfig: NextConfig = {}, options: { __test?: boole
   )
 
   const customConfig: NextConfig = {
-    images: {
-      ...nextConfig.images,
-      loader: 'custom',
-    },
     webpack(config, option) {
       const nextImageLoader = config.module.rules.find(
         ({ loader }: { loader?: string }) => loader === 'next-image-loader'
