@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.0.0...v4.1.0) (2024-04-12)
+
+
+### Features
+
+* 🚀 allow changing cacheDir location ([2215bb7](https://github.com/dc7290/next-export-optimize-images/commit/2215bb7f15bd3f7100744ee2a39fd5e6a28b61f8)), closes [#692](https://github.com/dc7290/next-export-optimize-images/issues/692)
+* 🚀 Applied additional attributes to Picture Component ([1f8866d](https://github.com/dc7290/next-export-optimize-images/commit/1f8866d1cad350e45ba60baa9214da528cf2749c)), closes [#693](https://github.com/dc7290/next-export-optimize-images/issues/693)
+
+
+### Bug Fixes
+
+* 🐛 Enables next/image to be used in conjunction with ([5e82ad7](https://github.com/dc7290/next-export-optimize-images/commit/5e82ad7cbe1094d62bc5e9057554861f3170ffe9))
+* 🐛 Update sharp to v0.33.3 ([a2d6fa7](https://github.com/dc7290/next-export-optimize-images/commit/a2d6fa7c4b5656b4e575feeb7da713bb0e6fa9d8)), closes [#733](https://github.com/dc7290/next-export-optimize-images/issues/733)
+
+
+### Tests
+
+* 💍 Add cacheDir config option ([6135ed1](https://github.com/dc7290/next-export-optimize-images/commit/6135ed1e62e64855c581ed03dc9e1026cb5df78d))
+
 ## [4.0.0](https://github.com/dc7290/next-export-optimize-images/compare/v3.3.0...v4.0.0) (2024-04-10)
 
 
