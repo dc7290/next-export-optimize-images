@@ -65,7 +65,7 @@
     "@semantic-release/git": "10.0.1",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.1",
-    "@tsconfig/strictest": "2.0.3",
+    "@tsconfig/strictest": "2.0.5",
     "@types/app-root-path": "1.2.8",
     "@types/cli-progress": "3.11.5",
     "@types/fs-extra": "11.0.4",
