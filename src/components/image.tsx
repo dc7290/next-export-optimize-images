@@ -24,4 +24,5 @@ const CustomImage = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRe
 })
 CustomImage.displayName = 'CustomImage'
 
+export { default as getOptimizedImageProps } from './utils/getOptimizedImageProps'
 export default CustomImage

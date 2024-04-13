@@ -7,6 +7,7 @@ import ClientComponent from '../components/ClientComponent'
 
 import imgSrc from '../images/img.png'
 import legacyImgSrc from '../images/legacy-img.png'
+import WithPropsComponent from '../components/WithPropsComponent'
 
 export default function IndexPage() {
   return (
@@ -18,6 +19,9 @@ export default function IndexPage() {
 
         {/* Static image */}
         <Image src="/images/img.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" alt="" />
+
+        {/* Image with props */}
+        <WithPropsComponent />
 
         {/* Invalid format image */}
         <Image src="/images/img.svg" width={1920} height={1280} alt="" />
