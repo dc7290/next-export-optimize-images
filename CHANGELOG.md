@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.2.0...v4.3.0) (2024-04-13)
+
+
+### Features
+
+* 🚀 Support `next start` ([dfb746a](https://github.com/dc7290/next-export-optimize-images/commit/dfb746ad3c812a3cd1a0f24373bee3ba71729a42)), closes [#105](https://github.com/dc7290/next-export-optimize-images/issues/105)
+
+
+### Performance Improvements
+
+* ⚡️ Minimize readFile execution ([139f459](https://github.com/dc7290/next-export-optimize-images/commit/139f459132b8b174ee8ba2dc67d6816bf618ccfa)), closes [#742](https://github.com/dc7290/next-export-optimize-images/issues/742)
+
+
+### Tests
+
+* 💍 Fixed test cases ([b9e21ea](https://github.com/dc7290/next-export-optimize-images/commit/b9e21ea10953f998a4e93a168b4c4b32df8b06b2))
+
 ## [4.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.1.0...v4.2.0) (2024-04-13)
 
 
