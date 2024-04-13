@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.1.0...v4.2.0) (2024-04-13)
+
+
+### Features
+
+* 🚀 New feature getOptimizedImageProps implemented ([96342af](https://github.com/dc7290/next-export-optimize-images/commit/96342afee055c0c3465d2f5e17e9a706f2abea9f)), closes [#822](https://github.com/dc7290/next-export-optimize-images/issues/822)
+
+
+### Bug Fixes
+
+* 🐛 Corrected attribute values for the source element ([e91cb59](https://github.com/dc7290/next-export-optimize-images/commit/e91cb5919c4ad226612be4475ac3040b769ba889))
+
 ## [4.1.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.0.0...v4.1.0) (2024-04-12)
 
 

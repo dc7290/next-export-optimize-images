@@ -1,6 +1,6 @@
 {
   "name": "next-export-optimize-images",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Optimize images at build time with Next.js.",
   "keywords": [
     "next.js",
