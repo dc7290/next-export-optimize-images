@@ -61,8 +61,8 @@
     "sharp": "^0.33.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.8.1",
-    "@commitlint/config-conventional": "17.8.1",
+    "@commitlint/cli": "19.2.1",
+    "@commitlint/config-conventional": "19.1.0",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@testing-library/jest-dom": "6.4.2",
@@ -85,7 +85,7 @@
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-jest": "27.9.0",
     "eslint-plugin-jest-dom": "^5.1.0",
-    "eslint-plugin-testing-library": "5.11.1",
+    "eslint-plugin-testing-library": "6.2.1",
     "git-cz": "4.9.0",
     "husky": "9.0.11",
     "jest": "29.7.0",
@@ -99,7 +99,7 @@
     "rimraf": "5.0.5",
     "semantic-release": "19.0.5",
     "ts-jest": "29.1.2",
-    "tsup": "^7.2.0",
+    "tsup": "^8.0.2",
     "typescript": "5.4.2",
     "webpack": "5.90.3"
   },
