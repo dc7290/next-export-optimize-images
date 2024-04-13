@@ -16,16 +16,19 @@ const Picture = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRef) =
   }
 
   const additionalFormats = [...new Set(config.generateFormats ?? ['webp'])]
-  const sources = additionalFormats.map((format, i) => ({
-    srcSet: getImageProps({
+  const sources = additionalFormats.map((format, i) => {
+    const sourceProps = getImageProps({
       ...props,
       loader: imageLoader(i),
-    }).props.srcSet,
-    type: `image/${format}`,
-    width: props.width,
-    height: props.height,
-    sizes: props.sizes,
-  }))
+    }).props
+    return {
+      srcSet: sourceProps.srcSet,
+      type: `image/${format}`,
+      width: sourceProps.width,
+      height: sourceProps.height,
+      sizes: sourceProps.sizes,
+    }
+  })
 
   return (
     <picture>
