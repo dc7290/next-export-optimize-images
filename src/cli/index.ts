@@ -28,6 +28,7 @@ export type Manifest = {
 }[]
 
 type GetOptimizeResultProps = {
+  imageBuffer: Buffer
   destDir: string
   noCache: boolean
   cacheImages: CacheImages
@@ -40,10 +41,11 @@ type GetOptimizeResultProps = {
   originalFilePath: string
   quality: number
   sharpOptions?: Config['sharpOptions']
-} & Manifest[number]
+} & Omit<Manifest[number], 'src'>
 type GetOptimizeResult = (getOptimizeResultProps: GetOptimizeResultProps) => Promise<void>
 
 export const getOptimizeResult: GetOptimizeResult = async ({
+  imageBuffer,
   destDir,
   noCache,
   cacheImages,
@@ -67,8 +69,6 @@ export const getOptimizeResult: GetOptimizeResult = async ({
 
       const outputPath = path.join(cacheDir, output)
       await fs.ensureFile(outputPath)
-
-      const imageBuffer = await fs.readFile(originalFilePath)
 
       // Cache process
       if (!noCache) {
@@ -115,11 +115,11 @@ export const getOptimizeResult: GetOptimizeResult = async ({
       await fs.copy(outputPath, filePath)
 
       nonCacheMeasurement()
-      cliProgressBarIncrement()
     } catch (error) {
       console.warn(error)
-      cliProgressBarIncrement()
       errorMeasurement()
+    } finally {
+      cliProgressBarIncrement()
     }
   } else {
     try {
@@ -129,11 +129,11 @@ export const getOptimizeResult: GetOptimizeResult = async ({
       await fs.copy(originalFilePath, filePath)
 
       extension !== 'svg' && pushInvalidFormatAssets(originalFilePath)
-      cliProgressBarIncrement()
     } catch (error) {
       console.warn(error)
-      cliProgressBarIncrement()
       errorMeasurement()
+    } finally {
+      cliProgressBarIncrement()
     }
   }
 }
@@ -155,7 +155,8 @@ export const optimizeImages = async ({
   nextImageConfig,
   terse = false,
 }: OptimizeImagesProps) => {
-  const destDir = path.resolve(cwd, config.outDir ?? 'out')
+  const destDir = config.mode === 'build' ? cwd : path.resolve(cwd, config.outDir ?? 'out')
+  const srcDir = config.mode === 'build' ? cwd : destDir
 
   let manifest: Manifest = []
   try {
@@ -191,10 +192,18 @@ export const optimizeImages = async ({
               src: url,
               width: size,
               config,
-            }).map(({ output, extension, originalExtension, externalOutputDir }) => {
+            }).map(({ output, extension, originalExtension }) => {
+              const externalOutputDir = `${
+                config.externalImageDir
+                  ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '')
+                  : '_next/static/media'
+              }`
+
               const json: Manifest[number] = {
                 output,
-                src: `/${externalOutputDir}/${createHash('sha256')
+                src: `/${config.mode === 'build' ? externalOutputDir.replace(/^_next/, '.next') : externalOutputDir}/${createHash(
+                  'sha256'
+                )
                   .update(
                     url
                       .replace(/^https?:\/\//, '')
@@ -226,8 +235,10 @@ export const optimizeImages = async ({
 
   const publicDir = path.resolve(cwd, 'public')
   if (fs.existsSync(publicDir)) {
-    // eslint-disable-next-line no-console
-    console.log(`\n- Collect images in public directory -`)
+    if (!terse) {
+      // eslint-disable-next-line no-console
+      console.log(`\n- Collect images in public directory -`)
+    }
     const publicDirFiles = await recursiveReadDir(publicDir)
     const publicDirImages = publicDirFiles.filter((file) => {
       const ext = path.extname(file).toLowerCase()
@@ -271,8 +282,6 @@ export const optimizeImages = async ({
     cacheImages = readCacheManifest()
   }
 
-  const promises: Promise<void>[] = []
-
   let measuredCache = 0
   let measuredNonCache = 0
   let measuredError = 0
@@ -283,26 +292,48 @@ export const optimizeImages = async ({
   const errorMeasurement = () => (measuredError += 1)
   const pushInvalidFormatAssets = (asset: string) => invalidFormatAssets.add(asset)
 
+  const srcMap: Record<string, Omit<Manifest[number], 'src'>[]> = {}
   for (const item of manifest) {
-    const originalFilePath = path.join(destDir, item.src)
+    const { src, ...rest } = item
+    if (src in srcMap) {
+      srcMap[src]?.push(rest)
+    } else {
+      srcMap[src] = [rest]
+    }
+  }
 
-    promises.push(
-      getOptimizeResult({
-        destDir,
-        noCache,
-        cacheImages,
-        cacheDir: defaultCacheDir,
-        cacheMeasurement,
-        nonCacheMeasurement,
-        errorMeasurement,
-        pushInvalidFormatAssets,
-        cliProgressBarIncrement: terse ? () => undefined : cliProgressBarIncrement,
-        originalFilePath,
-        quality: config.quality ?? 75,
-        sharpOptions: config.sharpOptions ?? {},
-        ...item,
-      })
-    )
+  const promises: Promise<void>[] = []
+
+  for (const key in srcMap) {
+    const items = srcMap[key]
+
+    if (items === undefined || items.length === 0) continue
+
+    const originalFilePath = path.join(srcDir, config.mode === 'build' ? key.replace(/^\/_next/, '/.next') : key)
+    const imageBuffer = await fs.readFile(originalFilePath)
+
+    for (const item of items) {
+      item.output = config.mode === 'build' ? item.output.replace(/^\/_next/, '/.next') : item.output
+
+      promises.push(
+        getOptimizeResult({
+          imageBuffer,
+          destDir,
+          noCache,
+          cacheImages,
+          cacheDir: defaultCacheDir,
+          cacheMeasurement,
+          nonCacheMeasurement,
+          errorMeasurement,
+          pushInvalidFormatAssets,
+          cliProgressBarIncrement: terse ? () => undefined : cliProgressBarIncrement,
+          originalFilePath,
+          quality: config.quality ?? 75,
+          sharpOptions: config.sharpOptions ?? {},
+          ...item,
+        })
+      )
+    }
   }
 
   await Promise.all(promises)

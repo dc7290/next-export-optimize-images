@@ -230,3 +230,12 @@ https://next-export-optimize-images.vercel.app/docs/Features/external-images#whe
 - Type: number
 
 In case you need to download a large amount of images from an external CDN with a rate limit, this will add delays between downloading images.
+
+### `mode`
+
+- Type: 'build' | 'export'
+- Default: 'export'
+
+'build' mode is for use with `next build` and `next start`.
+
+https://next-export-optimize-images.vercel.app/docs/Features/build-mode

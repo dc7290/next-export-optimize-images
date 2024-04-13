@@ -17,14 +17,12 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -44,14 +42,12 @@ describe('buildOutputInfo', () => {
         src: 'https://example.com/images/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/images/test_300.png',
         src: 'https://example.com/images/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -73,14 +69,12 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -102,7 +96,6 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -124,21 +117,18 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'avif',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -160,21 +150,18 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'avif',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -196,14 +183,12 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/_next/static/media/test-300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
@@ -214,7 +199,6 @@ describe('buildOutputInfo', () => {
       width: 300,
       config: {
         imageDir: '/custom/images',
-        externalImageDir: '/custom/external',
       } as Config,
     }
 
@@ -226,14 +210,12 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: 'custom/external',
       },
       {
         output: '/custom/images/_next/static/media/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: 'custom/external',
       },
     ])
   })
@@ -294,14 +276,12 @@ describe('buildOutputInfo', () => {
         src: '/_next/static/media/test.png',
         extension: 'webp',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
       {
         output: '/_next/static/chunks/images/custom/test_300.png',
         src: '/_next/static/media/test.png',
         extension: 'png',
         originalExtension: 'png',
-        externalOutputDir: '_next/static/media',
       },
     ])
   })
