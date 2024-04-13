@@ -10,6 +10,8 @@ const files = [
 
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].avif',
+  '_next/static/media/get-props.8a5ad2fe_[width].avif',
+  '_next/static/media/get-props-mobile.7d5f5264_[width].avif',
   'images/img_[width].avif',
   'id/237/200/300_[width].avif',
   'id/238/200/300_[width].avif',
@@ -23,6 +25,8 @@ const files = [
 
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].webp',
+  '_next/static/media/get-props.8a5ad2fe_[width].webp',
+  '_next/static/media/get-props-mobile.7d5f5264_[width].webp',
   'images/img_[width].webp',
   'id/237/200/300_[width].webp',
   'id/238/200/300_[width].webp',
@@ -36,6 +40,8 @@ const files = [
 
   // next/image
   '_next/static/media/img.8a5ad2fe_[width].png',
+  '_next/static/media/get-props.8a5ad2fe_[width].png',
+  '_next/static/media/get-props-mobile.7d5f5264_[width].png',
   'images/img_[width].png',
   'id/237/200/300_[width].jpg',
   'id/238/200/300_[width].jpg',

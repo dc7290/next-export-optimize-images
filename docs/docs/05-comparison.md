@@ -46,9 +46,9 @@ Let me list some of the disadvantages.
 
 Because of the above characteristics, the library is recommended for users other than those listed below.
 
-- I want to develop without being conscious of the fact that it is an export, the same as when using next/image.
-- Remote images need to be optimized.
 - Want to use it as simply as possible.
+- When multiple formats of images are required to be supported by Picture component.
+-
 
 ## Please let me know if there are others!
 
