@@ -62,9 +62,6 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
   const outputDir = `/${
     config.imageDir ? config.imageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/chunks/images'
   }`
-  const externalOutputDir = `${
-    config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
-  }`
 
   const extensions = [...new Set([...(config.generateFormats ?? ['webp']), extension])]
   return extensions.map((extension, index) => {
@@ -77,7 +74,7 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
         : `${pathWithoutName}/${name}_${width}.${extension}`
     const output = `${outputDir}/${filename.replace(/^\//, '')}`
 
-    return { output, src, extension, originalExtension, externalOutputDir }
+    return { output, src, extension, originalExtension }
   })
 }
 

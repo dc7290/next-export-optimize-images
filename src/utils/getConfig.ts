@@ -108,6 +108,14 @@ export type Config = {
    * In case you need to download a large amount of images from an external CDN with a rate limit, this will add delays between downloading images.
    */
   remoteImagesDownloadsDelay?: number
+
+  /**
+   * You can specify the mode to use. The default is 'export'.
+   * 'build' mode is for use with `next build` and `next start`.
+   *
+   * @type {('build' | 'export')}
+   */
+  mode?: 'build' | 'export'
 }
 
 const getConfig = (): Config => {

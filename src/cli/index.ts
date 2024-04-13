@@ -155,7 +155,8 @@ export const optimizeImages = async ({
   nextImageConfig,
   terse = false,
 }: OptimizeImagesProps) => {
-  const destDir = path.resolve(cwd, config.outDir ?? 'out')
+  const destDir = config.mode === 'build' ? cwd : path.resolve(cwd, config.outDir ?? 'out')
+  const srcDir = config.mode === 'build' ? cwd : destDir
 
   let manifest: Manifest = []
   try {
@@ -191,10 +192,18 @@ export const optimizeImages = async ({
               src: url,
               width: size,
               config,
-            }).map(({ output, extension, originalExtension, externalOutputDir }) => {
+            }).map(({ output, extension, originalExtension }) => {
+              const externalOutputDir = `${
+                config.externalImageDir
+                  ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '')
+                  : '_next/static/media'
+              }`
+
               const json: Manifest[number] = {
                 output,
-                src: `/${externalOutputDir}/${createHash('sha256')
+                src: `/${config.mode === 'build' ? externalOutputDir.replace(/^_next/, '.next') : externalOutputDir}/${createHash(
+                  'sha256'
+                )
                   .update(
                     url
                       .replace(/^https?:\/\//, '')
@@ -300,10 +309,12 @@ export const optimizeImages = async ({
 
     if (items === undefined || items.length === 0) continue
 
-    const originalFilePath = path.join(destDir, key)
+    const originalFilePath = path.join(srcDir, config.mode === 'build' ? key.replace(/^\/_next/, '/.next') : key)
     const imageBuffer = await fs.readFile(originalFilePath)
 
     for (const item of items) {
+      item.output = config.mode === 'build' ? item.output.replace(/^\/_next/, '/.next') : item.output
+
       promises.push(
         getOptimizeResult({
           imageBuffer,
@@ -324,6 +335,8 @@ export const optimizeImages = async ({
       )
     }
   }
+
+  await Promise.all(promises)
 
   if (!noCache) {
     writeCacheManifest(cacheImages)
