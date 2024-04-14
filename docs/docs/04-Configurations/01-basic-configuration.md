@@ -79,13 +79,12 @@ Please set the same value.
 - Argument: Object
 - Return value: string
 
-| Key       | Type   | Description                                                           | e.g. '/images/sample.png' | e.g. require('./sample.png') |
-| --------- | ------ | --------------------------------------------------------------------- | ------------------------- | ---------------------------- |
-| path      | string | The path portion.                                                     | /images                   | /\_next/static/media         |
-| name      | string | The file name part.                                                   | sample                    | sample.{hash}                |
-| width     | number | That image is the resized width.                                      | 1920                      | 1920                         |
-| quality   | number | The `quality` specified in the `next/image` component. Default is 75. | 75                        | 75                           |
-| extension | string | The extension of that image.                                          | png                       | png                          |
+| Key       | Type   | Description                      | e.g. '/images/sample.png' | e.g. require('./sample.png') |
+| --------- | ------ | -------------------------------- | ------------------------- | ---------------------------- |
+| path      | string | The path portion.                | /images                   | /\_next/static/media         |
+| name      | string | The file name part.              | sample                    | sample.{hash}                |
+| width     | number | That image is the resized width. | 1920                      | 1920                         |
+| extension | string | The extension of that image.     | png                       | png                          |
 
 You can customize the generation of file names.
 
@@ -93,8 +92,8 @@ e.g. '/images/sample.png'
 
 ```js
 const config = {
-  filenameGenerator: ({ path, name, width, quality, extension }) =>
-    `${path.replace(/^\//, '').replace(/\//g, '-')}-${name}.${width}.${quality}.${extension}`,
+  filenameGenerator: ({ path, name, width, extension }) =>
+    `${path.replace(/^\//, '').replace(/\//g, '-')}-${name}.${width}.${extension}`,
 }
 ```
 
