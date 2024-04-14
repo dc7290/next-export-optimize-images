@@ -100,7 +100,7 @@
     "semantic-release": "19.0.5",
     "ts-jest": "29.1.2",
     "tsup": "^8.0.2",
-    "typescript": "5.4.2",
+    "typescript": "5.4.5",
     "webpack": "5.90.3"
   },
   "peerDependencies": {
