@@ -118,8 +118,29 @@ export type Config = {
   mode?: 'build' | 'export'
 }
 
-const getConfig = (): Config => {
-  return require('next-export-optimize-images/export-images.config.js')
+type ResolvedConfig = Config & {
+  remoteImages?: string[]
+}
+
+const getConfig = (): ResolvedConfig => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const config = require('next-export-optimize-images/export-images.config.js') as Omit<
+    ResolvedConfig,
+    'filenameGenerator' | 'sourceImageParser'
+  > & {
+    filenameGenerator?: string
+    sourceImageParser?: string
+  }
+
+  return {
+    ...config,
+    filenameGenerator: config.filenameGenerator
+      ? Function('"use strict";return (' + config.filenameGenerator + ')')()
+      : undefined,
+    sourceImageParser: config.sourceImageParser
+      ? Function('"use strict";return (' + config.sourceImageParser + ')')()
+      : undefined,
+  }
 }
 
 export default getConfig
