@@ -33,6 +33,7 @@ const withExportImages = async (
     }
   }
 
+  fs.ensureFileSync(destConfigPath)
   fs.writeFileSync(
     destConfigPath,
     `module.exports = ${JSON.stringify(
