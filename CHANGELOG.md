@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.3.1](https://github.com/dc7290/next-export-optimize-images/compare/v4.3.0...v4.3.1) (2024-04-14)
+
+
+### Bug Fixes
+
+* 🐛 Enable Node.js-specific APIs in the configuration file ([f5a2805](https://github.com/dc7290/next-export-optimize-images/commit/f5a2805b39a6c886ca73c49b2778818f8b36479c)), closes [#824](https://github.com/dc7290/next-export-optimize-images/issues/824)
+
+
+### Documentation
+
+* ✏️ Fixed filenameGenerator arguments ([4aebf7a](https://github.com/dc7290/next-export-optimize-images/commit/4aebf7ac78d4257eb79622f60fe39b7e0a6f4496))
+
 ## [4.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.2.0...v4.3.0) (2024-04-13)
 
 
