@@ -45,8 +45,9 @@ export default defineConfig([
     ...cfg,
     entry: {
       'remote-image': 'src/components/remote-image.tsx',
+      'remote-picture': 'src/components/remote-picture.tsx',
     },
-    external: ['react', 'next', 'next-export-optimize-images', './image'],
+    external: ['react', 'next', 'next-export-optimize-images', './image', './picture'],
     outDir: 'dist/components',
   },
 ])

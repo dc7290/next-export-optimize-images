@@ -30,7 +30,9 @@
     "picture.js",
     "picture.d.ts",
     "remote-image.js",
-    "remote-image.d.ts"
+    "remote-image.d.ts",
+    "remote-picture.js",
+    "remote-picture.d.ts"
   ],
   "scripts": {
     "dev": "tsup --watch",
@@ -60,7 +62,7 @@
     "fs-extra": "^11.2.0",
     "lodash.uniqwith": "^4.5.0",
     "recursive-readdir": "^2.2.3",
-    "sharp": "^0.33.3"
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",
