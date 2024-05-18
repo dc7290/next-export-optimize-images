@@ -1,5 +1,6 @@
 import Image from '../../../image'
 import LegacyImage from '../../../legacy/image'
+import RemoteImage from '../../../remote-image'
 import React from 'react'
 
 import Picture from '../../../dist/components/picture'
@@ -8,6 +9,8 @@ import ClientComponent from '../components/ClientComponent'
 import imgSrc from '../images/img.png'
 import legacyImgSrc from '../images/legacy-img.png'
 import WithPropsComponent from '../components/WithPropsComponent'
+
+const id = 400
 
 export default function IndexPage() {
   return (
@@ -26,8 +29,11 @@ export default function IndexPage() {
         {/* Invalid format image */}
         <Image src="/images/img.svg" width={1920} height={1280} alt="" />
 
-        {/* External image */}
-        <Image src="https://next-export-optimize-images.vercel.app/og.png" width={1920} height={1280} alt="" />
+        {/* External Image with RemoteImage */}
+        <RemoteImage src="https://picsum.photos/id/300/200/400.jpg" />
+
+        {/* External Image with RemoteImage dynamic src */}
+        <RemoteImage src={`https://picsum.photos/id/${id}/200/400.jpg`} />
 
         {/* Animated image */}
         <Image src="/images/animated.webp" width={400} height={400} alt="" />

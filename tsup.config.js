@@ -10,6 +10,7 @@ const cfg = {
 }
 
 export default defineConfig([
+  // Main
   {
     ...cfg,
     entry: {
@@ -20,6 +21,8 @@ export default defineConfig([
     external: ['next-export-optimize-images'],
     outDir: 'dist',
   },
+
+  // Client Components
   {
     ...cfg,
     entry: {
@@ -35,5 +38,15 @@ export default defineConfig([
         js: '"use client";',
       }
     },
+  },
+
+  // Server Components
+  {
+    ...cfg,
+    entry: {
+      'remote-image': 'src/components/remote-image.tsx',
+    },
+    external: ['react', 'next', 'next-export-optimize-images', './image'],
+    outDir: 'dist/components',
   },
 ])
