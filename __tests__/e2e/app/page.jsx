@@ -1,6 +1,7 @@
 import Image from '../../../image'
 import LegacyImage from '../../../legacy/image'
 import RemoteImage from '../../../remote-image'
+import RemotePicture from '../../../remote-picture'
 import React from 'react'
 
 import Picture from '../../../dist/components/picture'
@@ -34,6 +35,9 @@ export default function IndexPage() {
 
         {/* External Image with RemoteImage dynamic src */}
         <RemoteImage src={`https://picsum.photos/id/${id}/200/400.jpg`} />
+
+        {/* External Image with RemotePicture */}
+        <RemotePicture src="https://picsum.photos/id/500/200/400.jpg" />
 
         {/* Animated image */}
         <Image src="/images/animated.webp" width={400} height={400} alt="" />

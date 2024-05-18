@@ -26,6 +26,26 @@ function Component() {
 }
 ```
 
+or Picture tag.
+(webp support is added by default)
+
+```tsx
+import RemotePicture from 'next-export-optimize-images/remote-picture'
+
+function Component() {
+  return (
+    <>
+      <RemotePicture src="https://example.com/image01.jpg" alt="" />
+      {/* 
+        Or use dynamic values with variables
+        const id = 'image01'
+        <RemotePicture src={`https://example.com/${id}.jpg`} alt="" />
+      */}
+    </>
+  )
+}
+```
+
 ## Definition
 
 - props: `Omit<ImageProps, 'src'> & { src: string }`
