@@ -96,7 +96,7 @@
     "prettier": "3.2.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "rimraf": "5.0.6",
+    "rimraf": "5.0.7",
     "semantic-release": "19.0.5",
     "ts-jest": "29.1.2",
     "tsup": "^8.0.2",
