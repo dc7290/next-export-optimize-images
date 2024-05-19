@@ -220,9 +220,7 @@ See [Picture component](/docs/Features/picture-component) for details.
 - Type: Array<string\> | (() => Array<string\> | Promise<Array<string\>\>)
 
 You can directly specify the URL of an external image.  
-This is useful in cases where it is not known what images will be used for the build using variables, for example.
-
-https://next-export-optimize-images.vercel.app/docs/Features/external-images#when-specifying-an-external-image-url-with-a-variable
+This is useful in cases where it is not known what images will be used for the build using variables, [for example](/docs/Features/external-images#when-specifying-an-external-image-url-with-a-variable).
 
 ### `remoteImagesDownloadsDelay`
 
@@ -237,4 +235,4 @@ In case you need to download a large amount of images from an external CDN with 
 
 'build' mode is for use with `next build` and `next start`.
 
-https://next-export-optimize-images.vercel.app/docs/Features/build-mode
+[Document page](/docs/Features/build-mode)
