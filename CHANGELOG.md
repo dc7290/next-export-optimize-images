@@ -6,6 +6,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.4.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.3.1...v4.4.0) (2024-05-19)
+
+
+### Features
+
+* 🚀 Add RemoteImage component ([c4b284d](https://github.com/dc7290/next-export-optimize-images/commit/c4b284de4d0ca05657de14ea3263b71c41d1f447)), closes [#652](https://github.com/dc7290/next-export-optimize-images/issues/652)
+* 🚀 Add RemotePicture component ([3d4d1d2](https://github.com/dc7290/next-export-optimize-images/commit/3d4d1d2892d21899bcb4250a3bf5d56ec8d074d0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to ^0.33.4 ([a0a0fa7](https://github.com/dc7290/next-export-optimize-images/commit/a0a0fa718b8c57c7501da985656aa2e42483186c))
+
+
+### Documentation
+
+* ✏️ Add case for using another plugin ([3d9e988](https://github.com/dc7290/next-export-optimize-images/commit/3d9e988bd24ef9c31806891d5f731593894e0ad6))
+
+## [4.3.1](https://github.com/dc7290/next-export-optimize-images/compare/v4.3.0...v4.3.1) (2024-04-14)
+
+
+### Bug Fixes
+
+* 🐛 Enable Node.js-specific APIs in the configuration file ([f5a2805](https://github.com/dc7290/next-export-optimize-images/commit/f5a2805b39a6c886ca73c49b2778818f8b36479c)), closes [#824](https://github.com/dc7290/next-export-optimize-images/issues/824)
+
+
+### Documentation
+
+* ✏️ Fixed filenameGenerator arguments ([4aebf7a](https://github.com/dc7290/next-export-optimize-images/commit/4aebf7ac78d4257eb79622f60fe39b7e0a6f4496))
+
+## [4.3.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.2.0...v4.3.0) (2024-04-13)
+
+
+### Features
+
+* 🚀 Support `next start` ([dfb746a](https://github.com/dc7290/next-export-optimize-images/commit/dfb746ad3c812a3cd1a0f24373bee3ba71729a42)), closes [#105](https://github.com/dc7290/next-export-optimize-images/issues/105)
+
+
+### Performance Improvements
+
+* ⚡️ Minimize readFile execution ([139f459](https://github.com/dc7290/next-export-optimize-images/commit/139f459132b8b174ee8ba2dc67d6816bf618ccfa)), closes [#742](https://github.com/dc7290/next-export-optimize-images/issues/742)
+
+
+### Tests
+
+* 💍 Fixed test cases ([b9e21ea](https://github.com/dc7290/next-export-optimize-images/commit/b9e21ea10953f998a4e93a168b4c4b32df8b06b2))
+
 ## [4.2.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.1.0...v4.2.0) (2024-04-13)
 
 
