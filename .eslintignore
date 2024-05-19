@@ -22,3 +22,7 @@ picture.d.ts
 image.js
 image.d.ts
 legacy
+remote-image.js
+remote-image.d.ts
+remote-picture.js
+remote-picture.d.ts
