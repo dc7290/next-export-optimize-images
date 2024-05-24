@@ -78,7 +78,7 @@
     "@types/jest": "29.5.12",
     "@types/lodash.uniqwith": "4.5.9",
     "@types/node": "20.12.12",
-    "@types/react": "18.3.2",
+    "@types/react": "18.3.3",
     "@types/recursive-readdir": "^2.2.4",
     "@types/sharp": "0.32.0",
     "@typescript-eslint/eslint-plugin": "7.9.0",
