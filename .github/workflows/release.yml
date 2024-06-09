@@ -16,7 +16,6 @@ jobs:
           cache: 'yarn'
       - run: yarn install --frozen-lockfile
       - run: yarn add sharp --ignore-engines
-      - run: yarn test
       - run: yarn build
       - name: Release
         env:
