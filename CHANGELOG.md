@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.5.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.4.0...v4.5.0) (2024-06-09)
+
+
+### Features
+
+* 🚀 Support `.cjs` ([4e58bdb](https://github.com/dc7290/next-export-optimize-images/commit/4e58bdb061766720c4a9317587015ed66b6a671d))
+
+
+### Documentation
+
+* ✏️ Handling page swaps and relative paths ([6d86e34](https://github.com/dc7290/next-export-optimize-images/commit/6d86e3405f2cde1614552c53ac70c046425c2939))
+
 ## [4.4.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.3.1...v4.4.0) (2024-05-19)
 
 
