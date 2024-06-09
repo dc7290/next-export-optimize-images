@@ -7,6 +7,13 @@ description: This page introduces the handling of external images.
 This library can also handle external images.
 This, like the other features, works at build time and does not affect development speed.
 
+:::tip
+
+In most cases, the use of the RemoteImage or RemotePicture component is recommended.  
+[Docs: RemoteImage component](./remote-image-component)
+
+:::
+
 ## Usage
 
 ```jsx

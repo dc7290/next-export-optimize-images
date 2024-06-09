@@ -17,12 +17,19 @@ const withExportImages = async (
     )
   }
 
-  const resolvedConfigPath = path.join(process.cwd(), 'export-images.config.js')
-  const existConfig = fs.existsSync(resolvedConfigPath)
+  const resolvedConfigPathOfDefault = path.join(process.cwd(), 'export-images.config.js')
+  const resolvedConfigPathOfCjs = path.join(process.cwd(), 'export-images.config.cjs')
+  const existConfigOfDefault = fs.existsSync(resolvedConfigPathOfDefault)
+  const existConfigOfCjs = fs.existsSync(resolvedConfigPathOfCjs)
+  const resolvedConfigPath = existConfigOfDefault
+    ? resolvedConfigPathOfDefault
+    : existConfigOfCjs
+      ? resolvedConfigPathOfCjs
+      : null
   const destConfigPath = appRootPath.resolve('node_modules/next-export-optimize-images/export-images.config.js')
 
   let config: Config = {}
-  if (existConfig) {
+  if (resolvedConfigPath !== null) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const configSrc = require(resolvedConfigPath) as Config
     config = configSrc
@@ -52,7 +59,7 @@ const withExportImages = async (
   console.log(
     colors.magenta(
       `info - [next-export-optimize-images]: ${
-        fs.existsSync(resolvedConfigPath)
+        resolvedConfigPath !== null
           ? `Configuration loaded from \`${resolvedConfigPath}\`.`
           : `Configuration was not loaded. (This is optional.)`
       }`
