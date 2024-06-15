@@ -97,7 +97,7 @@
     "lint-staged": "15.2.7",
     "next": "14.2.4",
     "npm-run-all2": "^6.2.0",
-    "prettier": "3.3.1",
+    "prettier": "3.3.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rimraf": "5.0.7",
