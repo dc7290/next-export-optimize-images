@@ -102,7 +102,7 @@
     "react-dom": "18.3.1",
     "rimraf": "5.0.9",
     "semantic-release": "19.0.5",
-    "ts-jest": "29.2.2",
+    "ts-jest": "29.2.3",
     "tsup": "^8.1.0",
     "typescript": "5.5.3",
     "webpack": "5.93.0"
