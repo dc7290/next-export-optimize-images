@@ -103,7 +103,7 @@
     "rimraf": "5.0.10",
     "semantic-release": "19.0.5",
     "ts-jest": "29.2.4",
-    "tsup": "^8.2.3",
+    "tsup": "^8.2.4",
     "typescript": "5.5.4",
     "webpack": "5.93.0"
   },
