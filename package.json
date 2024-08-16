@@ -62,7 +62,7 @@
     "fs-extra": "^11.2.0",
     "lodash.uniqwith": "^4.5.0",
     "recursive-readdir": "^2.2.3",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@commitlint/cli": "19.4.0",
