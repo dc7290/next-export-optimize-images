@@ -86,7 +86,7 @@
     "conventional-changelog-conventionalcommits": "6.1.0",
     "eslint": "9.10.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-import": "2.30.0",
     "eslint-plugin-jest": "28.8.3",
     "eslint-plugin-jest-dom": "^5.4.0",
     "eslint-plugin-testing-library": "6.3.0",
