@@ -96,23 +96,31 @@ export const getOptimizeResult: GetOptimizeResult = async ({
 
       switch (extension) {
         case 'jpeg':
-          await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
+          const jpeg = await image.jpeg({ quality, ...sharpOptions?.jpg })
+          await jpeg.toFile(outputPath)
+          await jpeg.toFile(filePath)
           break
         case 'jpg':
-          await image.jpeg({ quality, ...sharpOptions?.jpg }).toFile(outputPath)
+          const jpg = await image.jpeg({ quality, ...sharpOptions?.jpg })
+          await jpg.toFile(outputPath)
+          await jpg.toFile(filePath)
           break
         case 'png':
-          await image.png({ quality, ...sharpOptions?.png }).toFile(outputPath)
+          const png = await image.png({ quality, ...sharpOptions?.png })
+          await png.toFile(outputPath)
+          await png.toFile(filePath)
           break
         case 'webp':
-          await image.webp({ quality, ...sharpOptions?.webp }).toFile(outputPath)
+          const webp = image.webp({ quality, ...sharpOptions?.webp })
+          await webp.toFile(outputPath)
+          await webp.toFile(filePath)
           break
         case 'avif':
-          await image.avif({ quality, ...sharpOptions?.avif }).toFile(outputPath)
+          const avif = image.avif({ quality, ...sharpOptions?.avif })
+          await avif.toFile(outputPath)
+          await avif.toFile(filePath)
           break
       }
-
-      await fs.copy(outputPath, filePath)
 
       nonCacheMeasurement()
     } catch (error) {
