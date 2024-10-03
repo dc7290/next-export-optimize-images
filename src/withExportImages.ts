@@ -97,6 +97,10 @@ const withExportImages = async (
 
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config
     },
+    images: {
+      ...nextConfig.images,
+      loader: nextConfig.images?.loader ?? 'custom',
+    },
   }
 
   return Object.assign({}, nextConfig, customConfig)
