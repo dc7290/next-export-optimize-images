@@ -48,7 +48,8 @@ Because of the above characteristics, the library is recommended for users other
 
 - Want to use it as simply as possible.
 - When multiple formats of images are required to be supported by Picture component.
--
+- I want to use `next build` to optimize images in advance while using the Node.js server.
+- I want to easily optimize external images.
 
 ## Please let me know if there are others!
 

@@ -182,6 +182,14 @@ Please refer to the official sharp documentation for more information.
 - Type: Array<Array<Format, Format>>  
   Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
 
+:::note
+
+This option was developed before the `Picture` component was added yet. It is now recommended that the Picture component be used to allow multiple image formats to be displayed.
+
+See [Picture component](/docs/Features/picture-component)
+
+:::
+
 It allows you to convert images from any extension to another extension.
 
 e.g.
