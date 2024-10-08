@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.5.1](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.0...v4.5.1) (2024-10-07)
+
+
+### Bug Fixes
+
+* 🐛 Apply loader: custom to image settings in Next.js ([a9c35b1](https://github.com/dc7290/next-export-optimize-images/commit/a9c35b1061c8dd2a388c26a9f76f8694c8716b93)), closes [#971](https://github.com/dc7290/next-export-optimize-images/issues/971)
+* 🐛 Fix for ENOENT No such file or directory ([e425220](https://github.com/dc7290/next-export-optimize-images/commit/e42522073f58232d0757568f0591c7b3f0f9f73d)), closes [#945](https://github.com/dc7290/next-export-optimize-images/issues/945)
+* **deps:** update dependency sharp to ^0.33.5 ([359a635](https://github.com/dc7290/next-export-optimize-images/commit/359a635489e2866c9244b0524af59157b62a6cb5))
+
+
+### Documentation
+
+* ✏️ Added notes ([d44fd70](https://github.com/dc7290/next-export-optimize-images/commit/d44fd70b43bcb06c4ee184c6801f3ef6a88a056b))
+
 ## [4.5.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.4.0...v4.5.0) (2024-06-09)
 
 
