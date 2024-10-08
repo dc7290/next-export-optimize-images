@@ -36,20 +36,20 @@ Since this library is very similar to ours, it would be very good for you to try
 
 A brief comparison with our library reveals the following characteristics for your reference.
 
-- Import and use your own components.
 - Specify a directory, such as `public/images`, and the images in it will be processed.
 
 Let me list some of the disadvantages.
 
 - Settings are somewhat complicated and cumbersome.
 - All options for `next/image` are not available.
+- Only one extension can be handled.
 
-Because of the above characteristics, the library is recommended for users other than those listed below.
+Due to the above features, `next-image-export-optimizer` is not recommended for the following users.
 
 - Want to use it as simply as possible.
 - When multiple formats of images are required to be supported by Picture component.
 - I want to use `next build` to optimize images in advance while using the Node.js server.
-- I want to easily optimize external images.
+- Remote image optimization made easy.
 
 ## Please let me know if there are others!
 
