@@ -9,6 +9,6 @@
     "baseUrl": ".",
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src/**/*", "__tests__/**/*", "jest-setup.ts", "types/**/*"],
+  "include": ["src/**/*", "__tests__/**/*", "types/**/*"],
   "exclude": ["node_modules", "dist", "__tests__/e2e/**/*", "__tests__/e2e-build/**/*"]
 }
