@@ -90,7 +90,7 @@
     "jest-environment-jsdom": "29.7.0",
     "lint-staged": "15.2.10",
     "next": "15.0.3",
-    "npm-run-all2": "6.2.6",
+    "npm-run-all2": "7.0.1",
     "react": "19.0.0-rc-ed15d500-20241110",
     "react-dom": "19.0.0-rc-ed15d500-20241110",
     "rimraf": "5.0.10",
