@@ -1,11 +1,9 @@
-import path from 'path'
-
+import path from 'node:path'
 import colors from 'ansi-colors'
 import appRootPath from 'app-root-path'
 import fs from 'fs-extra'
 import type { NextConfig } from 'next'
-
-import { Config } from './utils/getConfig'
+import type { Config } from './utils/getConfig'
 
 const withExportImages = async (
   nextConfig: NextConfig = {},
@@ -61,7 +59,7 @@ const withExportImages = async (
       `info - [next-export-optimize-images]: ${
         resolvedConfigPath !== null
           ? `Configuration loaded from \`${resolvedConfigPath}\`.`
-          : `Configuration was not loaded. (This is optional.)`
+          : 'Configuration was not loaded. (This is optional.)'
       }`
     )
   )

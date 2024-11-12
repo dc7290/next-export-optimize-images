@@ -17,6 +17,8 @@ const config = {
   generateFormats: ['avif', 'webp'],
   remoteImages: getRemoteImages,
   filenameGenerator: ({ path, name, width, extension }) => `${path}/${name}_${width}.${extension}`,
+  // function宣言による記述もテストしたいため無視する
+  // biome-ignore lint/complexity/useArrowFunction: <explanation>
   sourceImageParser: function ({ src, defaultParser }) {
     return defaultParser(src)
   },

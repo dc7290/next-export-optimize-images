@@ -1,5 +1,4 @@
 import type { AvifOptions, JpegOptions, PngOptions, WebpOptions } from 'sharp'
-
 import type { AllowedFormat } from './formatValidate'
 
 type ParsedImageInfo = {
@@ -135,10 +134,10 @@ const getConfig = (): ResolvedConfig => {
   return {
     ...config,
     filenameGenerator: config.filenameGenerator
-      ? Function('"use strict";return (' + config.filenameGenerator + ')')()
+      ? Function(`"use strict";return (${config.filenameGenerator})`)()
       : undefined,
     sourceImageParser: config.sourceImageParser
-      ? Function('"use strict";return (' + config.sourceImageParser + ')')()
+      ? Function(`"use strict";return (${config.sourceImageParser})`)()
       : undefined,
   }
 }

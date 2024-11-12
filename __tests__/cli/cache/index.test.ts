@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import fs from 'fs-extra'
 
@@ -43,9 +43,15 @@ describe('Cache', () => {
     let measuredError = 0
 
     const destDir = path.resolve(__dirname, 'results')
-    const cacheMeasurement = () => (measuredCache += 1)
-    const nonCacheMeasurement = () => (measuredNonCache += 1)
-    const errorMeasurement = () => (measuredError += 1)
+    const cacheMeasurement = () => {
+      measuredCache += 1
+    }
+    const nonCacheMeasurement = () => {
+      measuredNonCache += 1
+    }
+    const errorMeasurement = () => {
+      measuredError += 1
+    }
     const cliProgressBarIncrement = () => undefined
     const srcDir = path.resolve(__dirname, 'fixtures')
 

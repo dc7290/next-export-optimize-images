@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 import fs from 'fs-extra'
 import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
@@ -23,18 +23,17 @@ const files = [
 
 describe('`next build && next export && next-export-optimize-images` is executed correctly', () => {
   test('Images are being generated.', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const customConfig = require('./next.config.js')
     const configImages = { ...imageConfigDefault, ...customConfig.images }
     const allSizes = [...configImages.imageSizes, ...configImages.deviceSizes]
-    allSizes.forEach((size) => {
-      files.forEach((file) => {
+    for (const size of allSizes) {
+      for (const file of files) {
         const isExist = exist(file.replace('[width]', size.toString()))
         if (!isExist) {
           console.log(file.replace('[width]', size.toString()))
         }
         expect(isExist).toBeTruthy()
-      })
-    })
+      }
+    }
   })
 })

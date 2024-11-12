@@ -1,6 +1,5 @@
-import Image, { ImageProps } from 'next/image'
+import Image, { type ImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
-
 import getStringSrc from './utils/getStringSrc'
 import imageLoader from './utils/imageLoader'
 

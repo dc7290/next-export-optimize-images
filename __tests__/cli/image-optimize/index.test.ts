@@ -1,21 +1,24 @@
-import path from 'path'
+import path from 'node:path'
 
 import fs from 'fs-extra'
 import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 
 import { optimizeImages } from '../../../src/cli'
 
-beforeAll(async () => {
-  await optimizeImages({
-    manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
-    noCache: true,
-    terse: true,
-    config: {
-      outDir: '__tests__/cli/image-optimize/fixtures',
-    },
-    nextImageConfig: imageConfigDefault,
-  })
-}, 60 * 3 * 1000)
+beforeAll(
+  async () => {
+    await optimizeImages({
+      manifestJsonPath: path.resolve(__dirname, 'manifest.json'),
+      noCache: true,
+      terse: true,
+      config: {
+        outDir: '__tests__/cli/image-optimize/fixtures',
+      },
+      nextImageConfig: imageConfigDefault,
+    })
+  },
+  60 * 3 * 1000
+)
 
 const exist = (filename: string) => fs.existsSync(path.resolve(__dirname, 'fixtures/results/images', filename))
 

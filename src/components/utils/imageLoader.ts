@@ -1,5 +1,4 @@
 import type { ImageLoaderProps } from 'next/dist/shared/lib/image-external'
-
 import buildOutputInfo from '../../utils/buildOutputInfo'
 import getConfig from '../../utils/getConfig'
 
@@ -8,7 +7,7 @@ const config = getConfig()
 const imageLoader =
   (getNumber?: number) =>
   ({ src, width }: ImageLoaderProps) => {
-    if (process.env['NODE_ENV'] === 'development') {
+    if (process.env.NODE_ENV === 'development') {
       // This doesn't bother optimizing in the dev environment. Next complains if the
       // returned URL doesn't have a width in it, so adding it as a throwaway
       return `${src}?width=${width}`

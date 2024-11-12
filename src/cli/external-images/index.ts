@@ -1,11 +1,8 @@
-import path from 'path'
-import { Stream } from 'stream'
-import { ReadableStream } from 'stream/web'
-
+import path from 'node:path'
+import { Stream } from 'node:stream'
+import type { ReadableStream } from 'node:stream/web'
 import fs from 'fs-extra'
-
 import type { Manifest } from '../'
-
 import type { Config } from './../../utils/getConfig'
 
 type ExternalImagesDownloaderArgs = {

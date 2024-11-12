@@ -15,7 +15,7 @@ module.exports = {
   /**
    * コミットメッセージの題目の書式
    */
-  format: "{type}{scope}: {emoji}{subject}",
+  format: '{type}{scope}: {emoji}{subject}',
   /**
    * コミット時に選択可能な型
    */
@@ -32,11 +32,11 @@ module.exports = {
    * コミット時に入力する項目
    */
   questions: [
-    "type", // 型
-    "subject", // コミットの題名
-    "body", // コミットの本文
-    "breaking", // breaking changeの内容
-    "issues", // クローズするGitHub issues
+    'type', // 型
+    'subject', // コミットの題名
+    'body', // コミットの本文
+    'breaking', // breaking changeの内容
+    'issues', // クローズするGitHub issues
   ],
   /**
    * 各型の設定
@@ -45,9 +45,9 @@ module.exports = {
   /**
    * BREAKING CHANGEに表示する絵文字
    */
-  breakingChangePrefix: "🧨",
+  breakingChangePrefix: '🧨',
   /**
    * Closesに表示する絵文字
    */
-  closedIssuePrefix: "✅",
+  closedIssuePrefix: '✅',
 }
