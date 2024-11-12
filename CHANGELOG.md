@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.5.2](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.1...v4.5.2) (2024-11-12)
+
+
+### Bug Fixes
+
+* 🐛 Fixing Devdependency Versions ([7ab0a1f](https://github.com/dc7290/next-export-optimize-images/commit/7ab0a1f75c14c41a472bb21b02d2c46cf83ee9cd))
+* 🐛 Generate d.ts ([531bc72](https://github.com/dc7290/next-export-optimize-images/commit/531bc725df84964b1dd67f8dc7f4e881aa2ec340)), closes [#981](https://github.com/dc7290/next-export-optimize-images/issues/981)
+* 🐛 Support Next.js 15 and React19RC ([701ffb8](https://github.com/dc7290/next-export-optimize-images/commit/701ffb8ab1cb667d6be9dddd374c9e2411aa1c4e))
+
+
+### Documentation
+
+* ✏️ Added comparison and esm config ([3e7af87](https://github.com/dc7290/next-export-optimize-images/commit/3e7af870f51728361e970f30d924c984a4e5c4a3))
+
+
+### Continuous Integration
+
+* 🎡 Add workflow_dispatch in Release-workflow ([316a5f1](https://github.com/dc7290/next-export-optimize-images/commit/316a5f15991bb1c7d3c61c48054c865d69c78832))
+
 ## [4.5.1](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.0...v4.5.1) (2024-10-07)
 
 
