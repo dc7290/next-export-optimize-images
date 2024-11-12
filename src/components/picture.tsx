@@ -15,6 +15,12 @@ const Picture = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRef) =
     return <Image {...props} ref={forwardedRef} loader={props.loader || imageLoader()} unoptimized />
   }
 
+  const blurDataURLObj = props.blurDataURL
+    ? { blurDataURL: props.blurDataURL }
+    : typeof props.src === 'string' && props.placeholder === 'blur' && props.loader === undefined
+      ? { blurDataURL: imageLoader()({ src: props.src, width: 8, quality: 10 }) }
+      : {}
+
   const additionalFormats = [...new Set(config.generateFormats ?? ['webp'])]
   const sources = additionalFormats.map((format, i) => {
     const sourceProps = getImageProps({
@@ -35,17 +41,7 @@ const Picture = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRef) =
       {sources.map((source) => (
         <source key={source.type} {...source} />
       ))}
-      <Image
-        {...props}
-        ref={forwardedRef}
-        loader={props.loader || imageLoader()}
-        blurDataURL={
-          props.blurDataURL ||
-          (typeof props.src === 'string' && props.placeholder === 'blur' && props.loader === undefined
-            ? imageLoader()({ src: props.src, width: 8, quality: 10 })
-            : undefined)
-        }
-      />
+      <Image {...props} ref={forwardedRef} loader={props.loader || imageLoader()} {...blurDataURLObj} />
     </picture>
   )
 })

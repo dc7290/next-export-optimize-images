@@ -78,7 +78,7 @@
     "@types/jest": "29.5.14",
     "@types/lodash.uniqwith": "4.5.9",
     "@types/node": "20.17.5",
-    "@types/react": "18.3.12",
+    "@types/react": "npm:types-react@rc",
     "@types/recursive-readdir": "2.2.4",
     "@types/sharp": "0.32.0",
     "@typescript-eslint/eslint-plugin": "7.18.0",
@@ -95,11 +95,11 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "lint-staged": "15.2.10",
-    "next": "14.2.16",
+    "next": "15.0.3",
     "npm-run-all2": "6.2.6",
     "prettier": "3.3.3",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "19.0.0-rc-ed15d500-20241110",
+    "react-dom": "19.0.0-rc-ed15d500-20241110",
     "rimraf": "5.0.10",
     "semantic-release": "19.0.5",
     "ts-jest": "29.2.5",
@@ -108,9 +108,9 @@
     "webpack": "5.96.1"
   },
   "peerDependencies": {
-    "next": "^14.0 || ^15.0",
-    "react": "^17.0 || ^18.0 || ^19.0",
-    "react-dom": "^17.0 || ^18.0 || ^19.0"
+    "next": "14.x || 15.x",
+    "react": "17.x || 18.x || 19.x",
+    "react-dom": "17.x || 18.x || 19.x"
   },
   "engines": {
     "node": ">=18"
