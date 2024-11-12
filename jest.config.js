@@ -1,6 +1,7 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const { createDefaultPreset } = require('ts-jest')
+
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  preset: 'ts-jest',
+  ...createDefaultPreset(),
   testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts']
 }

@@ -1,12 +1,10 @@
-import path from 'path'
-
+import path from 'node:path'
 import fs from 'fs-extra'
 import { PHASE_PRODUCTION_BUILD } from 'next/constants'
 import loadConfig from 'next/dist/server/config'
 import type { StaticImageData } from 'next/image'
 import getConfig from 'src/utils/getConfig'
 import type { LoaderContext } from 'webpack'
-
 import type { Manifest } from '../cli'
 import buildOutputInfo from '../utils/buildOutputInfo'
 
@@ -17,7 +15,7 @@ type LoaderOptions = {
 }
 
 export default async function loader(this: LoaderContext<LoaderOptions>, content: string) {
-  this.cacheable && this.cacheable(false)
+  this.cacheable?.(false)
   const callback = this.async()
 
   const { dir, isDev } = this.getOptions()
@@ -37,19 +35,20 @@ export default async function loader(this: LoaderContext<LoaderOptions>, content
   if (!src.endsWith('.svg')) {
     await Promise.all(
       allSizes.map(async (size) => {
-        buildOutputInfo({ src, width: size, config }).forEach((outputInfo) => {
+        const outputInfo = buildOutputInfo({ src, width: size, config })
+        for (const { output, src, extension } of outputInfo) {
           const json: Manifest[number] = {
-            output: outputInfo.output,
-            src: outputInfo.src,
+            output: output,
+            src: src,
             width: size,
-            extension: outputInfo.extension,
+            extension: extension,
           }
 
-          return fs.appendFile(
+          await fs.appendFile(
             path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
-            JSON.stringify(json) + '\n'
+            `${JSON.stringify(json)}\n`
           )
-        })
+        }
       })
     )
   }

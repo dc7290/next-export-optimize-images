@@ -1,5 +1,4 @@
-import { getImageProps, ImageProps } from 'next/image'
-
+import { type ImageProps, getImageProps } from 'next/image'
 import getStringSrc from './getStringSrc'
 import imageLoader from './imageLoader'
 

@@ -23,7 +23,7 @@ Fork this repository and create a branch from the latest `main` branch.
 
 ### Setup
 
-Run `yarn` to install dependencies.
+Run `npm i` to install dependencies.
 
 ### Commit
 

@@ -1,15 +1,12 @@
-import { createHash } from 'crypto'
-import { join } from 'path'
-
+import { createHash } from 'node:crypto'
+import { join } from 'node:path'
 import { appendFileSync } from 'fs-extra'
 import type { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
 import type { ImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
-
 import type { Manifest } from '../cli'
 import buildOutputInfo from '../utils/buildOutputInfo'
 import getConfig from '../utils/getConfig'
-
 import Picture from './picture'
 
 type RemotePictureProps = Omit<ImageProps, 'src'> & {
@@ -19,17 +16,18 @@ type RemotePictureProps = Omit<ImageProps, 'src'> & {
 const config = getConfig()
 
 const RemotePicture = forwardRef<HTMLImageElement, RemotePictureProps>(({ src, ...props }, forwardedRef) => {
-  if (process.env['NODE_ENV'] === 'production') {
-    const nextImageConfig = process.env['__NEXT_IMAGE_OPTS'] as unknown as ImageConfigComplete
+  if (process.env.NODE_ENV === 'production') {
+    const nextImageConfig = process.env.__NEXT_IMAGE_OPTS as unknown as ImageConfigComplete
 
     const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]
 
-    allSizes.forEach((width) => {
-      buildOutputInfo({
+    for (const width of allSizes) {
+      const outputInfo = buildOutputInfo({
         src,
         width,
         config,
-      }).forEach(({ output, extension, originalExtension }) => {
+      })
+      for (const { output, extension, originalExtension } of outputInfo) {
         const externalOutputDir = `${
           config.externalImageDir ? config.externalImageDir.replace(/^\//, '').replace(/\/$/, '') : '_next/static/media'
         }`
@@ -54,10 +52,10 @@ const RemotePicture = forwardRef<HTMLImageElement, RemotePictureProps>(({ src, .
 
         appendFileSync(
           join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
-          JSON.stringify(json) + '\n'
+          `${JSON.stringify(json)}\n`
         )
-      })
-    })
+      }
+    }
   }
 
   return <Picture {...props} src={src} ref={forwardedRef} />

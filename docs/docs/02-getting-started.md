@@ -50,6 +50,17 @@ module.exports = async () => {
 }
 ```
 
+Or ES modules can be used.
+
+```js title="next.config.mjs"
+import withExportImages from 'next-export-optimize-images'
+
+export default withExportImages({
+  output: 'export',
+  // write your next.js configuration values.
+})
+```
+
 :::note
 
 `withExportImages` is an asynchronous function that returns a Promise, so either write `withExportImages` first or wait for the Promise to resolve before applying other plugins.

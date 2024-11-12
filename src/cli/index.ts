@@ -1,21 +1,18 @@
-import { createHash } from 'crypto'
-import path from 'path'
-
+import { createHash } from 'node:crypto'
+import path from 'node:path'
 import colors from 'ansi-colors'
 import fs from 'fs-extra'
 import { PHASE_PRODUCTION_BUILD } from 'next/constants'
 import loadConfig from 'next/dist/server/config'
-import { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
+import type { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
 import recursiveReadDir from 'recursive-readdir'
 import sharp from 'sharp'
-
 import buildOutputInfo from '../utils/buildOutputInfo'
 import formatValidate from '../utils/formatValidate'
-import getConfig, { Config } from '../utils/getConfig'
+import getConfig, { type Config } from '../utils/getConfig'
 import processManifest from '../utils/processManifest'
-
 import externalImagesDownloader from './external-images'
-import { CacheImages, createCacheDir, defaultCacheDir, readCacheManifest, writeCacheManifest } from './utils/cache'
+import { type CacheImages, createCacheDir, defaultCacheDir, readCacheManifest, writeCacheManifest } from './utils/cache'
 import { cliProgressBarIncrement, cliProgressBarStart } from './utils/cliProgressBar'
 import uniqueItems from './utils/uniqueItems'
 
@@ -84,8 +81,9 @@ export const getOptimizeResult: GetOptimizeResult = async ({
             cacheMeasurement()
             cliProgressBarIncrement()
             return
-          } else {
-            if (currentCacheImage !== undefined) currentCacheImage.hash = hash
+          }
+          if (currentCacheImage !== undefined) {
+            currentCacheImage.hash = hash
           }
         }
       }
@@ -95,31 +93,36 @@ export const getOptimizeResult: GetOptimizeResult = async ({
       image.rotate().resize({ width, withoutEnlargement: true })
 
       switch (extension) {
-        case 'jpeg':
+        case 'jpeg': {
           const jpeg = await image.jpeg({ quality, ...sharpOptions?.jpg })
           await jpeg.toFile(outputPath)
           await jpeg.toFile(filePath)
           break
-        case 'jpg':
+        }
+        case 'jpg': {
           const jpg = await image.jpeg({ quality, ...sharpOptions?.jpg })
           await jpg.toFile(outputPath)
           await jpg.toFile(filePath)
           break
-        case 'png':
+        }
+        case 'png': {
           const png = await image.png({ quality, ...sharpOptions?.png })
           await png.toFile(outputPath)
           await png.toFile(filePath)
           break
-        case 'webp':
+        }
+        case 'webp': {
           const webp = image.webp({ quality, ...sharpOptions?.webp })
           await webp.toFile(outputPath)
           await webp.toFile(filePath)
           break
-        case 'avif':
+        }
+        case 'avif': {
           const avif = image.avif({ quality, ...sharpOptions?.avif })
           await avif.toFile(outputPath)
           await avif.toFile(filePath)
           break
+        }
       }
 
       nonCacheMeasurement()
@@ -188,9 +191,9 @@ export const optimizeImages = async ({
   if (remoteImages.length > 0) {
     const remoteImageList = new Set<string>()
 
-    remoteImages.forEach((url) => {
+    for (const url of remoteImages) {
       remoteImageList.add(url)
-    })
+    }
 
     manifest = manifest.concat(
       Array.from(remoteImageList)
@@ -244,8 +247,7 @@ export const optimizeImages = async ({
   const publicDir = path.resolve(cwd, 'public')
   if (fs.existsSync(publicDir)) {
     if (!terse) {
-      // eslint-disable-next-line no-console
-      console.log(`\n- Collect images in public directory -`)
+      console.log('\n- Collect images in public directory -')
     }
     const publicDirFiles = await recursiveReadDir(publicDir)
     const publicDirImages = publicDirFiles.filter((file) => {
@@ -278,8 +280,7 @@ export const optimizeImages = async ({
   }
 
   if (!terse) {
-    // eslint-disable-next-line no-console
-    console.log(`\n- Image Optimization -`)
+    console.log('\n- Image Optimization -')
     cliProgressBarStart(manifest.length)
   }
 
@@ -295,9 +296,15 @@ export const optimizeImages = async ({
   let measuredError = 0
   const invalidFormatAssets = new Set<string>([])
 
-  const cacheMeasurement = () => (measuredCache += 1)
-  const nonCacheMeasurement = () => (measuredNonCache += 1)
-  const errorMeasurement = () => (measuredError += 1)
+  const cacheMeasurement = () => {
+    measuredCache += 1
+  }
+  const nonCacheMeasurement = () => {
+    measuredNonCache += 1
+  }
+  const errorMeasurement = () => {
+    measuredError += 1
+  }
   const pushInvalidFormatAssets = (asset: string) => invalidFormatAssets.add(asset)
 
   const srcMap: Record<string, Omit<Manifest[number], 'src'>[]> = {}
@@ -357,12 +364,11 @@ export const optimizeImages = async ({
     if (invalidFormatAssets.size !== 0) {
       // eslint-disable-next-line no-console
       console.log(
-        `\nThe following images are in a non-optimized format and a simple copy was applied.\n`,
+        '\nThe following images are in a non-optimized format and a simple copy was applied.\n',
         Array.from(invalidFormatAssets).join('\n')
       )
     }
 
-    // eslint-disable-next-line no-console
     console.log(colors.bold.magenta('\nSuccessful optimization!'))
   }
 }

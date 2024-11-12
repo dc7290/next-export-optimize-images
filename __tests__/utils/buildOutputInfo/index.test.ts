@@ -1,5 +1,5 @@
 import buildOutputInfo from '../../../src/utils/buildOutputInfo'
-import { Config } from '../../../src/utils/getConfig'
+import type { Config } from '../../../src/utils/getConfig'
 
 describe('buildOutputInfo', () => {
   test('Default image parser functions properly', () => {
@@ -230,7 +230,7 @@ describe('buildOutputInfo', () => {
     }
 
     expect(() => buildOutputInfo(input)).toThrowError(
-      new Error(`Unauthorized format specified in \`configFormat\`. afterConvert: invalid_format`)
+      new Error('Unauthorized format specified in `configFormat`. afterConvert: invalid_format')
     )
   })
 
@@ -243,8 +243,8 @@ describe('buildOutputInfo', () => {
       } as unknown as Config,
     }
 
-    expect(() => buildOutputInfo(input)).toThrowError(
-      new Error(`Unauthorized extension specified in \`generateFormats\`: invalid_format`)
+    expect(() => buildOutputInfo(input)).toThrow(
+      new Error('Unauthorized extension specified in `generateFormats`: invalid_format')
     )
   })
 

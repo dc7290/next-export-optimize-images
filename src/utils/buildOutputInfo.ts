@@ -1,5 +1,5 @@
 import formatValidate from './formatValidate'
-import { Config, DefaultImageParser } from './getConfig'
+import type { Config, DefaultImageParser } from './getConfig'
 
 export const defaultImageParser: DefaultImageParser = (src: string) => {
   const path = src.split(/\.([^.]*$)/)[0]

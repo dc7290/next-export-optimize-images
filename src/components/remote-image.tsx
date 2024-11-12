@@ -1,15 +1,12 @@
-import { createHash } from 'crypto'
-import { join } from 'path'
-
+import { createHash } from 'node:crypto'
+import { join } from 'node:path'
 import { appendFileSync } from 'fs-extra'
 import type { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
 import type { ImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
-
 import type { Manifest } from '../cli'
 import buildOutputInfo from '../utils/buildOutputInfo'
 import getConfig from '../utils/getConfig'
-
 import Image from './image'
 
 type RemoteImageProps = Omit<ImageProps, 'src'> & {
@@ -19,12 +16,12 @@ type RemoteImageProps = Omit<ImageProps, 'src'> & {
 const config = getConfig()
 
 const RemoteImage = forwardRef<HTMLImageElement, RemoteImageProps>(({ src, ...props }, forwardedRef) => {
-  if (process.env['NODE_ENV'] === 'production') {
-    const nextImageConfig = process.env['__NEXT_IMAGE_OPTS'] as unknown as ImageConfigComplete
+  if (process.env.NODE_ENV === 'production') {
+    const nextImageConfig = process.env.__NEXT_IMAGE_OPTS as unknown as ImageConfigComplete
 
     const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]
 
-    allSizes.forEach((width) => {
+    for (const width of allSizes) {
       const outputInfo = buildOutputInfo({
         src,
         width,
@@ -59,8 +56,8 @@ const RemoteImage = forwardRef<HTMLImageElement, RemoteImageProps>(({ src, ...pr
         externalUrl: src,
       }
 
-      appendFileSync(join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'), JSON.stringify(json) + '\n')
-    })
+      appendFileSync(join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'), `${JSON.stringify(json)}\n`)
+    }
   }
 
   return <Image {...props} src={src} ref={forwardedRef} />

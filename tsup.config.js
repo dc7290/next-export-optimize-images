@@ -30,7 +30,7 @@ export default defineConfig([
       'legacy-image': 'src/components/legacy-image.tsx',
       picture: 'src/components/picture.tsx',
     },
-    external: ['react', 'next', 'next-export-optimize-images'],
+    external: ['react', 'next', 'next-export-optimize-images', './image', './picture'],
     outDir: 'dist/components',
     esbuildOptions: (options) => {
       // Append "use client" to the top of the react entry point

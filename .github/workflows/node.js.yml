@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn add sharp --ignore-engines
-      - run: yarn test
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test
