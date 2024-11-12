@@ -2,13 +2,7 @@
   "name": "next-export-optimize-images",
   "version": "4.5.1",
   "description": "Optimize images at build time with Next.js.",
-  "keywords": [
-    "next.js",
-    "static",
-    "export",
-    "image",
-    "optimization"
-  ],
+  "keywords": ["next.js", "static", "export", "image", "optimization"],
   "homepage": "https://next-export-optimize-images.vercel.app",
   "bugs": {
     "url": "https://github.com/dc7290/next-export-optimize-images/issues"
@@ -38,23 +32,21 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "lint": "yarn biome lint ./",
-    "format": "yarn biome format --write ./",
-    "check:write": "yarn biome check --write ./",
+    "lint": "biome lint ./",
+    "format": "biome format --write ./",
+    "check:write": "biome check --write ./",
     "lint-staged": "lint-staged",
     "prepare": "husky",
-    "pretest": "yarn build && npm-run-all --sequential pretest:**",
+    "pretest": "npm run build && npm-run-all --sequential pretest:**",
     "pretest:e2e": "cd __tests__/e2e && rimraf {.next,out} && next build && node cli.js",
     "pretest:e2e-build": "cd __tests__/e2e-build && rimraf .next && next build && node cli.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "semantic-release": "SKIP_BY_SEMANTIC_RELEASE=true semantic-release",
-    "typecheck": "yarn tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "yarn biome check --write"
-    ]
+    "*.{ts,tsx}": ["biome check --write"]
   },
   "dependencies": {
     "ansi-colors": "^4.1.3",
@@ -89,8 +81,8 @@
     "lint-staged": "15.2.10",
     "next": "15.0.3",
     "npm-run-all2": "7.0.1",
-    "react": "19.0.0-rc-ed15d500-20241110",
-    "react-dom": "19.0.0-rc-ed15d500-20241110",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
     "rimraf": "5.0.10",
     "semantic-release": "19.0.5",
     "ts-jest": "29.2.5",

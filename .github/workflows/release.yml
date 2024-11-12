@@ -14,10 +14,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn add sharp --ignore-engines
-      - run: yarn build
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
       - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -26,4 +25,4 @@ jobs:
           GIT_AUTHOR_EMAIL: 'dhkh.cba0927@gmail.com'
           GIT_COMMITTER_NAME: 'dc7290'
           GIT_COMMITTER_EMAIL: 'dhkh.cba0927@gmail.com'
-        run: yarn semantic-release
+        run: npm run semantic-release
