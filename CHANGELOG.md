@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.5.3](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.2...v4.5.3) (2024-11-29)
+
+
+### Bug Fixes
+
+* 🐛 Fixed syntax for peerDependencies ([0a2574b](https://github.com/dc7290/next-export-optimize-images/commit/0a2574bde232f3ba25b51cd743cb1be3896dab17)), closes [#1093](https://github.com/dc7290/next-export-optimize-images/issues/1093)
+
 ## [4.5.2](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.1...v4.5.2) (2024-11-12)
 
 
