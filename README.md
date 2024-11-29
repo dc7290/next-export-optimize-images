@@ -28,7 +28,7 @@ This makes it possible to build a high performance website with this solution, w
 ## Installation
 
 ```bash
-yarn add -D next-export-optimize-images
+npm install next-export-optimize-images
 ```
 
 ## Document Site
