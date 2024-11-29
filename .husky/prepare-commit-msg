@@ -1,3 +1,3 @@
 [ -z "${SKIP_BY_SEMANTIC_RELEASE}" ] && {
-  exec < /dev/tty && yarn git-cz --hook
+  exec < /dev/tty && npx git-cz --hook
 } || true
