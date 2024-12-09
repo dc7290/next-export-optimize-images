@@ -258,7 +258,8 @@ export const optimizeImages = async ({
       publicDirImages
         .map((file) =>
           allSizes.map((size) => {
-            const src = file.replace(publicDir, '')
+            const ignorePath = config.mode === 'build' ? publicDir.replace(/public$/, '') : publicDir // The public directory in the root is required when building.
+            const src = file.replace(ignorePath, '')
             return buildOutputInfo({
               src,
               width: size,
@@ -325,7 +326,9 @@ export const optimizeImages = async ({
     if (items === undefined || items.length === 0) continue
 
     const originalFilePath = path.join(srcDir, config.mode === 'build' ? key.replace(/^\/_next/, '/.next') : key)
+    console.log('originalFilePath', originalFilePath)
     const imageBuffer = await fs.readFile(originalFilePath)
+    console.log('imageBuffer')
 
     for (const item of items) {
       item.output = config.mode === 'build' ? item.output.replace(/^\/_next/, '/.next') : item.output
