@@ -23,6 +23,7 @@ const config = {
     return defaultParser(src)
   },
   cacheDir: '.next/cache/next-export-optimize-images',
+  ignorePaths: ['images/ignore-img.png'],
 }
 
 module.exports = config

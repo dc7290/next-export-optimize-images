@@ -249,11 +249,17 @@ export const optimizeImages = async ({
     if (!terse) {
       console.log('\n- Collect images in public directory -')
     }
+    const ignorePaths = config.ignorePaths ? config.ignorePaths.map((p) => path.join(publicDir, p)) : []
+
     const publicDirFiles = await recursiveReadDir(publicDir)
-    const publicDirImages = publicDirFiles.filter((file) => {
-      const ext = path.extname(file).toLowerCase()
-      return ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.avif' || ext === '.gif'
-    })
+    const publicDirImages = publicDirFiles
+      .filter((file) => {
+        const ext = path.extname(file).toLowerCase()
+        return (
+          ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.avif' || ext === '.gif'
+        )
+      })
+      .filter((file) => !ignorePaths.includes(file))
     manifest = manifest.concat(
       publicDirImages
         .map((file) =>
@@ -326,9 +332,7 @@ export const optimizeImages = async ({
     if (items === undefined || items.length === 0) continue
 
     const originalFilePath = path.join(srcDir, config.mode === 'build' ? key.replace(/^\/_next/, '/.next') : key)
-    console.log('originalFilePath', originalFilePath)
     const imageBuffer = await fs.readFile(originalFilePath)
-    console.log('imageBuffer')
 
     for (const item of items) {
       item.output = config.mode === 'build' ? item.output.replace(/^\/_next/, '/.next') : item.output

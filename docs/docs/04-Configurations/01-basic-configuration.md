@@ -50,6 +50,14 @@ e.g. If `'_optimized'` is set.
 You can customize the directory to cache the optimized images.  
 The default is `node_modules/.cache`.
 
+### `ignorePaths`
+
+- Type: Array<string\>
+- Default: []
+
+Images in the public directory are automatically optimized, but if there are any images you want to ignore the optimization for, please specify the path.  
+Please specify a relative path from the public directory.
+
 ### `externalImageDir`
 
 - Type: string
