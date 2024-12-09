@@ -1,7 +1,7 @@
-import Image from '../../../image'
 import React from 'react'
+import Image from '../../../image'
 
-import imgSrc from '../images/img.png'
+import imgSrc from '../src/images/img.png'
 
 export default function IndexPage() {
   return (

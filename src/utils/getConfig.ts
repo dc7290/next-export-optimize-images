@@ -31,6 +31,11 @@ export type Config = {
    */
   cacheDir?: string
   /**
+   * Images in the public directory are automatically optimized, but if there are any images you want to ignore the optimization for, please specify the path.
+   * Please specify a relative path from the public directory.
+   */
+  ignorePaths?: string[]
+  /**
    * Required if you have set basePath in next.config.js.
    * Please set the same value.
    *

@@ -22,24 +22,6 @@ export default defineConfig([
     outDir: 'dist',
   },
 
-  // Client Components
-  {
-    ...cfg,
-    entry: {
-      image: 'src/components/image.tsx',
-      'legacy-image': 'src/components/legacy-image.tsx',
-      picture: 'src/components/picture.tsx',
-    },
-    external: ['react', 'next', 'next-export-optimize-images', './image', './picture'],
-    outDir: 'dist/components',
-    esbuildOptions: (options) => {
-      // Append "use client" to the top of the react entry point
-      options.banner = {
-        js: '"use client";',
-      }
-    },
-  },
-
   // Server Components
   {
     ...cfg,
@@ -49,5 +31,23 @@ export default defineConfig([
     },
     external: ['react', 'next', 'next-export-optimize-images', './image', './picture'],
     outDir: 'dist/components',
+  },
+
+  // Client Components
+  {
+    ...cfg,
+    entry: {
+      image: 'src/components/image.tsx',
+      'legacy-image': 'src/components/legacy-image.tsx',
+      picture: 'src/components/picture.tsx',
+    },
+    external: ['react', 'next', 'next-export-optimize-images'],
+    outDir: 'dist/components',
+    esbuildOptions: (options) => {
+      // Append "use client" to the top of the react entry point
+      options.banner = {
+        js: '"use client";',
+      }
+    },
   },
 ])
