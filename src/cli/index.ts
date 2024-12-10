@@ -249,16 +249,23 @@ export const optimizeImages = async ({
     if (!terse) {
       console.log('\n- Collect images in public directory -')
     }
+    const ignorePaths = config.ignorePaths ? config.ignorePaths.map((p) => path.join(publicDir, p)) : []
+
     const publicDirFiles = await recursiveReadDir(publicDir)
-    const publicDirImages = publicDirFiles.filter((file) => {
-      const ext = path.extname(file).toLowerCase()
-      return ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.avif' || ext === '.gif'
-    })
+    const publicDirImages = publicDirFiles
+      .filter((file) => {
+        const ext = path.extname(file).toLowerCase()
+        return (
+          ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.avif' || ext === '.gif'
+        )
+      })
+      .filter((file) => !ignorePaths.includes(file))
     manifest = manifest.concat(
       publicDirImages
         .map((file) =>
           allSizes.map((size) => {
-            const src = file.replace(publicDir, '')
+            const ignorePath = config.mode === 'build' ? publicDir.replace(/public$/, '') : publicDir // The public directory in the root is required when building.
+            const src = file.replace(ignorePath, '')
             return buildOutputInfo({
               src,
               width: size,

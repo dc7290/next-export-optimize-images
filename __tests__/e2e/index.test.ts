@@ -71,4 +71,9 @@ describe('`next build && next export && next-export-optimize-images` is executed
       }
     }
   })
+
+  test('ignorePaths is working.', async () => {
+    const isExist = exist('images/ignore-img.png')
+    expect(isExist).toBeFalsy()
+  })
 })
