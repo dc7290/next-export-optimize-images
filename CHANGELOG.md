@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.6.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.3...v4.6.0) (2024-12-10)
+
+
+### Features
+
+* 🚀 Add `ignorePaths` option ([720c8d5](https://github.com/dc7290/next-export-optimize-images/commit/720c8d5ea41982d38430f032eecd75c2288c4d1e)), closes [#1076](https://github.com/dc7290/next-export-optimize-images/issues/1076)
+
+
+### Bug Fixes
+
+* 🐛 Fix for public directory bug in build mode ([b7852b4](https://github.com/dc7290/next-export-optimize-images/commit/b7852b4c6682324d8947ec935e77215b8983dfd7)), closes [#1086](https://github.com/dc7290/next-export-optimize-images/issues/1086)
+* 🐛 Fixed tsup build order ([7d59322](https://github.com/dc7290/next-export-optimize-images/commit/7d593227b0993e88559a435e8b31c60f0e09c646)), closes [#981](https://github.com/dc7290/next-export-optimize-images/issues/981)
+
+
+### Tests
+
+* 💍 Restore test-image ([67bb9d9](https://github.com/dc7290/next-export-optimize-images/commit/67bb9d9c5beb468f5e47483b936c481cfb9c232d))
+
 ## [4.5.3](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.2...v4.5.3) (2024-11-29)
 
 
