@@ -1,3 +1,3 @@
-import RemotePicture from './dist/components/remote-picture'
-export * from './dist/components/remote-picture'
+import RemotePicture from './dist/components/server/remote-picture'
+export * from './dist/components/server/remote-picture'
 export default RemotePicture

@@ -26,23 +26,23 @@ export default defineConfig([
   {
     ...cfg,
     entry: {
-      'remote-image': 'src/components/remote-image.tsx',
-      'remote-picture': 'src/components/remote-picture.tsx',
+      'remote-image': 'src/components/server/remote-image.tsx',
+      'remote-picture': 'src/components/server/remote-picture.tsx',
     },
-    external: ['react', 'next', 'next-export-optimize-images', './image', './picture'],
-    outDir: 'dist/components',
+    external: ['next-export-optimize-images', '../client/image', '../client/picture'],
+    outDir: 'dist/components/server',
   },
 
   // Client Components
   {
     ...cfg,
     entry: {
-      image: 'src/components/image.tsx',
-      'legacy-image': 'src/components/legacy-image.tsx',
-      picture: 'src/components/picture.tsx',
+      image: 'src/components/client/image.tsx',
+      'legacy/image': 'src/components/client/legacy/image.tsx',
+      picture: 'src/components/client/picture.tsx',
     },
-    external: ['react', 'next', 'next-export-optimize-images'],
-    outDir: 'dist/components',
+    external: ['next-export-optimize-images'],
+    outDir: 'dist/components/client',
     esbuildOptions: (options) => {
       // Append "use client" to the top of the react entry point
       options.banner = {

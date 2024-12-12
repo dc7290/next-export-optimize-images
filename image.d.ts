@@ -1,3 +1,3 @@
-import Image from './dist/components/image'
-export * from './dist/components/image'
+import Image from './dist/components/client/image'
+export * from './dist/components/client/image'
 export default Image

@@ -1,6 +1,6 @@
 import Image, { type ImageProps } from 'next/image'
 import React from 'react'
-import imageLoader from './utils/imageLoader'
+import imageLoader from '../../utils/imageLoader'
 
 const CustomImage = (props: ImageProps) => {
   return (
