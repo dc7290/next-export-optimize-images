@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.6.1](https://github.com/dc7290/next-export-optimize-images/compare/v4.6.0...v4.6.1) (2024-12-12)
+
+
+### Bug Fixes
+
+* 🐛 Fixed dts file output ([052d953](https://github.com/dc7290/next-export-optimize-images/commit/052d953f9936aa5ddd4cffcccac9cd582d2a5958))
+* 🐛 Support Node.js v22 ([ec96198](https://github.com/dc7290/next-export-optimize-images/commit/ec96198d9f7bfe78c0895762bbd2a488dc84e3a2))
+
+
+### Continuous Integration
+
+* 🎡 Fixed matrix os ([5153978](https://github.com/dc7290/next-export-optimize-images/commit/5153978252485b6f31972fe1cb0d0f17e1aa6916))
+
 ## [4.6.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.5.3...v4.6.0) (2024-12-10)
 
 
