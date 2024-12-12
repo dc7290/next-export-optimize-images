@@ -14,7 +14,8 @@ jobs:
           - 18
           - 20
           - 22
-        os: ubuntu-latest
+        os: 
+          - ubuntu-latest
     name: Node.js v${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
