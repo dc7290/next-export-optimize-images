@@ -52,7 +52,7 @@ The default is `node_modules/.cache`.
 
 ### `ignorePaths`
 
-- Type: Array<string\>
+- Type: Array&lt;string\&gt;
 - Default: []
 
 Images in the public directory are automatically optimized, but if there are any images you want to ignore the optimization for, please specify the path.  
@@ -90,7 +90,7 @@ Please set the same value.
 | Key       | Type   | Description                      | e.g. '/images/sample.png' | e.g. require('./sample.png') |
 | --------- | ------ | -------------------------------- | ------------------------- | ---------------------------- |
 | path      | string | The path portion.                | /images                   | /\_next/static/media         |
-| name      | string | The file name part.              | sample                    | sample.{hash}                |
+| name      | string | The file name part.              | sample                    | sample.&#123;hash&#125;      |
 | width     | number | That image is the resized width. | 1920                      | 1920                         |
 | extension | string | The extension of that image.     | png                       | png                          |
 
@@ -187,7 +187,7 @@ Please refer to the official sharp documentation for more information.
 
 ### `convertFormat`
 
-- Type: Array<Array<Format, Format>>  
+- Type: Array&lt;Array&lt;Format, Format&gt;&gt;  
   Format → "jpeg" | "jpg" | "png" | "webp" | "avif"
 
 :::note
@@ -220,7 +220,7 @@ The original image will be kept, `img.png` will be converted to webp format and 
 
 ### `generateFormats`
 
-- Type: Array<"webp" | "avif"\>
+- Type: Array&lt;"webp" | "avif"\&gt;
 - Default: ['webp']
 
 You can generate extra images in extensions specified.
@@ -233,7 +233,7 @@ See [Picture component](/docs/Features/picture-component) for details.
 
 ### `remoteImages`
 
-- Type: Array<string\> | (() => Array<string\> | Promise<Array<string\>\>)
+- Type: Array&lt;string\&gt; | (() => Array&lt;string\&gt; | Promise&lt;Array&lt;string\&gt;\&gt;)
 
 You can directly specify the URL of an external image.  
 This is useful in cases where it is not known what images will be used for the build using variables, [for example](/docs/Features/external-images#when-specifying-an-external-image-url-with-a-variable).

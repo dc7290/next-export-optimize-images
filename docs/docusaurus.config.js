@@ -1,5 +1,6 @@
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
-const lightCodeTheme = require('prism-react-renderer/themes/github')
+const { themes } = require('prism-react-renderer')
+const lightCodeTheme = themes.github
+const darkCodeTheme = themes.dracula
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -98,7 +99,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © 2022 dc7290. Built with Docusaurus.`,
+        copyright: 'Copyright © 2022 dc7290. Built with Docusaurus.',
       },
       image: '/og.png',
       colorMode: {
