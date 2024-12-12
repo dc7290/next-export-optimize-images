@@ -1,1 +1,1 @@
-module.exports = require('./dist/components/image')
+module.exports = require('./dist/components/client/image')

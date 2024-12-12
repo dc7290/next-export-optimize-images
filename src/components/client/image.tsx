@@ -1,7 +1,7 @@
 import Image, { type ImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
-import getStringSrc from './utils/getStringSrc'
-import imageLoader from './utils/imageLoader'
+import getStringSrc from '../utils/getStringSrc'
+import imageLoader from '../utils/imageLoader'
 
 const CustomImage = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRef) => {
   const srcStr = getStringSrc(props.src)
@@ -23,5 +23,5 @@ const CustomImage = forwardRef<HTMLImageElement, ImageProps>((props, forwardedRe
 })
 CustomImage.displayName = 'CustomImage'
 
-export { default as getOptimizedImageProps } from './utils/getOptimizedImageProps'
+export { default as getOptimizedImageProps } from '../utils/getOptimizedImageProps'
 export default CustomImage

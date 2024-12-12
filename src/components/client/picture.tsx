@@ -1,8 +1,8 @@
 import Image, { type ImageProps, getImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
-import getConfig from '../utils/getConfig'
-import getStringSrc from './utils/getStringSrc'
-import imageLoader from './utils/imageLoader'
+import getConfig from '../../utils/getConfig'
+import getStringSrc from '../utils/getStringSrc'
+import imageLoader from '../utils/imageLoader'
 
 const config = getConfig()
 

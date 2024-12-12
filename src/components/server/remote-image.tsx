@@ -4,10 +4,10 @@ import { appendFileSync } from 'fs-extra'
 import type { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
 import type { ImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
-import type { Manifest } from '../cli'
-import buildOutputInfo from '../utils/buildOutputInfo'
-import getConfig from '../utils/getConfig'
-import Image from './image'
+import type { Manifest } from '../../cli'
+import buildOutputInfo from '../../utils/buildOutputInfo'
+import getConfig from '../../utils/getConfig'
+import Image from '../client/image'
 
 type RemoteImageProps = Omit<ImageProps, 'src'> & {
   src: string

@@ -1,2 +1,2 @@
-import Image from '../dist/components/legacy-image'
+import Image from '../dist/components/client/legacy/image'
 export default Image

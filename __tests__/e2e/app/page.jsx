@@ -1,15 +1,14 @@
-import Image from '../../../image'
-import LegacyImage from '../../../legacy/image'
-import RemoteImage from '../../../remote-image'
-import RemotePicture from '../../../remote-picture'
 import React from 'react'
 
-import Picture from '../../../dist/components/picture'
+import Image from '../../../image'
+import LegacyImage from '../../../legacy/image'
+import Picture from '../../../picture'
+import RemoteImage from '../../../remote-image'
+import RemotePicture from '../../../remote-picture'
 import ClientComponent from '../components/ClientComponent'
-
+import WithPropsComponent from '../components/WithPropsComponent'
 import imgSrc from '../images/img.png'
 import legacyImgSrc from '../images/legacy-img.png'
-import WithPropsComponent from '../components/WithPropsComponent'
 
 const id = 400
 
