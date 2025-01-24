@@ -33,7 +33,7 @@
     "clsx": "2.1.1",
     "postcss": "8.4.49",
     "prettier": "3.4.2",
-    "prettier-plugin-tailwindcss": "0.6.9",
+    "prettier-plugin-tailwindcss": "0.6.11",
     "prism-react-renderer": "2.4.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
