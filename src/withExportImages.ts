@@ -5,6 +5,9 @@ import fs from 'fs-extra'
 import type { NextConfig } from 'next'
 import type { Config } from './utils/getConfig'
 
+// Track whether the configuration message has been logged
+let configMessageLogged = false
+
 const withExportImages = async (
   nextConfig: NextConfig = {},
   options: { __test?: boolean } = {}
@@ -53,16 +56,19 @@ const withExportImages = async (
     )}`
   )
 
-  // eslint-disable-next-line no-console
-  console.log(
-    colors.magenta(
-      `info - [next-export-optimize-images]: ${
-        resolvedConfigPath !== null
-          ? `Configuration loaded from \`${resolvedConfigPath}\`.`
-          : 'Configuration was not loaded. (This is optional.)'
-      }`
+  if (!configMessageLogged) {
+    // eslint-disable-next-line no-console
+    console.log(
+      colors.magenta(
+        `info - [next-export-optimize-images]: ${
+          resolvedConfigPath !== null
+            ? `Configuration loaded from \`${resolvedConfigPath}\`.`
+            : 'Configuration was not loaded. (This is optional.)'
+        }`
+      )
     )
-  )
+    configMessageLogged = true
+  }
 
   const customConfig: NextConfig = {
     webpack(config, option) {
