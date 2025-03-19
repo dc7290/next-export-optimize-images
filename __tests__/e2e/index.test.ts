@@ -21,6 +21,9 @@ const files = [
   // next/legacy/image
   '_next/static/media/legacy-img.8a5ad2fe_[width].avif',
   'images/legacy-img_[width].avif',
+  // picture
+  '_next/static/media/picture.8a5ad2fe_[width].avif',
+  'images/picture_[width].avif',
 
   // webp
 
@@ -37,6 +40,9 @@ const files = [
   // next/legacy/image
   '_next/static/media/legacy-img.8a5ad2fe_[width].webp',
   'images/legacy-img_[width].webp',
+  // picture
+  '_next/static/media/picture.8a5ad2fe_[width].webp',
+  'images/picture_[width].webp',
 
   // png or jpg
 
@@ -54,11 +60,14 @@ const files = [
   // next/legacy/image
   '_next/static/media/legacy-img.8a5ad2fe_[width].png',
   'images/legacy-img_[width].png',
+  // picture
+  '_next/static/media/picture.8a5ad2fe_[width].png',
+  'images/picture_[width].png',
 ]
 
 describe('`next build && next export && next-export-optimize-images` is executed correctly', () => {
   test('Images are being generated.', async () => {
-    const customConfig = require('./next.config.js')
+    const customConfig = await require('./next.config.js')
     const configImages = { ...imageConfigDefault, ...customConfig.images }
     const allSizes = [...configImages.imageSizes, ...configImages.deviceSizes]
     for (const size of allSizes) {

@@ -9,6 +9,7 @@ import ClientComponent from '../components/ClientComponent'
 import WithPropsComponent from '../components/WithPropsComponent'
 import imgSrc from '../images/img.png'
 import legacyImgSrc from '../images/legacy-img.png'
+import pictureSrc from '../images/picture.png'
 
 const id = 400
 
@@ -46,10 +47,10 @@ export default function IndexPage() {
       {/* picture */}
       <div>
         {/* Imported image */}
-        <Picture src={imgSrc} alt="" />
+        <Picture src={pictureSrc} alt="" />
 
         {/* Static image */}
-        <Picture src="/images/img.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" alt="" />
+        <Picture src="/images/picture.png" width={1920} height={1280} sizes="(min-width: 768px) 720px, 85vw" alt="" />
       </div>
       {/* next/legacy/image */}
       <div>
