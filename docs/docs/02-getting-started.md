@@ -9,7 +9,7 @@ Install the package in the project that uses Next.js.
 ## Installation
 
 ```bash
-yarn add -D next-export-optimize-images
+npm i -D next-export-optimize-images
 ```
 
 ## Usage
@@ -104,5 +104,5 @@ import img from './img.png'
 
 ## Local checks
 
-1. Run `yarn build`.
+1. Run `npm run build`.
 2. Run `npx http-server out`
