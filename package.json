@@ -1,8 +1,14 @@
 {
   "name": "next-export-optimize-images",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "description": "Optimize images at build time with Next.js.",
-  "keywords": ["next.js", "static", "export", "image", "optimization"],
+  "keywords": [
+    "next.js",
+    "static",
+    "export",
+    "image",
+    "optimization"
+  ],
   "homepage": "https://next-export-optimize-images.vercel.app",
   "bugs": {
     "url": "https://github.com/dc7290/next-export-optimize-images/issues"
@@ -46,7 +52,9 @@
     "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
-    "*.{ts,tsx}": ["biome check --write"]
+    "*.{ts,tsx}": [
+      "biome check --write"
+    ]
   },
   "dependencies": {
     "ansi-colors": "^4.1.3",

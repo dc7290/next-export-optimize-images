@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.6.2](https://github.com/dc7290/next-export-optimize-images/compare/v4.6.1...v4.6.2) (2025-03-20)
+
+
+### Bug Fixes
+
+* 🐛 Don't log spam configuration loaded log ([8e4ab14](https://github.com/dc7290/next-export-optimize-images/commit/8e4ab1457cc28ade1ebbe10d1ba01877257ca79b))
+* **deps:** update dependency fs-extra to ^11.3.0 ([#1129](https://github.com/dc7290/next-export-optimize-images/issues/1129)) ([77b67c3](https://github.com/dc7290/next-export-optimize-images/commit/77b67c30a858a50090d5414097a3d5f293c8d82a))
+
+
+### Documentation
+
+* ✏️ add examples for using mixed ([74df8a9](https://github.com/dc7290/next-export-optimize-images/commit/74df8a9099ea9b008b9f5a50fc756666bcca2caf))
+* ✏️ Update docusaurus v3 ([55143dc](https://github.com/dc7290/next-export-optimize-images/commit/55143dc8991c7cecb93cd73be9a7435bf434f9ef))
+
+
+### Tests
+
+* 💍 Added tests for the Pocture component and deviceSizes ([c82903b](https://github.com/dc7290/next-export-optimize-images/commit/c82903b589869534b52141ebb7da40a7027b4be1))
+
 ## [4.6.1](https://github.com/dc7290/next-export-optimize-images/compare/v4.6.0...v4.6.1) (2024-12-12)
 
 
