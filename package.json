@@ -63,7 +63,7 @@
     "fs-extra": "^11.3.0",
     "lodash.uniqwith": "^4.5.0",
     "recursive-readdir": "^2.2.3",
-    "sharp": "^0.34.0"
+    "sharp": "^0.34.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
