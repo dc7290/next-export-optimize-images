@@ -35,6 +35,10 @@ npm install next-export-optimize-images
 
 https://next-export-optimize-images.vercel.app
 
+### DeepWiki
+
+https://deepwiki.com/dc7290/next-export-optimize-images
+
 ## License
 
 Next Export Optimize Images is available under the MIT License.
