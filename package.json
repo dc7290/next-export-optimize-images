@@ -95,7 +95,7 @@
     "ts-jest": "29.3.4",
     "tsup": "8.5.0",
     "typescript": "5.8.3",
-    "webpack": "5.99.8"
+    "webpack": "5.99.9"
   },
   "peerDependencies": {
     "next": "14.x || 15.x",
