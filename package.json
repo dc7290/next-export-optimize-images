@@ -86,7 +86,7 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "lint-staged": "15.5.2",
-    "next": "15.3.2",
+    "next": "15.3.3",
     "npm-run-all2": "7.0.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
