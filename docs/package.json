@@ -31,7 +31,7 @@
     "@mdx-js/react": "3.1.0",
     "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
-    "postcss": "8.5.3",
+    "postcss": "8.5.4",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.11",
     "prism-react-renderer": "2.4.1",
