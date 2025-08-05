@@ -244,6 +244,13 @@ This is useful in cases where it is not known what images will be used for the b
 
 In case you need to download a large amount of images from an external CDN with a rate limit, this will add delays between downloading images.
 
+### `processingConcurrency`
+
+- Type: number
+- Default: 10
+
+You can specify the number of images to process at the same time.
+
 ### `mode`
 
 - Type: 'build' | 'export'
