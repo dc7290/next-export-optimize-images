@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Released](https://github.com/dc7290/next-export-optimize-images/releases)
 
+## [4.7.0](https://github.com/dc7290/next-export-optimize-images/compare/v4.6.2...v4.7.0) (2025-08-31)
+
+
+### Features
+
+* Add chunking for image processing and downloading ([aec2b46](https://github.com/dc7290/next-export-optimize-images/commit/aec2b46e56778c9249bd7a1537b76ec70bdb0468))
+
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to ^11.3.1 ([#1240](https://github.com/dc7290/next-export-optimize-images/issues/1240)) ([28639cc](https://github.com/dc7290/next-export-optimize-images/commit/28639ccf32055b13b8de4a614851389726149e2b))
+* **deps:** update dependency sharp to ^0.34.0 ([#1171](https://github.com/dc7290/next-export-optimize-images/issues/1171)) ([e9a1a6b](https://github.com/dc7290/next-export-optimize-images/commit/e9a1a6b476b55b38cf84b71b99c7cf4483f01e70))
+* **deps:** update dependency sharp to ^0.34.1 ([#1176](https://github.com/dc7290/next-export-optimize-images/issues/1176)) ([86393d6](https://github.com/dc7290/next-export-optimize-images/commit/86393d661f3773b437ee4c0b1b7f33661ec29daa))
+* **deps:** update dependency sharp to ^0.34.2 ([#1200](https://github.com/dc7290/next-export-optimize-images/issues/1200)) ([90c4a10](https://github.com/dc7290/next-export-optimize-images/commit/90c4a107b1ee77c7298635c42cca91db1cb91fb7))
+* **deps:** update dependency sharp to ^0.34.3 ([#1228](https://github.com/dc7290/next-export-optimize-images/issues/1228)) ([311f654](https://github.com/dc7290/next-export-optimize-images/commit/311f65440167a39acfeb4caedbffb77d7fdbf598))
+
+
+### Documentation
+
+* Update configuration documentation with processingConcurrency ([c86a086](https://github.com/dc7290/next-export-optimize-images/commit/c86a0863e5cbeee97fcd72e394add470124ff961))
+
 ## [4.6.2](https://github.com/dc7290/next-export-optimize-images/compare/v4.6.1...v4.6.2) (2025-03-20)
 
 
