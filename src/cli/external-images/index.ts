@@ -10,6 +10,7 @@ type ExternalImagesDownloaderArgs = {
   manifest: Manifest
   destDir: string
   remoteImagesDownloadsDelay?: Config['remoteImagesDownloadsDelay']
+  processingConcurrency?: Config['processingConcurrency']
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -19,6 +20,7 @@ const externalImagesDownloader = async ({
   manifest,
   destDir,
   remoteImagesDownloadsDelay,
+  processingConcurrency,
 }: ExternalImagesDownloaderArgs) => {
   if (!terse) {
     // eslint-disable-next-line no-console
@@ -72,7 +74,11 @@ const externalImagesDownloader = async ({
     )
   }
 
-  await Promise.all(promises)
+  const concurrency = processingConcurrency ?? 10
+  for (let i = 0; i < promises.length; i += concurrency) {
+    const chunk = promises.slice(i, i + concurrency)
+    await Promise.all(chunk)
+  }
 }
 
 export default externalImagesDownloader

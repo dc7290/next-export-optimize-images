@@ -241,6 +241,7 @@ export const optimizeImages = async ({
       manifest,
       destDir,
       remoteImagesDownloadsDelay: config.remoteImagesDownloadsDelay,
+      processingConcurrency: config.processingConcurrency,
     })
   }
 
@@ -358,7 +359,11 @@ export const optimizeImages = async ({
     }
   }
 
-  await Promise.all(promises)
+  const concurrency = config.processingConcurrency ?? 10
+  for (let i = 0; i < promises.length; i += concurrency) {
+    const chunk = promises.slice(i, i + concurrency)
+    await Promise.all(chunk)
+  }
 
   if (!noCache) {
     writeCacheManifest(cacheImages)

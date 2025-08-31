@@ -114,6 +114,14 @@ export type Config = {
   remoteImagesDownloadsDelay?: number
 
   /**
+   * You can specify the number of images to process at the same time.
+   * The default is 10.
+   *
+   * @type {number}
+   */
+  processingConcurrency?: number
+
+  /**
    * You can specify the mode to use. The default is 'export'.
    * 'build' mode is for use with `next build` and `next start`.
    *
