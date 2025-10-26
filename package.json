@@ -80,7 +80,7 @@
     "@types/node": "22.18.12",
     "@types/react": "npm:types-react@rc",
     "@types/recursive-readdir": "2.2.4",
-    "conventional-changelog-conventionalcommits": "6.1.0",
+    "conventional-changelog-conventionalcommits": "9.1.0",
     "git-cz": "4.9.0",
     "husky": "9.1.7",
     "jest": "29.7.0",
