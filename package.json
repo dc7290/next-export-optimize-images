@@ -72,7 +72,7 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@tsconfig/strictest": "2.0.6",
-    "@types/app-root-path": "1.2.8",
+    "@types/app-root-path": "3.1.0",
     "@types/cli-progress": "3.11.6",
     "@types/fs-extra": "11.0.4",
     "@types/jest": "29.5.14",
