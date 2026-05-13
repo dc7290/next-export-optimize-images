@@ -71,6 +71,11 @@ const withExportImages = async (
   }
 
   const customConfig: NextConfig = {
+    // Declares Turbopack intent so Next 16 doesn't error when the webpack
+    // callback below is present. Turbopack uses native image emission; the
+    // loader path below runs only under `next build --webpack` and the
+    // CLI's post-build media-dir walk covers the Turbopack case.
+    turbopack: { ...(nextConfig.turbopack ?? {}) },
     webpack(config, option) {
       const nextImageLoader = config.module.rules.find(
         ({ loader }: { loader?: string }) => loader === 'next-image-loader'
