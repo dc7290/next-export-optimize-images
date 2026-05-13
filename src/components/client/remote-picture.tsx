@@ -1,13 +1,10 @@
-import { createHash } from 'node:crypto'
-import { join } from 'node:path'
-import { appendFileSync } from 'fs-extra'
 import type { ImageConfigComplete } from 'next/dist/shared/lib/image-config'
 import type { ImageProps } from 'next/image'
 import React, { forwardRef } from 'react'
 import type { Manifest } from '../../cli'
 import buildOutputInfo from '../../utils/buildOutputInfo'
 import getConfig from '../../utils/getConfig'
-import Picture from '../client/picture'
+import Picture from './picture'
 
 type RemotePictureProps = Omit<ImageProps, 'src'> & {
   src: string
@@ -16,7 +13,13 @@ type RemotePictureProps = Omit<ImageProps, 'src'> & {
 const config = getConfig()
 
 const RemotePicture = forwardRef<HTMLImageElement, RemotePictureProps>(({ src, ...props }, forwardedRef) => {
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production' && typeof window === 'undefined') {
+    // Lazy-require so the browser bundle never tries to resolve node:* deps.
+    // The bundler treats the surrounding branch as dead code for the browser target.
+    const { createHash } = require('node:crypto') as typeof import('node:crypto')
+    const { appendFileSync } = require('node:fs') as typeof import('node:fs')
+    const { join } = require('node:path') as typeof import('node:path')
+
     const nextImageConfig = process.env.__NEXT_IMAGE_OPTS as unknown as ImageConfigComplete
 
     const allSizes = [...nextImageConfig.imageSizes, ...nextImageConfig.deviceSizes]

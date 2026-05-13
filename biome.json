@@ -13,6 +13,7 @@
       "./docs",
       "./__tests__/**/*.json",
       "./__tests__/**/components",
+      "./__tests__/e2e-alias/fixtures",
       "./bench/**/*.json",
       "**/.next",
       "**/public",

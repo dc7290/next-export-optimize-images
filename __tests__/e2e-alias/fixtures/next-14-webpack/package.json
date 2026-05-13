@@ -1,0 +1,11 @@
+{
+  "name": "fixture-next-14-webpack",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "next": "14.2.35",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "next-export-optimize-images": "file:../../../.."
+  }
+}

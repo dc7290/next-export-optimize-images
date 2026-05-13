@@ -1,1 +1,1 @@
-module.exports = require('./dist/components/server/remote-picture')
+module.exports = require('./dist/components/client/remote-picture')

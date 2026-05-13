@@ -245,6 +245,36 @@ export const optimizeImages = async ({
     })
   }
 
+  // Discover local images Next emitted under static/media. Under webpack the
+  // loader has already written matching entries to the NDJSON manifest; the
+  // final uniqueItems pass collapses them. Under Turbopack this walk is the
+  // only registration channel for local imports.
+  const mediaDir =
+    config.mode === 'build' ? path.resolve(cwd, '.next/static/media') : path.resolve(destDir, '_next/static/media')
+  if (fs.existsSync(mediaDir)) {
+    if (!terse) {
+      console.log('\n- Collect images in .next/static/media -')
+    }
+    const mediaFiles = await recursiveReadDir(mediaDir)
+    const mediaImages = mediaFiles.filter((file) => {
+      const ext = path.extname(file).toLowerCase()
+      return ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.avif' || ext === '.gif'
+    })
+    manifest = manifest.concat(
+      mediaImages
+        .map((file) => {
+          const src = `/_next/static/media/${path.relative(mediaDir, file).split(path.sep).join('/')}`
+          return allSizes.map((size) =>
+            buildOutputInfo({ src, width: size, config }).map(({ output, extension }) => {
+              const json: Manifest[number] = { output, src, width: size, extension }
+              return json
+            })
+          )
+        })
+        .flat(2)
+    )
+  }
+
   const publicDir = path.resolve(cwd, 'public')
   if (fs.existsSync(publicDir)) {
     if (!terse) {
@@ -286,6 +316,10 @@ export const optimizeImages = async ({
         .flat(2)
     )
   }
+
+  // Collapse any duplicate entries introduced by the media-dir walk overlapping
+  // with the webpack-loader-written manifest. No-op when there's no overlap.
+  manifest = uniqueItems(manifest)
 
   if (!terse) {
     console.log('\n- Image Optimization -')

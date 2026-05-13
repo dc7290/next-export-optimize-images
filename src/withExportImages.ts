@@ -3,14 +3,26 @@ import colors from 'ansi-colors'
 import appRootPath from 'app-root-path'
 import fs from 'fs-extra'
 import type { NextConfig } from 'next'
+import {
+  type UnstableNextImageAliasOption,
+  applyWebpackAlias as applyUnstableNextImageWebpackAlias,
+  buildTurbopackAlias as buildUnstableNextImageTurbopackAlias,
+} from './unstableNextImageAlias'
 import type { Config } from './utils/getConfig'
 
 // Track whether the configuration message has been logged
 let configMessageLogged = false
 
+export type WithExportImagesOptions = {
+  /** @internal */
+  __test?: boolean
+  /** @default false */
+  unstable_nextImageAlias?: UnstableNextImageAliasOption
+}
+
 const withExportImages = async (
   nextConfig: NextConfig = {},
-  options: { __test?: boolean } = {}
+  options: WithExportImagesOptions = {}
 ): Promise<NextConfig> => {
   if (nextConfig.images?.unoptimized) {
     throw Error(
@@ -71,6 +83,17 @@ const withExportImages = async (
   }
 
   const customConfig: NextConfig = {
+    // Declares Turbopack intent so Next 16 doesn't error when the webpack
+    // callback below is present. Turbopack uses native image emission; the
+    // loader path below runs only under `next build --webpack` and the
+    // CLI's post-build media-dir walk covers the Turbopack case.
+    turbopack: {
+      ...(nextConfig.turbopack ?? {}),
+      resolveAlias: {
+        ...(nextConfig.turbopack?.resolveAlias ?? {}),
+        ...buildUnstableNextImageTurbopackAlias(options.unstable_nextImageAlias),
+      },
+    },
     webpack(config, option) {
       const nextImageLoader = config.module.rules.find(
         ({ loader }: { loader?: string }) => loader === 'next-image-loader'
@@ -98,6 +121,8 @@ const withExportImages = async (
       config.resolveLoader.alias['next-export-optimize-images-loader'] = options.__test
         ? path.join(__dirname, 'loader')
         : 'next-export-optimize-images/dist/loader'
+
+      applyUnstableNextImageWebpackAlias(config, option, options.unstable_nextImageAlias)
 
       return nextConfig.webpack ? nextConfig.webpack(config, option) : config
     },

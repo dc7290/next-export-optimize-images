@@ -27,3 +27,59 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run test
+
+  # Build the package once and share the dist with each fixture job below.
+  # Avoids running tsup 5× in parallel (one per fixture) and lets a fixture
+  # retry without rebuilding the parent.
+  build-dist:
+    name: Build dist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  alias-e2e:
+    name: alias-e2e (${{ matrix.fixture }})
+    needs: build-dist
+    runs-on: ubuntu-latest
+    strategy:
+      # One fixture's build failing shouldn't mask results for the others —
+      # we want to see all 5 statuses on a PR even if one regresses.
+      fail-fast: false
+      matrix:
+        fixture:
+          - next-14-webpack
+          - next-15-webpack
+          - next-15-turbopack
+          - next-16-webpack
+          - next-16-turbopack
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      # Build just this fixture and run jest against it. We bypass `npm run
+      # test:alias-e2e` (and its `pretest:alias-e2e` hook) so we don't rebuild
+      # the parent — `dist/` was downloaded from the build-dist job above.
+      - run: node __tests__/e2e-alias/scripts/build-one.js ${{ matrix.fixture }}
+      - name: Run alias-e2e for ${{ matrix.fixture }}
+        env:
+          FIXTURE: ${{ matrix.fixture }}
+        run: npx jest --config jest.alias.config.js

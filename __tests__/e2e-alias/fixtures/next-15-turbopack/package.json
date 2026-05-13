@@ -1,0 +1,11 @@
+{
+  "name": "fixture-next-15-turbopack",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "next": "15.5.18",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "next-export-optimize-images": "file:../../../.."
+  }
+}

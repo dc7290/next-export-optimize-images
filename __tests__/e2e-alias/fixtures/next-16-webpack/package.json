@@ -1,0 +1,11 @@
+{
+  "name": "fixture-next-16-webpack",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "next-export-optimize-images": "file:../../../.."
+  }
+}

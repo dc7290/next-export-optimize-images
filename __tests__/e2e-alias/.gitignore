@@ -1,0 +1,9 @@
+fixtures/*/node_modules
+fixtures/*/.next
+fixtures/*/out
+fixtures/*/package-lock.json
+fixtures/*/next-env.d.ts
+fixtures/*/app
+fixtures/*/public
+fixtures/*/static.jpg
+fixtures/*/next.config.js

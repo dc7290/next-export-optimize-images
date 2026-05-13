@@ -4,4 +4,5 @@ const { createDefaultPreset } = require('ts-jest')
 module.exports = {
   ...createDefaultPreset(),
   testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
+  testPathIgnorePatterns: ['/node_modules/', '/__tests__/e2e-alias/'],
 }

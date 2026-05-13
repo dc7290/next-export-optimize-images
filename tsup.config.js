@@ -17,20 +17,10 @@ export default defineConfig([
       index: 'src/index.ts',
       cli: 'src/cli/index.ts',
       loader: 'src/loader/index.ts',
+      empty: 'src/empty.ts',
     },
     external: ['next-export-optimize-images'],
     outDir: 'dist',
-  },
-
-  // Server Components
-  {
-    ...cfg,
-    entry: {
-      'remote-image': 'src/components/server/remote-image.tsx',
-      'remote-picture': 'src/components/server/remote-picture.tsx',
-    },
-    external: ['next-export-optimize-images', '../client/image', '../client/picture'],
-    outDir: 'dist/components/server',
   },
 
   // Client Components
@@ -40,6 +30,9 @@ export default defineConfig([
       image: 'src/components/client/image.tsx',
       'legacy/image': 'src/components/client/legacy/image.tsx',
       picture: 'src/components/client/picture.tsx',
+      'remote-image': 'src/components/client/remote-image.tsx',
+      'remote-picture': 'src/components/client/remote-picture.tsx',
+      'turbo-remote-image': 'src/components/client/turbo-remote-image.tsx',
     },
     external: ['next-export-optimize-images'],
     outDir: 'dist/components/client',
