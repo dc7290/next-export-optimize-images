@@ -19,7 +19,7 @@ const imageLoader =
       throw new Error(`No output info found for ${src}`)
     }
 
-    return `${config.basePath ?? ''}${outputInfo.output}`
+    return `${config.assetPrefix ?? ''}${config.basePath ?? ''}${outputInfo.output}`
   }
 
 export default imageLoader

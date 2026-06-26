@@ -40,6 +40,10 @@ const buildOutputInfo = ({ src: _src, width, config }: BuildOutputInfoArgs) => {
     src = _src.replace(config.basePath, '')
   }
 
+  if (config.assetPrefix !== undefined && config.assetPrefix !== '') {
+    src = src.replace(config.assetPrefix, '')
+  }
+
   const parsedImageInformation = config.sourceImageParser
     ? config.sourceImageParser({ src, defaultParser: defaultImageParser })
     : defaultImageParser(src)

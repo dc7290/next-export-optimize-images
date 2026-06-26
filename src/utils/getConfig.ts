@@ -43,6 +43,13 @@ export type Config = {
    */
   basePath?: string
   /**
+   * Required if you have set assetPrefix in next.config.js.
+   * Please set the same value.
+   *
+   * @type {string}
+   */
+  assetPrefix?: string
+  /**
    * You can customize the directory to output downloaded external images.
    * The default is '_next/static/media'
    *
