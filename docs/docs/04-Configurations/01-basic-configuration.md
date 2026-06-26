@@ -81,6 +81,14 @@ The default is `'_next/static/media'`.
 Required if you have set `basePath` in `next.config.js`.  
 Please set the same value.
 
+### `assetPrefix`
+
+- Type: string
+- Default: ''
+
+Required if you have set `assetPrefix` in `next.config.js`.  
+Please set the same value.
+
 ### `filenameGenerator`
 
 - Type: function

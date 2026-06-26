@@ -79,6 +79,60 @@ describe('buildOutputInfo', () => {
     ])
   })
 
+  test('config.assetPrefix (path prefix) is applied', () => {
+    const input = {
+      src: '/assets/_next/static/media/test.png',
+      width: 300,
+      config: {
+        assetPrefix: '/assets',
+      },
+    }
+
+    const output = buildOutputInfo(input)
+
+    expect(output).toEqual([
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+      },
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+        src: '/_next/static/media/test.png',
+        extension: 'png',
+        originalExtension: 'png',
+      },
+    ])
+  })
+
+  test('config.assetPrefix (URL) is applied', () => {
+    const input = {
+      src: 'https://assets.example.com/_next/static/media/test.png',
+      width: 300,
+      config: {
+        assetPrefix: 'https://assets.example.com',
+      },
+    }
+
+    const output = buildOutputInfo(input)
+
+    expect(output).toEqual([
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.webp',
+        src: '/_next/static/media/test.png',
+        extension: 'webp',
+        originalExtension: 'png',
+      },
+      {
+        output: '/_next/static/chunks/images/_next/static/media/test_300.png',
+        src: '/_next/static/media/test.png',
+        extension: 'png',
+        originalExtension: 'png',
+      },
+    ])
+  })
+
   test('config.convertFormat is applied', () => {
     const input = {
       src: '/_next/static/media/test.png',
