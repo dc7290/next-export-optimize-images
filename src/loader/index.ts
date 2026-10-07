@@ -44,7 +44,7 @@ export default async function loader(this: LoaderContext<LoaderOptions>, content
             extension: extension,
           }
 
-          await fs.appendFile(
+          await fs.appendFileSync(
             path.join(process.cwd(), '.next/next-export-optimize-images-list.nd.json'),
             `${JSON.stringify(json)}\n`
           )
